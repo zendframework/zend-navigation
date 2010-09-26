@@ -21,17 +21,28 @@
  */
 
 /**
+ * @namespace
+ */
+namespace ZendTest\Navigation\TestAsset;
+
+use Zend\Navigation\AbstractPage;
+
+/**
  * @category   Zend
  * @package    Zend_Navigation
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class My_Container extends Zend_Navigation_Container
+class Page extends AbstractPage
 {
-    public function addPage($page)
+    /**
+     * Returns the page's href
+     *
+     * @return string
+     */
+    public function getHref()
     {
-        parent::addPage($page);
-        $this->_pages = array();
+        return '#';
     }
 }

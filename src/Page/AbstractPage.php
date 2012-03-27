@@ -12,31 +12,29 @@
  * obtain it through the world-wide-web, please send an email
  * to license@zend.com so we can send you a copy immediately.
  *
- * @category  Zend
- * @package   Zend_Navigation
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category   Zend
+ * @package    Zend_Navigation
+ * @subpackage Page
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/**
- * @namespace
- */
-namespace Zend\Navigation;
+namespace Zend\Navigation\Page;
 
-use Zend\Config\Config;
+use Traversable,
+    Zend\Acl\Resource as AclResource,
+    Zend\Navigation\Container,
+    Zend\Navigation\Exception,
+    Zend\Stdlib\ArrayUtils;
 
 /**
- * Base class for Zend_Navigation_Page pages
+ * Base class for Zend\Navigation\Page pages
  *
- * @uses      \Zend\Loader
- * @uses      \Zend\Navigation\Container
- * @uses      \Zend\Navigation\InvalidArgumentException
- * @uses      \Zend\Navigation\Page\Mvc
- * @uses      \Zend\Navigation\Page\Uri
- * @category  Zend
- * @package   Zend_Navigation
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category   Zend
+ * @package    Zend_Navigation
+ * @subpackage Page
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 abstract class AbstractPage extends Container
 {
@@ -45,49 +43,49 @@ abstract class AbstractPage extends Container
      *
      * @var string|null
      */
-    protected $_label;
+    protected $label;
 
     /**
      * Fragment identifier (anchor identifier)
-     * 
-     * The fragment identifier (anchor identifier) pointing to an anchor within 
+     *
+     * The fragment identifier (anchor identifier) pointing to an anchor within
      * a resource that is subordinate to another, primary resource.
      * The fragment identifier introduced by a hash mark "#".
      * Example: http://www.example.org/foo.html#bar ("bar" is the fragment identifier)
-     * 
+     *
      * @link http://www.w3.org/TR/html401/intro/intro.html#fragment-uri
-     * 
+     *
      * @var string|null
      */
-    protected $_fragment;
+    protected $fragment;
 
     /**
      * Page id
      *
      * @var string|null
      */
-    protected $_id;
+    protected $id;
 
     /**
      * Style class for this page (CSS)
      *
      * @var string|null
      */
-    protected $_class;
+    protected $class;
 
     /**
      * A more descriptive title for this page
      *
      * @var string|null
      */
-    protected $_title;
+    protected $title;
 
     /**
      * This page's target
      *
      * @var string|null
      */
-    protected $_target;
+    protected $target;
 
     /**
      * Forward links to other pages
@@ -96,7 +94,7 @@ abstract class AbstractPage extends Container
      *
      * @var array
      */
-    protected $_rel = array();
+    protected $rel = array();
 
     /**
      * Reverse links to other pages
@@ -105,56 +103,56 @@ abstract class AbstractPage extends Container
      *
      * @var array
      */
-    protected $_rev = array();
+    protected $rev = array();
 
     /**
      * Page order used by parent container
      *
      * @var int|null
      */
-    protected $_order;
+    protected $order;
 
     /**
      * ACL resource associated with this page
      *
      * @var string|\Zend\Acl\Resource|null
      */
-    protected $_resource;
+    protected $resource;
 
     /**
      * ACL privilege associated with this page
      *
      * @var string|null
      */
-    protected $_privilege;
+    protected $privilege;
 
     /**
      * Whether this page should be considered active
      *
      * @var bool
      */
-    protected $_active = false;
+    protected $active = false;
 
     /**
      * Whether this page should be considered visible
      *
      * @var bool
      */
-    protected $_visible = true;
+    protected $visible = true;
 
     /**
      * Parent container
      *
      * @var \Zend\Navigation\Container|null
      */
-    protected $_parent;
+    protected $parent;
 
     /**
      * Custom page properties, used by __set(), __get() and __isset()
      *
      * @var array
      */
-    protected $_properties = array();
+    protected $properties = array();
 
     // Initialization:
 
@@ -170,35 +168,35 @@ abstract class AbstractPage extends Container
      * If 'type' is not given, the type of page to construct will be determined
      * by the following rules:
      * - If $options contains either of the keys 'action', 'controller',
-     *   'module', or 'route', a Zend_Navigation_Page_Mvc page will be created.
+     *   or 'route', a Zend_Navigation_Page_Mvc page will be created.
      * - If $options contains the key 'uri', a Zend_Navigation_Page_Uri page
      *   will be created.
      *
-     * @param  array|\Zend\Config\Config $options  options used for creating page
-     * @return \Zend\Navigation\AbstractPage  a page instance
-     * @throws \Zend\Navigation\InvalidArgumentException  if $options is not
-     *                                                   array/\Zend\Config\Config
-     * @throws \Zend\Navigation\InvalidArgumentException  if 'type' is specified
-     *                                                   and Zend_Loader is unable
-     *                                                   to load the class
-     * @throws \Zend\Navigation\InvalidArgumentException  if something goes wrong
-     *                                                   during instantiation of
-     *                                                   the page
-     * @throws \Zend\Navigation\InvalidArgumentException  if 'type' is given, and
-     *                                                   the specified type does
-     *                                                   not extend this class
-     * @throws \Zend\Navigation\InvalidArgumentException  if unable to determine
-     *                                                   which class to instantiate
+     * @param  array|Traversable $options  options used for creating page
+     * @return AbstractPage  a page instance
+     * @throws Exception\InvalidArgumentException if $options is not
+     *                                            array/Traversable
+     * @throws Exception\InvalidArgumentException if 'type' is specified
+     *                                            but class not found
+     * @throws Exception\InvalidArgumentException if something goes wrong
+     *                                            during instantiation of
+     *                                            the page
+     * @throws Exception\InvalidArgumentException if 'type' is given, and
+     *                                            the specified type does
+     *                                            not extend this class
+     * @throws Exception\InvalidArgumentException if unable to determine
+     *                                            which class to instantiate
      */
     public static function factory($options)
     {
-        if ($options instanceof Config) {
-            $options = $options->toArray();
+        if ($options instanceof Traversable) {
+            $options = ArrayUtils::iteratorToArray($options);
         }
 
         if (!is_array($options)) {
             throw new Exception\InvalidArgumentException(
-                'Invalid argument: $options must be an array or Zend\Config\Config');
+                'Invalid argument: $options must be an array or Traversable'
+            );
         }
 
         if (isset($options['type'])) {
@@ -214,51 +212,58 @@ abstract class AbstractPage extends Container
                 }
 
                 if (!class_exists($type, true)) {
-                    throw new Exception\InvalidArgumentException('Cannot find class ' . $type);
+                    throw new Exception\InvalidArgumentException(
+                        'Cannot find class ' . $type
+                    );
                 }
 
                 $page = new $type($options);
                 if (!$page instanceof self) {
-                    throw new Exception\InvalidArgumentException(sprintf(
+                    throw new Exception\InvalidArgumentException(
+                        sprintf(
                             'Invalid argument: Detected type "%s", which ' .
-                            'is not an instance of Zend_Navigation_Page',
-                            $type));
+                            'is not an instance of Zend\Navigation\Page',
+                            $type
+                        )
+                    );
                 }
                 return $page;
             }
         }
 
         $hasUri = isset($options['uri']);
-        $hasMvc = isset($options['action']) || isset($options['controller']) ||
-                  isset($options['module']) || isset($options['route']);
+        $hasMvc = isset($options['action']) || isset($options['controller'])
+                || isset($options['route']);
 
         if ($hasMvc) {
-            return new Page\Mvc($options);
+            return new Mvc($options);
         } elseif ($hasUri) {
-            return new Page\Uri($options);
+            return new Uri($options);
         } else {
             throw new Exception\InvalidArgumentException(
-                'Invalid argument: Unable to determine class to instantiate');
+                'Invalid argument: Unable to determine class to instantiate'
+            );
         }
     }
 
     /**
      * Page constructor
      *
-     * @param  array|\Zend\Config\Config $options   [optional] page options. Default is
-     *                                      null, which should set defaults.
-     * @throws \Zend\Navigation\Exception    if invalid options are given
+     * @param  array|Traversable $options [optional] page options. Default is
+     *                                    null, which should set defaults.
+     * @throws Exception if invalid options are given
      */
     public function __construct($options = null)
     {
+        if ($options instanceof Traversable) {
+            $options = ArrayUtils::iteratorToArray($options);
+        }
         if (is_array($options)) {
             $this->setOptions($options);
-        } elseif ($options instanceof Config) {
-            $this->setConfig($options);
         }
 
         // do custom initialization
-        $this->_init();
+        $this->init();
     }
 
     /**
@@ -266,20 +271,8 @@ abstract class AbstractPage extends Container
      *
      * @return void
      */
-    protected function _init()
+    protected function init()
     {
-    }
-
-    /**
-     * Sets page properties using a Zend_Config object
-     *
-     * @param  \Zend\Config\Config $config        config object to get properties from
-     * @return \Zend\Navigation\AbstractPage      fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if invalid options are given
-     */
-    public function setConfig(Config $config)
-    {
-        return $this->setOptions($config->toArray());
     }
 
     /**
@@ -290,9 +283,9 @@ abstract class AbstractPage extends Container
      * corresponds to setTarget(), and the option 'reset_params' corresponds to
      * the method setResetParams().
      *
-     * @param  array $options             associative array of options to set
-     * @return \Zend\Navigation\Page\Page       fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if invalid options are given
+     * @param  array $options associative array of options to set
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException  if invalid options are given
      */
     public function setOptions(array $options)
     {
@@ -308,18 +301,19 @@ abstract class AbstractPage extends Container
     /**
      * Sets page label
      *
-     * @param  string $label              new page label
-     * @return \Zend\Navigation\Page\Page       fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if empty/no string is given
+     * @param  string $label new page label
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException if empty/no string is given
      */
     public function setLabel($label)
     {
         if (null !== $label && !is_string($label)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $label must be a string or null');
+                'Invalid argument: $label must be a string or null'
+            );
         }
 
-        $this->_label = $label;
+        $this->label = $label;
         return $this;
     }
 
@@ -330,53 +324,55 @@ abstract class AbstractPage extends Container
      */
     public function getLabel()
     {
-        return $this->_label;
+        return $this->label;
     }
 
     /**
      * Sets a fragment identifier
      *
-     * @param  string $fragment   new fragment identifier
-     * @return Zend_Navigation_Page         fluent interface, returns self
-     * @throws Zend_Navigation_Exception    if empty/no string is given
+     * @param  string $fragment new fragment identifier
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException if empty/no string is given
      */
     public function setFragment($fragment)
     {
         if (null !== $fragment && !is_string($fragment)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $fragment must be a string or null');
+                'Invalid argument: $fragment must be a string or null'
+            );
         }
- 
-        $this->_fragment = $fragment;
+
+        $this->fragment = $fragment;
         return $this;
     }
-    
-     /**
+
+    /**
      * Returns fragment identifier
      *
      * @return string|null  fragment identifier
      */
     public function getFragment()
     {
-        return $this->_fragment;
+        return $this->fragment;
     }
 
     /**
      * Sets page id
      *
-     * @param  string|null $id            [optional] id to set. Default is null,
-     *                                    which sets no id.
-     * @return \Zend\Navigation\AbstractPage fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if not given string or null
+     * @param  string|null $id [optional] id to set. Default is null,
+     *                         which sets no id.
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException  if not given string or null
      */
     public function setId($id = null)
     {
         if (null !== $id && !is_string($id) && !is_numeric($id)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $id must be a string, number or null');
+                'Invalid argument: $id must be a string, number or null'
+            );
         }
 
-        $this->_id = null === $id ? $id : (string) $id;
+        $this->id = null === $id ? $id : (string) $id;
 
         return $this;
     }
@@ -388,25 +384,26 @@ abstract class AbstractPage extends Container
      */
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
     /**
      * Sets page CSS class
      *
-     * @param  string|null $class         [optional] CSS class to set. Default
-     *                                    is null, which sets no CSS class.
-     * @return \Zend\Navigation\AbstractPage       fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if not given string or null
+     * @param  string|null $class [optional] CSS class to set. Default
+     *                            is null, which sets no CSS class.
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException  if not given string or null
      */
     public function setClass($class = null)
     {
         if (null !== $class && !is_string($class)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $class must be a string or null');
+                'Invalid argument: $class must be a string or null'
+            );
         }
 
-        $this->_class = $class;
+        $this->class = $class;
         return $this;
     }
 
@@ -417,25 +414,26 @@ abstract class AbstractPage extends Container
      */
     public function getClass()
     {
-        return $this->_class;
+        return $this->class;
     }
 
     /**
      * Sets page title
      *
-     * @param  string $title              [optional] page title. Default is
-     *                                    null, which sets no title.
-     * @return \Zend\Navigation\AbstractPage       fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if not given string or null
+     * @param  string $title [optional] page title. Default is
+     *                       null, which sets no title.
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException if not given string or null
      */
     public function setTitle($title = null)
     {
         if (null !== $title && !is_string($title)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $title must be a non-empty string');
+                'Invalid argument: $title must be a non-empty string'
+            );
         }
 
-        $this->_title = $title;
+        $this->title = $title;
         return $this;
     }
 
@@ -446,25 +444,27 @@ abstract class AbstractPage extends Container
      */
     public function getTitle()
     {
-        return $this->_title;
+        return $this->title;
     }
 
     /**
      * Sets page target
      *
-     * @param  string|null $target        [optional] target to set. Default is
-     *                                    null, which sets no target.
-     * @return \Zend\Navigation\AbstractPage       fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if target is not string or null
+     * @param  string|null $target [optional] target to set. Default is
+     *                             null, which sets no target.
+     *
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException if target is not string or null
      */
     public function setTarget($target = null)
     {
         if (null !== $target && !is_string($target)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $target must be a string or null');
+                'Invalid argument: $target must be a string or null'
+            );
         }
 
-        $this->_target = $target;
+        $this->target = $target;
         return $this;
     }
 
@@ -475,7 +475,7 @@ abstract class AbstractPage extends Container
      */
     public function getTarget()
     {
-        return $this->_target;
+        return $this->target;
     }
 
     /**
@@ -486,28 +486,29 @@ abstract class AbstractPage extends Container
      * prev, next, help, etc), and the value is a mixed value that could somehow
      * be considered a page.
      *
-     * @param  array|\Zend\Config\Config $relations  [optional] an associative array of
-     *                                       forward links to other pages
-     * @return \Zend\Navigation\AbstractPage          fluent interface, returns self
+     * @param  array|Traversable $relations  [optional] an associative array of
+     *                           forward links to other pages
+     * @return AbstractPage fluent interface, returns self
      */
     public function setRel($relations = null)
     {
-        $this->_rel = array();
+        $this->rel = array();
 
         if (null !== $relations) {
-            if ($relations instanceof Config) {
-                $relations = $relations->toArray();
+            if ($relations instanceof Traversable) {
+                $relations = ArrayUtils::iteratorToArray($relations);
             }
 
             if (!is_array($relations)) {
                 throw new Exception\InvalidArgumentException(
-                        'Invalid argument: $relations must be an ' .
-                        'array or an instance of Zend\Config');
+                    'Invalid argument: $relations must be an ' .
+                    'array or an instance of Traversable'
+                );
             }
 
             foreach ($relations as $name => $relation) {
                 if (is_string($name)) {
-                    $this->_rel[$name] = $relation;
+                    $this->rel[$name] = $relation;
                 }
             }
         }
@@ -523,21 +524,21 @@ abstract class AbstractPage extends Container
      * prev, next, help, etc), and the value is a mixed value that could somehow
      * be considered a page.
      *
-     * @param  string $relation  [optional] name of relation to return. If not
-     *                           given, all relations will be returned.
-     * @return array             an array of relations. If $relation is not
-     *                           specified, all relations will be returned in
-     *                           an associative array.
+     * @param  string $relation [optional] name of relation to return. If not
+     *                          given, all relations will be returned.
+     * @return array            an array of relations. If $relation is not
+     *                          specified, all relations will be returned in
+     *                          an associative array.
      */
     public function getRel($relation = null)
     {
         if (null !== $relation) {
-            return isset($this->_rel[$relation]) ?
-                   $this->_rel[$relation] :
-                   null;
+            return isset($this->rel[$relation])
+                ? $this->rel[$relation]
+                : null;
         }
 
-        return $this->_rel;
+        return $this->rel;
     }
 
     /**
@@ -548,28 +549,30 @@ abstract class AbstractPage extends Container
      * prev, next, help, etc), and the value is a mixed value that could somehow
      * be considered a page.
      *
-     * @param  array|\Zend\Config\Config $relations  [optional] an associative array of
-     *                                       reverse links to other pages
-     * @return \Zend\Navigation\AbstractPage          fluent interface, returns self
+     * @param  array|Traversable $relations [optional] an associative array of
+     *                                      reverse links to other pages
+     *
+     * @return AbstractPage fluent interface, returns self
      */
     public function setRev($relations = null)
     {
-        $this->_rev = array();
+        $this->rev = array();
 
         if (null !== $relations) {
-            if ($relations instanceof Config) {
-                $relations = $relations->toArray();
+            if ($relations instanceof Traversable) {
+                $relations = ArrayUtils::iteratorToArray($relations);
             }
 
             if (!is_array($relations)) {
                 throw new Exception\InvalidArgumentException(
-                        'Invalid argument: $relations must be an ' .
-                        'array or an instance of Zend\Config');
+                    'Invalid argument: $relations must be an ' .
+                    'array or an instance of Traversable'
+                );
             }
 
             foreach ($relations as $name => $relation) {
                 if (is_string($name)) {
-                    $this->_rev[$name] = $relation;
+                    $this->rev[$name] = $relation;
                 }
             }
         }
@@ -587,6 +590,7 @@ abstract class AbstractPage extends Container
      *
      * @param  string $relation  [optional] name of relation to return. If not
      *                           given, all relations will be returned.
+     *
      * @return array             an array of relations. If $relation is not
      *                           specified, all relations will be returned in
      *                           an associative array.
@@ -594,22 +598,24 @@ abstract class AbstractPage extends Container
     public function getRev($relation = null)
     {
         if (null !== $relation) {
-            return isset($this->_rev[$relation]) ?
-                   $this->_rev[$relation] :
-                   null;
+            return isset($this->rev[$relation])
+                ?
+                $this->rev[$relation]
+                :
+                null;
         }
 
-        return $this->_rev;
+        return $this->rev;
     }
 
     /**
      * Sets page order to use in parent container
      *
-     * @param  int $order                 [optional] page order in container.
-     *                                    Default is null, which sets no
-     *                                    specific order.
-     * @return \Zend\Navigation\AbstractPage       fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if order is not integer or null
+     * @param  int $order [optional] page order in container.
+     *                    Default is null, which sets no
+     *                    specific order.
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException if order is not integer or null
      */
     public function setOrder($order = null)
     {
@@ -622,15 +628,16 @@ abstract class AbstractPage extends Container
 
         if (null !== $order && !is_int($order)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $order must be an integer or null, ' .
-                    'or a string that casts to an integer');
+                'Invalid argument: $order must be an integer or null, ' .
+                'or a string that casts to an integer'
+            );
         }
 
-        $this->_order = $order;
+        $this->order = $order;
 
         // notify parent, if any
-        if (isset($this->_parent)) {
-            $this->_parent->notifyOrderUpdated();
+        if (isset($this->parent)) {
+            $this->parent->notifyOrderUpdated();
         }
 
         return $this;
@@ -643,31 +650,30 @@ abstract class AbstractPage extends Container
      */
     public function getOrder()
     {
-        return $this->_order;
+        return $this->order;
     }
 
     /**
      * Sets ACL resource assoicated with this page
      *
-     * @param  string|\Zend\Acl\Resource $resource  [optional] resource
-     *                                                       to associate with
-     *                                                       page. Default is
-     *                                                       null, which sets no
-     *                                                       resource.
-     * @throws \Zend\Navigation\InvalidArgumentException      if $resource is
-     *                                                       invalid
-     * @return \Zend\Navigation\AbstractPage                  fluent interface,
-     *                                                       returns self
+     * @param  string|AclResource $resource [optional] resource to associate 
+     *                                      with page. Default is null, which 
+     *                                      sets no resource.
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException if $resource is invalid
      */
     public function setResource($resource = null)
     {
-        if (null === $resource || is_string($resource) ||
-            $resource instanceof \Zend\Acl\Resource) {
-            $this->_resource = $resource;
+        if (null === $resource 
+            || is_string($resource)
+            || $resource instanceof AclResource
+        ) {
+            $this->resource = $resource;
         } else {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $resource must be null, a string, ' .
-                    ' or an instance of Zend_Acl_Resource_Interface');
+                'Invalid argument: $resource must be null, a string, ' .
+                'or an instance of Zend\Acl\Resource'
+            );
         }
 
         return $this;
@@ -676,11 +682,11 @@ abstract class AbstractPage extends Container
     /**
      * Returns ACL resource assoicated with this page
      *
-     * @return string|\Zend\Acl\Resource|null  ACL resource or null
+     * @return string|AclResource|null  ACL resource or null
      */
     public function getResource()
     {
-        return $this->_resource;
+        return $this->resource;
     }
 
     /**
@@ -689,11 +695,12 @@ abstract class AbstractPage extends Container
      * @param  string|null $privilege  [optional] ACL privilege to associate
      *                                 with this page. Default is null, which
      *                                 sets no privilege.
-     * @return \Zend\Navigation\AbstractPage    fluent interface, returns self
+     *
+     * @return AbstractPage fluent interface, returns self
      */
     public function setPrivilege($privilege = null)
     {
-        $this->_privilege = is_string($privilege) ? $privilege : null;
+        $this->privilege = is_string($privilege) ? $privilege : null;
         return $this;
     }
 
@@ -704,19 +711,20 @@ abstract class AbstractPage extends Container
      */
     public function getPrivilege()
     {
-        return $this->_privilege;
+        return $this->privilege;
     }
 
     /**
      * Sets whether page should be considered active or not
      *
-     * @param  bool $active          [optional] whether page should be
-     *                               considered active or not. Default is true.
-     * @return \Zend\Navigation\AbstractPage  fluent interface, returns self
+     * @param  bool $active [optional] whether page should be
+     *                      considered active or not. Default is true.
+     *
+     * @return AbstractPage fluent interface, returns self
      */
     public function setActive($active = true)
     {
-        $this->_active = (bool) $active;
+        $this->active = (bool) $active;
         return $this;
     }
 
@@ -730,8 +738,8 @@ abstract class AbstractPage extends Container
      */
     public function isActive($recursive = false)
     {
-        if (!$this->_active && $recursive) {
-            foreach ($this->_pages as $page) {
+        if (!$this->active && $recursive) {
+            foreach ($this->pages as $page) {
                 if ($page->isActive(true)) {
                     return true;
                 }
@@ -739,7 +747,7 @@ abstract class AbstractPage extends Container
             return false;
         }
 
-        return $this->_active;
+        return $this->active;
     }
 
     /**
@@ -748,6 +756,7 @@ abstract class AbstractPage extends Container
      * @param  bool $recursive  [optional] whether page should be considered
      *                          active if any child pages are active. Default
      *                          is false.
+     *
      * @return bool             whether page should be considered active
      */
     public function getActive($recursive = false)
@@ -758,16 +767,16 @@ abstract class AbstractPage extends Container
     /**
      * Sets whether the page should be visible or not
      *
-     * @param  bool $visible         [optional] whether page should be
-     *                               considered visible or not. Default is true.
-     * @return \Zend\Navigation\AbstractPage  fluent interface, returns self
+     * @param  bool $visible [optional] whether page should be
+     *                       considered visible or not. Default is true.
+     * @return AbstractPage fluent interface, returns self
      */
     public function setVisible($visible = true)
     {
         if (is_string($visible) && 'false' == strtolower($visible)) {
             $visible = false;
         }
-        $this->_visible = (bool) $visible;
+        $this->visible = (bool)$visible;
         return $this;
     }
 
@@ -777,18 +786,21 @@ abstract class AbstractPage extends Container
      * @param  bool $recursive  [optional] whether page should be considered
      *                          invisible if parent is invisible. Default is
      *                          false.
+     *
      * @return bool             whether page should be considered visible
      */
     public function isVisible($recursive = false)
     {
-        if ($recursive && isset($this->_parent) &&
-            $this->_parent instanceof self) {
-            if (!$this->_parent->isVisible(true)) {
+        if ($recursive 
+            && isset($this->parent)
+            && $this->parent instanceof self
+        ) {
+            if (!$this->parent->isVisible(true)) {
                 return false;
             }
         }
 
-        return $this->_visible;
+        return $this->visible;
     }
 
     /**
@@ -799,6 +811,7 @@ abstract class AbstractPage extends Container
      * @param  bool $recursive  [optional] whether page should be considered
      *                          invisible if parent is invisible. Default is
      *                          false.
+     *
      * @return bool             whether page should be considered visible
      */
     public function getVisible($recursive = false)
@@ -809,34 +822,34 @@ abstract class AbstractPage extends Container
     /**
      * Sets parent container
      *
-     * @param  \Zend\Navigation\Container $parent  [optional] new parent to set.
-     *                                            Default is null which will set
-     *                                            no parent.
-     * @return \Zend\Navigation\AbstractPage               fluent interface, returns self
+     * @param  Container $parent [optional] new parent to set.
+     *                           Default is null which will set no parent.
+     * @return AbstractPage fluent interface, returns self
      */
     public function setParent(Container $parent = null)
     {
         if ($parent === $this) {
             throw new Exception\InvalidArgumentException(
-                'A page cannot have itself as a parent');
+                'A page cannot have itself as a parent'
+            );
         }
 
         // return if the given parent already is parent
-        if ($parent === $this->_parent) {
+        if ($parent === $this->parent) {
             return $this;
         }
 
         // remove from old parent
-        if (null !== $this->_parent) {
-            $this->_parent->removePage($this);
+        if (null !== $this->parent) {
+            $this->parent->removePage($this);
         }
 
         // set new parent
-        $this->_parent = $parent;
+        $this->parent = $parent;
 
         // add to parent if page and not already a child
-        if (null !== $this->_parent && !$this->_parent->hasPage($this, false)) {
-            $this->_parent->addPage($this);
+        if (null !== $this->parent && !$this->parent->hasPage($this, false)) {
+            $this->parent->addPage($this);
         }
 
         return $this;
@@ -845,11 +858,11 @@ abstract class AbstractPage extends Container
     /**
      * Returns parent container
      *
-     * @return \Zend\Navigation\Container|null  parent container or null
+     * @return Container|null  parent container or null
      */
     public function getParent()
     {
-        return $this->_parent;
+        return $this->parent;
     }
 
     /**
@@ -858,25 +871,27 @@ abstract class AbstractPage extends Container
      * If the given property is native (id, class, title, etc), the matching
      * set method will be used. Otherwise, it will be set as a custom property.
      *
-     * @param  string $property           property name
-     * @param  mixed  $value              value to set
-     * @return \Zend\Navigation\AbstractPage       fluent interface, returns self
-     * @throws \Zend\Navigation\InvalidArgumentException  if property name is invalid
+     * @param  string $property property name
+     * @param  mixed  $value    value to set
+     * @return AbstractPage fluent interface, returns self
+     * @throws Exception\InvalidArgumentException if property name is invalid
      */
     public function set($property, $value)
     {
         if (!is_string($property) || empty($property)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $property must be a non-empty string');
+                'Invalid argument: $property must be a non-empty string'
+            );
         }
 
-        $method = 'set' . self::_normalizePropertyName($property);
+        $method = 'set' . self::normalizePropertyName($property);
 
-        if ($method != 'setOptions' && $method != 'setConfig' &&
-            method_exists($this, $method)) {
+        if ($method != 'setOptions' && $method != 'setConfig'
+            && method_exists($this, $method)
+        ) {
             $this->$method($value);
         } else {
-            $this->_properties[$property] = $value;
+            $this->properties[$property] = $value;
         }
 
         return $this;
@@ -889,23 +904,24 @@ abstract class AbstractPage extends Container
      * get method will be used. Otherwise, it will return the matching custom
      * property, or null if not found.
      *
-     * @param  string $property           property name
-     * @return mixed                      the property's value or null
-     * @throws \Zend\Navigation\InvalidArgumentException  if property name is invalid
+     * @param  string $property property name
+     * @return mixed            the property's value or null
+     * @throws Exception\InvalidArgumentException if property name is invalid
      */
     public function get($property)
     {
         if (!is_string($property) || empty($property)) {
             throw new Exception\InvalidArgumentException(
-                    'Invalid argument: $property must be a non-empty string');
+                'Invalid argument: $property must be a non-empty string'
+            );
         }
 
-        $method = 'get' . self::_normalizePropertyName($property);
+        $method = 'get' . self::normalizePropertyName($property);
 
         if (method_exists($this, $method)) {
             return $this->$method();
-        } elseif (isset($this->_properties[$property])) {
-            return $this->_properties[$property];
+        } elseif (isset($this->properties[$property])) {
+            return $this->properties[$property];
         }
 
         return null;
@@ -918,10 +934,10 @@ abstract class AbstractPage extends Container
      *
      * Magic overload for enabling <code>$page->propname = $value</code>.
      *
-     * @param  string $name               property name
-     * @param  mixed  $value              value to set
+     * @param  string $name  property name
+     * @param  mixed  $value value to set
      * @return void
-     * @throws \Zend\Navigation\InvalidArgumentException  if property name is invalid
+     * @throws Exception\InvalidArgumentException if property name is invalid
      */
     public function __set($name, $value)
     {
@@ -933,9 +949,9 @@ abstract class AbstractPage extends Container
      *
      * Magic overload for enabling <code>$page->propname</code>.
      *
-     * @param  string $name               property name
-     * @return mixed                      property value or null
-     * @throws \Zend\Navigation\InvalidArgumentException  if property name is invalid
+     * @param  string $name property name
+     * @return mixed        property value or null
+     * @throws Exception\InvalidArgumentException if property name is invalid
      */
     public function __get($name)
     {
@@ -951,17 +967,17 @@ abstract class AbstractPage extends Container
      * true or false if it's a custom property (depending on whether the
      * property actually is set).
      *
-     * @param  string $name  property name
-     * @return bool          whether the given property exists
+     * @param  string $name property name
+     * @return bool whether the given property exists
      */
     public function __isset($name)
     {
-        $method = 'get' . self::_normalizePropertyName($name);
+        $method = 'get' . self::normalizePropertyName($name);
         if (method_exists($this, $method)) {
             return true;
         }
 
-        return isset($this->_properties[$name]);
+        return isset($this->properties[$name]);
     }
 
     /**
@@ -969,21 +985,24 @@ abstract class AbstractPage extends Container
      *
      * Magic overload for enabling <code>unset($page->propname)</code>.
      *
-     * @param  string $name               property name
+     * @param  string $name property name
      * @return void
-     * @throws \Zend\Navigation\InvalidArgumentException  if the property is native
+     * @throws Exception\InvalidArgumentException  if the property is native
      */
     public function __unset($name)
     {
-        $method = 'set' . self::_normalizePropertyName($name);
+        $method = 'set' . self::normalizePropertyName($name);
         if (method_exists($this, $method)) {
-            throw new Exception\InvalidArgumentException(sprintf(
+            throw new Exception\InvalidArgumentException(
+                sprintf(
                     'Unsetting native property "%s" is not allowed',
-                    $name));
+                    $name
+                )
+            );
         }
 
-        if (isset($this->_properties[$name])) {
-            unset($this->_properties[$name]);
+        if (isset($this->properties[$name])) {
+            unset($this->properties[$name]);
         }
     }
 
@@ -996,7 +1015,7 @@ abstract class AbstractPage extends Container
      */
     public function __toString()
     {
-        return $this->_label;
+        return $this->label;
     }
 
     // Public methods:
@@ -1004,15 +1023,15 @@ abstract class AbstractPage extends Container
     /**
      * Adds a forward relation to the page
      *
-     * @param  string $relation      relation name (e.g. alternate, glossary,
-     *                               canonical, etc)
-     * @param  mixed  $value         value to set for relation
-     * @return \Zend\Navigation\AbstractPage  fluent interface, returns self
+     * @param  string $relation relation name (e.g. alternate, glossary,
+     *                          canonical, etc)
+     * @param  mixed  $value    value to set for relation
+     * @return AbstractPage  fluent interface, returns self
      */
     public function addRel($relation, $value)
     {
         if (is_string($relation)) {
-            $this->_rel[$relation] = $value;
+            $this->rel[$relation] = $value;
         }
         return $this;
     }
@@ -1020,15 +1039,15 @@ abstract class AbstractPage extends Container
     /**
      * Adds a reverse relation to the page
      *
-     * @param  string $relation      relation name (e.g. alternate, glossary,
-     *                               canonical, etc)
-     * @param  mixed  $value         value to set for relation
-     * @return \Zend\Navigation\AbstractPage  fluent interface, returns self
+     * @param  string $relation relation name (e.g. alternate, glossary,
+     *                          canonical, etc)
+     * @param  mixed  $value    value to set for relation
+     * @return AbstractPage fluent interface, returns self
      */
     public function addRev($relation, $value)
     {
         if (is_string($relation)) {
-            $this->_rev[$relation] = $value;
+            $this->rev[$relation] = $value;
         }
         return $this;
     }
@@ -1036,13 +1055,13 @@ abstract class AbstractPage extends Container
     /**
      * Removes a forward relation from the page
      *
-     * @param  string $relation      name of relation to remove
-     * @return \Zend\Navigation\AbstractPage  fluent interface, returns self
+     * @param  string $relation name of relation to remove
+     * @return AbstractPage fluent interface, returns self
      */
     public function removeRel($relation)
     {
-        if (isset($this->_rel[$relation])) {
-            unset($this->_rel[$relation]);
+        if (isset($this->rel[$relation])) {
+            unset($this->rel[$relation]);
         }
 
         return $this;
@@ -1051,13 +1070,13 @@ abstract class AbstractPage extends Container
     /**
      * Removes a reverse relation from the page
      *
-     * @param  string $relation      name of relation to remove
-     * @return \Zend\Navigation\AbstractPage  fluent interface, returns self
+     * @param  string $relation name of relation to remove
+     * @return AbstractPage  fluent interface, returns self
      */
     public function removeRev($relation)
     {
-        if (isset($this->_rev[$relation])) {
-            unset($this->_rev[$relation]);
+        if (isset($this->rev[$relation])) {
+            unset($this->rev[$relation]);
         }
 
         return $this;
@@ -1070,7 +1089,7 @@ abstract class AbstractPage extends Container
      */
     public function getDefinedRel()
     {
-        return array_keys($this->_rel);
+        return array_keys($this->rel);
     }
 
     /**
@@ -1080,7 +1099,7 @@ abstract class AbstractPage extends Container
      */
     public function getDefinedRev()
     {
-        return array_keys($this->_rev);
+        return array_keys($this->rev);
     }
 
     /**
@@ -1090,7 +1109,7 @@ abstract class AbstractPage extends Container
      */
     public function getCustomProperties()
     {
-        return $this->_properties;
+        return $this->properties;
     }
 
     /**
@@ -1110,25 +1129,23 @@ abstract class AbstractPage extends Container
      */
     public function toArray()
     {
-        return array_merge(
-            $this->getCustomProperties(),
-            array(
-                'label'     => $this->getLabel(),
-                'fragment' => $this->getFragment(),
-                'id'        => $this->getId(),
-                'class'     => $this->getClass(),
-                'title'     => $this->getTitle(),
-                'target'    => $this->getTarget(),
-                'rel'       => $this->getRel(),
-                'rev'       => $this->getRev(),
-                'order'     => $this->getOrder(),
-                'resource'  => $this->getResource(),
-                'privilege' => $this->getPrivilege(),
-                'active'    => $this->isActive(),
-                'visible'   => $this->isVisible(),
-                'type'      => get_class($this),
-                'pages'     => parent::toArray()
-            ));
+        return array_merge($this->getCustomProperties(), array(
+            'label'     => $this->getLabel(),
+            'fragment'  => $this->getFragment(),
+            'id'        => $this->getId(),
+            'class'     => $this->getClass(),
+            'title'     => $this->getTitle(),
+            'target'    => $this->getTarget(),
+            'rel'       => $this->getRel(),
+            'rev'       => $this->getRev(),
+            'order'     => $this->getOrder(),
+            'resource'  => $this->getResource(),
+            'privilege' => $this->getPrivilege(),
+            'active'    => $this->isActive(),
+            'visible'   => $this->isVisible(),
+            'type'      => get_class($this),
+            'pages'     => parent::toArray(),
+        ));
     }
 
     // Internal methods:
@@ -1139,7 +1156,7 @@ abstract class AbstractPage extends Container
      * @param  string $property  property name to normalize
      * @return string            normalized property name
      */
-    protected static function _normalizePropertyName($property)
+    protected static function normalizePropertyName($property)
     {
         return str_replace(' ', '', ucwords(str_replace('_', ' ', $property)));
     }

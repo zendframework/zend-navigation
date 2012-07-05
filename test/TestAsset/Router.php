@@ -14,23 +14,26 @@
  *
  * @category   Zend
  * @package    Zend_Navigation
- * @subpackage Exception
+ * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-namespace Zend\Navigation\Exception;
+namespace ZendTest\Navigation\TestAsset;
 
 /**
- * Navigation domain exception
- *
  * @category   Zend
  * @package    Zend_Navigation
- * @subpackage Exception
+ * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-class DomainException
-    extends \DomainException
-    implements ExceptionInterface
-{}
+class Router extends \Zend\Mvc\Router\Http\TreeRouteStack
+{
+    const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
+
+    public function assemble(array $params = array(), array $options = array())
+    {
+        return self::RETURN_URL;
+    }
+}

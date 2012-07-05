@@ -14,41 +14,47 @@
  *
  * @category   Zend
  * @package    Zend_Navigation
+ * @subpackage Exception
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-namespace Zend\Navigation;
+namespace Zend\Navigation\Service;
 
-use Traversable;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * A simple container class for {@link Zend_Navigation_Page} pages
+ * Constructed factory to set pages during construction.
  *
  * @category  Zend
  * @package   Zend_Navigation
  * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd     New BSD License
  */
-class Navigation extends AbstractContainer
+class ConstructedNavigationFactory extends AbstractNavigationFactory
 {
     /**
-     * Creates a new navigation container
-     *
-     * @param  array|Traversable $pages    [optional] pages to add
-     * @throws Exception\InvalidArgumentException  if $pages is invalid
+     * @param string|\Zend\Config\Config|array $config
      */
-    public function __construct($pages = null)
+    public function __construct($config)
     {
-        if ($pages && (!is_array($pages) && !$pages instanceof Traversable)) {
-            throw new Exception\InvalidArgumentException(
-                'Invalid argument: $pages must be an array, an '
-                . 'instance of Traversable, or null'
-            );
-        }
+        $this->pages = $this->getPagesFromConfig($config);
+    }
 
-        if ($pages) {
-            $this->addPages($pages);
-        }
+    /**
+     * @param ServiceLocatorInterface $serviceLocator
+     * @return array|null|\Zend\Config\Config
+     */
+    public function getPages(ServiceLocatorInterface $serviceLocator)
+    {
+        return $this->pages;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'constructed';
     }
 }

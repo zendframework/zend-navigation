@@ -14,24 +14,25 @@
  *
  * @category   Zend
  * @package    Zend_Navigation
+ * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd New BSD License
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/**
- * @namespace
- */
-namespace Zend\Navigation;
+namespace ZendTest\Navigation\TestAsset;
 
 /**
- * Navigation exception
- *
- * @category  Zend
- * @package   Zend_Navigation
- * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category   Zend
+ * @package    Zend_Navigation
+ * @subpackage UnitTests
+ * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-interface Exception
+class AbstractContainer extends \Zend\Navigation\AbstractContainer
 {
-
+    public function addPage($page)
+    {
+        parent::addPage($page);
+        $this->pages = array();
+    }
 }

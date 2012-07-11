@@ -8,15 +8,19 @@
  * @package   Zend_Navigation
  */
 
-namespace Zend\Navigation\Exception;
+namespace ZendTest\Navigation\TestAsset;
 
 /**
- * Navigation bad method call exception
- *
  * @category   Zend
  * @package    Zend_Navigation
- * @subpackage Exception
+ * @subpackage UnitTests
  */
-class BadMethodCallException extends \BadMethodCallException implements 
-    ExceptionInterface
-{}
+class Router extends \Zend\Mvc\Router\Http\TreeRouteStack
+{
+    const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
+
+    public function assemble(array $params = array(), array $options = array())
+    {
+        return self::RETURN_URL;
+    }
+}

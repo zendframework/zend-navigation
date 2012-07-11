@@ -1,6 +1,6 @@
 {
     "name": "zendframework/zend-navigation",
-    "description": "Zend\\Navigation component",
+    "description": "provides support for managing trees of pointers to web pages",
     "license": "BSD-3-Clause",
     "keywords": [
         "zf2",
@@ -9,11 +9,11 @@
     "homepage": "https://github.com/zendframework/zend-navigation",
     "autoload": {
         "psr-4": {
-            "Zend\\Navigation\\": "src/"
+            "Zend\\Navigation": "src/"
         }
     },
     "require": {
-        "php": ">=5.3.23",
+        "php": ">=5.3.3",
         "zendframework/zend-stdlib": "self.version"
     },
     "require-dev": {

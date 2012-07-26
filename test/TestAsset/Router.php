@@ -10,22 +10,17 @@
 
 namespace ZendTest\Navigation\TestAsset;
 
-use Zend\Navigation\Page\AbstractPage;
-
 /**
  * @category   Zend
  * @package    Zend_Navigation
  * @subpackage UnitTests
  */
-class Page extends AbstractPage
+class Router extends \Zend\Mvc\Router\Http\TreeRouteStack
 {
-    /**
-     * Returns the page's href
-     *
-     * @return string
-     */
-    public function getHref()
+    const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
+
+    public function assemble(array $params = array(), array $options = array())
     {
-        return '#';
+        return self::RETURN_URL;
     }
 }

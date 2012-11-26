@@ -1,22 +1,11 @@
 <?php
 /**
- * Zend Framework
+ * Zend Framework (http://framework.zend.com/)
  *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Navigation
- * @subpackage UnitTests
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @package   Zend_Navigation
  */
 
 namespace ZendTest\Navigation\Page;
@@ -26,6 +15,8 @@ use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Router\Http\Regex as RegexRoute;
 use Zend\Mvc\Router\Http\Literal as LiteralRoute;
 use Zend\Mvc\Router\Http\TreeRouteStack;
+use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
 use Zend\Navigation\Page;
 use Zend\Navigation;
 use ZendTest\Navigation\TestAsset;
@@ -36,8 +27,6 @@ use ZendTest\Navigation\TestAsset;
  * @category   Zend
  * @package    Zend_Navigation
  * @subpackage UnitTests
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Navigation
  */
 class MvcTest extends TestCase
@@ -133,6 +122,53 @@ class MvcTest extends TestCase
         $page->setRouteMatch($routeMatch);
 
         $this->assertEquals(true, $page->isActive());
+    }
+
+    public function testIsActiveReturnsTrueWhenMatchingRouteWhileUsingModuleRouteListener()
+    {
+        $page = new Page\Mvc(array(
+            'label' => 'mpinkstonwashere',
+            'route' => 'roflcopter',
+            'controller' => 'index'
+        ));
+
+        $route = new LiteralRoute('/roflcopter');
+
+        $router = new TreeRouteStack;
+        $router->addRoute('roflcopter', $route);
+
+        $routeMatch = new RouteMatch(array(
+            ModuleRouteListener::MODULE_NAMESPACE => 'Application\Controller',
+            'controller' => 'index'
+        ));
+        $routeMatch->setMatchedRouteName('roflcopter');
+
+        $event = new MvcEvent();
+        $event->setRouter($router)
+              ->setRouteMatch($routeMatch);
+
+        $moduleRouteListener = new ModuleRouteListener();
+        $moduleRouteListener->onRoute($event);
+
+        $page->setRouter($event->getRouter());
+        $page->setRouteMatch($event->getRouteMatch());
+
+        $this->assertEquals(true, $page->isActive());
+    }
+
+    public function testIsActiveReturnsFalseWhenMatchingRouteButNonMatchingParams()
+    {
+        $page       = new Page\Mvc(array(
+                                   'label'     => 'foo',
+                                   'route'     => 'bar',
+                                   'action'    => 'baz',
+                               ));
+        $routeMatch = new RouteMatch(array());
+        $routeMatch->setMatchedRouteName('bar');
+        $routeMatch->setParam('action', 'qux');
+        $page->setRouteMatch($routeMatch);
+
+        $this->assertFalse($page->isActive());
     }
 
     public function testIsActiveReturnsFalseWhenNoRouteAndNoMatchedRouteNameIsSet()

@@ -1,35 +1,25 @@
 <?php
 /**
- * Zend Framework
+ * Zend Framework (http://framework.zend.com/)
  *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://framework.zend.com/license/new-bsd
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@zend.com so we can send you a copy immediately.
- *
- * @category   Zend
- * @package    Zend_Navigation
- * @subpackage UnitTests
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2013 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ * @package   Zend_Navigation
  */
 
 namespace ZendTest\Navigation\Page;
 
-use PHPUnit_Framework_TestCase as TestCase,
-    Zend\View\Helper\Url as UrlHelper,
-    Zend\Mvc\Router\RouteMatch,
-    Zend\Mvc\Router\Http\Regex as RegexRoute,
-    Zend\Mvc\Router\Http\Literal as LiteralRoute,
-    Zend\Mvc\Router\Http\TreeRouteStack,
-    Zend\Navigation\Page,
-    Zend\Navigation,
-    ZendTest\Navigation\TestAsset;
+use PHPUnit_Framework_TestCase as TestCase;
+use Zend\Mvc\Router\RouteMatch;
+use Zend\Mvc\Router\Http\Regex as RegexRoute;
+use Zend\Mvc\Router\Http\Literal as LiteralRoute;
+use Zend\Mvc\Router\Http\TreeRouteStack;
+use Zend\Mvc\ModuleRouteListener;
+use Zend\Mvc\MvcEvent;
+use Zend\Navigation\Page;
+use Zend\Navigation;
+use ZendTest\Navigation\TestAsset;
 
 /**
  * Tests the class Zend_Navigation_Page_Mvc
@@ -37,16 +27,10 @@ use PHPUnit_Framework_TestCase as TestCase,
  * @category   Zend
  * @package    Zend_Navigation
  * @subpackage UnitTests
- * @copyright  Copyright (c) 2005-2012 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @group      Zend_Navigation
  */
 class MvcTest extends TestCase
 {
-    protected $_front;
-    protected $_oldRequest;
-    protected $_oldRouter;
-
     protected function setUp()
     {
         $this->route  = new RegexRoute(
@@ -62,17 +46,13 @@ class MvcTest extends TestCase
 
         $this->routeMatch = new RouteMatch(array());
         $this->routeMatch->setMatchedRouteName('default');
-
-        $this->urlHelper = new UrlHelper();
-        $this->urlHelper->setRouter($this->router);
-        $this->urlHelper->setRouteMatch($this->routeMatch);
     }
 
     protected function tearDown()
     {
     }
 
-    public function testHrefGeneratedByUrlHelperRequiresNoRoute()
+    public function testHrefGeneratedByRouterRequiresNoRoute()
     {
         $page = new Page\Mvc(array(
             'label'      => 'foo',
@@ -80,7 +60,7 @@ class MvcTest extends TestCase
             'controller' => 'index'
         ));
         $page->setRouteMatch($this->routeMatch);
-        $page->setUrlHelper($this->urlHelper);
+        $page->setRouter($this->router);
         $page->setAction('view');
         $page->setController('news');
 
@@ -117,11 +97,7 @@ class MvcTest extends TestCase
             'page'       => 1,
         ));
 
-        $urlHelper = new UrlHelper();
-        $urlHelper->setRouter($router);
-        $urlHelper->setRouteMatch($routeMatch);
-
-        $page->setUrlHelper($urlHelper);
+        $page->setRouter($router);
         $page->setRouteMatch($routeMatch);
 
         $this->assertEquals('/lolcat/myaction/1337', $page->getHref());
@@ -142,14 +118,57 @@ class MvcTest extends TestCase
         $routeMatch = new RouteMatch(array());
         $routeMatch->setMatchedRouteName('lolfish');
 
-        $urlHelper = new UrlHelper;
-        $urlHelper->setRouter($router);
-        $urlHelper->setRouteMatch($routeMatch);
-
-        $page->setUrlHelper($urlHelper);
+        $page->setRouter($router);
         $page->setRouteMatch($routeMatch);
 
         $this->assertEquals(true, $page->isActive());
+    }
+
+    public function testIsActiveReturnsTrueWhenMatchingRouteWhileUsingModuleRouteListener()
+    {
+        $page = new Page\Mvc(array(
+            'label' => 'mpinkstonwashere',
+            'route' => 'roflcopter',
+            'controller' => 'index'
+        ));
+
+        $route = new LiteralRoute('/roflcopter');
+
+        $router = new TreeRouteStack;
+        $router->addRoute('roflcopter', $route);
+
+        $routeMatch = new RouteMatch(array(
+            ModuleRouteListener::MODULE_NAMESPACE => 'Application\Controller',
+            'controller' => 'index'
+        ));
+        $routeMatch->setMatchedRouteName('roflcopter');
+
+        $event = new MvcEvent();
+        $event->setRouter($router)
+              ->setRouteMatch($routeMatch);
+
+        $moduleRouteListener = new ModuleRouteListener();
+        $moduleRouteListener->onRoute($event);
+
+        $page->setRouter($event->getRouter());
+        $page->setRouteMatch($event->getRouteMatch());
+
+        $this->assertEquals(true, $page->isActive());
+    }
+
+    public function testIsActiveReturnsFalseWhenMatchingRouteButNonMatchingParams()
+    {
+        $page       = new Page\Mvc(array(
+                                   'label'     => 'foo',
+                                   'route'     => 'bar',
+                                   'action'    => 'baz',
+                               ));
+        $routeMatch = new RouteMatch(array());
+        $routeMatch->setMatchedRouteName('bar');
+        $routeMatch->setParam('action', 'qux');
+        $page->setRouteMatch($routeMatch);
+
+        $this->assertFalse($page->isActive());
     }
 
     public function testIsActiveReturnsFalseWhenNoRouteAndNoMatchedRouteNameIsSet()
@@ -157,8 +176,6 @@ class MvcTest extends TestCase
         $page = new Page\Mvc();
 
         $routeMatch = new RouteMatch(array());
-        $this->urlHelper->setRouteMatch($routeMatch);
-
         $page->setRouteMatch($routeMatch);
 
         $this->assertFalse($page->isActive());
@@ -193,7 +210,7 @@ class MvcTest extends TestCase
         $this->routeMatch->setMatchedRouteName('myroute');
 
         $page->setRouteMatch($this->routeMatch);
-        $page->setUrlHelper($this->urlHelper);
+        $page->setRouter($this->router);
 
         $this->assertEquals('/lolcat/myaction/1337#qux', $page->getHref());
     }
@@ -209,8 +226,6 @@ class MvcTest extends TestCase
             'controller' => 'index',
             'action'     => 'index',
         ));
-
-        $this->urlHelper->setRouteMatch($routeMatch);
 
         $page->setRouteMatch($routeMatch);
 
@@ -228,8 +243,6 @@ class MvcTest extends TestCase
             'controller' => 'index',
             'action'     => 'index',
         ));
-
-        $this->urlHelper->setRouteMatch($routeMatch);
 
         $page->setRouteMatch($routeMatch);
 
@@ -253,8 +266,6 @@ class MvcTest extends TestCase
             'id'         => '1337'
         ));
 
-        $this->urlHelper->setRouteMatch($routeMatch);
-
         $page->setRouteMatch($routeMatch);
 
         $this->assertTrue($page->isActive());
@@ -273,8 +284,6 @@ class MvcTest extends TestCase
             'action'     => 'view',
             'id'         => '1337',
         ));
-
-        $this->urlHelper->setRouteMatch($routeMatch);
 
         $page->setRouteMatch($routeMatch);
 
@@ -297,8 +306,6 @@ class MvcTest extends TestCase
             'action'     => 'view',
             'id'         => null
         ));
-
-        $this->urlHelper->setRouteMatch($routeMatch);
 
         $page->setRouteMatch($routeMatch);
 
@@ -411,7 +418,9 @@ class MvcTest extends TestCase
             'active'     => true,
             'visible'    => false,
             'foo'        => 'bar',
-            'meaning'    => 42
+            'meaning'    => 42,
+            'router'     => $this->router,
+            'route_match' => $this->routeMatch,
         );
 
         $page = new Page\Mvc($options);
@@ -435,55 +444,58 @@ class MvcTest extends TestCase
 
     public function testSpecifyingAnotherUrlHelperToGenerateHrefs()
     {
-        $newHelper = new TestAsset\UrlHelper();
+        $newRouter = new TestAsset\Router();
 
-        $page = new Page\Mvc();
-        $page->setUrlHelper($newHelper);
+        $page = new Page\Mvc(array(
+            'route' => 'default'
+        ));
+        $page->setRouter($newRouter);
 
-        $expected = TestAsset\UrlHelper::RETURN_URL;
+        $expected = TestAsset\Router::RETURN_URL;
         $actual   = $page->getHref();
 
         $this->assertEquals($expected, $actual);
     }
 
-    public function testDefaultUrlHelperCanBeSetWithConstructor()
+    public function testDefaultRouterCanBeSetWithConstructor()
     {
         $page = new Page\Mvc(array(
-            'label'            => 'foo',
-            'action'           => 'index',
-            'controller'       => 'index',
-            'defaultUrlHelper' => $this->urlHelper
+            'label'         => 'foo',
+            'action'        => 'index',
+            'controller'    => 'index',
+            'defaultRouter' => $this->router
         ));
 
-        $this->assertEquals($this->urlHelper, $page->getDefaultUrlHelper());
-        $page->setDefaultUrlHelper(null);
+        $this->assertEquals($this->router, $page->getDefaultRouter());
+        $page->setDefaultRouter(null);
     }
 
-    public function testDefaultUrlHelperCanBeSetWithGetter()
+    public function testDefaultRouterCanBeSetWithGetter()
     {
         $page = new Page\Mvc(array(
             'label'            => 'foo',
             'action'           => 'index',
             'controller'       => 'index',
         ));
-        $page->setDefaultUrlHelper($this->urlHelper);
+        $page->setDefaultRouter($this->router);
 
-        $this->assertEquals($this->urlHelper, $page->getDefaultUrlHelper());
-        $page->setDefaultUrlHelper(null);
+        $this->assertEquals($this->router, $page->getDefaultRouter());
+        $page->setDefaultRouter(null);
     }
 
-    public function testNoExceptionForGetHrefIfDefaultUrlHelperIsSet()
+    public function testNoExceptionForGetHrefIfDefaultRouterIsSet()
     {
         $page = new Page\Mvc(array(
             'label'            => 'foo',
             'action'           => 'index',
             'controller'       => 'index',
-            'defaultUrlHelper' => $this->urlHelper
+            'route'            => 'default',
+            'defaultRouter'    => $this->router
         ));
 
-        // If the default url helper is not used an exception will be thrown.
+        // If the default router is not used an exception will be thrown.
         // This method intentionally has no assertion.
         $page->getHref();
-        $page->setDefaultUrlHelper(null);
+        $page->setDefaultRouter(null);
     }
 }

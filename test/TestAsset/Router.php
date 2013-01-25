@@ -15,11 +15,12 @@ namespace ZendTest\Navigation\TestAsset;
  * @package    Zend_Navigation
  * @subpackage UnitTests
  */
-class AbstractContainer extends \Zend\Navigation\AbstractContainer
+class Router extends \Zend\Mvc\Router\Http\TreeRouteStack
 {
-    public function addPage($page)
+    const RETURN_URL = 'spotify:track:2nd6CTjR9zjHGT0QtpfLHe';
+
+    public function assemble(array $params = array(), array $options = array())
     {
-        parent::addPage($page);
-        $this->pages = array();
+        return self::RETURN_URL;
     }
 }

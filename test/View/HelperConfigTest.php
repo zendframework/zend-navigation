@@ -28,8 +28,8 @@ class HelperConfigTest extends TestCase
     {
         $this->serviceManager = new ServiceManager();
 
-        $this->pluginManager = new \Zend\View\HelperPluginManager();
-        $this->pluginManager->setServiceLocator($this->serviceManager);
+        $this->pluginManager = new \Zend\View\HelperPluginManager($this->serviceManager);
+        //$this->pluginManager->setServiceLocator($this->serviceManager);
 
         $this->helperConfig = new HelperConfig();
     }
@@ -37,14 +37,21 @@ class HelperConfigTest extends TestCase
     public function testConfigureServiceManagerWithConfig()
     {
         $replacedMenuClass = 'Zend\View\Helper\Navigation\Links';
-        $this->serviceManager->setService('config', ['navigation_helpers' => [
-            'invokables' => [
-                'menu' => $replacedMenuClass
-             ]
-        ]]);
+
+        $this->serviceManager = $this->serviceManager->withConfig([
+            'services' => [
+                'config' => [
+                    'navigation_helpers' => [
+                        'invokables' => [
+                            'menu' => $replacedMenuClass
+                        ]
+                    ]
+                ]
+            ]
+        ]);
         $this->helperConfig->configureServiceManager($this->pluginManager);
 
-        $menu = $this->pluginManager->get('navigation')->findHelper('menu');
+        $menu = $this->pluginManager->get('Navigation')->findHelper('menu');
         $this->assertInstanceOf($replacedMenuClass, $menu);
     }
 }

@@ -25,7 +25,6 @@
         "zendframework/zend-modulemanager": "dev-develop as 2.7.0",
         "zendframework/zend-mvc": "dev-develop as 2.7.0",
         "zendframework/zend-permissions-acl": "~2.5",
-        "zendframework/zend-serializer": "dev-develop as 2.6.0",
         "zendframework/zend-servicemanager": "dev-develop as 2.7.0",
         "zendframework/zend-uri": "~2.5",
         "zendframework/zend-view": "dev-develop as 2.6.0",

@@ -9,14 +9,14 @@
 
 namespace Zend\Navigation\Service;
 
+use Interop\Container\ContainerInterface;
 use Zend\Config;
 use Zend\Http\Request;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Router\RouteStackInterface as Router;
 use Zend\Navigation\Exception;
 use Zend\Navigation\Navigation;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Abstract navigation factory
@@ -29,13 +29,12 @@ abstract class AbstractNavigationFactory implements FactoryInterface
     protected $pages;
 
     /**
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ContainerInterface $container
      * @return \Zend\Navigation\Navigation
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $pages = $this->getPages($serviceLocator);
-        return new Navigation($pages);
+        return new Navigation($this->getPages($container));
     }
 
     /**
@@ -45,14 +44,14 @@ abstract class AbstractNavigationFactory implements FactoryInterface
     abstract protected function getName();
 
     /**
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ContainerInterface $container
      * @return array
      * @throws \Zend\Navigation\Exception\InvalidArgumentException
      */
-    protected function getPages(ServiceLocatorInterface $serviceLocator)
+    protected function getPages(ContainerInterface $container)
     {
         if (null === $this->pages) {
-            $configuration = $serviceLocator->get('Config');
+            $configuration = $container->get('config');
 
             if (!isset($configuration['navigation'])) {
                 throw new Exception\InvalidArgumentException('Could not find navigation configuration key');
@@ -65,20 +64,20 @@ abstract class AbstractNavigationFactory implements FactoryInterface
             }
 
             $pages       = $this->getPagesFromConfig($configuration['navigation'][$this->getName()]);
-            $this->pages = $this->preparePages($serviceLocator, $pages);
+            $this->pages = $this->preparePages($container, $pages);
         }
         return $this->pages;
     }
 
     /**
-     * @param ServiceLocatorInterface $serviceLocator
+     * @param ContainerInterface $container
      * @param array|\Zend\Config\Config $pages
      * @return null|array
      * @throws \Zend\Navigation\Exception\InvalidArgumentException
      */
-    protected function preparePages(ServiceLocatorInterface $serviceLocator, $pages)
+    protected function preparePages(ContainerInterface $container, $pages)
     {
-        $application = $serviceLocator->get('Application');
+        $application = $container->get('Application');
         $routeMatch  = $application->getMvcEvent()->getRouteMatch();
         $router      = $application->getMvcEvent()->getRouter();
         $request     = $application->getMvcEvent()->getRequest();

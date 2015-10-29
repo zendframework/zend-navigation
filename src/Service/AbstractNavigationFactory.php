@@ -9,14 +9,14 @@
 
 namespace Zend\Navigation\Service;
 
+use Interop\Container\ContainerInterface;
 use Zend\Config;
 use Zend\Http\Request;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Router\RouteStackInterface as Router;
 use Zend\Navigation\Exception;
 use Zend\Navigation\Navigation;
-use Zend\ServiceManager\FactoryInterface;
-use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Abstract navigation factory
@@ -51,7 +51,7 @@ abstract class AbstractNavigationFactory implements FactoryInterface
     protected function getPages(ContainerInterface $container)
     {
         if (null === $this->pages) {
-            $configuration = $container->get('Config');
+            $configuration = $container->get('config');
 
             if (!isset($configuration['navigation'])) {
                 throw new Exception\InvalidArgumentException('Could not find navigation configuration key');

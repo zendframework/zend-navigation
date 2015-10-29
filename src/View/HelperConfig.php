@@ -9,9 +9,12 @@
 
 namespace Zend\Navigation\View;
 
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ConfigInterface;
 use Zend\ServiceManager\ServiceManager;
-use Zend\View\HelperPluginManager;
+use Zend\Stdlib\ArrayUtils;
+use Zend\View\Helper\Navigation as NavigationHelper;
 
 /**
  * Service manager configuration for navigation view helpers
@@ -28,27 +31,47 @@ class HelperConfig implements ConfigInterface
      * @param  ServiceManager $serviceManager
      * @return ServiceManager
      */
-    public function configureServiceManager(ServiceManager $serviceManager)
+    public function configureServiceManager(ServiceManager $container)
     {
-        return $serviceManager->withConfig($this->toArray());
+        $helperConfig = $this->toArray();
+        if ($container->has('config')) {
+            $helperConfig = ArrayUtils::merge($helperConfig, $this->getConfiguredHelpers($container));
+        }
+        return $container->withConfig($helperConfig);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function toArray()
     {
         return [
+            'aliases'   => [
+                'navigation' => 'Navigation',
+            ],
             'factories' => [
-                'navigation' => function (HelperPluginManager $pm) {
-                    $helper = new \Zend\View\Helper\Navigation;
-                    $helper->setServiceLocator($pm->getServiceLocator());
-
-                    $config = $pm->getServiceLocator()->get('config');
-                    if (isset($config['navigation_helpers'])) {
-                        $config = new \Zend\ServiceManager\Config($config['navigation_helpers']);
-                        $config->configureServiceManager($helper->getPluginManager());
-                    }
+                'Navigation' => function (ContainerInterface $container) {
+                    $helper = new NavigationHelper();
+                    $helper->setServiceLocator($container);
                     return $helper;
                 }
             ]
         ];
+    }
+
+    /**
+     * Get navigation view helper service configuration.
+     *
+     * @param ContainerInterface $container
+     * @return array
+     */
+    private function getConfiguredHelpers(ContainerInterface $container)
+    {
+        $config = $container->get('config');
+        if (! isset($config['navigation_helpers'])) {
+            return [];
+        }
+
+        return (new Config($config['navigation_helpers']))->toArray();
     }
 }

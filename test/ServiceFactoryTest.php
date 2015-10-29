@@ -12,6 +12,7 @@ namespace ZendTest\Navigation;
 use Zend\Config;
 use Zend\Mvc\Router\RouteMatch;
 use Zend\Mvc\Service\ServiceManagerConfig;
+use Zend\Mvc\Application;
 use Zend\Navigation;
 use Zend\Navigation\Page\Mvc as MvcPage;
 use Zend\Navigation\Service\ConstructedNavigationFactory;
@@ -36,51 +37,50 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $config = [
-            'modules'                 => [],
-            'module_listener_options' => [
-                'config_cache_enabled' => false,
-                'cache_dir'            => 'data/cache',
-                'module_paths'         => [],
-                'extra_config'         => [
-                    'service_manager' => [
-                        'factories' => [
-                            'Config' => function () {
-                                return [
-                                    'navigation' => [
-                                        'file'    => __DIR__ . '/_files/navigation.xml',
-                                        'default' => [
-                                            [
-                                                'label' => 'Page 1',
-                                                'uri'   => 'page1.html'
-                                            ],
-                                            [
-                                                'label' => 'MVC Page',
-                                                'route' => 'foo',
-                                                'pages' => [
-                                                    [
-                                                        'label' => 'Sub MVC Page',
-                                                        'route' => 'foo'
-                                                    ]
-                                                ]
-                                            ],
-                                            [
-                                                'label' => 'Page 3',
-                                                'uri'   => 'page3.html'
-                                            ]
+            'factories' => [
+                'Config' => function () {
+                    return [
+                        'navigation' => [
+                            'file'    => __DIR__ . '/_files/navigation.xml',
+                            'default' => [
+                                [
+                                    'label' => 'Page 1',
+                                    'uri'   => 'page1.html'
+                                ],
+                                [
+                                    'label' => 'MVC Page',
+                                    'route' => 'foo',
+                                    'pages' => [
+                                        [
+                                            'label' => 'Sub MVC Page',
+                                            'route' => 'foo'
                                         ]
                                     ]
-                                ];
-                            }
+                                ],
+                                [
+                                    'label' => 'Page 3',
+                                    'uri'   => 'page3.html'
+                                ]
+                            ]
                         ]
-                    ],
-                ]
+                    ];
+                }
             ],
+            'services' => [
+                'ApplicationConfig' => [
+                    'modules'                 => [],
+                    'module_listener_options' => [
+                        'config_cache_enabled' => false,
+                        'cache_dir'            => 'data/cache',
+                        'module_paths'         => [],
+                    ]
+                ]
+            ]
         ];
 
-        $sm = $this->serviceManager = new ServiceManager(new ServiceManagerConfig);
-        $sm->setService('ApplicationConfig', $config);
-        $sm->get('ModuleManager')->loadModules();
-        $sm->get('Application')->bootstrap();
+        $this->serviceManager = new ServiceManager((new ServiceManagerConfig($config))->toArray());
+        $this->serviceManager->get('ModuleManager')->loadModules();
+        $this->serviceManager->get('Application')->bootstrap();
 
         $app = $this->serviceManager->get('Application');
         $app->getMvcEvent()->setRouteMatch(new RouteMatch([

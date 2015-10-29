@@ -11,7 +11,7 @@ namespace Zend\Navigation\Service;
 
 use Zend\Navigation\Navigation;
 use Zend\ServiceManager\AbstractFactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 /**
  * Navigation abstract service factory
@@ -50,54 +50,38 @@ final class NavigationAbstractServiceFactory implements AbstractFactoryInterface
     /**
      * Can we create a navigation by the requested name?
      *
-     * @param ServiceLocatorInterface $serviceLocator
-     * @param string $name Service name (as resolved by ServiceManager)
+     * @param ContainerInterface $container
      * @param string $requestedName Name by which service was requested, must start with Zend\Navigation\
      * @return bool
      */
-    public function canCreateServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
+    public function canCreateServiceWithName(ContainerInterface $container, $requestedName)
     {
-        if (0 !== strpos($name, self::NAME_PREFIX)) {
+        if (0 !== strpos($requestedName, self::NAME_PREFIX)) {
             return false;
         }
-        $config = $this->getConfig($serviceLocator);
+        $config = $this->getConfig($container);
 
-        return (!empty($config[$this->getConfigName($name)]));
-    }
-
-    /**
-     * Create a navigation container
-     *
-     * @param ServiceLocatorInterface $serviceLocator
-     * @param string $name Service name (as resolved by ServiceManager)
-     * @param string $requestedName Name by which service was requested
-     * @return Navigation
-     */
-    public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
-    {
-        $config = $this->getConfig($serviceLocator);
-        $factory = new ConstructedNavigationFactory($config[$this->getConfigName($name)]);
-        return $factory->createService($serviceLocator);
+        return (!empty($config[$this->getConfigName($requestedName)]));
     }
 
     /**
      * Get navigation configuration, if any
      *
-     * @param  ServiceLocatorInterface $services
+     * @param  ContainerInterface $container
      * @return array
      */
-    protected function getConfig(ServiceLocatorInterface $services)
+    protected function getConfig(ContainerInterface $container)
     {
         if ($this->config !== null) {
             return $this->config;
         }
 
-        if (!$services->has('Config')) {
+        if (!$container->has('Config')) {
             $this->config = [];
             return $this->config;
         }
 
-        $config = $services->get('Config');
+        $config = $container->get('Config');
         if (!isset($config[self::CONFIG_KEY])
             || !is_array($config[self::CONFIG_KEY])
         ) {

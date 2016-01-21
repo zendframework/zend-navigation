@@ -25,7 +25,7 @@ method for the option, it will be set as a custom property of the page.
 Read more on extending `Zend\Navigation\Page\AbstractPage` in Creating custom page types
 &lt;zend.navigation.pages.custom&gt;.
 
-> ## Note
+> ### Note
 #### Custom properties
 All pages support setting and getting of custom properties by use of the magic methods `__set($name,
 $value)`, `__get($name)`, `__isset($name)` and `__unset($name)`. Custom properties may have any
@@ -60,13 +60,13 @@ will use `Zend\Mvc\Router\RouteStackInterface` internally in the `getHref()` met
 hrefs, and the `isActive()` method will compare the `Zend\Mvc\Router\RouteMatch` params with the
 page's params to determine if the page is active.
 
-> ## Note
+> ### Note
 Starting in version 2.2.0, if you want to re-use any matched route parameters when generating a
 link, you can do so via the "useRouteMatch" flag. This is particularly useful when creating segment
 routes that include the currently selected language or locale as an initial segment, as it ensures
 the links generated all include the matched value.
 
-> ## Note
+> ### Note
 The *URI* returned is relative to the *baseUrl* in `Zend\Mvc\Router\Http\TreeRouteStack`. In the
 examples, the baseUrl is '/' for simplicity.
 
@@ -173,7 +173,7 @@ $page->isActive(); // returns false
 Routes can be used with *MVC* pages. If a page has a route, this route will be used in `getHref()`
 to generate the *URL* for the page.
 
-> ## Note
+> ### Note
 Note that when using the *route* property in a page, you do not need to specify the default params
 that the route defines (controller, action, etc.).
 
@@ -212,7 +212,7 @@ to implement custom logic for the page. *URI* pages are simple; in addition to t
 options, a *URI* page takes only one option — *uri*. The *uri* will be returned when calling
 `$page->getHref()`, and may be a `String` or `NULL`.
 
-> ## Note
+> ### Note
 `Zend\Navigation\Page\Uri` will not try to determine whether it should be active when calling
 `$page-isActive()`. It merely returns what currently is set, so to make a *URI* page active you have
 to manually call `$page-setActive()` or specifying *active* as a page option when constructing.

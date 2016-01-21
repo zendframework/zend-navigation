@@ -26,7 +26,7 @@ with SPL iterators such as `RecursiveIteratorIterator`.
 
 Read more about containers in the \[containers\](zend.navigation.containers) section.
 
-> ## Note
+> ### Note
 `Zend\Navigation\AbstractPage` extends `Zend\Navigation\AbstractContainer`, which means that a page
 can have sub pages.
 

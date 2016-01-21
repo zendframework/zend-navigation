@@ -10,7 +10,7 @@ By default, the sitemap helper uses \[sitemap validators\](zend.validator.sitema
 element that is rendered. This can be disabled by calling
 *$helper-&gt;setUseSitemapValidators(false)*.
 
-> ## Note
+> ### Note
 If you disable sitemap validators, the custom properties (see table) are not validated at all.
 
 The sitemap helper also supports [Sitemap XSD
@@ -227,7 +227,7 @@ echo $this->navigation()
 </urlset>
 ```
 
-> ## Note
+> ### Note
 #### UTF-8 encoding used by default
 By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case,
 `Zend\View` does as well. So if you want to use another encoding with `Sitemap`, you will have do

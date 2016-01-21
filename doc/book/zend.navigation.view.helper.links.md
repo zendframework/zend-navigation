@@ -40,7 +40,7 @@ active page is on level 1 (a 'section').
 - `searchRevSubsection()`, reverse 'subsection' relation; finds the parent of the active page if the
 active page is on level 2 (a 'subsection').
 
-> ## Note
+> ### Note
 When looking for relations in the page instance (*$page-&gt;getRel($type)* or
 *$page-&gt;getRev($type)*), the helper accepts the values of type `String`, `Array`, `Zend\Config`,
 or `Zend\Navigation\Page\AbstractPage`. If a string is found, it will be converted to a

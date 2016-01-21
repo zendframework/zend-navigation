@@ -10,8 +10,6 @@ MVC pages are link to on-site web pages, and are defined using MVC parameters (*
 the full flexibility to link off-site pages or do other things with the generated links (e.g. an URI
 that turns into `<a href="#">foo<a>`).
 
-orphan  
-
 ## Common page features
 
 All page classes must extend `Zend\Navigation\Page\AbstractPage`, and will thus share a common set
@@ -50,8 +48,6 @@ if ($page->meaning != 42) {
     // action should be taken
 }
 ```
-
-orphan  
 
 ## Zend\\Navigation\\Page\\Mvc
 
@@ -203,8 +199,6 @@ $page = new Zend\Navigation\Page\Mvc(array(
 $page->getHref();
 ```
 
-orphan  
-
 ## Zend\\Navigation\\Page\\Uri
 
 Pages of type `Zend\Navigation\Page\Uri` can be used to link to pages on other domains or sites, or
@@ -216,8 +210,6 @@ options, a *URI* page takes only one option — *uri*. The *uri* will be returne
 `Zend\Navigation\Page\Uri` will not try to determine whether it should be active when calling
 `$page-isActive()`. It merely returns what currently is set, so to make a *URI* page active you have
 to manually call `$page-setActive()` or specifying *active* as a page option when constructing.
-
-orphan  
 
 ## Creating custom page types
 
@@ -296,8 +288,6 @@ $page = Zend\Navigation\Page\AbstractPage::factory(array(
     'foo_bar' => 'baz'
 ));
 ```
-
-orphan  
 
 ## Creating pages using the page factory
 

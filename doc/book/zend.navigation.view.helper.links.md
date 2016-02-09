@@ -155,7 +155,7 @@ In a view script or layout:
 
 Output:
 
-```php
+```html
 <link rel="alternate" href="/products/server/faq/format/xml">
 <link rel="start" href="/" title="Home">
 <link rel="next" href="/products/server/editions" title="Editions">
@@ -181,7 +181,7 @@ $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_START |
 
 Output:
 
-```php
+```html
 <link rel="start" href="/" title="Home">
 <link rel="next" href="/products/server/editions" title="Editions">
 <link rel="prev" href="/products/server" title="Foo Server">
@@ -196,7 +196,7 @@ $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
 
 Output:
 
-```php
+```html
 <link rel="alternate" href="/products/server/faq/format/xml">
 <link rel="start" href="/" title="Home">
 <link rel="next" href="/products/server/editions" title="Editions">
@@ -216,7 +216,7 @@ $helper->setRenderFlag(Zend\View\Helper\Navigation\Links::RENDER_ALL ^
 
 Output:
 
-```php
+```html
 <link rel="alternate" href="/products/server/faq/format/xml">
 <link rel="start" href="/" title="Home">
 <link rel="next" href="/products/server/editions" title="Editions">

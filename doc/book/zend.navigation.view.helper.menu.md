@@ -61,7 +61,7 @@ Or simply:
 
 Output:
 
-```php
+```html
 <ul class="navigation">
     <li>
         <a title="Go Home" href="/">Home</a>
@@ -150,7 +150,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <ul class="community">
     <li>
         <a href="/community/account">My Account</a>
@@ -189,7 +189,7 @@ echo $this->navigation()
 
 The output will be the same if 'FAQ' or 'Foo Server' is active:
 
-```php
+```html
 <ul class="sidebar">
     <li class="active">
         <a href="/products/server/faq">FAQ</a>
@@ -215,7 +215,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <ul class="navigation">
     <li>
         <a title="Go Home" href="/">Home</a>
@@ -268,7 +268,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <ul class="navigation">
     <li class="active">
         <a href="/products/server">Foo Server</a>
@@ -330,7 +330,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <ul class="navigation">
     <li class="active">
         <a href="/products">Products</a>
@@ -367,7 +367,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <ul class="navigation">
     <li class="active">
         <a href="/products/server">Foo Server</a>
@@ -399,7 +399,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <ul class="navigation">
     <li class="active">
         <a href="/products">Products</a>
@@ -429,7 +429,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <ul class="navigation">
     <li class="active">
         <a href="/products/server">Foo Server</a>
@@ -464,7 +464,7 @@ foreach ($this->container as $page) {
 
 Output:
 
-```php
+```html
 <a title="Go Home" href="/">Home</a>
 <a href="/products">Products</a>
 <a title="About us" href="/company/about">Company</a>
@@ -498,7 +498,7 @@ In *module/MyModule/view/my-module/partials/menu.phtml*:
 
 Output:
 
-```php
+```html
 <div class="my-nav">
     <a title="Go Home" href="/">Home</a>
     <a href="/products">Products</a>

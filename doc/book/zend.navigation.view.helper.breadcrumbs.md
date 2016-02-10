@@ -12,7 +12,7 @@ linked), or rendering using a partial view script.
 The Breadcrumbs helper works like this; it finds the deepest active page in a navigation container,
 and renders an upwards path to the root. For *MVC* pages, the "activeness" of a page is determined
 by inspecting the request object, as stated in the section on
-\[Zend\\Navigation\\Page\\Mvc\](zend.navigation.pages.mvc).
+[Zend\\Navigation\\Page\\Mvc](zend.navigation.pages.md).
 
 The helper sets the *minDepth* property to 1 by default, meaning breadcrumbs will not be rendered if
 the deepest active page is a root page. If *maxDepth* is specified, the helper will stop rendering

@@ -55,8 +55,8 @@ return array(
 ## Using multiple navigations
 
 If you want to use more than one navigation, you can register the abstract factory
-`\Zend\Navigation\Service\NavigationAbstractServiceFactory` in the \[service
-manager\](zend.service-manager.quick-start).
+`\Zend\Navigation\Service\NavigationAbstractServiceFactory` in the [service
+manager](https://github.com/zendframework/zend-servicemanager).
 
 Once the service factory is registered, you can create as many navigation definitions as you wish,
 and the factory will create navigation containers automatically. This factory can also be used for

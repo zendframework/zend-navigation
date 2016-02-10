@@ -6,8 +6,8 @@ The Sitemap helper is used for generating *XML* sitemaps, as defined by the [Sit
 format](http://www.sitemaps.org/protocol.php). Read more about [Sitemaps on
 Wikipedia](http://en.wikipedia.org/wiki/Sitemaps).
 
-By default, the sitemap helper uses \[sitemap validators\](zend.validator.sitemap) to validate each
-element that is rendered. This can be disabled by calling
+By default, the sitemap helper uses [sitemap validators](https://github.com/zendframework/zend-validator)
+to validate each element that is rendered. This can be disabled by calling
 *$helper-&gt;setUseSitemapValidators(false)*.
 
 > ## Note
@@ -235,6 +235,5 @@ three things:
 1.  Create a custom renderer and implement a `getEncoding()` method;
 2.  Create a custom rendering strategy that will return an instance of your custom renderer;
 3.  Attach the custom strategy in the `ViewEvent`;
-See the \[example from HeadStyle
-documentation\](zend.view.helpers.initial.headstyle.encoding.example) to see how you can achieve
-this.
+See the [example from HeadStyle documentation](https://github.com/zendframework/zend-view) to see 
+how you can achieve this.

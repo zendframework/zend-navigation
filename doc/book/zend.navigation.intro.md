@@ -15,7 +15,7 @@ object that holds a pointer to a web page. In addition to the pointer itself, th
 contains a number of other properties that are typically relevant for navigation, such as `label`,
 `title`, etc.
 
-Read more about pages in the \[pages\](zend.navigation.pages) section.
+Read more about pages in the [pages](zend.navigation.pages.md) section.
 
 ### Containers
 
@@ -24,7 +24,7 @@ methods for adding, retrieving, deleting and iterating pages. It implements the
 [SPL](http://php.net/spl) interfaces `RecursiveIterator` and `Countable`, and can thus be iterated
 with SPL iterators such as `RecursiveIteratorIterator`.
 
-Read more about containers in the \[containers\](zend.navigation.containers) section.
+Read more about containers in the [containers](zend.navigation.containers.md) section.
 
 > ## Note
 `Zend\Navigation\AbstractPage` extends `Zend\Navigation\AbstractContainer`, which means that a page
@@ -39,5 +39,5 @@ Rendering is done with navigational view helpers. However, pages contain informa
 view helpers when rendering, such as; `label`, `class` (*CSS*), `title`, `lastmod` and `priority`
 properties for sitemaps, etc.
 
-Read more about rendering navigational elements in the \[view
-helpers\](zend.navigation.view.helpers) section.
+Read more about rendering navigational elements in the [view
+helpers](zend.navigation.view.helpers.md) section.

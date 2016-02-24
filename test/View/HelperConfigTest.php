@@ -10,8 +10,12 @@
 namespace ZendTest\Navigation\View;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\ServiceManager\ServiceManager;
+use Zend\Navigation\Service\DefaultNavigationFactory;
 use Zend\Navigation\View\HelperConfig;
+use Zend\ServiceManager\Config;
+use Zend\ServiceManager\ServiceManager;
+use Zend\View\HelperPluginManager;
+use Zend\View\Helper\Navigation as NavigationHelper;
 
 /**
  * Tests the class Zend_Navigation_Page_Mvc
@@ -20,31 +24,69 @@ use Zend\Navigation\View\HelperConfig;
  */
 class HelperConfigTest extends TestCase
 {
-    protected $pluginManager = null;
-    protected $serviceManager = null;
-    protected $helperConfig = null;
-
-    public function setUp()
+    public function navigationServiceNameProvider()
     {
-        $this->serviceManager = new ServiceManager();
-
-        $this->pluginManager = new \Zend\View\HelperPluginManager();
-        $this->pluginManager->setServiceLocator($this->serviceManager);
-
-        $this->helperConfig = new HelperConfig();
+        return [
+            ['navigation'],
+            ['Navigation'],
+            [NavigationHelper::class],
+            ['zendviewhelpernavigation'],
+        ];
     }
 
-    public function testConfigureServiceManagerWithConfig()
+    /**
+     * @dataProvider navigationServiceNameProvider
+     */
+    public function testConfigureServiceManagerWithConfig($navigationHelperServiceName)
     {
-        $replacedMenuClass = 'Zend\View\Helper\Navigation\Links';
-        $this->serviceManager->setService('config', ['navigation_helpers' => [
-            'invokables' => [
-                'menu' => $replacedMenuClass
-             ]
-        ]]);
-        $this->helperConfig->configureServiceManager($this->pluginManager);
+        $replacedMenuClass = NavigationHelper\Links::class;
 
-        $menu = $this->pluginManager->get('navigation')->findHelper('menu');
+        $serviceManager = new ServiceManager();
+        (new Config([
+            'services' => [
+                'config' => [
+                    'navigation_helpers' => [
+                        'invokables' => [
+                            'menu' => $replacedMenuClass,
+                        ],
+                    ],
+                    'navigation' => [
+                        'file'    => __DIR__ . '/../_files/navigation.xml',
+                        'default' => [
+                            [
+                                'label' => 'Page 1',
+                                'uri'   => 'page1.html',
+                            ],
+                            [
+                                'label' => 'MVC Page',
+                                'route' => 'foo',
+                                'pages' => [
+                                    [
+                                        'label' => 'Sub MVC Page',
+                                        'route' => 'foo',
+                                    ],
+                                ],
+                            ],
+                            [
+                                'label' => 'Page 3',
+                                'uri'   => 'page3.html',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'factories' => [
+                'Navigation' => DefaultNavigationFactory::class,
+                'ViewHelperManager' => function ($services) {
+                    return new HelperPluginManager($services);
+                },
+            ],
+        ]))->configureServiceManager($serviceManager);
+
+        $helpers = $serviceManager->get('ViewHelperManager');
+        (new HelperConfig())->configureServiceManager($helpers);
+
+        $menu = $helpers->get($navigationHelperServiceName)->findHelper('menu');
         $this->assertInstanceOf($replacedMenuClass, $menu);
     }
 }

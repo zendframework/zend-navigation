@@ -11,7 +11,8 @@ namespace Zend\Navigation\Service;
 
 use Interop\Container\ContainerInterface;
 use Zend\Navigation\Navigation;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
+use Zend\ServiceManager\AbstractFactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Navigation abstract service factory
@@ -43,13 +44,14 @@ final class NavigationAbstractServiceFactory implements AbstractFactoryInterface
     protected $config;
 
     /**
-     * Can we create a navigation by the requested name?
+     * Can we create a navigation by the requested name? (v3)
      *
      * @param ContainerInterface $container
-     * @param string $requestedName Name by which service was requested, must start with Zend\Navigation\
+     * @param string $requestedName Name by which service was requested, must
+     *     start with Zend\Navigation\
      * @return bool
      */
-    public function canCreateServiceWithName(ContainerInterface $container, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
         if (0 !== strpos($requestedName, self::SERVICE_PREFIX)) {
             return false;
@@ -60,13 +62,45 @@ final class NavigationAbstractServiceFactory implements AbstractFactoryInterface
     }
 
     /**
+     * Can we create a navigation by the requested name? (v2)
+     *
+     * @param ServiceLocatorInterface $container
+     * @param string $name Normalized name by which service was requested;
+     *     ignored.
+     * @param string $requestedName Name by which service was requested, must
+     *     start with Zend\Navigation\
+     * @return bool
+     */
+    public function canCreateServiceWithName(ServiceLocatorInterface $container, $name, $requestedName)
+    {
+        return $this->canCreate($container, $requestedName);
+    }
+
+    /**
      * {@inheritDoc}
+     *
+     * @return Navigation
      */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $config  = $this->getConfig($container);
         $factory = new ConstructedNavigationFactory($this->getNamedConfig($requestedName, $config));
         return $factory($container, $requestedName);
+    }
+
+    /**
+     * Can we create a navigation by the requested name? (v2)
+     *
+     * @param ServiceLocatorInterface $container
+     * @param string $name Normalized name by which service was requested;
+     *     ignored.
+     * @param string $requestedName Name by which service was requested, must
+     *     start with Zend\Navigation\
+     * @return Navigation
+     */
+    public function createServiceWithName(ServiceLocatorInterface $container, $name, $requestedName)
+    {
+        return $this($container, $requestedName);
     }
 
     /**

@@ -12,8 +12,10 @@ namespace ZendTest\Navigation\View;
 use PHPUnit_Framework_TestCase as TestCase;
 use Zend\Navigation\Service\DefaultNavigationFactory;
 use Zend\Navigation\View\HelperConfig;
+use Zend\ServiceManager\Config;
 use Zend\ServiceManager\ServiceManager;
 use Zend\View\HelperPluginManager;
+use Zend\View\Helper\Navigation as NavigationHelper;
 
 /**
  * Tests the class Zend_Navigation_Page_Mvc
@@ -22,13 +24,25 @@ use Zend\View\HelperPluginManager;
  */
 class HelperConfigTest extends TestCase
 {
-    public function testConfigureServiceManagerWithConfig()
+    public function navigationServiceNameProvider()
     {
-        $this->markTestIncomplete('Waiting on changes to zend-view Helper\\Navigation\\PluginManager');
+        return [
+            ['navigation'],
+            ['Navigation'],
+            [NavigationHelper::class],
+            ['zendviewhelpernavigation'],
+        ];
+    }
 
-        $replacedMenuClass = 'Zend\View\Helper\Navigation\Links';
+    /**
+     * @dataProvider navigationServiceNameProvider
+     */
+    public function testConfigureServiceManagerWithConfig($navigationHelperServiceName)
+    {
+        $replacedMenuClass = NavigationHelper\Links::class;
 
-        $serviceManager = new ServiceManager([
+        $serviceManager = new ServiceManager();
+        (new Config([
             'services' => [
                 'config' => [
                     'navigation_helpers' => [
@@ -67,11 +81,12 @@ class HelperConfigTest extends TestCase
                     return new HelperPluginManager($services);
                 },
             ],
-        ]);
-        $helpers = $serviceManager->get('ViewHelperManager');
-        $helpers = (new HelperConfig())->configureServiceManager($helpers);
+        ]))->configureServiceManager($serviceManager);
 
-        $menu = $helpers->get('Navigation')->findHelper('menu');
+        $helpers = $serviceManager->get('ViewHelperManager');
+        (new HelperConfig())->configureServiceManager($helpers);
+
+        $menu = $helpers->get($navigationHelperServiceName)->findHelper('menu');
         $this->assertInstanceOf($replacedMenuClass, $menu);
     }
 }

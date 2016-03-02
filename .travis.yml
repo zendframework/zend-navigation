@@ -14,7 +14,6 @@ cache:
 env:
   global:
     - SERVICE_MANAGER_VERSION="^3.0.3"
-    - REMOVE_DEPENDENCIES="zendframework/zend-mvc"
 
 matrix:
   fast_finish: true
@@ -25,24 +24,20 @@ matrix:
     - php: 5.5
       env:
         - SERVICE_MANAGER_VERSION="^2.7.5"
-        - REMOVE_DEPENDENCIES=""
     - php: 5.6
       env:
         - EXECUTE_TEST_COVERALLS=true
     - php: 5.6
       env:
         - SERVICE_MANAGER_VERSION="^2.7.5"
-        - REMOVE_DEPENDENCIES=""
     - php: 7
     - php: 7
       env:
         - SERVICE_MANAGER_VERSION="^2.7.5"
-        - REMOVE_DEPENDENCIES=""
     - php: hhvm 
     - php: hhvm 
       env:
         - SERVICE_MANAGER_VERSION="^2.7.5"
-        - REMOVE_DEPENDENCIES=""
   allow_failures:
     - php: hhvm
 
@@ -55,7 +50,6 @@ before_install:
   - composer self-update
   - if [[ $EXECUTE_TEST_COVERALLS == 'true' ]]; then composer require --dev --no-update satooshi/php-coveralls ; fi
   - composer require --dev --no-update "zendframework/zend-servicemanager:$SERVICE_MANAGER_VERSION"
-  - if [[ $REMOVE_DEPENDENCIES != '' ]]; then composer remove --dev --no-update $REMOVE_DEPENDENCIES ; fi
 
 install:
   - travis_retry composer install --no-interaction --ignore-platform-reqs

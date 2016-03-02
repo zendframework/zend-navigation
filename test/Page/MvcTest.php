@@ -30,13 +30,6 @@ class MvcTest extends TestCase
 {
     protected function setUp()
     {
-        if (! class_exists(RouteMatch::class)) {
-            $this->markTestSkipped(
-                'Skipping zend-mvc-related tests until that component is updated '
-                . 'to zend-servicemanager v3'
-            );
-        }
-
         $this->route  = new RegexRoute(
             '((?<controller>[^/]+)(/(?<action>[^/]+))?)',
             '/%controller%/%action%',

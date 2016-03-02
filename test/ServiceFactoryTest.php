@@ -39,13 +39,6 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        if (! class_exists(Application::class)) {
-            $this->markTestSkipped(
-                'Skipping zend-mvc-related tests until that component is updated '
-                . 'to be forwards-compatible with zend-servicemanager v3'
-            );
-        }
-
         $config = [
             'navigation' => [
                 'file'    => __DIR__ . '/_files/navigation.xml',

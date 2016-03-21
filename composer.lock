@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a4511c697fd311d9b70fa48294a716be",
-    "content-hash": "a5db96cb358102c293cb9133d9b55f40",
+    "hash": "aa31a9a39899f6d2be391c8fdceaee37",
+    "content-hash": "bfb9dfddb36af0eca4ec09e0ae911110",
     "packages": [
         {
             "name": "zendframework/zend-stdlib",
@@ -2619,16 +2619,16 @@
         },
         {
             "name": "zendframework/zend-view",
-            "version": "2.6.4",
+            "version": "2.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-view.git",
-                "reference": "5347f90525d9804de74766b29e2e723b5dd7a4c6"
+                "reference": "b6cbad62a95ba9bf1ce8814bbd4a1d2316041cb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-view/zipball/5347f90525d9804de74766b29e2e723b5dd7a4c6",
-                "reference": "5347f90525d9804de74766b29e2e723b5dd7a4c6",
+                "url": "https://api.github.com/repos/zendframework/zend-view/zipball/b6cbad62a95ba9bf1ce8814bbd4a1d2316041cb9",
+                "reference": "b6cbad62a95ba9bf1ce8814bbd4a1d2316041cb9",
                 "shasum": ""
             },
             "require": {
@@ -2639,7 +2639,7 @@
             },
             "require-dev": {
                 "fabpot/php-cs-fixer": "1.7.*",
-                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit": "^4.5",
                 "zendframework/zend-authentication": "^2.5",
                 "zendframework/zend-cache": "^2.6.1",
                 "zendframework/zend-config": "^2.6",
@@ -2698,7 +2698,7 @@
                 "view",
                 "zf2"
             ],
-            "time": "2016-03-02 18:43:40"
+            "time": "2016-03-21 18:04:51"
         }
     ],
     "aliases": [],

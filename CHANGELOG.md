@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.6.1 - TBD
+## 2.6.1 - 2016-03-21
 
 ### Added
 
@@ -18,7 +18,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#25](https://github.com/zendframework/zend-navigation/pull/25) ups the
+  minimum zend-view version to 2.6.5, to bring in a fix for a circular
+  dependency issue in the navigation helpers.
 
 ## 2.6.0 - 2016-02-24
 

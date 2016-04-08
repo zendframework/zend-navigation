@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.7.1 - TBD
+## 2.7.1 - 2016-04-08
 
 ### Added
 
@@ -18,7 +18,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- This release removes the erroneous calls to `getViewHelperConfig()` in the
+  `ConfigProvider` and `Module` classes.
 
 ## 2.7.0 - 2016-04-08
 

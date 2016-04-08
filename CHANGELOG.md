@@ -6,7 +6,14 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#26](https://github.com/zendframework/zend-navigation/pull/26) adds:
+  - `Zend\Navigation\View\ViewHelperManagerDelegatorFactory`, which decorates
+    the `ViewHelperManager` service to configure it using
+    `Zend\Navigation\View\HelperConfig`.
+  - `ConfigProvider`, which maps the default navigation factory and the
+    navigation abstract factory, as well as the navigation view helper.
+  - `Module`, which does the same as the above, but for zend-mvc
+    applications.
 
 ### Deprecated
 

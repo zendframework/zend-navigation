@@ -19,6 +19,8 @@ use Zend\View\Helper\Navigation as NavigationHelper;
 
 /**
  * Service manager configuration for navigation view helpers
+ *
+ * @deprecated since 2.7.0, by \Zend\Navigation\ConfigProvider
  */
 class HelperConfig extends Config
 {

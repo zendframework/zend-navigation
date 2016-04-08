@@ -7,8 +7,6 @@
 
 namespace Zend\Navigation;
 
-use Zend\View\Helper\Havigation as NavigationHelper;
-
 class ConfigProvider
 {
     /**
@@ -38,29 +36,11 @@ class ConfigProvider
             'aliases' => [
                 'navigation' => Navigation::class,
             ],
+            'delegators' => [
+                'ViewHelperManager' => [ View\ViewHelperManagerDelegatorFactory::class ],
+            ],
             'factories' => [
                 Navigation::class => Service/DefaultNavigationFactory::class,
-            ],
-        ];
-    }
-
-    /**
-     * Return zend-navigation helper configuration.
-     *
-     * Obsoletes View\HelperConfig.
-     *
-     * @return array
-     */
-    public function getViewHelperConfig()
-    {
-        return [
-            'aliases' => [
-                'navigation' => NavigationHelper::class,
-                'Navigation' => NavigationHelper::class,
-            ],
-            'factories' => [
-                NavigationHelper::class    => View\NavigationHelperFactory::class,
-                'zendviewhelpernavigation' => View\NavigationHelperFactory::class,
             ],
         ];
     }

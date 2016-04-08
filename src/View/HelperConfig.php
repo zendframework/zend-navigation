@@ -11,7 +11,6 @@ namespace Zend\Navigation\View;
 
 use ReflectionProperty;
 use Traversable;
-use Zend\Navigation\ConfigProvider;
 use Zend\ServiceManager\Config;
 use Zend\ServiceManager\Factory\InvokableFactory;
 use Zend\ServiceManager\ServiceManager;
@@ -20,26 +19,30 @@ use Zend\View\Helper\Navigation as NavigationHelper;
 
 /**
  * Service manager configuration for navigation view helpers
- *
- * @deprecated since 2.7.0, by \Zend\Navigation\ConfigProvider
  */
 class HelperConfig extends Config
 {
     /**
-     * Default configuration keys.
+     * Default configuration to apply.
      *
      * @var string[][]
      */
     protected $config = [
         'abstract_factories' => [],
-        'aliases'            => [],
-        'delegators'         => [],
-        'factories'          => [],
-        'initializers'       => [],
-        'invokables'         => [],
-        'lazy_services'      => [],
-        'services'           => [],
-        'shared'             => [],
+        'aliases' => [
+            'navigation' => NavigationHelper::class,
+            'Navigation' => NavigationHelper::class,
+        ],
+        'delegators' => [],
+        'factories' => [
+            NavigationHelper::class    => NavigationHelperFactory::class,
+            'zendviewhelpernavigation' => NavigationHelperFactory::class,
+        ],
+        'initializers'  => [],
+        'invokables'    => [],
+        'lazy_services' => [],
+        'services'      => [],
+        'shared'        => [],
     ];
 
     /**
@@ -52,17 +55,12 @@ class HelperConfig extends Config
     /**
      * Constructor.
      *
-     * Imports the configuration from the ConfigProvider, and then ensures
-     * incoming configuration is merged with it.
+     * Ensure incoming configuration is *merged* with the defaults defined.
      *
      * @param array
      */
     public function __construct(array $config = [])
     {
-        $this->config = ArrayUtils::merge(
-            $this->config,
-            (new ConfigProvider())->getViewHelperConfig()
-        );
         $this->mergeConfig($config);
     }
 

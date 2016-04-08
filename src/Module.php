@@ -19,7 +19,6 @@ class Module
         $provider = new ConfigProvider();
         return [
             'service_manager' => $provider->getDependencyConfig(),
-            'view_helpers'    => $provider->getViewHelperConfig(),
         ];
     }
 }

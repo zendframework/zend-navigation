@@ -6,11 +6,17 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#26](https://github.com/zendframework/zend-navigation/pull/26) adds:
+  - `ConfigProvider`, which maps the default navigation factory and the
+    navigation abstract factory, as well as the navigation view helper.
+  - `Module`, which does the same as the above, but for zend-mvc
+    applications.
 
 ### Deprecated
 
-- Nothing.
+- [#26](https://github.com/zendframework/zend-navigation/pull/26) deprecates
+  `Zend\Navigation\View\HelperConfig`, as the functionality is now provided
+  by the above additions.
 
 ### Removed
 

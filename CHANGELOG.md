@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.7.0 - TBD
+## 2.7.0 - 2016-04-08
 
 ### Added
 
@@ -14,24 +14,6 @@ All notable changes to this project will be documented in this file, in reverse 
     navigation abstract factory, as well as the navigation view helper.
   - `Module`, which does the same as the above, but for zend-mvc
     applications.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
-
-### Fixed
-
-- Nothing.
-
-## 2.6.2 - TBD
-
-### Added
-
-- Nothing.
 
 ### Deprecated
 

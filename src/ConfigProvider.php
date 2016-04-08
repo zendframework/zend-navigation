@@ -18,7 +18,6 @@ class ConfigProvider
     {
         return [
             'dependencies' => $this->getDependencyConfig(),
-            'view_helpers' => $this->getViewHelperConfig(),
         ];
     }
 

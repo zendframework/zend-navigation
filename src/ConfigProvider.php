@@ -7,7 +7,6 @@
 
 namespace Zend\Navigation;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
 use Zend\View\Helper\Havigation as NavigationHelper;
 
 class ConfigProvider

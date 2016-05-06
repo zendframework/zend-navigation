@@ -1,0 +1,20 @@
+docs_dir: doc/book
+site_dir: doc/html
+pages:
+    - index.md
+    - Intro: intro.md
+    - "Quick Start": quick-start.md
+    - Reference:
+        - Pages: pages.md
+        - Containers: containers.md
+        - View Helpers:
+            - Intro: view.helpers.md
+            - Breadcrumbs: view.helpers.breadcrumbs.md
+            - Links: view.helpers.links.md
+            - Menu: view.helpers.menu.md
+            - Sitemap: view.helpers.sitemap.md
+            - "Navigation Proxy": view.helpers.navigation.md
+site_name: zend-navigation
+site_description: zend-navigation
+repo_url: 'https://github.com/zendframework/zend-navigation'
+copyright: 'Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a>'

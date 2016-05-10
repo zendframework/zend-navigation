@@ -2,8 +2,8 @@
 
 `Zend\Navigation` ships with two page types:
 
-- \[MVC pages\](zend.navigation.pages.mvc) – using the class `Zend\Navigation\Page\Mvc`
-- \[URI pages\](zend.navigation.pages.uri) – using the class `Zend\Navigation\Page\Uri`
+- [MVC pages](zend.navigation.pages.md) – using the class `Zend\Navigation\Page\Mvc`
+- [URI pages](zend.navigation.pages.md) – using the class `Zend\Navigation\Page\Uri`
 
 MVC pages are link to on-site web pages, and are defined using MVC parameters (*action*,
 *controller*, *route*, *params*). URI pages are defined by a single property *uri*, which give you
@@ -332,7 +332,7 @@ $page = Zend\Navigation\Page\AbstractPage::factory(array(
 All pages (also custom classes), can be created using the page factory,
 `Zend\Navigation\Page\AbstractPage::factory()`. The factory can take an array with options, or a
 `Zend\Config` object. Each key in the array/config corresponds to a page option, as seen in the
-section on \[Pages\](zend.navigation.pages). If the option *uri* is given and no *MVC* options are
+section on [Pages](zend.navigation.pages.md). If the option *uri* is given and no *MVC* options are
 given (*action, controller, route*), an *URI* page will be created. If any of the *MVC* options are
 given, an *MVC* page will be created.
 

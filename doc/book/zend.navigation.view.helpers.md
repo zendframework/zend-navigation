@@ -8,19 +8,19 @@ Zend\\\\Navigation\\\\Navigation
 
 There are 5 built-in helpers:
 
-- \[Breadcrumbs\](zend.navigation.view.helper.breadcrumbs), used for rendering the path to the
+- [Breadcrumbs](zend.navigation.view.helper.breadcrumbs.md), used for rendering the path to the
 currently active page.
-- \[Links\](zend.navigation.view.helper.links), used for rendering navigational head links (e.g.
+- [Links](zend.navigation.view.helper.links.md), used for rendering navigational head links (e.g.
 `<link rel="next" href="..." />`)
-- \[Menu\](zend.navigation.view.helper.menu), used for rendering menus.
-- \[Sitemap\](zend.navigation.view.helper.sitemap), used for rendering sitemaps conforming to the
+- [Menu](zend.navigation.view.helper.menu.md), used for rendering menus.
+- [Sitemap](zend.navigation.view.helper.sitemap.md), used for rendering sitemaps conforming to the
 [Sitemaps XML format](http://www.sitemaps.org/protocol.php).
-- \[Navigation\](zend.navigation.view.helper.navigation), used for proxying calls to other
+- [Navigation](zend.navigation.view.helper.navigation.md), used for proxying calls to other
 navigational helpers.
 
 All built-in helpers extend `Zend\View\Helper\Navigation\AbstractHelper`, which adds integration
 with ACL
-&lt;zend.permissions.acl&gt; and \[translation\](zend.i18n.translating). The abstract class
+&lt;zend.permissions.acl&gt; and [translation](https://github.com/zendframework/zend-i18n). The abstract class
 implements the interface `Zend\View\Helper\Navigation\HelperInterface`, which defines the following
 methods:
 
@@ -91,7 +91,7 @@ type `Zend\I18n\Translator` in the helper using `$helper->setTranslator($transla
 
 If you want to disable translation, use `$helper->setTranslatorEnabled(false)`.
 
-The \[proxy helper\](zend.navigation.view.helper.navigation) will inject its own translator to the
+The [proxy helper](zend.navigation.view.helper.navigation.md) will inject its own translator to the
 helper it proxies to if the proxied helper doesn't already have a translator.
 
 > ## Note
@@ -110,7 +110,7 @@ have the page's *privilege* for the page to be included when rendering.
 
 If a page is not accepted by *ACL*, any descendant page will also be excluded from rendering.
 
-The \[proxy helper\](zend.navigation.view.helper.navigation) will inject its own *ACL* and role to
+The [proxy helper](zend.navigation.view.helper.navigation.md) will inject its own *ACL* and role to
 the helper it proxies to if the proxied helper doesn't already have any.
 
 The examples below all show how *ACL* affects rendering.

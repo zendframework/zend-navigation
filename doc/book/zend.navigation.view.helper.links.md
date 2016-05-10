@@ -60,7 +60,7 @@ an integer value, and will be used in a [bitwise and (&)
 operation](http://php.net/manual/en/language.operators.bitwise.php) against the helper's render
 constants to determine if the relation that belongs to the render constant should be rendered.
 
-See the \[example below\](zend.navigation.view.helper.links.specify-rendering) for more information.
+See the example below for more information.
 
 - `Zend\View\Helper\Navigation\Links::RENDER_ALTERNATE`
 - `Zend\View\Helper\Navigation\Links::RENDER_STYLESHEET`

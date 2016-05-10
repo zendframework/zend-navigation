@@ -25,6 +25,25 @@ method for the option, it will be set as a custom property of the page.
 Read more on extending `Zend\Navigation\Page\AbstractPage` in Creating custom page types
 &lt;zend.navigation.pages.custom&gt;.
 
+### Common page options
+
+Key      |Type                                                               |Default|Description
+---------|-------------------------------------------------------------------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+label    |String                                                             |NULL   |A page label, such as 'Home' or 'Blog'.
+fragment |String | NULL                                                      |NULL   |A fragment identifier (anchor identifier) pointing to an anchor within a resource that is subordinate to another, primary resource. The fragment identifier introduced by a hash mark "#". Example: ``http://www.example.org/foo.html#bar`` (*bar* is the fragment identifier)
+id       |String | Integer                                                   |NULL   |An *id* tag/attribute that may be used when rendering the page, typically in an anchor element.
+class    |String                                                             |NULL   |A *CSS* class that may be used when rendering the page, typically in an anchor element.
+title    |String                                                             |NULL   |A short page description, typically for using as the title attribute in an anchor.
+target   |String                                                             |NULL   |Specifies a target that may be used for the page, typically in an anchor element.
+rel      |Array                                                              |array()|Specifies forward relations for the page. Each element in the array is a key-value pair, where the key designates the relation/link type, and the value is a pointer to the linked page. An example of a key-value pair is ``'alternate' => 'format/plain.html'``. To allow full flexibility, there are no restrictions on relation values. The value does not have to be a string. Read more about ``rel`` and ``rev`` in the section on the Links helper.
+rev      |Array                                                              |array()|Specifies reverse relations for the page. Works exactly like rel.
+order    |String | Integer | NULL                                            |NULL   |Works like order for elements in ``Zend\Form``. If specified, the page will be iterated in a specific order, meaning you can force a page to be iterated before others by setting the order attribute to a low number, e.g. -100. If a String is given, it must parse to a valid int. If ``NULL`` is given, it will be reset, meaning the order in which the page was added to the container will be used.
+resource |String | ``Zend\Permissions\Acl\Resource\ResourceInterface`` | NULL|NULL   |ACL resource to associate with the page. Read more in the section on ACL integration in view helpers.
+privilege|String | NULL                                                      |NULL   |ACL privilege to associate with the page. Read more in the section on ACL integration in view helpers.
+active   |Boolean                                                            |FALSE  |Whether the page should be considered active for the current request. If active is FALSE or not given, MVC pages will check its properties against the request object upon calling ``$page->isActive()``.
+visible  |Boolean                                                            |TRUE   |Whether page should be visible for the user, or just be a part of the structure. Invisible pages are skipped by view helpers.
+pages    |Array | ``Zend\Config`` | NULL                                     |NULL   |Child pages of the page. This could be an Array or ``Zend\Config`` object containing either page options that can be passed to the ``factory()`` method, or actual ``Zend\Navigation\Page\AbstractPage`` instances, or a mixture of both.
+
 > ## Note
 #### Custom properties
 All pages support setting and getting of custom properties by use of the magic methods `__set($name,
@@ -65,6 +84,19 @@ Starting in version 2.2.0, if you want to re-use any matched route parameters wh
 link, you can do so via the "useRouteMatch" flag. This is particularly useful when creating segment
 routes that include the currently selected language or locale as an initial segment, as it ensures
 the links generated all include the matched value.
+
+### MVC page options
+
+Key          |Type                                   |Default|Description
+-------------|---------------------------------------|-------|------------------------------------------------------------------------------------
+action       |String                                 |NULL   |Action name to use when generating href to the page.
+controller   |String                                 |NULL   |Controller name to use when generating href to the page.
+params       |Array                                  |array()|User params to use when generating href to the page.
+route        |String                                 |NULL   |Route name to use when generating href to the page.
+routeMatch   |``Zend\Mvc\Router\RouteMatch``         |NULL   |RouteInterface matches used for routing parameters and testing validity.
+useRouteMatch|Boolean                                |FALSE  |If true, then getHref method will use the routeMatch parameters to assemble the URI
+router       |``Zend\Mvc\Router\RouteStackInterface``|NULL   |Router for assembling URLs
+query        |Array                                  |array()|User query params to use when generating href to page
 
 > ## Note
 The *URI* returned is relative to the *baseUrl* in `Zend\Mvc\Router\Http\TreeRouteStack`. In the
@@ -216,6 +248,12 @@ options, a *URI* page takes only one option — *uri*. The *uri* will be returne
 `Zend\Navigation\Page\Uri` will not try to determine whether it should be active when calling
 `$page-isActive()`. It merely returns what currently is set, so to make a *URI* page active you have
 to manually call `$page-setActive()` or specifying *active* as a page option when constructing.
+
+### URI page options
+
+Key|Type  |Default|Description
+---|------|-------|--------------------------------------------
+uri|String|NULL   |URI to page. This can be any string or NULL.
 
 orphan  
 

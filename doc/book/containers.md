@@ -1,430 +1,237 @@
 # Containers
 
-Containers have methods for adding, retrieving, deleting and iterating pages. Containers implement
-the [SPL](http://php.net/spl) interfaces `RecursiveIterator` and `Countable`, meaning that a
-container can be iterated using the SPL `RecursiveIteratorIterator` class.
+Containers have methods for adding, retrieving, deleting, and iterating pages.
+Containers implement the [SPL](http://php.net/spl) interfaces
+`RecursiveIterator` and `Countable`, meaning that a container can be iterated
+using the SPL `RecursiveIteratorIterator` class.
 
 ## Creating containers
 
 `Zend\Navigation\AbstractContainer` can not be instantiated directly. Use
 `Zend\Navigation\Navigation` if you want to instantiate a container.
 
-`Zend\Navigation\Navigation` can be constructed entirely empty, or take an array or a
-`Zend\Config\Config` object with pages to put in the container. Each page in the given array/config
-will eventually be passed to the `addPage()` method of the container class, which means that each
-element in the array/config can be an array, a config object or a
-`Zend\Navigation\Page\AbstractPage` instance.
+`Zend\Navigation\Navigation` can be constructed entirely empty, or take an array
+or a `Traversable` object with pages to put in the container. Each page provided
+via options will eventually be passed to the `addPage()` method of the container
+class, which means that each element in the options can be also be an array,
+Traversable object, or a `Zend\Navigation\Page\AbstractPage` instance.
 
 ### Creating a container using an array
 
 ```php
+use Zend\Navigation\Navigation;
+
 /*
  * Create a container from an array
  *
  * Each element in the array will be passed to
  * Zend\Navigation\Page\AbstractPage::factory() when constructing.
  */
-$container = new Zend\Navigation\Navigation(array(
-    array(
+$container = new Navigation([
+    [
         'label' => 'Page 1',
         'id' => 'home-link',
         'uri' => '/',
-    ),
-    array(
+    ],
+    [
         'label' => 'Zend',
         'uri' => 'http://www.zend-project.com/',
         'order' => 100,
-    ),
-    array(
+    ],
+    [
         'label' => 'Page 2',
         'controller' => 'page2',
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'Page 2.1',
                 'action' => 'page2_1',
                 'controller' => 'page2',
                 'class' => 'special-one',
                 'title' => 'This element has a special class',
                 'active' => true,
-            ),
-            array(
+            ],
+            [
                 'label' => 'Page 2.2',
                 'action' => 'page2_2',
                 'controller' => 'page2',
                 'class' => 'special-two',
                 'title' => 'This element has a special class too',
-            ),
-        ),
-    ),
-    array(
+            ],
+        ],
+    ],
+    [
         'label' => 'Page 2 with params',
         'action' => 'index',
         'controller' => 'page2',
         // specify a param or two,
-        'params' => array(
+        'params' => [
             'format' => 'json',
             'foo' => 'bar',
-        )
-    ),
-    array(
+        ]
+    ],
+    [
         'label' => 'Page 2 with params and a route',
         'action' => 'index',
         'controller' => 'page2',
+
         // specify a route name and a param for the route
         'route' => 'nav-route-example',
-        'params' => array(
+        'params' => [
             'format' => 'json',
-        ),
-    ),
-    array(
+        ],
+    ],
+    [
         'label' => 'Page 3',
         'action' => 'index',
         'controller' => 'index',
         'module' => 'mymodule',
         'reset_params' => false,
-    ),
-    array(
+    ],
+    [
         'label' => 'Page 4',
         'uri' => '#',
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'Page 4.1',
                 'uri' => '/page4',
                 'title' => 'Page 4 using uri',
-                'pages' => array(
-                    array(
+                'pages' => [
+                    [
                         'label' => 'Page 4.1.1',
                         'title' => 'Page 4 using mvc params',
                         'action' => 'index',
                         'controller' => 'page4',
                         // let's say this page is active
                         'active' => '1',
-                    )
-                ),
-            ),
-        ),
-    ),
-    array(
+                    ]
+                ],
+            ],
+        ],
+    ],
+    [
         'label' => 'Page 0?',
         'uri' => '/setting/the/order/option',
+
         // setting order to -1 should make it appear first
         'order' => -1,
-    ),
-    array(
+    ],
+    [
         'label' => 'Page 5',
         'uri' => '/',
+
         // this page should not be visible
         'visible' => false,
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'Page 5.1',
                 'uri' => '#',
-                'pages' => array(
-                    array(
+                'pages' => [
+                    [
                         'label' => 'Page 5.1.1',
                         'uri' => '#',
-                        'pages' => array(
-                            array(
+                        'pages' => [
+                            [
                                 'label' => 'Page 5.1.2',
                                 'uri' => '#',
+
                                 // let's say this page is active
                                 'active' => true,
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-        ),
-    ),
-    array(
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
         'label' => 'ACL page 1 (guest)',
         'uri' => '#acl-guest',
         'resource' => 'nav-guest',
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'ACL page 1.1 (foo)',
                 'uri' => '#acl-foo',
                 'resource' => 'nav-foo',
-            ),
-            array(
+            ],
+            [
                 'label' => 'ACL page 1.2 (bar)',
                 'uri' => '#acl-bar',
                 'resource' => 'nav-bar',
-            ),
-            array(
+            ],
+            [
                 'label' => 'ACL page 1.3 (baz)',
                 'uri' => '#acl-baz',
                 'resource' => 'nav-baz',
-            ),
-            array(
+            ],
+            [
                 'label' => 'ACL page 1.4 (bat)',
                 'uri' => '#acl-bat',
                 'resource' => 'nav-bat',
-            ),
-        ),
-    ),
-    array(
+            ],
+        ],
+    ],
+    [
         'label' => 'ACL page 2 (member)',
         'uri' => '#acl-member',
         'resource' => 'nav-member',
-    ),
-    array(
+    ],
+    [
         'label' => 'ACL page 3 (admin',
         'uri' => '#acl-admin',
         'resource' => 'nav-admin',
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'ACL page 3.1 (nothing)',
                 'uri' => '#acl-nada',
-            ),
-        ),
-    ),
-    array(
+            ],
+        ],
+    ],
+    [
         'label' => 'Zend Framework',
         'route' => 'zf-route',
-    ),
-));
-```
-
-### Creating a container using a config object
-
-Contents of /path/to/navigation.xml:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<nav>
-
-  <zend>
-      <label>Zend</label>
-      <uri>http://www.zend-project.com/</uri>
-      <order>100</order>
-  </zend>
-
-  <page1>
-      <label>Page 1</label>
-      <uri>page1</uri>
-      <pages>
-
-          <page1_1>
-              <label>Page 1.1</label>
-              <uri>page1/page1_1</uri>
-          </page1_1>
-
-      </pages>
-  </page1>
-
-  <page2>
-      <label>Page 2</label>
-      <uri>page2</uri>
-      <pages>
-
-          <page2_1>
-              <label>Page 2.1</label>
-              <uri>page2/page2_1</uri>
-          </page2_1>
-
-          <page2_2>
-              <label>Page 2.2</label>
-              <uri>page2/page2_2</uri>
-              <pages>
-
-                  <page2_2_1>
-                      <label>Page 2.2.1</label>
-                      <uri>page2/page2_2/page2_2_1</uri>
-                  </page2_2_1>
-
-                  <page2_2_2>
-                      <label>Page 2.2.2</label>
-                      <uri>page2/page2_2/page2_2_2</uri>
-                      <active>1</active>
-                  </page2_2_2>
-
-              </pages>
-          </page2_2>
-
-          <page2_3>
-              <label>Page 2.3</label>
-              <uri>page2/page2_3</uri>
-              <pages>
-
-                  <page2_3_1>
-                      <label>Page 2.3.1</label>
-                      <uri>page2/page2_3/page2_3_1</uri>
-                  </page2_3_1>
-
-                  <page2_3_2>
-                      <label>Page 2.3.2</label>
-                      <uri>page2/page2_3/page2_3_2</uri>
-                      <visible>0</visible>
-                      <pages>
-
-                              <page2_3_2_1>
-                                  <label>Page 2.3.2.1</label>
-                                  <uri>page2/page2_3/page2_3_2/1</uri>
-                                  <active>1</active>
-                              </page2_3_2_1>
-
-                              <page2_3_2_2>
-                                  <label>Page 2.3.2.2</label>
-                                  <uri>page2/page2_3/page2_3_2/2</uri>
-                                  <active>1</active>
-
-                                  <pages>
-                                      <page_2_3_2_2_1>
-                                          <label>Ignore</label>
-                                          <uri>#</uri>
-                                          <active>1</active>
-                                      </page_2_3_2_2_1>
-                                  </pages>
-                              </page2_3_2_2>
-
-                      </pages>
-                  </page2_3_2>
-
-                  <page2_3_3>
-                      <label>Page 2.3.3</label>
-                      <uri>page2/page2_3/page2_3_3</uri>
-                      <resource>admin</resource>
-                      <pages>
-
-                              <page2_3_3_1>
-                                  <label>Page 2.3.3.1</label>
-                                  <uri>page2/page2_3/page2_3_3/1</uri>
-                                  <active>1</active>
-                              </page2_3_3_1>
-
-                              <page2_3_3_2>
-                                  <label>Page 2.3.3.2</label>
-                                  <uri>page2/page2_3/page2_3_3/2</uri>
-                                  <resource>guest</resource>
-                                  <active>1</active>
-                              </page2_3_3_2>
-
-                      </pages>
-                  </page2_3_3>
-
-              </pages>
-          </page2_3>
-
-      </pages>
-  </page2>
-
-  <page3>
-      <label>Page 3</label>
-      <uri>page3</uri>
-      <pages>
-
-          <page3_1>
-              <label>Page 3.1</label>
-              <uri>page3/page3_1</uri>
-              <resource>guest</resource>
-          </page3_1>
-
-          <page3_2>
-              <label>Page 3.2</label>
-              <uri>page3/page3_2</uri>
-              <resource>member</resource>
-              <pages>
-
-                  <page3_2_1>
-                      <label>Page 3.2.1</label>
-                      <uri>page3/page3_2/page3_2_1</uri>
-                  </page3_2_1>
-
-                  <page3_2_2>
-                      <label>Page 3.2.2</label>
-                      <uri>page3/page3_2/page3_2_2</uri>
-                      <resource>admin</resource>
-                  </page3_2_2>
-
-              </pages>
-          </page3_2>
-
-          <page3_3>
-              <label>Page 3.3</label>
-              <uri>page3/page3_3</uri>
-              <resource>special</resource>
-              <pages>
-
-                  <page3_3_1>
-                      <label>Page 3.3.1</label>
-                      <uri>page3/page3_3/page3_3_1</uri>
-                      <visible>0</visible>
-                  </page3_3_1>
-
-                  <page3_3_2>
-                      <label>Page 3.3.2</label>
-                      <uri>page3/page3_3/page3_3_2</uri>
-                      <resource>admin</resource>
-                  </page3_3_2>
-
-              </pages>
-          </page3_3>
-
-      </pages>
-  </page3>
-
-  <home>
-      <label>Home</label>
-      <order>-100</order>
-      <module>default</module>
-      <controller>index</controller>
-      <action>index</action>
-  </home>
-
-</nav>
-```
-
-```php
-$reader = new Zend\Config\Reader\Xml();
-$config = $reader->fromFile('/path/to/navigation.xml');
-$container = new Zend\Navigation\Navigation($config);
+    ],
+]);
 ```
 
 ## Adding pages
 
-Adding pages to a container can be done with the methods `addPage()`, `addPages()`, or `setPages()`.
-See examples below for explanation.
+Adding pages to a container can be done with the methods `addPage()`,
+`addPages()`, or `setPages()`.  See examples below for explanation.
 
 ```php
+use Zend\Config\Config;
+use Zend\Navigation\Navigation;
+use Zend\Navigation\Page\AbstractPage;
+
 // create container
-$container = new Zend\Navigation\Navigation();
+$container = new Navigation();
 
 // add page by giving a page instance
-$container->addPage(
-    Zend\Navigation\Page\AbstractPage::factory(
-        array(
-            'uri' => 'http://www.example.com/',
-        )
-    )
-);
+$container->addPage(AbstractPage::factory([
+    'uri' => 'http://www.example.com/',
+]]);
 
 // add page by giving an array
-$container->addPage(
-    array(
-        'uri' => 'http://www.example.com/',
-    )
-);
+$container->addPage([
+    'uri' => 'http://www.example.com/',
+]);
 
-// add page by giving a config object
-$container->addPage(
-    new Zend\Config\Config(
-        array(
-            'uri' => 'http://www.example.com/',
-        )
-    )
-);
+// add page by giving a Traversable object; in this case, a zend-config
+// instance.
+$container->addPage(Config([
+    'uri' => 'http://www.example.com/',
+]));
 
-$pages = array(
-    array(
+$pages = [
+    [
         'label'  => 'Save',
         'action' => 'save',
-    ),
-    array(
+    ],
+    [
         'label' =>  'Delete',
         'action' => 'delete',
-    )
-);
+    ],
+];
 
 // add two pages
 $container->addPages($pages);
@@ -435,26 +242,29 @@ $container->setPages($pages);
 
 ## Removing pages
 
-Removing pages can be done with `removePage()` or `removePages()`. The first method accepts a an
-instance of a page, or an integer. The integer corresponds to the `order` a page has. The latter
-method will remove all pages in the container.
+Removing pages can be done with `removePage()` or `removePages()`.
+`removePage()` accepts an instance of a page or an integer. Integer arguments
+correspond to the `order` a page has. `removePages()` will remove all pages in
+the container.
 
 ```php
-$container = new Zend\Navigation\Navigation(array(
-    array(
+use Zend\Navigation\Navigation;
+
+$container = new Navigation([
+    [
         'label'  => 'Page 1',
         'action' => 'page1',
-    ),
-    array(
+    ],
+    [
         'label'  => 'Page 2',
         'action' => 'page2',
         'order'  => 200,
-    ),
-    array(
+    ],
+    [
         'label'  => 'Page 3',
         'action' => 'page3',
-    )
-));
+    ],
+]);
 
 // remove page by implicit page order
 $container->removePage(0);      // removes Page 1
@@ -472,134 +282,157 @@ $container->removePages();      // removes all pages
 
 ## Finding pages
 
-Containers have finder methods for retrieving pages. They are `findOneBy($property, $value)`,
-`findAllBy($property, $value)`, and `findBy($property, $value, $all = false)`. Those methods will
-recursively search the container for pages matching the given `$page->$property == $value`. The
-first method, `findOneBy()`, will return a single page matching the property with the given value,
-or `NULL` if it cannot be found. The second method will return all pages with a property matching
-the given value. The third method will call one of the two former methods depending on the `$all`
-flag.
+Containers have three finder methods for retrieving pages. Each recursively
+searches the container testing for properties with values that match the one
+provided.
 
-The finder methods can also be used magically by appending the property name to `findBy`,
-`findOneBy`, or `findAllBy`, e.g. `findOneByLabel('Home')` to return the first matching page with
-label 'Home'. Other combinations are `findByLabel(...)`, `findOneByTitle(...)`,
-`findAllByController(...)`, etc. Finder methods also work on custom properties, such as
-`findByFoo('bar')`.
+- `findOneBy($property, $value) : AbstractPage|null`: Returns the first page
+  found matching the criteria, or `null` if none was found.
+- `findAllBy($property, $value) : AbstractPage[]`: Returns an array of all
+  page instances matching the criteria.
+- `findBy($property, $value, $all = false) AbstractPage|AbstractPage[]|null`:
+  calls on one of the previous methods based on the value of `$all`.
+
+The finder methods can also be used magically by appending the property name to
+`findBy`, `findOneBy`, or `findAllBy`. As an example, `findOneByLabel('Home')`
+will return the first matching page with label 'Home'.
+    
+Other combinations include `findByLabel(...)`, `findOneByTitle(...)`,
+`findAllByController(...)`, etc. Finder methods also work on custom properties,
+such as `findByFoo('bar')`.
 
 ```php
-$container = new Zend\Navigation\Navigation(array(
-    array(
+use Zend\Navigation\Navigation;
+
+$container = new Navigation([
+    [
         'label' => 'Page 1',
         'uri'   => 'page-1',
         'foo'   => 'bar',
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'Page 1.1',
                 'uri'   => 'page-1.1',
                 'foo'   => 'bar',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Page 1.2',
                 'uri'   => 'page-1.2',
                 'class' => 'my-class',
-            ),
-            array(
+            ],
+            [
                 'type'   => 'uri',
                 'label'  => 'Page 1.3',
                 'uri'    => 'page-1.3',
                 'action' => 'about',
-            )
-        )
-    ),
-    array(
+            ],
+        ],
+    ],
+    [
         'label'      => 'Page 2',
         'id'         => 'page_2_and_3',
         'class'      => 'my-class',
         'module'     => 'page2',
         'controller' => 'index',
         'action'     => 'page1',
-    ),
-    array(
+    ],
+    [
         'label'      => 'Page 3',
         'id'         => 'page_2_and_3',
         'module'     => 'page3',
         'controller' => 'index',
-    ),
-));
+    ],
+]);
 
 // The 'id' is not required to be unique, but be aware that
 // having two pages with the same id will render the same id attribute
 // in menus and breadcrumbs.
-$found = $container->findBy('id',
-                            'page_2_and_3');      // returns Page 2
-$found = $container->findOneBy('id',
-                               'page_2_and_3');   // returns Page 2
-$found = $container->findBy('id',
-                            'page_2_and_3',
-                            true);                // returns Page 2 and Page 3
-$found = $container->findById('page_2_and_3');    // returns Page 2
-$found = $container->findOneById('page_2_and_3'); // returns Page 2
-$found = $container->findAllById('page_2_and_3'); // returns Page 2 and Page 3
 
-// Find all matching CSS class my-class
-$found = $container->findAllBy('class',
-                               'my-class');       // returns Page 1.2 and Page 2
-$found = $container->findAllByClass('my-class');  // returns Page 1.2 and Page 2
+// Returns "Page 2":
+$found = $container->findBy('id', 'page_2_and_3');
 
-// Find first matching CSS class my-class
-$found = $container->findOneByClass('my-class');  // returns Page 1.2
+// Returns "Page 2":
+$found = $container->findOneBy('id', 'page_2_and_3');
 
-// Find all matching CSS class non-existent
-$found = $container->findAllByClass('non-existent'); // returns array()
+// Returns "Page 2" AND "Page 3":
+$found = $container->findBy('id', 'page_2_and_3', true);
 
-// Find first matching CSS class non-existent
-$found = $container->findOneByClass('non-existent'); // returns null
+// Returns "Page 2":
+$found = $container->findById('page_2_and_3');
 
-// Find all pages with custom property 'foo' = 'bar'
-$found = $container->findAllBy('foo', 'bar'); // returns Page 1 and Page 1.1
+// Returns "Page 2":
+$found = $container->findOneById('page_2_and_3');
+
+// Returns "Page 2" AND "Page 3":
+$found = $container->findAllById('page_2_and_3');
+
+// Find all pages matching the CSS class "my-class":
+// Returns "Page 1.2" and "Page 2":
+$found = $container->findAllBy('class', 'my-class');
+$found = $container->findAllByClass('my-class');
+
+// Find first page matching CSS class "my-class":
+// Returns "Page 1.2":
+$found = $container->findOneByClass('my-class');
+
+// Find all pages matching the CSS class "non-existent":
+// Returns an empty array.
+$found = $container->findAllByClass('non-existent');
+
+// Find first page matching the CSS class "non-existent":
+// Returns null.
+$found = $container->findOneByClass('non-existent');
+
+// Find all pages with custom property 'foo' = 'bar':
+// Returns "Page 1" and "Page 1.1":
+$found = $container->findAllBy('foo', 'bar');
 
 // To achieve the same magically, 'foo' must be in lowercase.
 // This is because 'foo' is a custom property, and thus the
-// property name is not normalized to 'Foo'
+// property name is not normalized to 'Foo':
 $found = $container->findAllByfoo('bar');
 
-// Find all with controller = 'index'
-$found = $container->findAllByController('index'); // returns Page 2 and Page 3
+// Find all with controller = 'index':
+// Returns "Page 2" and "Page 3":
+$found = $container->findAllByController('index');
 ```
 
 ## Iterating containers
 
-`Zend\Navigation\AbstractContainer` implements `RecursiveIterator`, and can be iterated using any
-`Iterator` class. To iterate a container recursively, use the `RecursiveIteratorIterator` class.
+`Zend\Navigation\AbstractContainer` implements `RecursiveIterator`.  iterate a
+container recursively, use the `RecursiveIteratorIterator` class.
 
 ```php
+use RecursiveIteratorIterator;
+use Zend\Navigation\Navigation;
+
 /*
  * Create a container from an array
  */
-$container = new Zend\Navigation\Navigation(array(
-    array(
+$container = new Navigation([
+    [
         'label' => 'Page 1',
         'uri'   => '#',
-    ),
-    array(
+    ],
+    [
         'label' => 'Page 2',
         'uri'   => '#',
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'Page 2.1',
                 'uri'   => '#',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Page 2.2',
                 'uri'   => '#',
-            )
-        )
-    )
-    array(
+            ],
+        ],
+    ],
+    [
         'label' => 'Page 3',
         'uri'   => '#',
-    ),
-));
+    ],
+]);
 
 // Iterate flat using regular foreach:
 // Output: Page 1, Page 2, Page 3
@@ -609,7 +442,9 @@ foreach ($container as $page) {
 
 // Iterate recursively using RecursiveIteratorIterator
 $it = new RecursiveIteratorIterator(
-        $container, RecursiveIteratorIterator::SELF_FIRST);
+    $container,
+    RecursiveIteratorIterator::SELF_FIRST
+);
 
 // Output: Page 1, Page 2, Page 2.1, Page 2.2, Page 3
 foreach ($it as $page) {
@@ -619,36 +454,55 @@ foreach ($it as $page) {
 
 ## Other operations
 
-The method `hasPage(Zend\Navigation\Page\AbstractPage $page)` checks if the container has the given
-page. The method `hasPages()` checks if there are any pages in the container, and is equivalent to
-`count($container) > 0`.
-
-The `toArray()` method converts the container and the pages in it to an array. This can be useful
-for serializing and debugging.
-
-### Converting a container to an array
+### hasPage
 
 ```php
-$container = new Zend\Navigation\Navigation(array(
-    array(
+hasPage(AbstractPage $page) : bool
+```
+
+Check if the container has the given page.
+
+### hasPages
+
+```php
+hasPages() : bool
+```
+
+Checks if there are any pages in the container, and is equivalent to
+`count($container) > 0`.
+
+### toArray
+
+```php
+toArray() : array
+```
+
+Converts the container and the pages in it to a (nested) array. This can be useful
+for serializing and debugging.
+
+```php
+use Zend\Navigation\Navigation;
+
+$container = new Navigation([
+    [
         'label' => 'Page 1',
         'uri'   => '#',
-    ),
-    array(
+    ],
+    [
         'label' => 'Page 2',
         'uri'   => '#',
-        'pages' => array(
-            array(
+        'pages' => [
+            [
                 'label' => 'Page 2.1',
                 'uri'   => '#',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Page 2.2',
                'uri'   => '#',
-            ),
-        ),
-    ),
-));
+            ],
+        ],
+    ],
+]);
 
 var_dump($container->toArray());
 

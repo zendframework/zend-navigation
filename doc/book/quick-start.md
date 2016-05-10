@@ -1,45 +1,47 @@
 # Quick Start
 
-The fastest way to get up and running with `Zend\Navigation` is by the **navigation** key in your
-service manager configuration and the navigation factory will handle the rest for you. After setting
-up the configuration simply use the key name with the `Zend\Navigation` view helper to output the
-container.
+The fastest way to get up and running with zend-navigation is:
+
+- Enable the zend-navigation `DefaultNavigationFactory`.
+- Define navigation container configuration under the top-level `navigation` key
+  in your application configuration.
+- Render your container using a navigation view helper within your view scripts.
 
 ```php
 <?php
 // your configuration file, e.g. config/autoload/global.php
-return array(
+return [
     // ...
 
-    'navigation' => array(
-        'default' => array(
-            array(
+    'navigation' => [
+        'default' => [
+            [
                 'label' => 'Home',
                 'route' => 'home',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Page #1',
                 'route' => 'page-1',
                 'pages' => array(
-                    array(
+                    [
                         'label' => 'Child #1',
                         'route' => 'page-1-child',
-                    ),
-                ),
-            ),
-            array(
+                    ],
+                ],
+            ],
+            [
                 'label' => 'Page #2',
                 'route' => 'page-2',
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
-            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
-        ),
-    ),
+            ],
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            'navigation' => Zend\Navigation\Service\DefaultNavigationFactory::class,
+        ],
+    ],
     // ...
-);
+];
 ```
 
 ```php
@@ -47,7 +49,7 @@ return array(
 <!-- ... -->
 
 <body>
-    <?php echo $this->navigation('navigation')->menu(); ?>
+    <?= $this->navigation('default')->menu() ?>
 </body>
 <!-- ... -->
 ```
@@ -55,94 +57,97 @@ return array(
 ## Using multiple navigations
 
 If you want to use more than one navigation, you can register the abstract factory
-`\Zend\Navigation\Service\NavigationAbstractServiceFactory` in the [service
-manager](https://github.com/zendframework/zend-servicemanager).
+`Zend\Navigation\Service\NavigationAbstractServiceFactory` with the
+[service manager](https://github.com/zendframework/zend-servicemanager).
 
-Once the service factory is registered, you can create as many navigation definitions as you wish,
-and the factory will create navigation containers automatically. This factory can also be used for
-the `default` container.
+Once the service factory is registered, you can create as many navigation
+definitions as you wish, and the factory will create navigation containers
+automatically. This factory can also be used for the `default` container.
 
 ```php
 <?php
 // your configuration file, e.g. config/autoload/global.php
-return array(
+return [
     // ...
 
-    'navigation' => array(
+    'navigation' => [
 
         // navigation with name default
-        'default' => array(
-            array(
+        'default' => [
+            [
                 'label' => 'Home',
                 'route' => 'home',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Page #1',
                 'route' => 'page-1',
-                'pages' => array(
-                    array(
+                'pages' => [
+                    [
                         'label' => 'Child #1',
                         'route' => 'page-1-child',
-                    ),
-                ),
-            ),
-            array(
+                    ],
+                ],
+            ],
+            [
                 'label' => 'Page #2',
                 'route' => 'page-2',
-            ),
-        ),
+            ],
+        ],
 
         // navigation with name special
-        'special' => array(
-            array(
+        'special' => [
+            [
                 'label' => 'Special',
                 'route' => 'special',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Special Page #2',
                 'route' => 'special-2',
-            ),
-        ),
+            ],
+        ],
 
         // navigation with name sitemap
-        'sitemap' => array(
-            array(
+        'sitemap' => [
+            [
                 'label' => 'Sitemap',
                 'route' => 'sitemap',
-            ),
-            array(
+            ],
+            [
                 'label' => 'Sitemap Page #2',
                 'route' => 'sitemap-2',
-            ),
-        ),
-    ),
-    'service_manager' => array(
-        'abstract_factories' => array(
-            'Zend\Navigation\Service\NavigationAbstractServiceFactory'
-        ),
-    ),
+            ],
+        ],
+    ],
+    'service_manager' => [
+        'abstract_factories' => [
+            Zend\Navigation\Service\NavigationAbstractServiceFactory::class,
+        ],
+    ],
+
     // ...
-);
+];
 ```
 
-> ### Note
-There is one important point if you use the `NavigationAbstractServiceFactory`: The name of the
-service in your view must start with `Zend\Navigation\` followed by the name of the configuration
-key. This helps ensure that no naming collisions occur with other services.
+> ### Container names have a prefix
+>
+> There is one important point to know when using
+> `NavigationAbstractServiceFactory`: The name of the service in your view must
+> start with `Zend\Navigation\` followed by the name of the configuration key.
+> This helps ensure that no naming collisions occur with other services.
 
-The following example demonstrates rendering the navigation menus for the named `default`, `special`
-and `sitemap` containers.
+The following example demonstrates rendering the navigation menus for the named
+`default`, `special` and `sitemap` containers.
 
 ```php
 <!-- in your layout -->
 <!-- ... -->
 
 <body>
-    <?php echo $this->navigation('Zend\Navigation\Default')->menu(); ?>
+    <?= $this->navigation('Zend\Navigation\Default')->menu() ?>
 
-    <?php echo $this->navigation('Zend\Navigation\Special')->menu(); ?>
+    <?= $this->navigation('Zend\Navigation\Special')->menu() ?>
 
-    <?php echo $this->navigation('Zend\Navigation\Sitemap')->menu(); ?>
+    <?= $this->navigation('Zend\Navigation\Sitemap')->menu() ?>
 </body>
 <!-- ... -->
 ```

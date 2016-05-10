@@ -8,12 +8,12 @@ pages:
         - Pages: pages.md
         - Containers: containers.md
         - View Helpers:
-            - Intro: view.helpers.md
-            - Breadcrumbs: view.helpers.breadcrumbs.md
-            - Links: view.helpers.links.md
-            - Menu: view.helpers.menu.md
-            - Sitemap: view.helpers.sitemap.md
-            - "Navigation Proxy": view.helpers.navigation.md
+            - Intro: helpers/intro.md
+            - Breadcrumbs: helpers/breadcrumbs.md
+            - Links: helpers/links.md
+            - Menu: helpers/menu.md
+            - Sitemap: helpers/sitemap.md
+            - "Navigation Proxy": helpers/navigation.md
 site_name: zend-navigation
 site_description: zend-navigation
 repo_url: 'https://github.com/zendframework/zend-navigation'

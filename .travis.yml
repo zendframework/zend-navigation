@@ -10,6 +10,7 @@ branches:
 cache:
   directories:
     - $HOME/.composer/cache
+    - vendor
     - $HOME/.local
     - zf-mkdoc-theme
 
@@ -20,7 +21,7 @@ env:
     - GH_USER_NAME: "Matthew Weier O'Phinney"
     - GH_USER_EMAIL: matthew@weierophinney.net
     - GH_REF: github.com/zendframework/zend-navigation.git
-    - secure: ""
+    - secure: "tgcIcU0H/502W94XsyOA/aBb26CfaFJklEm4TZC/foM0qcoSB+U5PLmn+UtBFbuXBDApC2H/G6F+hpR1nTIp9aO9cizfpRB7GYPHJ4gq3crSgBMv5sMB0TJekypbEChoPAhxM+UT3imlA6kbw2ttcqvSqU3EcvyeIT5Ef8B4FDBPBDH6ozewUcYNoxHx1pcJnIkKdkZu9RedIt46GJ4TiJiImCS7txxPZOeNVHZpCMps/1gQEPdD6P/etvxjYrFLtnFyIdpTHB6DBnxbBlM9eYrUlUE47xW25m3gbCERNk0gBTaSXImEkk9mjnSwC1ek0SmEhaeLKxcl7o06C4sU5Evua9uUSFHBa17lGTMCJnKZ+YxIT31n/cX5vi+pcMxO2YBSXB/QiXJvhlxNtn6TqsEMYzJqOedX+t+7mexFsKLEOOut3HrjQV2ZxnTv+xnYWq+MrPlIcQhLMUTXHlAMf91el6bu1yF62I9dGTF0j252pZqGbNIst0i9Dfvd0I28f4AUDU2+YiuCuoAC9W1ISXPWd/b43gFsMSIuAFg0e3UT64CTQlUHIMHZWPVQ37TMcPmmg10RBM7jtrZPD74cJjlEilXbCNBZaDJUAQXTw51SetrqB/GfyZ9LKeHqsnd2zxXck1RiBVskwsZrveULnFS6pp9Z4j7etxrB8wSK48k="
 
 matrix:
   fast_finish: true

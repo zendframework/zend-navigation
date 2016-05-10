@@ -19,7 +19,7 @@ lastmod   |The date of last modification of the file, in W3C Datetime format. Th
 changefreq|How frequently the page is likely to change. This value provides general information to search engines and may not correlate exactly to how often they crawl the page. Valid values are: alwayshourlydailyweeklymonthlyyearlynever The helper will try to retrieve the changefreq value from the page's custom property changefreq if it is set in the page. If the value is not valid, it is ignored.
 priority  |The priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0. The helper will try to retrieve the priority value from the page's custom property priority if it is set in the page. If the value is not valid, it is ignored.
 
-> ## Note
+> ### Note
 If you disable sitemap validators, the custom properties (see table) are not validated at all.
 
 The sitemap helper also supports [Sitemap XSD
@@ -236,7 +236,7 @@ echo $this->navigation()
 </urlset>
 ```
 
-> ## Note
+> ### Note
 #### UTF-8 encoding used by default
 By default, Zend Framework uses *UTF-8* as its default encoding, and, specific to this case,
 `Zend\View` does as well. So if you want to use another encoding with `Sitemap`, you will have do

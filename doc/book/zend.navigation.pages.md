@@ -44,7 +44,7 @@ active   |Boolean                                                            |FA
 visible  |Boolean                                                            |TRUE   |Whether page should be visible for the user, or just be a part of the structure. Invisible pages are skipped by view helpers.
 pages    |Array | ``Zend\Config`` | NULL                                     |NULL   |Child pages of the page. This could be an Array or ``Zend\Config`` object containing either page options that can be passed to the ``factory()`` method, or actual ``Zend\Navigation\Page\AbstractPage`` instances, or a mixture of both.
 
-> ## Note
+> ### Note
 #### Custom properties
 All pages support setting and getting of custom properties by use of the magic methods `__set($name,
 $value)`, `__get($name)`, `__isset($name)` and `__unset($name)`. Custom properties may have any
@@ -79,7 +79,7 @@ will use `Zend\Mvc\Router\RouteStackInterface` internally in the `getHref()` met
 hrefs, and the `isActive()` method will compare the `Zend\Mvc\Router\RouteMatch` params with the
 page's params to determine if the page is active.
 
-> ## Note
+> ### Note
 Starting in version 2.2.0, if you want to re-use any matched route parameters when generating a
 link, you can do so via the "useRouteMatch" flag. This is particularly useful when creating segment
 routes that include the currently selected language or locale as an initial segment, as it ensures
@@ -98,7 +98,7 @@ useRouteMatch|Boolean                                |FALSE  |If true, then getH
 router       |``Zend\Mvc\Router\RouteStackInterface``|NULL   |Router for assembling URLs
 query        |Array                                  |array()|User query params to use when generating href to page
 
-> ## Note
+> ### Note
 The *URI* returned is relative to the *baseUrl* in `Zend\Mvc\Router\Http\TreeRouteStack`. In the
 examples, the baseUrl is '/' for simplicity.
 
@@ -205,7 +205,7 @@ $page->isActive(); // returns false
 Routes can be used with *MVC* pages. If a page has a route, this route will be used in `getHref()`
 to generate the *URL* for the page.
 
-> ## Note
+> ### Note
 Note that when using the *route* property in a page, you do not need to specify the default params
 that the route defines (controller, action, etc.).
 
@@ -244,7 +244,7 @@ to implement custom logic for the page. *URI* pages are simple; in addition to t
 options, a *URI* page takes only one option — *uri*. The *uri* will be returned when calling
 `$page->getHref()`, and may be a `String` or `NULL`.
 
-> ## Note
+> ### Note
 `Zend\Navigation\Page\Uri` will not try to determine whether it should be active when calling
 `$page-isActive()`. It merely returns what currently is set, so to make a *URI* page active you have
 to manually call `$page-setActive()` or specifying *active* as a page option when constructing.

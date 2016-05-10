@@ -125,7 +125,7 @@ return array(
 );
 ```
 
-> ## Note
+> ### Note
 There is one important point if you use the `NavigationAbstractServiceFactory`: The name of the
 service in your view must start with `Zend\Navigation\` followed by the name of the configuration
 key. This helps ensure that no naming collisions occur with other services.

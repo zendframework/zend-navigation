@@ -67,7 +67,7 @@ echo $this->navigation()->sitemap();
 Notice how pages that are invisible or pages with *ACL* roles incompatible with the view helper are
 filtered out:
 
-```php
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -135,7 +135,7 @@ echo $this->navigation()
           ->setRole();
 ```
 
-```php
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -200,7 +200,7 @@ echo $this->navigation()
           ->setMaxDepth(1);
 ```
 
-```php
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>

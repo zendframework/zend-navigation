@@ -52,7 +52,7 @@ The two calls above take advantage of the magic \_\_toString() method, and are e
 
 Output:
 
-```php
+```html
 <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 ```
 
@@ -68,7 +68,7 @@ Rendering with 8 spaces indentation:
 
 Output:
 
-```php
+```html
 <a href="/products">Products</a> &gt; <a href="/products/server">Foo Server</a> &gt; FAQ
 ```
 
@@ -90,7 +90,7 @@ echo $this->navigation()
 
 Output:
 
-```php
+```html
 <a href="/products">Products</a> ▶
 <a href="/products/server">Foo Server</a>
 ```
@@ -133,6 +133,6 @@ echo implode(', ', array_map(
 
 Output:
 
-```php
+```html
 Products, Foo Server, FAQ
 ```

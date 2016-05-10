@@ -188,8 +188,9 @@ $container = new Zend\Navigation\Navigation(array(
 
 ### Creating a container using a config object
 
-```php
-/* CONTENTS OF /path/to/navigation.xml:
+Contents of /path/to/navigation.xml:
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <nav>
 
@@ -372,8 +373,9 @@ $container = new Zend\Navigation\Navigation(array(
   </home>
 
 </nav>
- */
+```
 
+```php
 $reader = new Zend\Config\Reader\Xml();
 $config = $reader->fromFile('/path/to/navigation.xml');
 $container = new Zend\Navigation\Navigation($config);

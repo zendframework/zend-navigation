@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    <title>Containers - zend-navigation</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/zf.css" rel="stylesheet">
+    <link href="../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="..">zend-navigation</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../intro/">Intro</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../quick-start/">Quick Start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../pages/">Pages</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Containers</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">View Helpers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../helpers/intro/">Intro</a>
+</li>
+
+        
+            
+<li >
+    <a href="../helpers/breadcrumbs/">Breadcrumbs</a>
+</li>
+
+        
+            
+<li >
+    <a href="../helpers/links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../helpers/menu/">Menu</a>
+</li>
+
+        
+            
+<li >
+    <a href="../helpers/sitemap/">Sitemap</a>
+</li>
+
+        
+            
+<li >
+    <a href="../helpers/navigation/">Navigation Proxy</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-navigation">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#containers">Containers</a></li>
+        
+            <li><a href="#creating-containers">Creating containers</a></li>
+        
+            <li><a href="#adding-pages">Adding pages</a></li>
+        
+            <li><a href="#removing-pages">Removing pages</a></li>
+        
+            <li><a href="#finding-pages">Finding pages</a></li>
+        
+            <li><a href="#iterating-containers">Iterating containers</a></li>
+        
+            <li><a href="#other-operations">Other operations</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href="../pages/"><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next">
+        <a rel="next" href="../helpers/intro/">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+  
+  <li class="active">Containers</li>
+</ol>
+
+<h1 id="containers">Containers</h1>
+<p>Containers have methods for adding, retrieving, deleting, and iterating pages.
+Containers implement the <a href="http://php.net/spl">SPL</a> interfaces
+<code>RecursiveIterator</code> and <code>Countable</code>, meaning that a container can be iterated
+using the SPL <code>RecursiveIteratorIterator</code> class.</p>
+<h2 id="creating-containers">Creating containers</h2>
+<p><code>Zend\Navigation\AbstractContainer</code> can not be instantiated directly. Use
+<code>Zend\Navigation\Navigation</code> if you want to instantiate a container.</p>
+<p><code>Zend\Navigation\Navigation</code> can be constructed entirely empty, or take an array
+or a <code>Traversable</code> object with pages to put in the container. Each page provided
+via options will eventually be passed to the <code>addPage()</code> method of the container
+class, which means that each element in the options can be also be an array,
+Traversable object, or a <code>Zend\Navigation\Page\AbstractPage</code> instance.</p>
+<h3 id="creating-a-container-using-an-array">Creating a container using an array</h3>
+<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+
+/*
+ * Create a container from an array
+ *
+ * Each element in the array will be passed to
+ * Zend\Navigation\Page\AbstractPage::factory() when constructing.
+ */
+$container = new Navigation([
+    [
+        'label' =&gt; 'Page 1',
+        'id' =&gt; 'home-link',
+        'uri' =&gt; '/',
+    ],
+    [
+        'label' =&gt; 'Zend',
+        'uri' =&gt; 'http://www.zend-project.com/',
+        'order' =&gt; 100,
+    ],
+    [
+        'label' =&gt; 'Page 2',
+        'controller' =&gt; 'page2',
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'Page 2.1',
+                'action' =&gt; 'page2_1',
+                'controller' =&gt; 'page2',
+                'class' =&gt; 'special-one',
+                'title' =&gt; 'This element has a special class',
+                'active' =&gt; true,
+            ],
+            [
+                'label' =&gt; 'Page 2.2',
+                'action' =&gt; 'page2_2',
+                'controller' =&gt; 'page2',
+                'class' =&gt; 'special-two',
+                'title' =&gt; 'This element has a special class too',
+            ],
+        ],
+    ],
+    [
+        'label' =&gt; 'Page 2 with params',
+        'action' =&gt; 'index',
+        'controller' =&gt; 'page2',
+        // specify a param or two,
+        'params' =&gt; [
+            'format' =&gt; 'json',
+            'foo' =&gt; 'bar',
+        ]
+    ],
+    [
+        'label' =&gt; 'Page 2 with params and a route',
+        'action' =&gt; 'index',
+        'controller' =&gt; 'page2',
+
+        // specify a route name and a param for the route
+        'route' =&gt; 'nav-route-example',
+        'params' =&gt; [
+            'format' =&gt; 'json',
+        ],
+    ],
+    [
+        'label' =&gt; 'Page 3',
+        'action' =&gt; 'index',
+        'controller' =&gt; 'index',
+        'module' =&gt; 'mymodule',
+        'reset_params' =&gt; false,
+    ],
+    [
+        'label' =&gt; 'Page 4',
+        'uri' =&gt; '#',
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'Page 4.1',
+                'uri' =&gt; '/page4',
+                'title' =&gt; 'Page 4 using uri',
+                'pages' =&gt; [
+                    [
+                        'label' =&gt; 'Page 4.1.1',
+                        'title' =&gt; 'Page 4 using mvc params',
+                        'action' =&gt; 'index',
+                        'controller' =&gt; 'page4',
+                        // let's say this page is active
+                        'active' =&gt; '1',
+                    ]
+                ],
+            ],
+        ],
+    ],
+    [
+        'label' =&gt; 'Page 0?',
+        'uri' =&gt; '/setting/the/order/option',
+
+        // setting order to -1 should make it appear first
+        'order' =&gt; -1,
+    ],
+    [
+        'label' =&gt; 'Page 5',
+        'uri' =&gt; '/',
+
+        // this page should not be visible
+        'visible' =&gt; false,
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'Page 5.1',
+                'uri' =&gt; '#',
+                'pages' =&gt; [
+                    [
+                        'label' =&gt; 'Page 5.1.1',
+                        'uri' =&gt; '#',
+                        'pages' =&gt; [
+                            [
+                                'label' =&gt; 'Page 5.1.2',
+                                'uri' =&gt; '#',
+
+                                // let's say this page is active
+                                'active' =&gt; true,
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'label' =&gt; 'ACL page 1 (guest)',
+        'uri' =&gt; '#acl-guest',
+        'resource' =&gt; 'nav-guest',
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'ACL page 1.1 (foo)',
+                'uri' =&gt; '#acl-foo',
+                'resource' =&gt; 'nav-foo',
+            ],
+            [
+                'label' =&gt; 'ACL page 1.2 (bar)',
+                'uri' =&gt; '#acl-bar',
+                'resource' =&gt; 'nav-bar',
+            ],
+            [
+                'label' =&gt; 'ACL page 1.3 (baz)',
+                'uri' =&gt; '#acl-baz',
+                'resource' =&gt; 'nav-baz',
+            ],
+            [
+                'label' =&gt; 'ACL page 1.4 (bat)',
+                'uri' =&gt; '#acl-bat',
+                'resource' =&gt; 'nav-bat',
+            ],
+        ],
+    ],
+    [
+        'label' =&gt; 'ACL page 2 (member)',
+        'uri' =&gt; '#acl-member',
+        'resource' =&gt; 'nav-member',
+    ],
+    [
+        'label' =&gt; 'ACL page 3 (admin',
+        'uri' =&gt; '#acl-admin',
+        'resource' =&gt; 'nav-admin',
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'ACL page 3.1 (nothing)',
+                'uri' =&gt; '#acl-nada',
+            ],
+        ],
+    ],
+    [
+        'label' =&gt; 'Zend Framework',
+        'route' =&gt; 'zf-route',
+    ],
+]);</code></pre>
+
+
+<h2 id="adding-pages">Adding pages</h2>
+<p>Adding pages to a container can be done with the methods <code>addPage()</code>,
+<code>addPages()</code>, or <code>setPages()</code>.  See examples below for explanation.</p>
+<pre class="codehilite"><code class="language-php">use Zend\Config\Config;
+use Zend\Navigation\Navigation;
+use Zend\Navigation\Page\AbstractPage;
+
+// create container
+$container = new Navigation();
+
+// add page by giving a page instance
+$container-&gt;addPage(AbstractPage::factory([
+    'uri' =&gt; 'http://www.example.com/',
+]]);
+
+// add page by giving an array
+$container-&gt;addPage([
+    'uri' =&gt; 'http://www.example.com/',
+]);
+
+// add page by giving a Traversable object; in this case, a zend-config
+// instance.
+$container-&gt;addPage(Config([
+    'uri' =&gt; 'http://www.example.com/',
+]));
+
+$pages = [
+    [
+        'label'  =&gt; 'Save',
+        'action' =&gt; 'save',
+    ],
+    [
+        'label' =&gt;  'Delete',
+        'action' =&gt; 'delete',
+    ],
+];
+
+// add two pages
+$container-&gt;addPages($pages);
+
+// remove existing pages and add the given pages
+$container-&gt;setPages($pages);</code></pre>
+
+
+<h2 id="removing-pages">Removing pages</h2>
+<p>Removing pages can be done with <code>removePage()</code> or <code>removePages()</code>.
+<code>removePage()</code> accepts an instance of a page or an integer. Integer arguments
+correspond to the <code>order</code> a page has. <code>removePages()</code> will remove all pages in
+the container.</p>
+<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+
+$container = new Navigation([
+    [
+        'label'  =&gt; 'Page 1',
+        'action' =&gt; 'page1',
+    ],
+    [
+        'label'  =&gt; 'Page 2',
+        'action' =&gt; 'page2',
+        'order'  =&gt; 200,
+    ],
+    [
+        'label'  =&gt; 'Page 3',
+        'action' =&gt; 'page3',
+    ],
+]);
+
+// remove page by implicit page order
+$container-&gt;removePage(0);      // removes Page 1
+
+// remove page by instance
+$page3 = $container-&gt;findOneByAction('page3');
+$container-&gt;removePage($page3); // removes Page 3
+
+// remove page by explicit page order
+$container-&gt;removePage(200);    // removes Page 2
+
+// remove all pages
+$container-&gt;removePages();      // removes all pages</code></pre>
+
+
+<h2 id="finding-pages">Finding pages</h2>
+<p>Containers have three finder methods for retrieving pages. Each recursively
+searches the container testing for properties with values that match the one
+provided.</p>
+<ul>
+<li><code>findOneBy($property, $value) : AbstractPage|null</code>: Returns the first page
+  found matching the criteria, or <code>null</code> if none was found.</li>
+<li><code>findAllBy($property, $value) : AbstractPage[]</code>: Returns an array of all
+  page instances matching the criteria.</li>
+<li><code>findBy($property, $value, $all = false) AbstractPage|AbstractPage[]|null</code>:
+  calls on one of the previous methods based on the value of <code>$all</code>.</li>
+</ul>
+<p>The finder methods can also be used magically by appending the property name to
+<code>findBy</code>, <code>findOneBy</code>, or <code>findAllBy</code>. As an example, <code>findOneByLabel('Home')</code>
+will return the first matching page with label 'Home'.</p>
+<p>Other combinations include <code>findByLabel(...)</code>, <code>findOneByTitle(...)</code>,
+<code>findAllByController(...)</code>, etc. Finder methods also work on custom properties,
+such as <code>findByFoo('bar')</code>.</p>
+<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+
+$container = new Navigation([
+    [
+        'label' =&gt; 'Page 1',
+        'uri'   =&gt; 'page-1',
+        'foo'   =&gt; 'bar',
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'Page 1.1',
+                'uri'   =&gt; 'page-1.1',
+                'foo'   =&gt; 'bar',
+            ],
+            [
+                'label' =&gt; 'Page 1.2',
+                'uri'   =&gt; 'page-1.2',
+                'class' =&gt; 'my-class',
+            ],
+            [
+                'type'   =&gt; 'uri',
+                'label'  =&gt; 'Page 1.3',
+                'uri'    =&gt; 'page-1.3',
+                'action' =&gt; 'about',
+            ],
+        ],
+    ],
+    [
+        'label'      =&gt; 'Page 2',
+        'id'         =&gt; 'page_2_and_3',
+        'class'      =&gt; 'my-class',
+        'module'     =&gt; 'page2',
+        'controller' =&gt; 'index',
+        'action'     =&gt; 'page1',
+    ],
+    [
+        'label'      =&gt; 'Page 3',
+        'id'         =&gt; 'page_2_and_3',
+        'module'     =&gt; 'page3',
+        'controller' =&gt; 'index',
+    ],
+]);
+
+// The 'id' is not required to be unique, but be aware that
+// having two pages with the same id will render the same id attribute
+// in menus and breadcrumbs.
+
+// Returns &quot;Page 2&quot;:
+$found = $container-&gt;findBy('id', 'page_2_and_3');
+
+// Returns &quot;Page 2&quot;:
+$found = $container-&gt;findOneBy('id', 'page_2_and_3');
+
+// Returns &quot;Page 2&quot; AND &quot;Page 3&quot;:
+$found = $container-&gt;findBy('id', 'page_2_and_3', true);
+
+// Returns &quot;Page 2&quot;:
+$found = $container-&gt;findById('page_2_and_3');
+
+// Returns &quot;Page 2&quot;:
+$found = $container-&gt;findOneById('page_2_and_3');
+
+// Returns &quot;Page 2&quot; AND &quot;Page 3&quot;:
+$found = $container-&gt;findAllById('page_2_and_3');
+
+// Find all pages matching the CSS class &quot;my-class&quot;:
+// Returns &quot;Page 1.2&quot; and &quot;Page 2&quot;:
+$found = $container-&gt;findAllBy('class', 'my-class');
+$found = $container-&gt;findAllByClass('my-class');
+
+// Find first page matching CSS class &quot;my-class&quot;:
+// Returns &quot;Page 1.2&quot;:
+$found = $container-&gt;findOneByClass('my-class');
+
+// Find all pages matching the CSS class &quot;non-existent&quot;:
+// Returns an empty array.
+$found = $container-&gt;findAllByClass('non-existent');
+
+// Find first page matching the CSS class &quot;non-existent&quot;:
+// Returns null.
+$found = $container-&gt;findOneByClass('non-existent');
+
+// Find all pages with custom property 'foo' = 'bar':
+// Returns &quot;Page 1&quot; and &quot;Page 1.1&quot;:
+$found = $container-&gt;findAllBy('foo', 'bar');
+
+// To achieve the same magically, 'foo' must be in lowercase.
+// This is because 'foo' is a custom property, and thus the
+// property name is not normalized to 'Foo':
+$found = $container-&gt;findAllByfoo('bar');
+
+// Find all with controller = 'index':
+// Returns &quot;Page 2&quot; and &quot;Page 3&quot;:
+$found = $container-&gt;findAllByController('index');</code></pre>
+
+
+<h2 id="iterating-containers">Iterating containers</h2>
+<p><code>Zend\Navigation\AbstractContainer</code> implements <code>RecursiveIterator</code>.  iterate a
+container recursively, use the <code>RecursiveIteratorIterator</code> class.</p>
+<pre class="codehilite"><code class="language-php">use RecursiveIteratorIterator;
+use Zend\Navigation\Navigation;
+
+/*
+ * Create a container from an array
+ */
+$container = new Navigation([
+    [
+        'label' =&gt; 'Page 1',
+        'uri'   =&gt; '#',
+    ],
+    [
+        'label' =&gt; 'Page 2',
+        'uri'   =&gt; '#',
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'Page 2.1',
+                'uri'   =&gt; '#',
+            ],
+            [
+                'label' =&gt; 'Page 2.2',
+                'uri'   =&gt; '#',
+            ],
+        ],
+    ],
+    [
+        'label' =&gt; 'Page 3',
+        'uri'   =&gt; '#',
+    ],
+]);
+
+// Iterate flat using regular foreach:
+// Output: Page 1, Page 2, Page 3
+foreach ($container as $page) {
+    echo $page-&gt;label;
+}
+
+// Iterate recursively using RecursiveIteratorIterator
+$it = new RecursiveIteratorIterator(
+    $container,
+    RecursiveIteratorIterator::SELF_FIRST
+);
+
+// Output: Page 1, Page 2, Page 2.1, Page 2.2, Page 3
+foreach ($it as $page) {
+    echo $page-&gt;label;
+}</code></pre>
+
+
+<h2 id="other-operations">Other operations</h2>
+<h3 id="haspage">hasPage</h3>
+<pre class="codehilite"><code class="language-php">hasPage(AbstractPage $page) : bool</code></pre>
+
+
+<p>Check if the container has the given page.</p>
+<h3 id="haspages">hasPages</h3>
+<pre class="codehilite"><code class="language-php">hasPages() : bool</code></pre>
+
+
+<p>Checks if there are any pages in the container, and is equivalent to
+<code>count($container) &gt; 0</code>.</p>
+<h3 id="toarray">toArray</h3>
+<pre class="codehilite"><code class="language-php">toArray() : array</code></pre>
+
+
+<p>Converts the container and the pages in it to a (nested) array. This can be useful
+for serializing and debugging.</p>
+<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+
+$container = new Navigation([
+    [
+        'label' =&gt; 'Page 1',
+        'uri'   =&gt; '#',
+    ],
+    [
+        'label' =&gt; 'Page 2',
+        'uri'   =&gt; '#',
+        'pages' =&gt; [
+            [
+                'label' =&gt; 'Page 2.1',
+                'uri'   =&gt; '#',
+            ],
+            [
+                'label' =&gt; 'Page 2.2',
+               'uri'   =&gt; '#',
+            ],
+        ],
+    ],
+]);
+
+var_dump($container-&gt;toArray());
+
+/* Output:
+array(2) {
+  [0]=&gt; array(15) {
+    [&quot;label&quot;]=&gt; string(6) &quot;Page 1&quot;
+    [&quot;id&quot;]=&gt; NULL
+    [&quot;class&quot;]=&gt; NULL
+    [&quot;title&quot;]=&gt; NULL
+    [&quot;target&quot;]=&gt; NULL
+    [&quot;rel&quot;]=&gt; array(0) {
+    }
+    [&quot;rev&quot;]=&gt; array(0) {
+    }
+    [&quot;order&quot;]=&gt; NULL
+    [&quot;resource&quot;]=&gt; NULL
+    [&quot;privilege&quot;]=&gt; NULL
+    [&quot;active&quot;]=&gt; bool(false)
+    [&quot;visible&quot;]=&gt; bool(true)
+    [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+    [&quot;pages&quot;]=&gt; array(0) {
+    }
+    [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+  }
+  [1]=&gt; array(15) {
+    [&quot;label&quot;]=&gt; string(6) &quot;Page 2&quot;
+    [&quot;id&quot;]=&gt; NULL
+    [&quot;class&quot;]=&gt; NULL
+    [&quot;title&quot;]=&gt; NULL
+    [&quot;target&quot;]=&gt; NULL
+    [&quot;rel&quot;]=&gt; array(0) {
+    }
+    [&quot;rev&quot;]=&gt; array(0) {
+    }
+    [&quot;order&quot;]=&gt; NULL
+    [&quot;resource&quot;]=&gt; NULL
+    [&quot;privilege&quot;]=&gt; NULL
+    [&quot;active&quot;]=&gt; bool(false)
+    [&quot;visible&quot;]=&gt; bool(true)
+    [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+    [&quot;pages&quot;]=&gt; array(2) {
+      [0]=&gt; array(15) {
+        [&quot;label&quot;]=&gt; string(8) &quot;Page 2.1&quot;
+        [&quot;id&quot;]=&gt; NULL
+        [&quot;class&quot;]=&gt; NULL
+        [&quot;title&quot;]=&gt; NULL
+        [&quot;target&quot;]=&gt; NULL
+        [&quot;rel&quot;]=&gt; array(0) {
+        }
+        [&quot;rev&quot;]=&gt; array(0) {
+        }
+        [&quot;order&quot;]=&gt; NULL
+        [&quot;resource&quot;]=&gt; NULL
+        [&quot;privilege&quot;]=&gt; NULL
+        [&quot;active&quot;]=&gt; bool(false)
+        [&quot;visible&quot;]=&gt; bool(true)
+        [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+        [&quot;pages&quot;]=&gt; array(0) {
+        }
+        [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+      }
+      [1]=&gt;
+      array(15) {
+        [&quot;label&quot;]=&gt; string(8) &quot;Page 2.2&quot;
+        [&quot;id&quot;]=&gt; NULL
+        [&quot;class&quot;]=&gt; NULL
+        [&quot;title&quot;]=&gt; NULL
+        [&quot;target&quot;]=&gt; NULL
+        [&quot;rel&quot;]=&gt; array(0) {
+        }
+        [&quot;rev&quot;]=&gt; array(0) {
+        }
+        [&quot;order&quot;]=&gt; NULL
+        [&quot;resource&quot;]=&gt; NULL
+        [&quot;privilege&quot;]=&gt; NULL
+        [&quot;active&quot;]=&gt; bool(false)
+        [&quot;visible&quot;]=&gt; bool(true)
+        [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+        [&quot;pages&quot;]=&gt; array(0) {
+        }
+        [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+      }
+    }
+    [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+  }
+}
+*/</code></pre>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href="../pages/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../helpers/intro/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/prism-zf.js"></script>
+
+    <script>var base_url = '..';</script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../img/zf-logo-mark.png" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//zendframework.github.io/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>

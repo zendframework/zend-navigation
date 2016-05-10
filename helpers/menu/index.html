@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Menu - zend-navigation</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/zf.css" rel="stylesheet">
+    <link href="../../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="../..">zend-navigation</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../intro/">Intro</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick Start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../pages/">Pages</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../containers/">Containers</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">View Helpers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../intro/">Intro</a>
+</li>
+
+        
+            
+<li >
+    <a href="../breadcrumbs/">Breadcrumbs</a>
+</li>
+
+        
+            
+<li >
+    <a href="../links/">Links</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Menu</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sitemap/">Sitemap</a>
+</li>
+
+        
+            
+<li >
+    <a href="../navigation/">Navigation Proxy</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-navigation">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#menu">Menu</a></li>
+        
+            <li><a href="#basic-usage">Basic usage</a></li>
+        
+            <li><a href="#calling-rendermenu-directly">Calling renderMenu() directly</a></li>
+        
+            <li><a href="#rendering-the-deepest-active-menu">Rendering the deepest active menu</a></li>
+        
+            <li><a href="#rendering-with-maximum-depth">Rendering with maximum depth</a></li>
+        
+            <li><a href="#rendering-with-minimum-depth">Rendering with minimum depth</a></li>
+        
+            <li><a href="#rendering-only-the-active-branch">Rendering only the active branch</a></li>
+        
+            <li><a href="#rendering-only-the-active-branch-with-minimum-depth">Rendering only the active branch with minimum depth</a></li>
+        
+            <li><a href="#rendering-only-the-active-branch-with-maximum-depth">Rendering only the active branch with maximum depth</a></li>
+        
+            <li><a href="#rendering-only-the-active-branch-with-maximum-depth-and-no-parents">Rendering only the active branch with maximum depth and no parents</a></li>
+        
+            <li><a href="#rendering-a-custom-menu-using-a-partial-view-script">Rendering a custom menu using a partial view script</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href="../links/"><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next">
+        <a rel="next" href="../sitemap/">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="../..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+      
+        <li>View Helpers &raquo;</li>
+      
+    
+  
+  <li class="active">Menu</li>
+</ol>
+
+<h1 id="menu">Menu</h1>
+<p>The <code>menu()</code> helper is used for rendering menus from navigation containers. By
+default, the menu will be rendered using HTML <code>UL</code> and <code>LI</code> tags, but the helper
+also allows using a partial view script.</p>
+<p>Methods in the Menu helper:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Method signature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getUlClass() : string</code></td>
+<td>Retrieve the CSS class used when rendering <code>ul</code> elements in <code>renderMenu()</code>.</td>
+</tr>
+<tr>
+<td><code>setUlClass(string $class) : self</code></td>
+<td>Set the CSS class to use when rendering <code>ul</code> elements in <code>renderMenu()</code>.</td>
+</tr>
+<tr>
+<td><code>getOnlyActiveBranch() : bool</code></td>
+<td>Retrieve the flag specifing whether or not to render only the active branch of a container.</td>
+</tr>
+<tr>
+<td><code>setOnlyActiveBranch(bool $flag) : self</code></td>
+<td>Set the flag specifing whether or not to render only the active branch of a container.</td>
+</tr>
+<tr>
+<td><code>getRenderParents() : bool</code></td>
+<td>Retrieve the flag specifying whether or not to render parent pages when rendering the active branch of a container.</td>
+</tr>
+<tr>
+<td><code>setRenderParents(bool $flag) : self</code></td>
+<td>Set the flag specifying whether or not to render parent pages when rendering the active branch of a container. When set to <code>false</code>, only the deepest active menu will be rendered.</td>
+</tr>
+<tr>
+<td><code>getPartial() : string|array</code></td>
+<td>Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's <code>render()</code> method will use the <code>renderPartial()</code> method. The helper expects the partial to be a <code>string</code> or an <code>array</code> with two elements. If the partial is a <code>string</code>, it denotes the name of the partial script to use. If it is an <code>array</code>, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.</td>
+</tr>
+<tr>
+<td><code>setPartial(string|array $partial) : self</code></td>
+<td>Set the partial view script to use when rendering breadcrumbs; see <code>getPartial()</code> for acceptable values.</td>
+</tr>
+<tr>
+<td><code>htmlify(/* ... */) : string</code></td>
+<td>Overrides the method from the abstract class, with the argument list <code>AbstractPage $page, bool $escapeLabel = true, bool $addClassToListItem = false</code>. Returns <code>span</code> elements if the page has no <code>href</code>.</td>
+</tr>
+<tr>
+<td><code>renderMenu(AbstractContainer $container = null, $options = []) : string</code></td>
+<td>Default rendering method; renders a container as an HTML <code>UL</code> list. If <code>$container</code> is not given, the container registered in the helper will be rendered.  <code>$options</code> is used for overriding options specified temporarily without resetting the values in the helper instance; if none are set, those already provided to the helper will be used. Options are an associative array where each key corresponds to an option in the helper. See the table below for recognized options.</td>
+</tr>
+<tr>
+<td><code>renderPartial(AbstractContainer $container = null, string|array $partial = null) : string</code></td>
+<td>Used for rendering the menu using a partial view script.</td>
+</tr>
+<tr>
+<td><code>renderSubMenu(/* ... */) : string</code></td>
+<td>Renders the deepest menu level of a container's active branch. Accepts the arguments <code>AbstractContainer $container</code>, <code>string $ulClass = null</code>, <code>string|int $indent = null</code> (an integer value indicates number of spaces to use), <code>string $liActiveClass = null</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The following are options recognized by the <code>renderMenu()</code> method:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Option name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indent</code></td>
+<td>Indentation. Expects a <code>string</code> or an <code>int</code> value.</td>
+</tr>
+<tr>
+<td><code>minDepth</code></td>
+<td>Minimum depth. Expects an <code>int</code> or <code>null</code> (no minimum depth).</td>
+</tr>
+<tr>
+<td><code>maxDepth</code></td>
+<td>Maximum depth. Expects an <code>int</code> or <code>null</code> (no maximum depth).</td>
+</tr>
+<tr>
+<td><code>ulClass</code></td>
+<td>CSS class for <code>ul</code> element. Expects a <code>string</code>.</td>
+</tr>
+<tr>
+<td><code>onlyActiveBranch</code></td>
+<td>Whether only active branch should be rendered. Expects a <code>boolean</code> value.</td>
+</tr>
+<tr>
+<td><code>renderParents</code></td>
+<td>Whether parents should be rendered if only rendering active branch. Expects a <code>boolean</code> value.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="basic-usage">Basic usage</h2>
+<p>This example shows how to render a menu from a container registered/found in the
+view helper. Notice how pages are filtered out based on visibility and ACL.</p>
+<p>In a view script or layout:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;render() ?&gt;</code></pre>
+
+
+<p>Or:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li&gt;
+        &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li class=&quot;active&quot;&gt;
+                        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/products/studio/customers&quot;&gt;Customer Stories&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/products/studio/support&quot;&gt;Support&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/company/news/press&quot;&gt;Press Releases&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/archive&quot;&gt;Archive&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="calling-rendermenu-directly">Calling renderMenu() directly</h2>
+<p>This example shows how to render a menu that is not registered in the view
+helper by calling <code>renderMenu()</code> directly and specifying options.</p>
+<pre class="codehilite"><code class="language-php">&lt;?php
+// render only the 'Community' menu
+$community = $this-&gt;navigation()-&gt;findOneByLabel('Community');
+$options = [
+    'indent'  =&gt; 16,
+    'ulClass' =&gt; 'community'
+];
+echo $this-&gt;navigation()
+          -&gt;menu()
+          -&gt;renderMenu($community, $options);
+?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;community&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-the-deepest-active-menu">Rendering the deepest active menu</h2>
+<p>This example shows how <code>renderSubMenu()</code> will render the deepest sub menu of
+the active branch.</p>
+<p>Calling <code>renderSubMenu($container, $ulClass, $indent)</code> is equivalent to calling
+<code>renderMenu($container, $options)</code> with the following options:</p>
+<pre class="codehilite"><code class="language-php">[
+    'ulClass'          =&gt; $ulClass,
+    'indent'           =&gt; $indent,
+    'minDepth'         =&gt; null,
+    'maxDepth'         =&gt; null,
+    'onlyActiveBranch' =&gt; true,
+    'renderParents'    =&gt; false,
+]</code></pre>
+
+
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+    -&gt;menu()
+    -&gt;renderSubMenu(null, 'sidebar', 4) ?&gt;</code></pre>
+
+
+<p>The output will be the same if 'FAQ' or 'Foo Server' is active:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;sidebar&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-with-maximum-depth">Rendering with maximum depth</h2>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+    -&gt;menu()
+    -&gt;setMaxDepth(1) ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li&gt;
+        &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-with-minimum-depth">Rendering with minimum depth</h2>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+    -&gt;menu()
+    -&gt;setMinDepth(1) ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/studio/customers&quot;&gt;Customer Stories&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/studio/support&quot;&gt;Support&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/company/news/press&quot;&gt;Press Releases&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/archive&quot;&gt;Archive&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-only-the-active-branch">Rendering only the active branch</h2>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+    -&gt;menu()
+    -&gt;setOnlyActiveBranch(true) ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li class=&quot;active&quot;&gt;
+                        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-only-the-active-branch-with-minimum-depth">Rendering only the active branch with minimum depth</h2>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+    -&gt;menu()
+    -&gt;setOnlyActiveBranch(true)
+    -&gt;setMinDepth(1) ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-only-the-active-branch-with-maximum-depth">Rendering only the active branch with maximum depth</h2>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+    -&gt;menu()
+    -&gt;setOnlyActiveBranch(true)
+    -&gt;setMaxDepth(1) ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-only-the-active-branch-with-maximum-depth-and-no-parents">Rendering only the active branch with maximum depth and no parents</h2>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+    -&gt;menu()
+    -&gt;setOnlyActiveBranch(true)
+    -&gt;setRenderParents(false)
+    -&gt;setMaxDepth(1) ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+
+<h2 id="rendering-a-custom-menu-using-a-partial-view-script">Rendering a custom menu using a partial view script</h2>
+<p>This example shows how to render a custom menu using a partial view script. By
+calling <code>setPartial()</code>, you can specify a partial view script that will be used
+when calling <code>render()</code>; when a partial is specified, that method will proxy to
+the <code>renderPartial()</code> method.</p>
+<p>The <code>renderPartial()</code>  method will assign the container to the view with the key
+<code>container</code>.</p>
+<p>In a layout:</p>
+<pre class="codehilite"><code class="language-php">$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
+echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
+
+
+<p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
+<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
+    echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
+}</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+&lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+&lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
+
+
+<h3 id="using-menu-options-in-partial-view-scripts">Using menu options in partial view scripts</h3>
+<p>In a layout:</p>
+<pre class="codehilite"><code class="language-php">// Set options
+$this-&gt;navigation()-&gt;menu()
+    -&gt;setUlClass('my-nav')
+    -&gt;setPartial('my-module/partials/menu');
+
+// Output menu
+echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
+
+
+<p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
+<pre class="codehilite"><code class="language-php">&lt;div class&quot;&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;&quot;&gt;
+    &lt;?php
+    foreach ($this-&gt;container as $page) {
+        echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
+    }
+    ?&gt;
+&lt;/div&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;div class=&quot;my-nav&quot;&gt;
+    &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+    &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+    &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+
+
+<h3 id="using-acls-with-partial-view-scripts">Using ACLs with partial view scripts</h3>
+<p>If you want to use an ACL within your partial view script, then you will have to
+check the access to a page manually.</p>
+<p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
+<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
+    if ($this-&gt;navigation()-&gt;accept($page)) {
+        echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
+    }
+}</code></pre>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href="../links/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../sitemap/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/prism-zf.js"></script>
+
+    <script>var base_url = '../..';</script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../../img/zf-logo-mark.png" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//zendframework.github.io/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>

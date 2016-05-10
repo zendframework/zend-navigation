@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Intro - zend-navigation</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/zf.css" rel="stylesheet">
+    <link href="../../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="../..">zend-navigation</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../intro/">Intro</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick Start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../pages/">Pages</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../containers/">Containers</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">View Helpers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li class="active">
+    <a href="./">Intro</a>
+</li>
+
+        
+            
+<li >
+    <a href="../breadcrumbs/">Breadcrumbs</a>
+</li>
+
+        
+            
+<li >
+    <a href="../links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../menu/">Menu</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sitemap/">Sitemap</a>
+</li>
+
+        
+            
+<li >
+    <a href="../navigation/">Navigation Proxy</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-navigation">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#view-helpers">View Helpers</a></li>
+        
+            <li><a href="#proxying-calls-to-the-navigation-container">Proxying calls to the navigation container</a></li>
+        
+            <li><a href="#translation-of-labels-and-titles">Translation of labels and titles</a></li>
+        
+            <li><a href="#integration-with-acl">Integration with ACL</a></li>
+        
+            <li><a href="#navigation-setup-used-in-examples">Navigation setup used in examples</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href="../../containers/"><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next">
+        <a rel="next" href="../breadcrumbs/">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="../..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+      
+        <li>View Helpers &raquo;</li>
+      
+    
+  
+  <li class="active">Intro</li>
+</ol>
+
+<h1 id="view-helpers">View Helpers</h1>
+<p>The navigation helpers are used for rendering navigational elements from
+<a href="../../containers/"><code>Zend\Navigation\Navigation</code></a> instances.</p>
+<p>There are 5 built-in helpers:</p>
+<ul>
+<li><a href="../breadcrumbs/">Breadcrumbs</a>, used for rendering the path to the currently
+  active page.</li>
+<li><a href="../links/">Links</a>, used for rendering navigational head links (e.g.
+  <code>&lt;link rel="next" href="..." /&gt;</code>).</li>
+<li><a href="../menu/">Menu</a>, used for rendering menus.</li>
+<li><a href="../sitemap/">Sitemap</a>, used for rendering sitemaps conforming to the
+  <a href="http://www.sitemaps.org/protocol.php">Sitemaps XML format</a>.</li>
+<li><a href="../navigation/">Navigation</a>, used for proxying calls to other navigational
+  helpers.</li>
+</ul>
+<p>All built-in helpers extend <code>Zend\View\Helper\Navigation\AbstractHelper</code>, which
+adds integration with
+<a href="https://zendframework.github.io/zend-permissions-acl/">zend-acl</a> and
+<a href="https://zendframework.github.io/zend-i18n/">zend-i18n</a>. The abstract class
+implements the interface <code>Zend\View\Helper\Navigation\HelperInterface</code>, which
+defines the following methods:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Method signature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getContainer() : null|AbstractContainer</code></td>
+<td>Retrieve the current navigation container, if any.</td>
+</tr>
+<tr>
+<td><code>hasContainer() : bool</code></td>
+<td>Is any navigation container currently registered?</td>
+</tr>
+<tr>
+<td><code>setContainer(AbstractContainer $container) : self</code></td>
+<td>Set a navigation container.</td>
+</tr>
+<tr>
+<td><code>getTranslator() : null|Zend\I18n\Translator\TranslatorInterface</code></td>
+<td>Retrieve the current translator instance, if any.</td>
+</tr>
+<tr>
+<td><code>setTranslator(Zend\I18n\Translator\TranslatorInterface</code>) : self`</td>
+<td>Set a translator instance to use with labels.</td>
+</tr>
+<tr>
+<td><code>hasTranslator() | bool</code></td>
+<td>Is a translator instance present?</td>
+</tr>
+<tr>
+<td><code>isTranslatorEnabled() : bool</code></td>
+<td>Should translation occur? To be <code>true</code>, both the flag enabling translation must be set, and a translator instance present.</td>
+</tr>
+<tr>
+<td><code>setTranslatorEnabled(bool $flag) : self</code></td>
+<td>Set the flag indicating whether or not translation should occur.</td>
+</tr>
+<tr>
+<td><code>getAcl() : null|Zend\Permissions\Acl\AclInterface</code></td>
+<td>Retrieve the current ACL instance, if any.</td>
+</tr>
+<tr>
+<td><code>setAcl(Zend\Permissions\Acl\AclInterface $acl) : self</code></td>
+<td>Set an ACL instance.</td>
+</tr>
+<tr>
+<td><code>hasAcl() : bool</code></td>
+<td>Whether or not an ACL instance is present.</td>
+</tr>
+<tr>
+<td><code>getRole() : null|string|Zend\Permissions\Acl\Role\RoleInterface</code></td>
+<td>Retrieve the current ACL role instance, if any.</td>
+</tr>
+<tr>
+<td><code>setRole(string|Zend\Permissions\Acl\Role\RoleInterface $acl) : self</code></td>
+<td>Set an ACL role instance.</td>
+</tr>
+<tr>
+<td><code>hasRole() : bool</code></td>
+<td>Whether or not an ACL role instance is present.</td>
+</tr>
+<tr>
+<td><code>getUseAcl() : bool</code></td>
+<td>Whether or not to use ACLs; both the flag must be enabled and an ACL instance present.</td>
+</tr>
+<tr>
+<td><code>setUseAcl(bool $flag) : self</code></td>
+<td>Set the flag indicating whether or not to use ACLs.</td>
+</tr>
+<tr>
+<td><code>__toString()</code></td>
+<td>Cast the helper to a string value; relies on <code>render()</code>.</td>
+</tr>
+<tr>
+<td><code>render()</code></td>
+<td>Render the helper to a string.</td>
+</tr>
+</tbody>
+</table></div>
+<p>In addition to the method stubs from the interface, the abstract class also
+implements the following methods:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Method signature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getIndent() : string</code></td>
+<td>Retrieve the indentation string to use; default is 4 spaces.</td>
+</tr>
+<tr>
+<td><code>setIndent(string|int $indent) : self</code></td>
+<td>Set the indentation to use. In the case of an integer, this indicates the number of spaces. Indentation can be specified for all but the <code>Sitemap</code> helper.</td>
+</tr>
+<tr>
+<td><code>getMinDepth() : int</code></td>
+<td>Retrieve the minimum depth a page must have to be included in output</td>
+</tr>
+<tr>
+<td><code>setMinDepth(null|int $depth) : self</code></td>
+<td>Set the minimum depth a page must have to be included in output; <code>null</code> means no minimum.</td>
+</tr>
+<tr>
+<td><code>getMaxDepth() : int</code></td>
+<td>Retrieve the maximum depth a page must have to be included in output</td>
+</tr>
+<tr>
+<td><code>setMaxDepth(null|int $depth) : self</code></td>
+<td>Set the maximum depth a page must have to be included in output; <code>null</code> means no maximum.</td>
+</tr>
+<tr>
+<td><code>getRenderInvisible() : bool</code></td>
+<td>Retrieve the flag indicating whether or not to render items marked as invisible; defaults to <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>setRenderInvisible(bool $flag) : self</code></td>
+<td>Set the flag indicating whether or not to render items marked as invisible.</td>
+</tr>
+<tr>
+<td><code>__call() : mixed</code></td>
+<td>Proxy method calls to the registered container; this allows you to use the helper as if it were a navigation container. See <a href="#proxying-calls-to-the-navigation-container">the example below</a>.</td>
+</tr>
+<tr>
+<td><code>findActive(/* ... */) : array</code></td>
+<td>Find the deepest active page in the container, using the arguments <code>AbstractContainer $container, int $minDepth = null, int $maxDepth = -1)</code>. If depths are not given, the method will use the values retrieved from <code>getMinDepth()</code> and <code>getMaxDepth()</code>. The deepest active page must be between <code>$minDepth</code> and <code>$maxDepth</code> inclusively. Returns an array containing the found page instance (key <code>page</code>) and the depth (key <code>depth</code>) at which the page was found.</td>
+</tr>
+<tr>
+<td><code>htmlify(AbstractPage $page) : string</code></td>
+<td>Renders an HTML <code>a</code> element based on the give page.</td>
+</tr>
+<tr>
+<td><code>accept(AbstractPage $page, bool $recursive = true) : bool</code></td>
+<td>Determine if a page should be accepted when iterating containers. This method checks for page visibility and verifies that the helper's role is allowed access to the page's resource and privilege.</td>
+</tr>
+<tr>
+<td><code>static setDefaultAcl(Zend\Permissions\Acl\AclInterface $acl) : void</code></td>
+<td>Set a default ACL instance to use with all navigation helpers.</td>
+</tr>
+<tr>
+<td><code>static setDefaultRole(Zend\Permissions\Acl\Role\RoleInterface $acl) : void</code></td>
+<td>Set a default ACL role instance to use with all navigation helpers.</td>
+</tr>
+</tbody>
+</table></div>
+<p>If a container is not explicitly set, the helper will create an empty
+<code>Zend\Navigation\Navigation</code> container when calling <code>$helper-&gt;getContainer()</code>.</p>
+<h3 id="proxying-calls-to-the-navigation-container">Proxying calls to the navigation container</h3>
+<p>Navigation view helpers use the magic method <code>__call()</code> to proxy method calls to
+the navigation container that is registered in the view helper.</p>
+<pre class="codehilite"><code class="language-php">$this-&gt;navigation()-&gt;addPage([
+    'type' =&gt; 'uri',
+    'label' =&gt; 'New page',
+]);</code></pre>
+
+
+<p>The call above will add a page to the container in the <code>Navigation</code> helper.</p>
+<h2 id="translation-of-labels-and-titles">Translation of labels and titles</h2>
+<p>The navigation helpers support translation of page labels and titles. You can
+set a translator of type <code>Zend\I18n\Translator\TranslatorInterface</code> in the
+helper using <code>$helper-&gt;setTranslator($translator)</code>.</p>
+<p>If you want to disable translation, use <code>$helper-&gt;setTranslatorEnabled(false)</code>.</p>
+<p>The <a href="../navigation/">proxy helper</a> will inject its own translator to the helper
+it proxies to if the proxied helper doesn't already have a translator.</p>
+<blockquote>
+<h3 id="sitemaps-do-not-use-translation">Sitemaps do not use translation</h3>
+<p>There is no translation in the sitemap helper, since there are no page labels
+or titles involved in an XML sitemap.</p>
+</blockquote>
+<h2 id="integration-with-acl">Integration with ACL</h2>
+<p>All navigational view helpers support ACLs.  An object implementing
+<code>Zend\Permissions\Acl\AclInterface</code> can be assigned to a helper instance with
+<code>$helper-&gt;setAcl($acl)</code>, and role with <code>$helper-&gt;setRole('member')</code> or
+<code>$helper-&gt;setRole(new Zend\Permissions\Acl\Role\GenericRole('member'))</code>. If an
+ACL is used in the helper, the role in the helper must be allowed by the ACL to
+access a page's <code>resource</code> and/or have the page's <code>privilege</code> for the page to be
+included when rendering.</p>
+<p>If a page is not accepted by ACL, any descendant page will also be excluded from
+rendering.</p>
+<p>The <a href="../navigation/">proxy helper</a> will inject its own ACL and role to the helper
+it proxies to if the proxied helper doesn't already have any.</p>
+<p>The examples below all show how ACL affects rendering.</p>
+<h2 id="navigation-setup-used-in-examples">Navigation setup used in examples</h2>
+<p>This example shows the setup of a navigation container for a fictional software company.</p>
+<p>Notes on the setup:</p>
+<ul>
+<li>The domain for the site is <code>www.example.com</code>.</li>
+<li>Interesting page properties are marked with a comment.</li>
+<li>Unless otherwise is stated in other examples, the user is requesting the URL
+  <code>http://www.example.com/products/server/faq/</code>, which translates to the page
+  labeled <code>FAQ</code> under "Foo Server".</li>
+<li>The assumed ACL and router setup is shown below the container setup.</li>
+</ul>
+<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+
+/*
+ * Navigation container
+
+ * Each element in the array will be passed to
+ * Zend\Navigation\Page\AbstractPage::factory() when constructing
+ * the navigation container below.
+ */
+$pages = [
+    [
+        'label'      =&gt; 'Home',
+        'title'      =&gt; 'Go Home',
+        'module'     =&gt; 'default',
+        'controller' =&gt; 'index',
+        'action'     =&gt; 'index',
+        'order'      =&gt; -100, // make sure home is the first page
+    ],
+    [
+        'label'      =&gt; 'Special offer this week only!',
+        'module'     =&gt; 'store',
+        'controller' =&gt; 'offer',
+        'action'     =&gt; 'amazing',
+        'visible'    =&gt; false, // not visible
+    ],
+    [
+        'label'      =&gt; 'Products',
+        'module'     =&gt; 'products',
+        'controller' =&gt; 'index',
+        'action'     =&gt; 'index',
+        'pages'      =&gt; [
+            [
+                'label'      =&gt; 'Foo Server',
+                'module'     =&gt; 'products',
+                'controller' =&gt; 'server',
+                'action'     =&gt; 'index',
+                'pages'      =&gt; [
+                    [
+                        'label'      =&gt; 'FAQ',
+                        'module'     =&gt; 'products',
+                        'controller' =&gt; 'server',
+                        'action'     =&gt; 'faq',
+                        'rel'        =&gt; [
+                            'canonical' =&gt; 'http://www.example.com/?page=faq',
+                            'alternate' =&gt; [
+                                'module'     =&gt; 'products',
+                                'controller' =&gt; 'server',
+                                'action'     =&gt; 'faq',
+                                'params'     =&gt; ['format' =&gt; 'xml'],
+                            ],
+                        ],
+                    ],
+                    [
+                        'label'      =&gt; 'Editions',
+                        'module'     =&gt; 'products',
+                        'controller' =&gt; 'server',
+                        'action'     =&gt; 'editions',
+                    ],
+                    [
+                        'label'      =&gt; 'System Requirements',
+                        'module'     =&gt; 'products',
+                        'controller' =&gt; 'server',
+                        'action'     =&gt; 'requirements',
+                    ],
+                ],
+            ],
+            [
+                'label'      =&gt; 'Foo Studio',
+                'module'     =&gt; 'products',
+                'controller' =&gt; 'studio',
+                'action'     =&gt; 'index',
+                'pages'      =&gt; [
+                    [
+                        'label'      =&gt; 'Customer Stories',
+                        'module'     =&gt; 'products',
+                        'controller' =&gt; 'studio',
+                        'action'     =&gt; 'customers',
+                    ],
+                    [
+                        'label'      =&gt; 'Support',
+                        'module'     =&gt; 'products',
+                        'controller' =&gt; 'studio',
+                        'action'     =&gt; 'support',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'label'      =&gt; 'Company',
+        'title'      =&gt; 'About us',
+        'module'     =&gt; 'company',
+        'controller' =&gt; 'about',
+        'action'     =&gt; 'index',
+        'pages'      =&gt; [
+            [
+                'label'      =&gt; 'Investor Relations',
+                'module'     =&gt; 'company',
+                'controller' =&gt; 'about',
+                'action'     =&gt; 'investors',
+            ],
+            [
+                'label'      =&gt; 'News',
+                'class'      =&gt; 'rss', // class
+                'module'     =&gt; 'company',
+                'controller' =&gt; 'news',
+                'action'     =&gt; 'index',
+                'pages'      =&gt; [
+                    [
+                        'label'      =&gt; 'Press Releases',
+                        'module'     =&gt; 'company',
+                        'controller' =&gt; 'news',
+                        'action'     =&gt; 'press',
+                    ],
+                    [
+                        'label'      =&gt; 'Archive',
+                        'route'      =&gt; 'archive', // route
+                        'module'     =&gt; 'company',
+                        'controller' =&gt; 'news',
+                        'action'     =&gt; 'archive',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'label'      =&gt; 'Community',
+        'module'     =&gt; 'community',
+        'controller' =&gt; 'index',
+        'action'     =&gt; 'index',
+        'pages'      =&gt; [
+            [
+                'label'      =&gt; 'My Account',
+                'module'     =&gt; 'community',
+                'controller' =&gt; 'account',
+                'action'     =&gt; 'index',
+                'resource'   =&gt; 'mvc:community.account', // resource
+            ],
+            [
+                'label' =&gt; 'Forums',
+                'uri'   =&gt; 'http://forums.example.com/',
+                'class' =&gt; 'external', // class,
+            ],
+        ],
+    ],
+    [
+        'label'      =&gt; 'Administration',
+        'module'     =&gt; 'admin',
+        'controller' =&gt; 'index',
+        'action'     =&gt; 'index',
+        'resource'   =&gt; 'mvc:admin', // resource
+        'pages'      =&gt; [
+            [
+                'label'      =&gt; 'Write new article',
+                'module'     =&gt; 'admin',
+                'controller' =&gt; 'post',
+                'action'     =&gt; 'write',
+            ],
+        ],
+    ],
+];
+
+// Create container from array
+$container = new Navigation($pages);
+
+// Store the container in the proxy helper:
+$view-&gt;plugin('navigation')-&gt;setContainer($container);
+
+// ...or simply:
+$view-&gt;navigation($container);</code></pre>
+
+
+<p>In addition to the container above, the following setup is assumed:</p>
+<pre class="codehilite"><code class="language-php">&lt;?php
+// module/MyModule/config/module.config.php
+
+return [
+    /* ... */
+    'router' [
+        'routes' =&gt; [
+            'archive' =&gt; [
+                'type'    =&gt; 'Segment',
+                'options' =&gt; [
+                    'route'    =&gt; '/archive/:year',
+                    'defaults' =&gt; [
+                        'module'     =&gt; 'company',
+                        'controller' =&gt; 'news',
+                        'action'     =&gt; 'archive',
+                        'year'       =&gt; (int) date('Y') - 1,
+                    ],
+                    'constraints' =&gt; [
+                        'year' =&gt; '\d+',
+                    ],
+                ],
+            ],
+            /* You can have other routes here... */
+        ],
+    ],
+    /* ... */
+];</code></pre>
+
+
+<pre class="codehilite"><code class="language-php">&lt;?php
+// module/MyModule/Module.php
+
+namespace MyModule;
+
+use Zend\View\HelperPluginManager;
+use Zend\Permissions\Acl\Acl;
+use Zend\Permissions\Acl\Role\GenericRole;
+use Zend\Permissions\Acl\Resource\GenericResource;
+
+class Module
+{
+    /* ... */
+    public function getViewHelperConfig()
+    {
+        return [
+            'factories' =&gt; [
+                // This will overwrite the native navigation helper
+                'navigation' =&gt; function(HelperPluginManager $pm) {
+                    // Setup ACL:
+                    $acl = new Acl();
+                    $acl-&gt;addRole(new GenericRole('member'));
+                    $acl-&gt;addRole(new GenericRole('admin'));
+                    $acl-&gt;addResource(new GenericResource('mvc:admin'));
+                    $acl-&gt;addResource(new GenericResource('mvc:community.account'));
+                    $acl-&gt;allow('member', 'mvc:community.account');
+                    $acl-&gt;allow('admin', null);
+
+                    // Get an instance of the proxy helper
+                    $navigation = $pm-&gt;get('Zend\View\Helper\Navigation');
+
+                    // Store ACL and role in the proxy helper:
+                    $navigation-&gt;setAcl($acl);
+                    $navigation-&gt;setRole('member');
+
+                    // Return the new navigation helper instance
+                    return $navigation;
+                }
+            ]
+        ];
+    }
+    /* ... */
+}</code></pre>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href="../../containers/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../breadcrumbs/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/prism-zf.js"></script>
+
+    <script>var base_url = '../..';</script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../../img/zf-logo-mark.png" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//zendframework.github.io/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Links - zend-navigation</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/zf.css" rel="stylesheet">
+    <link href="../../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="../..">zend-navigation</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../intro/">Intro</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick Start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../pages/">Pages</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../containers/">Containers</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">View Helpers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../intro/">Intro</a>
+</li>
+
+        
+            
+<li >
+    <a href="../breadcrumbs/">Breadcrumbs</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../menu/">Menu</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sitemap/">Sitemap</a>
+</li>
+
+        
+            
+<li >
+    <a href="../navigation/">Navigation Proxy</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-navigation">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#links">Links</a></li>
+        
+            <li><a href="#allowed-relation-types">Allowed relation types</a></li>
+        
+            <li><a href="#basic-usage">Basic usage</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href="../breadcrumbs/"><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next">
+        <a rel="next" href="../menu/">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="../..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+      
+        <li>View Helpers &raquo;</li>
+      
+    
+  
+  <li class="active">Links</li>
+</ol>
+
+<h1 id="links">Links</h1>
+<p>The <code>links()</code> helper is used for rendering HTML <code>LINK</code> elements. Links are used for describing
+document relationships of the currently active page. Read more about links and
+link types at:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/html4/struct/links.html#h-12.3">Document relationships: the LINK element (HTML4 W3C Rec.)</a></li>
+<li><a href="http://www.w3.org/TR/html4/types.html#h-6.12">Link types (HTML4 W3C Rec.)</a></li>
+</ul>
+<p>There are two types of relations; forward and reverse, indicated by the kewyords
+<code>rel</code> and <code>rev</code>. Most methods in the helper will take a <code>$rel</code> param, which must
+be either <code>rel</code> or <code>rev</code>. Most methods also take a <code>$type</code> param, which is used
+for specifying the link type (e.g. <code>alternate</code>, <code>start</code>, <code>next</code>, <code>prev</code>,
+<code>chapter</code>, etc).</p>
+<p>Relationships can be added to page objects manually, or found by traversing the
+container registered in the helper. The method <code>findRelation($page, $rel,
+$type)</code> will first try to find the given <code>$rel</code> of <code>$type</code> from the <code>$page</code> by
+calling <code>$page&gt;findRel($type)</code> or <code>$page&gt;findRel($type)</code>. If the <code>$page</code> has a
+relation that can be converted to a page instance, that relation will be used.
+If the <code>$page</code> instance doesn't have the specified <code>$type</code>, the helper will look
+for a method in the helper named <code>search$rel$type</code> (e.g. <code>searchRelNext()</code> or
+<code>searchRevAlternate()</code>). If such a method exists, it will be used for
+determining the <code>$page</code>'s relation by traversing the container.</p>
+<p>Not all relations can be determined by traversing the container. These are the
+relations that will be found by searching:</p>
+<ul>
+<li><code>searchRelStart()</code>, forward <code>start</code> relation: the first page in the container.</li>
+<li><code>searchRelNext()</code>, forward <code>next</code> relation; finds the next page in the
+  container, i.e. the page after the active page.</li>
+<li><code>searchRelPrev()</code>, forward <code>prev</code> relation; finds the previous page, i.e. the
+  page before the active page.</li>
+<li><code>searchRelChapter()</code>, forward <code>chapter</code> relations; finds all pages on level 0
+  except the <code>start</code> relation or the active page if it's on level 0.</li>
+<li><code>searchRelSection()</code>, forward <code>section</code> relations; finds all child pages of
+  the active page if the active page is on level 0 (a <code>chapter</code>).</li>
+<li><code>searchRelSubsection()</code>, forward <code>subsection</code> relations; finds all child pages
+  of the active page if the active pages is on level 1 (a <code>section</code>).</li>
+<li><code>searchRevSection()</code>, reverse <code>section</code> relation; finds the parent of the
+  active page if the active page is on level 1 (a <code>section</code>).</li>
+<li><code>searchRevSubsection()</code>, reverse <code>subsection</code> relation; finds the parent of
+  the active page if the active page is on level 2 (a <code>subsection</code>).</li>
+</ul>
+<blockquote>
+<h3 id="allowed-relation-types">Allowed relation types</h3>
+<p>When looking for relations in the page instance (<code>$page-&gt;getRel($type)</code> or
+<code>$page-&gt;getRev($type)</code>), the helper accepts the values of type <code>string</code>,
+<code>array</code>, <code>Traversable</code>,
+or <code>Zend\Navigation\Page\AbstractPage</code>:</p>
+<ul>
+<li><code>AbstractPage</code> instances are used directly.</li>
+<li>If a string is found, it will be converted to a <code>Zend\Navigation\Page\Uri</code>.</li>
+<li>If an array or <code>Traversable</code> is found, it will be converted to one or
+  several page instances. If the first key is numeric, it will be considered to
+  contain several pages, and each element will be passed to the <a href="../../pages/#creating-pages-using-the-page-factory">page
+  factory</a>.  If the first key
+  is not numeric, the value will be passed to the page factory directly, and a
+  single page will be returned.</li>
+</ul>
+</blockquote>
+<p>The helper also supports magic methods for finding relations. E.g. to find
+forward alternate relations, call <code>$helper-&gt;findRelAlternate($page)</code>, and to
+find reverse section relations, call <code>$helper-&gt;findRevSection($page)</code>. Those
+calls correspond to <code>$helper-&gt;findRelation($page, 'rel', 'alternate')</code> and
+<code>$helper-&gt;findRelation($page, 'rev', 'section')</code>, respectively.</p>
+<p>To customize which relations should be rendered, the helper uses a render flag.
+The render flag is an integer value, and will be used in a
+<a href="http://php.net/language.operators.bitwise">bitwise and (<code>&amp;</code>) operation</a> against
+the helper's render constants to determine if the relation that belongs to the
+render constant should be rendered.</p>
+<p>See the example below for more information.</p>
+<p>The <code>Links</code> helper defines the following constants:</p>
+<ul>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_ALTERNATE</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_STYLESHEET</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_START</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_NEXT</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_PREV</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_CONTENTS</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_INDEX</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_GLOSSARY</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_COPYRIGHT</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_CHAPTER</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_SECTION</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_SUBSECTION</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_APPENDIX</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_HELP</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_BOOKMARK</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_CUSTOM</code></li>
+<li><code>Zend\View\Helper\Navigation\Links::RENDER_ALL</code></li>
+</ul>
+<p>The constants from <code>RENDER_ALTERNATE</code> to <code>RENDER_BOOKMARK</code> denote standard HTML
+link types.  <code>RENDER_CUSTOM</code> denotes non-standard relations specified in pages.
+<code>RENDER_ALL</code> denotes standard and non-standard relations.</p>
+<p>Methods in the links helper:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Method signature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getRenderFlag() : int</code></td>
+<td>Retrieves the render flag; default is <code>RENDER_ALL</code>.</td>
+</tr>
+<tr>
+<td><code>setRenderFlag(int $flag) : self</code></td>
+<td>Set the render flag; see examples below.</td>
+</tr>
+<tr>
+<td><code>findAllRelations(AbstractPage $page, int $flag = null) : array</code></td>
+<td>Finds all relations of all types for a given page.</td>
+</tr>
+<tr>
+<td><code>findRelation(AbstractPage $page, string $rel, string $type) : AbstractPage|array|null</code></td>
+<td>Finds all relations of a given type from a given page.</td>
+</tr>
+<tr>
+<td><code>searchRel*(AbstractPage $page) : AbstractPage|null</code></td>
+<td>Traverses a container to find forward relations to the <code>Start</code> page, the <code>Next</code> page, the <code>Prev</code>ious page, <code>Chapter</code>s, <code>Section</code>s, and <code>Subsection</code>s.</td>
+</tr>
+<tr>
+<td><code>searchRev*(AbstractPage $page) : AbstractPage:null</code></td>
+<td>Traverses a container to find reverse relations to <code>Section</code>s or <code>Subsection</code>s.</td>
+</tr>
+<tr>
+<td><code>renderLink(AbstractPage $page, string $attrib, string $relation) : string</code></td>
+<td>Renders a single <code>link</code> element.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="basic-usage">Basic usage</h2>
+<h3 id="specify-relations-in-pages">Specify relations in pages</h3>
+<p>This example shows how to specify relations in pages.</p>
+<pre class="codehilite"><code class="language-php">use Zend\Config\Config;
+use Zend\Navigation\Navigation;
+use Zend\Navigation\Page\AbstractPage;
+
+$container = new Navigation([
+    [
+        'label' =&gt; 'Relations using strings',
+        'rel'   =&gt; [
+            'alternate' =&gt; 'http://www.example.org/',
+        ],
+        'rev'   =&gt; [
+            'alternate' =&gt; 'http://www.example.net/',
+        ],
+    ],
+    [
+        'label' =&gt; 'Relations using arrays',
+        'rel'   =&gt; [
+            'alternate' =&gt; [
+                'label' =&gt; 'Example.org',
+                'uri'   =&gt; 'http://www.example.org/',
+            ],
+        ],
+    ],
+    [
+        'label' =&gt; 'Relations using configs',
+        'rel'   =&gt; [
+            'alternate' =&gt; new Config([
+                'label' =&gt; 'Example.org',
+                'uri'   =&gt; 'http://www.example.org/',
+            ]),
+        ],
+    ],
+    [
+        'label' =&gt; 'Relations using pages instance',
+        'rel'   =&gt; [
+            'alternate' =&gt; AbstractPage::factory([
+                'label' =&gt; 'Example.org',
+                'uri'   =&gt; 'http://www.example.org/',
+            ]),
+        ],
+    ],
+]);</code></pre>
+
+
+<h3 id="default-rendering-of-links">Default rendering of links</h3>
+<p>This example shows how to render a menu from a container registered in the
+view helper.</p>
+<p>In a view script or layout:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;links() ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/products&quot; title=&quot;Products&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/company/about&quot; title=&quot;Company&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/community&quot; title=&quot;Community&quot;&gt;
+&lt;link rel=&quot;canonical&quot; href=&quot;http://www.example.com/?page=server-faq&quot;&gt;
+&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+
+
+<h3 id="specify-which-relations-to-render">Specify which relations to render</h3>
+<p>This example shows how to specify which relations to find and render.</p>
+<p>Render only start, next, and prev:</p>
+<pre class="codehilite"><code class="language-php">use Zend\View\Helper\Navigation\Links;
+
+$links = $this-&gt;navigation()-&gt;links();
+$links-&gt;setRenderFlag(Links::RENDER_START | Links::RENDER_NEXT | Links::RENDER_PREV);
+echo $links;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+
+
+<p>Render only native link types:</p>
+<pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CUSTOM);
+echo $links;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/products&quot; title=&quot;Products&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/company/about&quot; title=&quot;Company&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/community&quot; title=&quot;Community&quot;&gt;
+&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+
+
+<p>Render all but chapters:</p>
+<pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CHAPTER);
+echo $links;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
+&lt;link rel=&quot;canonical&quot; href=&quot;http://www.example.com/?page=server-faq&quot;&gt;
+&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href="../breadcrumbs/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../menu/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/prism-zf.js"></script>
+
+    <script>var base_url = '../..';</script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../../img/zf-logo-mark.png" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//zendframework.github.io/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>

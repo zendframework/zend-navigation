@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    <title>Breadcrumbs - zend-navigation</title>
+
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link href="../../css/zf.css" rel="stylesheet">
+    <link href="../../css/prism-zf.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            families: ['Open Sans', 'PT Sans']
+        }
+    });
+    </script>
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <span class="navbar-brand">
+              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../../img/zf-logo-mark.png" height="28" alt="Zend Framework" /></a>
+              <a href="../..">zend-navigation</a>
+            </span>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../intro/">Intro</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick Start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../pages/">Pages</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../containers/">Containers</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">View Helpers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../intro/">Intro</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Breadcrumbs</a>
+</li>
+
+        
+            
+<li >
+    <a href="../links/">Links</a>
+</li>
+
+        
+            
+<li >
+    <a href="../menu/">Menu</a>
+</li>
+
+        
+            
+<li >
+    <a href="../sitemap/">Sitemap</a>
+</li>
+
+        
+            
+<li >
+    <a href="../navigation/">Navigation Proxy</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" class="component-toggle" data-toggle="tooltip" data-placement="bottom" title="Show component list">
+                        <i class="fa fa-book"></i> Components
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li>
+                        <a href="https://github.com/zendframework/zend-navigation">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- content:begin -->
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#breadcrumbs">Breadcrumbs</a></li>
+        
+            <li><a href="#basic-usage">Basic usage</a></li>
+        
+            <li><a href="#specifying-indentation">Specifying indentation</a></li>
+        
+            <li><a href="#customize-output">Customize output</a></li>
+        
+            <li><a href="#rendering-using-a-partial-view-script">Rendering using a partial view script</a></li>
+        
+    
+    </ul>
+
+    
+    <ul class="pager hidden-print">
+      <li class="previous">
+        <a rel="prev" href="../intro/"><i class="fa fa-arrow-left"></i> Previous</a>
+      </li>
+      <li class="next">
+        <a rel="next" href="../links/">Next <i class="fa fa-arrow-right"></i></a>
+      </li>
+    </ul>
+    
+</div></div>
+        <div class="col-md-9" role="main">
+
+<ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
+  <li><a href="../..">Docs</a> &raquo;</li>
+  
+    
+      
+        <li>Reference &raquo;</li>
+      
+    
+      
+        <li>View Helpers &raquo;</li>
+      
+    
+  
+  <li class="active">Breadcrumbs</li>
+</ol>
+
+<h1 id="breadcrumbs">Breadcrumbs</h1>
+<p>Breadcrumbs are used for indicating where in a sitemap a user is currently browsing, and are
+typically rendered like the following:</p>
+<pre class="codehilite"><code class="language-text">You are here: Home &gt; Products &gt; FantasticProduct 1.0</code></pre>
+
+
+<p>The <code>breadcrumbs()</code> helper follows the <a href="http://developer.yahoo.com/ypatterns/pattern.php?pattern=breadcrumbs">Breadcrumbs Pattern</a>
+as outlined in the Yahoo! Design Pattern Library, and allows simple
+customization (minimum/maximum depth, indentation, separator, and whether the
+last element should be linked), or rendering using a partial view script.</p>
+<p>The Breadcrumbs helper finds the deepest active page in a navigation container,
+and renders an upwards path to the root. For MVC pages, the "activeness" of a
+page is determined by inspecting the request object, as stated in the section on
+<a href="../../pages/#mvc-pages">MVC pages</a>.</p>
+<p>The helper sets the <code>minDepth</code> property to 1 by default, meaning breadcrumbs
+will not be rendered if the deepest active page is a root page. If <code>maxDepth</code> is
+specified, the helper will stop rendering when at the specified depth (e.g. stop
+at level 2 even if the deepest active page is on level 3).</p>
+<p>Methods in the breadcrumbs helper:</p>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Method signature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getSeparator() : string</code></td>
+<td>Retrieves the separator string to use between breadcrumbs; default is <code>&amp;gt;</code>.</td>
+</tr>
+<tr>
+<td><code>setSeparator(string $separator) : self</code></td>
+<td>Set the separator string to use between breadcrumbs.</td>
+</tr>
+<tr>
+<td><code>getLinkLast() : bool</code></td>
+<td>Retrieve the flag indicating whether the last breadcrumb should be rendered as an anchor; defaults to <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>setLinkLast(bool $flag) : self</code></td>
+<td>Set the flag indicating whether the last breadcrumb should be rendered as an anchor.</td>
+</tr>
+<tr>
+<td><code>getPartial() : string|array</code></td>
+<td>Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's <code>render()</code> method will use the <code>renderPartial()</code> method. The helper expects the partial to be a <code>string</code> or an <code>array</code> with two elements. If the partial is a <code>string</code>, it denotes the name of the partial script to use. If it is an <code>array</code>, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.</td>
+</tr>
+<tr>
+<td><code>setPartial(string|array $partial) : self</code></td>
+<td>Set the partial view script to use when rendering breadcrumbs; see <code>getPartial()</code> for acceptable values.</td>
+</tr>
+<tr>
+<td><code>renderStraight()</code></td>
+<td>The default render method used when no partial view script is present.</td>
+</tr>
+<tr>
+<td><code>renderPartial()</code></td>
+<td>Used for rendering using a partial view script.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="basic-usage">Basic usage</h2>
+<p>This example shows how to render breadcrumbs with default settings.</p>
+<p>In a view script or layout:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs(); ?&gt;</code></pre>
+
+
+<p>The call above takes advantage of the magic <code>__toString()</code> method, and is
+equivalent to:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;render(); ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; &amp;gt; &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
+
+
+<h2 id="specifying-indentation">Specifying indentation</h2>
+<p>This example shows how to render breadcrumbs with initial indentation.</p>
+<p>Rendering with 8 spaces indentation:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setIndent(8) ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; &amp;gt; &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
+
+
+<h2 id="customize-output">Customize output</h2>
+<p>This example shows how to customize breadcrumbs output by specifying multiple options.</p>
+<p>In a view script or layout:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()
+    -&gt;setLinkLast(true)                   // link last page
+    -&gt;setMaxDepth(1)                      // stop at level 1
+    -&gt;setSeparator(' ▶' . PHP_EOL);       // cool separator with newline
+?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; ▶
+&lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;</code></pre>
+
+
+<p>Setting minimum depth required to render breadcrumbs:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setMinDepth(10) ?&gt;</code></pre>
+
+
+<p>Output: Nothing, because the deepest active page is not at level 10 or deeper.</p>
+<h2 id="rendering-using-a-partial-view-script">Rendering using a partial view script</h2>
+<p>This example shows how to render customized breadcrumbs using a partial vew
+script. By calling <code>setPartial()</code>, you can specify a partial view script that
+will be used when calling <code>render()</code>.  When a partial is specified, the
+<code>renderPartial()</code> method will be called when emitting the breadcrumbs. This
+method will find the deepest active page and pass an array of pages that leads
+to the active page to the partial view script.</p>
+<p>In a layout:</p>
+<pre class="codehilite"><code class="language-php">echo $this-&gt;navigation()-&gt;breadcrumbs()
+    -&gt;setPartial('my-module/partials/breadcrumbs');</code></pre>
+
+
+<p>Contents of <code>module/MyModule/view/my-module/partials/breadcrumbs.phtml</code>:</p>
+<pre class="codehilite"><code class="language-php">&lt;?= implode(', ', array_map(function ($a) {
+  return $a-&gt;getLabel();
+}, $this-&gt;pages)); ?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">Products, Foo Server, FAQ</code></pre>
+
+<hr />
+
+
+<nav>
+  <ul class="pager hidden-print">
+    <li class="previous">
+      <a rel="prev" href="../intro/"><i class="fa fa-arrow-left"></i> Previous</a>
+    </li>
+    <li class="next">
+      <a rel="next" href="../links/">Next <i class="fa fa-arrow-right"></i></a>
+    </li>
+  </ul>
+</nav>
+</div>
+        
+    </div>
+    <!-- content:end -->
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a><br></small>
+        </p>
+        <p><small><a href="http://framework.zend.com">Learn more about Zend Framework</a></small></p>
+    </footer>
+
+    <script src="../../js/jquery-1.10.2.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/prism-zf.js"></script>
+
+    <script>var base_url = '../..';</script>
+    <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+    <script src="../../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="zf-components">
+  <div class="zf-components-grid">
+    <div class="zf-logo">
+      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../../img/zf-logo-mark.png" alt="Zend Framework" width="250" /></a>
+    </div>
+
+    <div class="component-list"></div>
+
+    <p class="zf-components-rollup"><a href="#">Hide list</a></p>
+  </div>
+</div>
+
+    <script>
+  // Prepare the component list dropdown for display
+  $(function () {
+    var components = $(".zf-components"),
+        componentList = components.find(".component-list"),
+        sidebar = $(".bs-sidebar.affix"),
+        sidebarInitialPos = sidebar.css("position"),
+        hidden,
+        componentToggle = $(".component-toggle"),
+        navbar = $(".navbar-fixed-top"),
+        rollUpLink = $(".zf-components-rollup a");
+
+    // Initial setup on document load
+    components.insertBefore(navbar);
+    $(".zf-logo a").tooltip();
+    componentToggle.tooltip();
+    rollUpLink.attr({ href: "#", alt: "Hide component list" });
+
+    // Cast initial sidebar position value
+    if (undefined === sidebarInitialPos) {
+      sidebarInitialPos = "fixed";
+    }
+
+    // Setup onclick events to toggle list
+    componentToggle.click(toggleComponentList);
+    rollUpLink.click(toggleComponentList);
+
+    // Toggle the component list display
+    function toggleComponentList(event) {
+      event.preventDefault();
+
+      if (hidden === undefined) {
+        // Not loaded yet; load and display.
+        loadComponentList();
+        return;
+      }
+
+      if (hidden) {
+        // Hidden; display.
+        showComponentList();
+        return;
+      }
+
+      // Currently visible; hide
+      hideComponentList();
+    }
+
+    // Show the component list
+    function showComponentList() {
+      navbar.css({position: "relative"});
+      sidebar.css({position: "relative"});
+      components
+        .css({"margin-top": "-" + components.outerHeight() + "px"})
+        .show()
+        .animate({"margin-top": 0}, {
+          complete: function () {
+            componentToggle
+              .data("placement", "top")
+              .attr("data-original-title", "Hide component list");
+            hidden = false;
+          },
+          queue: false
+        });
+    }
+
+    // Hide the component list
+    function hideComponentList() {
+      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
+        complete: function () {
+          navbar.css({position: "fixed"});
+          sidebar.css({position: sidebarInitialPos});
+          componentToggle
+            .data("placement", "bottom")
+            .attr("data-original-title", "Show component list");
+          components.hide();
+          hidden = true;
+        },
+        queue: false
+      });
+      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
+    }
+
+    // Inject a component into the componet list DOM.
+    function injectComponent(index, component) {
+      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
+    }
+
+    // Parse the component list, build the DOM, and display it.
+    function parseComponentList(components) {
+      $.each(components, injectComponent);
+      showComponentList();
+    }
+
+    // Fetch the component list and display it.
+    function loadComponentList () {
+      $.ajax({
+        url: "//zendframework.github.io/zf-mkdoc-theme/scripts/zf-component-list.json",
+        dataType: "text json",
+        success: parseComponentList,
+        error: function (e) {
+          console.log("Error occurred with XHR call", e);
+        }
+      });
+    }
+  });
+</script>
+    </body>
+
+</html>

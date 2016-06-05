@@ -22,7 +22,7 @@
         "zendframework/zend-http": "^2.5.4",
         "zendframework/zend-i18n": "^2.6",
         "zendframework/zend-log": "^2.7.1",
-        "zendframework/zend-mvc": "^2.7",
+        "zendframework/zend-mvc": "^2.7 || ^3.0",
         "zendframework/zend-permissions-acl": "^2.6",
         "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
         "zendframework/zend-uri": "^2.5",

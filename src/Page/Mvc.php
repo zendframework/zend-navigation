@@ -420,7 +420,7 @@ class Mvc extends AbstractPage
     /**
      * Get the route match.
      *
-     * @return \Zend\Mvc\Router\RouteMatch
+     * @return \Zend\Router\Http\RouteMatch
      */
     public function getRouteMatch()
     {

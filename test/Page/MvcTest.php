@@ -10,11 +10,11 @@
 namespace ZendTest\Navigation\Page;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Mvc\Router\RouteMatch;
-use Zend\Mvc\Router\Http\Regex as RegexRoute;
-use Zend\Mvc\Router\Http\Literal as LiteralRoute;
-use Zend\Mvc\Router\Http\Segment as SegmentRoute;
-use Zend\Mvc\Router\Http\TreeRouteStack;
+use Zend\Router\Http\RouteMatch;
+use Zend\Router\Http\Regex as RegexRoute;
+use Zend\Router\Http\Literal as LiteralRoute;
+use Zend\Router\Http\Segment as SegmentRoute;
+use Zend\Router\Http\TreeRouteStack;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Navigation\Page;
@@ -86,7 +86,7 @@ class MvcTest extends TestCase
             'route' => 'test/route',
             'use_route_match' => true
         ]);
-        $router = $this->getMock('\Zend\Mvc\Router\Http\TreeRouteStack');
+        $router = $this->getMock('\Zend\Router\Http\TreeRouteStack');
         $router->expects($this->once())->method('assemble')->will($this->returnValue('/test/route'));
         $page->setRouter($router);
         $this->assertEquals('/test/route', $page->getHref());

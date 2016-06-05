@@ -204,7 +204,7 @@ class Mvc extends AbstractPage
         if (!$router instanceof TreeRouteStack) {
             throw new Exception\DomainException(
                 __METHOD__
-                . ' cannot execute as no Zend\Mvc\Router\TreeRouteStack instance is composed'
+                . ' cannot execute as no Zend\Router\Http\TreeRouteStack instance is composed'
             );
         }
 

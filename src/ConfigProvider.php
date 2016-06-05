@@ -39,7 +39,7 @@ class ConfigProvider
                 'ViewHelperManager' => [ View\ViewHelperManagerDelegatorFactory::class ],
             ],
             'factories' => [
-                Navigation::class => Service/DefaultNavigationFactory::class,
+                Navigation::class => Service\DefaultNavigationFactory::class,
             ],
         ];
     }

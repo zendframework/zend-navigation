@@ -14,7 +14,7 @@ use Zend\Http\Request as HttpRequest;
 use Zend\Mvc\Application;
 use Zend\Mvc\MvcEvent;
 use Zend\Router\Http\RouteMatch;
-use Zend\Router\Http\TreeRouteStack;
+use Zend\Router\RouteStackInterface;
 use Zend\Navigation;
 use Zend\Navigation\Page\Mvc as MvcPage;
 use Zend\Navigation\Service\ConstructedNavigationFactory;
@@ -68,7 +68,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
         $this->serviceManager = $serviceManager = new ServiceManager();
         $serviceManager->setService('config', $config);
 
-        $this->router = $router = $this->prophesize(TreeRouteStack::class);
+        $this->router = $router = $this->prophesize(RouteStackInterface::class);
         $this->request = $request = $this->prophesize(HttpRequest::class);
 
         $routeMatch = new RouteMatch([
@@ -109,7 +109,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
         $recursive = function ($that, $pages) use (&$recursive) {
             foreach ($pages as $page) {
                 if ($page instanceof MvcPage) {
-                    $that->assertInstanceOf('Zend\Router\Http\TreeRouteStack', $page->getRouter());
+                    $that->assertInstanceOf('Zend\Router\RouteStackInterface', $page->getRouter());
                     $that->assertInstanceOf('Zend\Router\Http\RouteMatch', $page->getRouteMatch());
                 }
 
@@ -135,7 +135,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
                 ->with(
                     $this->isType('array'),
                     $this->isInstanceOf('Zend\Router\Http\RouteMatch'),
-                    $this->isInstanceOf('Zend\Router\Http\TreeRouteStack')
+                    $this->isInstanceOf('Zend\Router\RouteStackInterface')
                 );
 
         $this->serviceManager->setFactory('Navigation', function ($services) use ($factory) {
@@ -160,7 +160,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
         $recursive = function ($that, $pages) use (&$recursive) {
             foreach ($pages as $page) {
                 if ($page instanceof MvcPage) {
-                    $that->assertInstanceOf('Zend\Router\Http\TreeRouteStack', $page->getRouter());
+                    $that->assertInstanceOf('Zend\Router\RouteStackInterface', $page->getRouter());
                     $that->assertInstanceOf('Zend\Router\Http\RouteMatch', $page->getRouteMatch());
                 }
 

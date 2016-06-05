@@ -11,7 +11,7 @@ namespace Zend\Navigation\Page;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Router\Http\RouteMatch;
-use Zend\Router\Http\TreeRouteStack;
+use Zend\Router\RouteStackInterface;
 use Zend\Navigation\Exception;
 
 /**
@@ -86,7 +86,7 @@ class Mvc extends AbstractPage
      * Router for assembling URLs
      *
      * @see getHref()
-     * @var TreeRouteStack
+     * @var RouteStackInterface
      */
     protected $router = null;
 
@@ -95,7 +95,7 @@ class Mvc extends AbstractPage
      *
      * @see getHref()
      *
-     * @var TreeRouteStack
+     * @var RouteStackInterface
      */
     protected static $defaultRouter = null;
 
@@ -183,10 +183,10 @@ class Mvc extends AbstractPage
     /**
      * Returns href for this page
      *
-     * This method uses {@link TreeRouteStack} to assemble
+     * This method uses {@link RouteStackInterface} to assemble
      * the href based on the page's properties.
      *
-     * @see TreeRouteStack
+     * @see RouteStackInterface
      * @return string  page href
      * @throws Exception\DomainException if no router is set
      */
@@ -201,10 +201,10 @@ class Mvc extends AbstractPage
             $router = static::$defaultRouter;
         }
 
-        if (!$router instanceof TreeRouteStack) {
+        if (!$router instanceof RouteStackInterface) {
             throw new Exception\DomainException(
                 __METHOD__
-                . ' cannot execute as no Zend\Router\Http\TreeRouteStack instance is composed'
+                . ' cannot execute as no Zend\Router\RouteStackInterface instance is composed'
             );
         }
 
@@ -466,7 +466,7 @@ class Mvc extends AbstractPage
     /**
      * Get the router.
      *
-     * @return null|TreeRouteStack
+     * @return null|RouteStackInterface
      */
     public function getRouter()
     {
@@ -478,10 +478,10 @@ class Mvc extends AbstractPage
      *
      * @see getHref()
      *
-     * @param  TreeRouteStack $router Router
+     * @param  RouteStackInterface $router Router
      * @return Mvc    fluent interface, returns self
      */
-    public function setRouter(TreeRouteStack $router)
+    public function setRouter(RouteStackInterface $router)
     {
         $this->router = $router;
         return $this;
@@ -491,7 +491,7 @@ class Mvc extends AbstractPage
      * Sets the default router for assembling URLs.
      *
      * @see getHref()
-     * @param  TreeRouteStack $router Router
+     * @param  RouteStackInterface $router Router
      * @return void
      */
     public static function setDefaultRouter($router)
@@ -502,7 +502,7 @@ class Mvc extends AbstractPage
     /**
      * Gets the default router for assembling URLs.
      *
-     * @return TreeRouteStack
+     * @return RouteStackInterface
      */
     public static function getDefaultRouter()
     {

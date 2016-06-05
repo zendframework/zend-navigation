@@ -110,7 +110,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
             foreach ($pages as $page) {
                 if ($page instanceof MvcPage) {
                     $that->assertInstanceOf('Zend\Router\RouteStackInterface', $page->getRouter());
-                    $that->assertInstanceOf('Zend\Router\Http\RouteMatch', $page->getRouteMatch());
+                    $that->assertInstanceOf('Zend\Router\RouteMatch', $page->getRouteMatch());
                 }
 
                 $recursive($that, $page->getPages());
@@ -134,7 +134,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
                 ->method('injectComponents')
                 ->with(
                     $this->isType('array'),
-                    $this->isInstanceOf('Zend\Router\Http\RouteMatch'),
+                    $this->isInstanceOf('Zend\Router\RouteMatch'),
                     $this->isInstanceOf('Zend\Router\RouteStackInterface')
                 );
 
@@ -161,7 +161,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
             foreach ($pages as $page) {
                 if ($page instanceof MvcPage) {
                     $that->assertInstanceOf('Zend\Router\RouteStackInterface', $page->getRouter());
-                    $that->assertInstanceOf('Zend\Router\Http\RouteMatch', $page->getRouteMatch());
+                    $that->assertInstanceOf('Zend\Router\RouteMatch', $page->getRouteMatch());
                 }
 
                 $recursive($that, $page->getPages());

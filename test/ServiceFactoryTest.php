@@ -13,7 +13,7 @@ use Zend\Config\Config;
 use Zend\Http\Request as HttpRequest;
 use Zend\Mvc\Application;
 use Zend\Mvc\MvcEvent;
-use Zend\Router\Http\RouteMatch;
+use Zend\Router\RouteMatch;
 use Zend\Router\RouteStackInterface;
 use Zend\Navigation;
 use Zend\Navigation\Page\Mvc as MvcPage;

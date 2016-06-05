@@ -12,7 +12,7 @@ namespace Zend\Navigation\Service;
 use Interop\Container\ContainerInterface;
 use Zend\Config;
 use Zend\Http\Request;
-use Zend\Router\Http\RouteMatch;
+use Zend\Router\RouteMatch;
 use Zend\Router\RouteStackInterface as Router;
 use Zend\Navigation\Exception;
 use Zend\Navigation\Navigation;

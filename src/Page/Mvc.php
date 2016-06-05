@@ -10,7 +10,7 @@
 namespace Zend\Navigation\Page;
 
 use Zend\Mvc\ModuleRouteListener;
-use Zend\Router\Http\RouteMatch;
+use Zend\Router\RouteMatch;
 use Zend\Router\RouteStackInterface;
 use Zend\Navigation\Exception;
 

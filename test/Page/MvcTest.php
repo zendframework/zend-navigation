@@ -10,7 +10,7 @@
 namespace ZendTest\Navigation\Page;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Router\Http\RouteMatch;
+use Zend\Router\RouteMatch;
 use Zend\Router\Http\Regex as RegexRoute;
 use Zend\Router\Http\Literal as LiteralRoute;
 use Zend\Router\Http\Segment as SegmentRoute;

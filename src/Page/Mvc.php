@@ -10,8 +10,8 @@
 namespace Zend\Navigation\Page;
 
 use Zend\Mvc\ModuleRouteListener;
-use Zend\Mvc\Router\RouteMatch;
-use Zend\Mvc\Router\RouteStackInterface;
+use Zend\Router\RouteMatch;
+use Zend\Router\RouteStackInterface;
 use Zend\Navigation\Exception;
 
 /**
@@ -204,7 +204,7 @@ class Mvc extends AbstractPage
         if (!$router instanceof RouteStackInterface) {
             throw new Exception\DomainException(
                 __METHOD__
-                . ' cannot execute as no Zend\Mvc\Router\RouteStackInterface instance is composed'
+                . ' cannot execute as no Zend\Router\RouteStackInterface instance is composed'
             );
         }
 
@@ -420,7 +420,7 @@ class Mvc extends AbstractPage
     /**
      * Get the route match.
      *
-     * @return \Zend\Mvc\Router\RouteMatch
+     * @return RouteMatch
      */
     public function getRouteMatch()
     {

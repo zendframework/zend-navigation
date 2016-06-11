@@ -8,7 +8,7 @@
 namespace Zend\Navigation\View;
 
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\DelegatorFactoryInterface;
+use Zend\ServiceManager\Factory\DelegatorFactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
@@ -25,7 +25,7 @@ class ViewHelperManagerDelegatorFactory implements DelegatorFactoryInterface
      *
      * @return \Zend\View\HelperPluginManager
      */
-    public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = [])
+    public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = null)
     {
         $viewHelpers = $callback();
         (new HelperConfig())->configureServiceManager($viewHelpers);

@@ -9,4 +9,4 @@ or serve as a model for other navigation related purposes.
 
 
 - File issues at https://github.com/zendframework/zend-navigation/issues
-- Documentation is at http://framework.zend.com/manual/current/en/index.html#zend-navigation
+- Documentation is at https://zendframework.github.io/zend-navigation/

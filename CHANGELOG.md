@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
-## 2.7.2 - TBD
+## 2.7.2 - 2016-06-11
 
 ### Added
 
@@ -37,7 +37,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#35](https://github.com/zendframework/zend-navigation/pull/35) fixes errors
+  in the `ConfigProvider` that prevented its use.
 
 ## 2.7.1 - 2016-04-08
 

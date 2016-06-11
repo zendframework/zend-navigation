@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d173f0b4316a567cd6db1c3f3fbcbc2c",
-    "content-hash": "e069482047726b8a07185356b899a2ad",
+    "hash": "d4acf0cb706766eb0fe0364b4bf18753",
+    "content-hash": "91a3ef2c8c71be1ee67e4f7f7cf01d15",
     "packages": [
         {
             "name": "zendframework/zend-stdlib",
@@ -187,6 +187,7 @@
                 }
             ],
             "description": "A script to automatically fix Symfony Coding Standard",
+            "abandoned": "friendsofphp/php-cs-fixer",
             "time": "2015-05-04 16:56:09"
         },
         {

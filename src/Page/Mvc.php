@@ -9,7 +9,6 @@
 
 namespace Zend\Navigation\Page;
 
-use Zend\Mvc\ModuleRouteListener;
 use Zend\Router\RouteMatch;
 use Zend\Router\RouteStackInterface;
 use Zend\Navigation\Exception;
@@ -17,9 +16,16 @@ use Zend\Navigation\Exception;
 /**
  * Represents a page that is defined using controller, action, route
  * name and route params to assemble the href
+ *
+ * The two constants defined were originally provided via the zend-mvc class
+ * ModuleRouteListener; to remove the requirement on that component, they are
+ * reproduced here.
  */
 class Mvc extends AbstractPage
 {
+    const MODULE_NAMESPACE = '__NAMESPACE__';
+    const ORIGINAL_CONTROLLER = '__CONTROLLER__';
+
     /**
      * Action name to use when assembling URL
      *
@@ -126,8 +132,8 @@ class Mvc extends AbstractPage
             if ($this->routeMatch instanceof RouteMatch) {
                 $reqParams  = $this->routeMatch->getParams();
 
-                if (isset($reqParams[ModuleRouteListener::ORIGINAL_CONTROLLER])) {
-                    $reqParams['controller'] = $reqParams[ModuleRouteListener::ORIGINAL_CONTROLLER];
+                if (isset($reqParams[self::ORIGINAL_CONTROLLER])) {
+                    $reqParams['controller'] = $reqParams[self::ORIGINAL_CONTROLLER];
                 }
 
                 $pageParams   = $this->params;
@@ -139,8 +145,7 @@ class Mvc extends AbstractPage
                 }
 
                 if (null !== $this->getRoute()) {
-                    if (
-                        $this->routeMatch->getMatchedRouteName() === $this->getRoute()
+                    if ($this->routeMatch->getMatchedRouteName() === $this->getRoute()
                         && (count(array_intersect_assoc($reqParams, $pageParams)) == count($pageParams))
                     ) {
                         $this->active = true;
@@ -211,13 +216,13 @@ class Mvc extends AbstractPage
         if ($this->useRouteMatch() && $this->getRouteMatch()) {
             $rmParams = $this->getRouteMatch()->getParams();
 
-            if (isset($rmParams[ModuleRouteListener::ORIGINAL_CONTROLLER])) {
-                $rmParams['controller'] = $rmParams[ModuleRouteListener::ORIGINAL_CONTROLLER];
-                unset($rmParams[ModuleRouteListener::ORIGINAL_CONTROLLER]);
+            if (isset($rmParams[self::ORIGINAL_CONTROLLER])) {
+                $rmParams['controller'] = $rmParams[self::ORIGINAL_CONTROLLER];
+                unset($rmParams[self::ORIGINAL_CONTROLLER]);
             }
 
-            if (isset($rmParams[ModuleRouteListener::MODULE_NAMESPACE])) {
-                unset($rmParams[ModuleRouteListener::MODULE_NAMESPACE]);
+            if (isset($rmParams[self::MODULE_NAMESPACE])) {
+                unset($rmParams[self::MODULE_NAMESPACE]);
             }
 
             $params = array_merge($rmParams, $this->getParams());

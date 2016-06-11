@@ -1,8 +1,6 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      https://github.com/zendframework/zendframework for the canonical source repository
+ * @link      http://github.com/zendframework/zend-navigation for the canonical source repository
  * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -14,11 +12,6 @@ use Zend\Navigation\Navigation;
 use Zend\Navigation\Service;
 use Zend\Navigation\View;
 
-/**
- * Tests the class Zend_Navigation_ConfigProvider
- *
- * @group Zend_Navigation
- */
 class ConfigProviderTest extends \PHPUnit_Framework_TestCase
 {
     private $config = [
@@ -38,17 +31,18 @@ class ConfigProviderTest extends \PHPUnit_Framework_TestCase
         ],
     ];
 
-    public function testGetDependencyConfig()
+    public function testProvidesExpectedConfiguration()
     {
         $provider = new ConfigProvider();
-
         $this->assertEquals($this->config, $provider->getDependencyConfig());
+        return $provider;
     }
 
-    public function testInvoke()
+    /**
+     * @depends testProvidesExpectedConfiguration
+     */
+    public function testInvocationProvidesDependencyConfiguration(ConfigProvider $provider)
     {
-        $provider = new ConfigProvider();
-
-        $this->assertEquals(['dependencies' => $this->config], $provider());
+        $this->assertEquals(['dependencies' => $provider->getDependencyConfig()], $provider());
     }
 }

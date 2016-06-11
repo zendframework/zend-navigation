@@ -6,7 +6,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
-- Nothing.
+- [#33](https://github.com/zendframework/zend-navigation/pull/33) adds support
+  for zend-mvc v3.0. Specifically, the `Mvc` page type now allows usage of
+  either `Zend\Mvc\Router` or `Zend\Router` for URI generation.
 
 ### Deprecated
 

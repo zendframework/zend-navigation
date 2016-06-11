@@ -25,7 +25,7 @@ class ViewHelperManagerDelegatorFactory implements DelegatorFactoryInterface
      *
      * @return \Zend\View\HelperPluginManager
      */
-    public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = [])
+    public function __invoke(ContainerInterface $container, $name, callable $callback, array $options = null)
     {
         $viewHelpers = $callback();
         (new HelperConfig())->configureServiceManager($viewHelpers);

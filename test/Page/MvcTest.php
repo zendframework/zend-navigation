@@ -10,15 +10,16 @@
 namespace ZendTest\Navigation\Page;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use Zend\Router\RouteMatch;
-use Zend\Router\Http\Regex as RegexRoute;
-use Zend\Router\Http\Literal as LiteralRoute;
-use Zend\Router\Http\Segment as SegmentRoute;
-use Zend\Router\Http\TreeRouteStack;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Mvc\Router as MvcRouter;
 use Zend\Navigation\Page;
 use Zend\Navigation;
+use Zend\Router\Http\Literal as LiteralRoute;
+use Zend\Router\Http\Regex as RegexRoute;
+use Zend\Router\Http\Segment as SegmentRoute;
+use Zend\Router\Http\TreeRouteStack;
+use Zend\Router\RouteMatch;
 use ZendTest\Navigation\TestAsset;
 
 /**
@@ -30,7 +31,8 @@ class MvcTest extends TestCase
 {
     protected function setUp()
     {
-        $this->route  = new RegexRoute(
+        $routeClass = $this->getRouteClass();
+        $this->route  = new $routeClass(
             '((?<controller>[^/]+)(/(?<action>[^/]+))?)',
             '/%controller%/%action%',
             [
@@ -38,15 +40,38 @@ class MvcTest extends TestCase
                 'action'     => 'index',
             ]
         );
-        $this->router = new TreeRouteStack();
+
+        $routerClass = $this->getRouterClass();
+        $this->router = new $routerClass();
         $this->router->addRoute('default', $this->route);
 
-        $this->routeMatch = new RouteMatch([]);
+        $routeMatchClass = $this->getRouteMatchClass();
+        $this->routeMatch = new $routeMatchClass([]);
         $this->routeMatch->setMatchedRouteName('default');
     }
 
-    protected function tearDown()
+    public function getRouteClass($type = 'Regex')
     {
+        $v2ClassName = sprintf('Zend\Mvc\Router\Http\%s', $type);
+        $v3ClassName = sprintf('Zend\Router\Http\%s', $type);
+
+        return class_exists($v2ClassName)
+            ? $v2ClassName
+            : $v3ClassName;
+    }
+
+    public function getRouterClass()
+    {
+        return class_exists(MvcRouter\Http\TreeRouteStack::class)
+            ? MvcRouter\Http\TreeRouteStack::class
+            : TreeRouteStack::class;
+    }
+
+    public function getRouteMatchClass()
+    {
+        return class_exists(MvcRouter\RouteMatch::class)
+            ? MvcRouter\RouteMatch::class
+            : RouteMatch::class;
     }
 
     public function testHrefGeneratedByRouterWithDefaultRoute()
@@ -86,7 +111,7 @@ class MvcTest extends TestCase
             'route' => 'test/route',
             'use_route_match' => true
         ]);
-        $router = $this->getMock('\Zend\Router\Http\TreeRouteStack');
+        $router = $this->getMock(TreeRouteStack::class);
         $router->expects($this->once())->method('assemble')->will($this->returnValue('/test/route'));
         $page->setRouter($router);
         $this->assertEquals('/test/route', $page->getHref());
@@ -157,12 +182,15 @@ class MvcTest extends TestCase
             'controller' => 'index'
         ]);
 
-        $route = new LiteralRoute('/roflcopter');
+        $routeClass = $this->getRouteClass('Literal');
+        $route = new $routeClass('/roflcopter');
 
-        $router = new TreeRouteStack;
+        $routerClass = $this->getRouterClass();
+        $router = new $routerClass;
         $router->addRoute('roflcopter', $route);
 
-        $routeMatch = new RouteMatch([
+        $routeMatchClass = $this->getRouteMatchClass();
+        $routeMatch = new $routeMatchClass([
             ModuleRouteListener::MODULE_NAMESPACE => 'Application\Controller',
             'controller' => 'index'
         ]);
@@ -222,7 +250,8 @@ class MvcTest extends TestCase
             ]
         ]);
 
-        $route = new RegexRoute(
+        $routeClass = $this->getRouteClass();
+        $route = new $routeClass(
             '(lolcat/(?<action>[^/]+)/(?<page>\d+))',
             '/lolcat/%action%/%page%',
             [
@@ -253,7 +282,8 @@ class MvcTest extends TestCase
             ]
         ]);
 
-        $route = new RegexRoute(
+        $routeClass = $this->getRouteClass();
+        $route = new $routeClass(
             '(lolcat/(?<action>[^/]+)/(?<page>\d+))',
             '/lolcat/%action%/%page%',
             [
@@ -614,12 +644,15 @@ class MvcTest extends TestCase
             'route' => 'lmaoplane',
         ]);
 
-        $route = new SegmentRoute('/lmaoplane[/:controller]');
+        $routeClass = $this->getRouteClass('Segment');
+        $route = new $routeClass('/lmaoplane[/:controller]');
 
-        $router = new TreeRouteStack;
+        $routerClass = $this->getRouterClass();
+        $router = new $routerClass;
         $router->addRoute('lmaoplane', $route);
 
-        $routeMatch = new RouteMatch([
+        $routeMatchClass = $this->getRouteMatchClass();
+        $routeMatch = new $routeMatchClass([
             ModuleRouteListener::MODULE_NAMESPACE => 'Application\Controller',
             'controller' => 'index'
         ]);
@@ -650,12 +683,15 @@ class MvcTest extends TestCase
             ]
         );
 
-        $route = new LiteralRoute('/foo');
+        $routeClass = $this->getRouteClass('Literal');
+        $route = new $routeClass('/foo');
 
-        $router = new TreeRouteStack;
+        $routerClass = $this->getRouterClass();
+        $router = new $routerClass;
         $router->addRoute('myRoute', $route);
 
-        $routeMatch = new RouteMatch(
+        $routeMatchClass = $this->getRouteMatchClass();
+        $routeMatch = new $routeMatchClass(
             [
                 ModuleRouteListener::MODULE_NAMESPACE => 'Application\Controller',
                 'controller' => 'index',
@@ -693,7 +729,8 @@ class MvcTest extends TestCase
         );
         $parentPage->addPage($childPage);
 
-        $router = new TreeRouteStack;
+        $routerClass = $this->getRouterClass();
+        $router = new $routerClass;
         $router->addRoutes(
             [
                 'parentPageRoute' => [
@@ -719,7 +756,8 @@ class MvcTest extends TestCase
             ]
         );
 
-        $routeMatch = new RouteMatch(
+        $routeMatchClass = $this->getRouteMatchClass();
+        $routeMatch = new $routeMatchClass(
             [
                 ModuleRouteListener::MODULE_NAMESPACE => 'Application\Controller',
                 'controller' => 'barController',

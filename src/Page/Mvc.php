@@ -9,9 +9,10 @@
 
 namespace Zend\Navigation\Page;
 
+use Zend\Mvc\Router as MvcRouter;
+use Zend\Navigation\Exception;
 use Zend\Router\RouteMatch;
 use Zend\Router\RouteStackInterface;
-use Zend\Navigation\Exception;
 
 /**
  * Represents a page that is defined using controller, action, route
@@ -129,7 +130,7 @@ class Mvc extends AbstractPage
     {
         if (!$this->active) {
             $reqParams = [];
-            if ($this->routeMatch instanceof RouteMatch) {
+            if ($this->routeMatch instanceof RouteMatch || $this->routeMatch instanceof MvcRouter\RouteMatch) {
                 $reqParams  = $this->routeMatch->getParams();
 
                 if (isset($reqParams[self::ORIGINAL_CONTROLLER])) {
@@ -206,7 +207,7 @@ class Mvc extends AbstractPage
             $router = static::$defaultRouter;
         }
 
-        if (!$router instanceof RouteStackInterface) {
+        if (! $router instanceof RouteStackInterface && ! $router instanceof MvcRouter\RouteStackInterface) {
             throw new Exception\DomainException(
                 __METHOD__
                 . ' cannot execute as no Zend\Router\RouteStackInterface instance is composed'
@@ -393,9 +394,9 @@ class Mvc extends AbstractPage
      *
      * @see getHref()
      *
-     * @param  string $route              route name to use when assembling URL
-     * @return Mvc   fluent interface, returns self
-     * @throws Exception\InvalidArgumentException  if invalid $route is given
+     * @param  string $route Route name to use when assembling URL.
+     * @return Mvc Fluent interface, returns self.
+     * @throws Exception\InvalidArgumentException If invalid $route is given.
      */
     public function setRoute($route)
     {
@@ -435,11 +436,20 @@ class Mvc extends AbstractPage
     /**
      * Set route match object from which parameters will be retrieved
      *
-     * @param  RouteMatch $matches
+     * @param  RouteMatch|MvcRouter\RouteMatch $matches
      * @return Mvc fluent interface, returns self
      */
-    public function setRouteMatch(RouteMatch $matches)
+    public function setRouteMatch($matches)
     {
+        if (! $matches instanceof RouteMatch && ! $matches instanceof MvcRouter\RouteMatch) {
+            throw new InvalidArgumentException(sprintf(
+                'RouteMatch passed to %s must be either a %s or a %s instance; received %s',
+                __METHOD__,
+                RouteMatch::class,
+                MvcRouter\RouteMatch::class,
+                (is_object($router) ? get_class($router) : gettype($router))
+            ));
+        }
         $this->routeMatch = $matches;
         return $this;
     }
@@ -471,7 +481,7 @@ class Mvc extends AbstractPage
     /**
      * Get the router.
      *
-     * @return null|RouteStackInterface
+     * @return null|RouteStackInterface|MvcRouter\RouteStackInterface
      */
     public function getRouter()
     {
@@ -483,11 +493,20 @@ class Mvc extends AbstractPage
      *
      * @see getHref()
      *
-     * @param  RouteStackInterface $router Router
-     * @return Mvc    fluent interface, returns self
+     * @param  RouteStackInterface|MvcRouter\RouteStackInterface $router Router
+     * @return Mvc Fluent interface, returns self
      */
-    public function setRouter(RouteStackInterface $router)
+    public function setRouter($router)
     {
+        if (! $router instanceof RouteStackInterface && ! $router instanceof MvcRouter\RouteStackInterface) {
+            throw new Exception\InvalidArgumentException(sprintf(
+                'Router passed to %s must be either a %s or a %s instance; received %s',
+                __METHOD__,
+                RouteStackInterface::class,
+                MvcRouter\RouteStackInterface::class,
+                (is_object($router) ? get_class($router) : gettype($router))
+            ));
+        }
         $this->router = $router;
         return $this;
     }

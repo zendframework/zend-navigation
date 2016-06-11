@@ -10,7 +10,7 @@ namespace Zend\Navigation;
 class ConfigProvider
 {
     /**
-     * Return general-purpose zend-i18n configuration.
+     * Return general-purpose zend-navigation configuration.
      *
      * @return array
      */
@@ -36,10 +36,12 @@ class ConfigProvider
                 'navigation' => Navigation::class,
             ],
             'delegators' => [
-                'ViewHelperManager' => [ View\ViewHelperManagerDelegatorFactory::class ],
+                'ViewHelperManager' => [
+                    View\ViewHelperManagerDelegatorFactory::class,
+                ],
             ],
             'factories' => [
-                Navigation::class => Service/DefaultNavigationFactory::class,
+                Navigation::class => Service\DefaultNavigationFactory::class,
             ],
         ];
     }

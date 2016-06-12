@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.8.1 - TBD
+## 2.8.1 - 2016-06-12
 
 ### Added
 
@@ -18,7 +18,10 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#38](https://github.com/zendframework/zend-navigation/pull/38) fixes the
+  `AbstractNavigationFactory` to allow either zend-router or zend-mvc v2
+  `RouteMatch` or `RouteStackInterface` implementations when injecting pages
+  with URIs.
 
 ## 2.8.0 - 2016-06-11
 

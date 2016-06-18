@@ -442,7 +442,7 @@ class Mvc extends AbstractPage
     public function setRouteMatch($matches)
     {
         if (! $matches instanceof RouteMatch && ! $matches instanceof MvcRouter\RouteMatch) {
-            throw new InvalidArgumentException(sprintf(
+            throw new Exception\InvalidArgumentException(sprintf(
                 'RouteMatch passed to %s must be either a %s or a %s instance; received %s',
                 __METHOD__,
                 RouteMatch::class,

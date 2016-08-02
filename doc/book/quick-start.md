@@ -22,7 +22,7 @@ return [
             [
                 'label' => 'Page #1',
                 'route' => 'page-1',
-                'pages' => array(
+                'pages' => [
                     [
                         'label' => 'Child #1',
                         'route' => 'page-1-child',
@@ -49,7 +49,7 @@ return [
 <!-- ... -->
 
 <body>
-    <?= $this->navigation('default')->menu() ?>
+    <?= $this->navigation('navigation')->menu() ?>
 </body>
 <!-- ... -->
 ```

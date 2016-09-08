@@ -453,7 +453,10 @@ Output:
 ```
 
 ### Using additional parameters in partial view scripts
- 
+
+Starting with version 2.6.0, you can assign custom variables to a
+partial script.
+
 In a layout:
 
 ```php

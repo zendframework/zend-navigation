@@ -452,6 +452,47 @@ Output:
 <a href="/community">Community</a>
 ```
 
+### Using additional parameters in partial view scripts
+
+Starting with version 2.6.0, you can assign custom variables to a
+partial script.
+
+In a layout:
+
+```php
+// Set partial
+$this->navigation()->menu()->setPartial('my-module/partials/menu');
+
+// Output menu
+echo $this->navigation()->menu()->renderPartialWithParams(
+    [
+        'headline' => 'Links',
+    ]
+);
+```
+
+In `module/MyModule/view/my-module/partials/menu.phtml`:
+
+```php
+<h1><?= $headline ?></h1>
+
+<?php
+foreach ($this->container as $page) {
+    echo $this->navigation()->menu()->htmlify($page) . PHP_EOL;
+}
+?>
+```
+
+Output:
+
+```html
+<h1>Links</h1>
+<a title="Go Home" href="/">Home</a>
+<a href="/products">Products</a>
+<a title="About us" href="/company/about">Company</a>
+<a href="/community">Community</a>
+```
+
 ### Using menu options in partial view scripts
 
 In a layout:

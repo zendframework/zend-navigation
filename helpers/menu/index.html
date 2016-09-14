@@ -705,6 +705,39 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
 
 
+<h3 id="using-additional-parameters-in-partial-view-scripts">Using additional parameters in partial view scripts</h3>
+<p>Starting with version 2.6.0, you can assign custom variables to a
+partial script.</p>
+<p>In a layout:</p>
+<pre class="codehilite"><code class="language-php">// Set partial
+$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
+
+// Output menu
+echo $this-&gt;navigation()-&gt;menu()-&gt;renderPartialWithParams(
+    [
+        'headline' =&gt; 'Links',
+    ]
+);</code></pre>
+
+
+<p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
+<pre class="codehilite"><code class="language-php">&lt;h1&gt;&lt;?= $headline ?&gt;&lt;/h1&gt;
+
+&lt;?php
+foreach ($this-&gt;container as $page) {
+    echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
+}
+?&gt;</code></pre>
+
+
+<p>Output:</p>
+<pre class="codehilite"><code class="language-html">&lt;h1&gt;Links&lt;/h1&gt;
+&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+&lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+&lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
+
+
 <h3 id="using-menu-options-in-partial-view-scripts">Using menu options in partial view scripts</h3>
 <p>In a layout:</p>
 <pre class="codehilite"><code class="language-php">// Set options

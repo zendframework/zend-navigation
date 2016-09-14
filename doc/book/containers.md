@@ -280,6 +280,42 @@ $container->removePage(200);    // removes Page 2
 $container->removePages();      // removes all pages
 ```
 
+### Remove a page recursively
+
+Removing a page recursively can be done with the second parameter of 
+the `removePage()` method, which expects a `boolean` value.
+ 
+```php
+use Zend\Navigation\Navigation;
+
+$container = new Navigation(
+    [
+        [
+            'label' => 'Page 1',
+            'route' => 'page1',
+            'pages' => [
+                [
+                    'label' => 'Page 1.1',
+                    'route' => 'page1/page1-1',
+                    'pages' => [
+                        [
+                            'label' => 'Page 1.1.1',
+                            'route' => 'page1/page1-1/page1-1-1',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ]
+);
+ 
+// Removes Page 1.1.1
+$container->removePage(
+    $container->findOneBy('route', 'page1/page1-1/page1-1-1'),
+    true
+);
+```
+
 ## Finding pages
 
 Containers have three finder methods for retrieving pages. Each recursively

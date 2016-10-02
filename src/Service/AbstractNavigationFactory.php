@@ -48,6 +48,8 @@ abstract class AbstractNavigationFactory implements FactoryInterface
     /**
      * Create and return a new Navigation instance (v2).
      *
+     * Proxies to `__invoke()`
+     *
      * @param ServiceLocatorInterface $serviceLocator
      * @param null|string $name
      * @param null|string $requestedName

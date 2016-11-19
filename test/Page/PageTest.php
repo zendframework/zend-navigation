@@ -150,7 +150,8 @@ class PageTest extends \PHPUnit_Framework_TestCase
                             'Zend\Navigation\Exception\InvalidArgumentException was not thrown');
             } catch (Navigation\Exception\InvalidArgumentException $e) {
                 $this->assertContains(
-                    'Invalid argument: $fragment', $e->getMessage()
+                    'Invalid argument: $fragment',
+                    $e->getMessage()
                 );
             }
         }

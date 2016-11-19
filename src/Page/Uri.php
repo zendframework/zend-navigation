@@ -41,7 +41,7 @@ class Uri extends AbstractPage
      */
     public function setUri($uri)
     {
-        if (null !== $uri && !is_string($uri)) {
+        if (null !== $uri && ! is_string($uri)) {
             throw new Exception\InvalidArgumentException(
                 'Invalid argument: $uri must be a string or null'
             );
@@ -97,7 +97,7 @@ class Uri extends AbstractPage
      */
     public function isActive($recursive = false)
     {
-        if (!$this->active) {
+        if (! $this->active) {
             if ($this->getRequest() instanceof Request) {
                 if ($this->getRequest()->getUri()->getPath() == $this->getUri()) {
                     $this->active = true;

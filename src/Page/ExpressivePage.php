@@ -106,7 +106,7 @@ class ExpressivePage extends AbstractPage
             $href .= '#' . $this->getFragment();
         }
 
-        return $href;
+        return $this->hrefCache = $href;
     }
 
     /**

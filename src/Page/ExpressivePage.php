@@ -125,12 +125,28 @@ class ExpressivePage extends AbstractPage
     }
 
     /**
+     * @return string
+     */
+    public function getRoute()
+    {
+        return $this->routeName;
+    }
+
+    /**
      * @param array|null $params
      */
     public function setParams(array $params = null)
     {
         $this->routeParams = empty($params) ? [] : $params;
         $this->hrefCache   = null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getParams()
+    {
+        return $this->routeParams;
     }
 
     /**
@@ -143,6 +159,14 @@ class ExpressivePage extends AbstractPage
     }
 
     /**
+     * @return array
+     */
+    public function getQuery()
+    {
+        return $this->queryParams;
+    }
+
+    /**
      * @param RouteResult $routeResult
      */
     public function setRouteResult(RouteResult $routeResult)
@@ -151,11 +175,27 @@ class ExpressivePage extends AbstractPage
     }
 
     /**
+     * @return RouteResult
+     */
+    public function getRouteResult()
+    {
+        return $this->routeResult;
+    }
+
+    /**
      * @param RouterInterface $router
      */
     public function setRouter(RouterInterface $router)
     {
         $this->router = $router;
+    }
+
+    /**
+     * @return RouterInterface
+     */
+    public function getRouter()
+    {
+        return $this->router;
     }
 
     /**

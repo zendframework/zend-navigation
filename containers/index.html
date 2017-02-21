@@ -243,7 +243,7 @@ via options will eventually be passed to the <code>addPage()</code> method of th
 class, which means that each element in the options can be also be an array,
 Traversable object, or a <code>Zend\Navigation\Page\AbstractPage</code> instance.</p>
 <h3 id="creating-a-container-using-an-array">Creating a container using an array</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Navigation;
 
 /*
  * Create a container from an array
@@ -416,11 +416,10 @@ $container = new Navigation([
     ],
 ]);</code></pre>
 
-
 <h2 id="adding-pages">Adding pages</h2>
 <p>Adding pages to a container can be done with the methods <code>addPage()</code>,
 <code>addPages()</code>, or <code>setPages()</code>.  See examples below for explanation.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Config\Config;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Config\Config;
 use Zend\Navigation\Navigation;
 use Zend\Navigation\Page\AbstractPage;
 
@@ -460,13 +459,12 @@ $container-&gt;addPages($pages);
 // remove existing pages and add the given pages
 $container-&gt;setPages($pages);</code></pre>
 
-
 <h2 id="removing-pages">Removing pages</h2>
 <p>Removing pages can be done with <code>removePage()</code> or <code>removePages()</code>.
 <code>removePage()</code> accepts an instance of a page or an integer. Integer arguments
 correspond to the <code>order</code> a page has. <code>removePages()</code> will remove all pages in
 the container.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -497,11 +495,10 @@ $container-&gt;removePage(200);    // removes Page 2
 // remove all pages
 $container-&gt;removePages();      // removes all pages</code></pre>
 
-
 <h3 id="remove-a-page-recursively">Remove a page recursively</h3>
 <p>Removing a page recursively can be done with the second parameter of 
 the <code>removePage()</code> method, which expects a <code>boolean</code> value.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Navigation;
 
 $container = new Navigation(
     [
@@ -530,7 +527,6 @@ $container-&gt;removePage(
     true
 );</code></pre>
 
-
 <h2 id="finding-pages">Finding pages</h2>
 <p>Containers have three finder methods for retrieving pages. Each recursively
 searches the container testing for properties with values that match the one
@@ -549,7 +545,7 @@ will return the first matching page with label 'Home'.</p>
 <p>Other combinations include <code>findByLabel(...)</code>, <code>findOneByTitle(...)</code>,
 <code>findAllByController(...)</code>, etc. Finder methods also work on custom properties,
 such as <code>findByFoo('bar')</code>.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -643,11 +639,10 @@ $found = $container-&gt;findAllByfoo('bar');
 // Returns &quot;Page 2&quot; and &quot;Page 3&quot;:
 $found = $container-&gt;findAllByController('index');</code></pre>
 
-
 <h2 id="iterating-containers">Iterating containers</h2>
 <p><code>Zend\Navigation\AbstractContainer</code> implements <code>RecursiveIterator</code>.  iterate a
 container recursively, use the <code>RecursiveIteratorIterator</code> class.</p>
-<pre class="codehilite"><code class="language-php">use RecursiveIteratorIterator;
+<pre class="codehilite"><code class="language-php linenums">use RecursiveIteratorIterator;
 use Zend\Navigation\Navigation;
 
 /*
@@ -695,26 +690,22 @@ foreach ($it as $page) {
     echo $page-&gt;label;
 }</code></pre>
 
-
 <h2 id="other-operations">Other operations</h2>
 <h3 id="haspage">hasPage</h3>
-<pre class="codehilite"><code class="language-php">hasPage(AbstractPage $page) : bool</code></pre>
-
+<pre class="codehilite"><code class="language-php linenums">hasPage(AbstractPage $page) : bool</code></pre>
 
 <p>Check if the container has the given page.</p>
 <h3 id="haspages">hasPages</h3>
-<pre class="codehilite"><code class="language-php">hasPages() : bool</code></pre>
-
+<pre class="codehilite"><code class="language-php linenums">hasPages() : bool</code></pre>
 
 <p>Checks if there are any pages in the container, and is equivalent to
 <code>count($container) &gt; 0</code>.</p>
 <h3 id="toarray">toArray</h3>
-<pre class="codehilite"><code class="language-php">toArray() : array</code></pre>
-
+<pre class="codehilite"><code class="language-php linenums">toArray() : array</code></pre>
 
 <p>Converts the container and the pages in it to a (nested) array. This can be useful
 for serializing and debugging.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [

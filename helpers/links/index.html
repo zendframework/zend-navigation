@@ -359,7 +359,7 @@ link types.  <code>RENDER_CUSTOM</code> denotes non-standard relations specified
 <h2 id="basic-usage">Basic usage</h2>
 <h3 id="specify-relations-in-pages">Specify relations in pages</h3>
 <p>This example shows how to specify relations in pages.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Config\Config;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Config\Config;
 use Zend\Navigation\Navigation;
 use Zend\Navigation\Page\AbstractPage;
 
@@ -402,16 +402,14 @@ $container = new Navigation([
     ],
 ]);</code></pre>
 
-
 <h3 id="default-rendering-of-links">Default rendering of links</h3>
 <p>This example shows how to render a menu from a container registered in the
 view helper.</p>
 <p>In a view script or layout:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;links() ?&gt;</code></pre>
-
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()-&gt;links() ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
 &lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
 &lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
 &lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
@@ -421,30 +419,26 @@ view helper.</p>
 &lt;link rel=&quot;canonical&quot; href=&quot;http://www.example.com/?page=server-faq&quot;&gt;
 &lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
 
-
 <h3 id="specify-which-relations-to-render">Specify which relations to render</h3>
 <p>This example shows how to specify which relations to find and render.</p>
 <p>Render only start, next, and prev:</p>
-<pre class="codehilite"><code class="language-php">use Zend\View\Helper\Navigation\Links;
+<pre class="codehilite"><code class="language-php linenums">use Zend\View\Helper\Navigation\Links;
 
 $links = $this-&gt;navigation()-&gt;links();
 $links-&gt;setRenderFlag(Links::RENDER_START | Links::RENDER_NEXT | Links::RENDER_PREV);
 echo $links;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
 &lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
 &lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
 
-
 <p>Render only native link types:</p>
-<pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CUSTOM);
+<pre class="codehilite"><code class="language-php linenums">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CUSTOM);
 echo $links;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
 &lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
 &lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
 &lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
@@ -453,14 +447,12 @@ echo $links;</code></pre>
 &lt;link rel=&quot;chapter&quot; href=&quot;/community&quot; title=&quot;Community&quot;&gt;
 &lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
 
-
 <p>Render all but chapters:</p>
-<pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CHAPTER);
+<pre class="codehilite"><code class="language-php linenums">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CHAPTER);
 echo $links;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
 &lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
 &lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
 &lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;

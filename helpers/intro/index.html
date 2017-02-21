@@ -405,11 +405,10 @@ implements the following methods:</p>
 <h3 id="proxying-calls-to-the-navigation-container">Proxying calls to the navigation container</h3>
 <p>Navigation view helpers use the magic method <code>__call()</code> to proxy method calls to
 the navigation container that is registered in the view helper.</p>
-<pre class="codehilite"><code class="language-php">$this-&gt;navigation()-&gt;addPage([
+<pre class="codehilite"><code class="language-php linenums">$this-&gt;navigation()-&gt;addPage([
     'type' =&gt; 'uri',
     'label' =&gt; 'New page',
 ]);</code></pre>
-
 
 <p>The call above will add a page to the container in the <code>Navigation</code> helper.</p>
 <h2 id="translation-of-labels-and-titles">Translation of labels and titles</h2>
@@ -448,7 +447,7 @@ it proxies to if the proxied helper doesn't already have any.</p>
   labeled <code>FAQ</code> under "Foo Server".</li>
 <li>The assumed ACL and router setup is shown below the container setup.</li>
 </ul>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Navigation;
 
 /*
  * Navigation container
@@ -619,9 +618,8 @@ $view-&gt;plugin('navigation')-&gt;setContainer($container);
 // ...or simply:
 $view-&gt;navigation($container);</code></pre>
 
-
 <p>In addition to the container above, the following setup is assumed:</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<pre class="codehilite"><code class="language-php linenums">&lt;?php
 // module/MyModule/config/module.config.php
 
 return [
@@ -649,8 +647,7 @@ return [
     /* ... */
 ];</code></pre>
 
-
-<pre class="codehilite"><code class="language-php">&lt;?php
+<pre class="codehilite"><code class="language-php linenums">&lt;?php
 // module/MyModule/Module.php
 
 namespace MyModule;

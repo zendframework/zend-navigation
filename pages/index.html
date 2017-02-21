@@ -354,7 +354,7 @@ properties that are not native in the page class.</p>
 <p>Both native and custom properties can be set using <code>$page-&gt;set($name, $value)</code>
 and retrieved using <code>$page-&gt;get($name)</code>, or by using magic methods.</p>
 <p>The following example demonstrates custom properties:</p>
-<pre class="codehilite"><code class="language-php">$page = new Zend\Navigation\Page\Mvc();
+<pre class="codehilite"><code class="language-php linenums">$page = new Zend\Navigation\Page\Mvc();
 $page-&gt;foo     = 'bar';
 $page-&gt;meaning = 42;
 
@@ -363,7 +363,6 @@ echo $page-&gt;foo;
 if ($page-&gt;meaning != 42) {
     // action should be taken
 }</code></pre>
-
 
 </blockquote>
 <h2 id="mvc-pages">MVC pages</h2>
@@ -450,7 +449,7 @@ In the examples, the <code>baseUrl</code> is '/' for simplicity.</p>
 <h3 id="gethref-generates-the-page-uri">getHref() generates the page URI</h3>
 <p>This example demonstrates that MVC pages use <code>Zend\Router\RouteStackInterface</code>
 internally to generate URIs when calling <code>$page-&gt;getHref()</code>.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Page;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\TreeRouteStack;
 
@@ -491,11 +490,10 @@ $page = new Page\Mvc([
     'query'      =&gt; ['format' =&gt; 'json'],
 ]);</code></pre>
 
-
 <h3 id="isactive-determines-if-page-is-active">isActive() determines if page is active</h3>
 <p>This example demonstrates that MVC pages determine whether they are active by
 using the params found in the route match object.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Page;
 
 /**
  * Dispatched request:
@@ -544,7 +542,6 @@ $page = new Page\Mvc([
 // returns false, because page requires the id param to be set in the request
 $page-&gt;isActive(); // returns false</code></pre>
 
-
 <h3 id="using-routes">Using routes</h3>
 <p>Routes can be used with MVC pages. If a page has a route, this route will be
 used in <code>getHref()</code> to generate the URL for the page.</p>
@@ -553,7 +550,7 @@ used in <code>getHref()</code> to generate the URL for the page.</p>
 <p>Note that when using the <code>route</code> property in a page, you do not need to
 specify the default params that the route defines (controller, action, etc.).</p>
 </blockquote>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Page;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\TreeRouteStack;
 
@@ -580,7 +577,6 @@ $page = new Page\Mvc([
 
 // returns: /a/42
 $page-&gt;getHref();</code></pre>
-
 
 <h2 id="uri-pages">URI Pages</h2>
 <p>Pages of type <code>Zend\Navigation\Page\Uri</code> can be used to link to pages on other
@@ -628,7 +624,7 @@ custom property of the page, and be accessible via <code>$internalId =
 $page-&gt;internal_id;</code> or <code>$internalId = $page-&gt;get('internal_id');</code>.</p>
 <h3 id="basic-custom-page-example">Basic custom page example</h3>
 <p>The only thing a custom page class needs to implement is the <code>getHref()</code> method.</p>
-<pre class="codehilite"><code class="language-php">namespace My;
+<pre class="codehilite"><code class="language-php linenums">namespace My;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -640,11 +636,10 @@ class Page extends AbstractPage
     }
 }</code></pre>
 
-
 <h3 id="a-custom-page-with-properties">A custom page with properties</h3>
 <p>When adding properties to an extended page, there is no need to override/modify
 <code>setOptions()</code>.</p>
-<pre class="codehilite"><code class="language-php">namespace My\Navigation;
+<pre class="codehilite"><code class="language-php linenums">namespace My\Navigation;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -686,7 +681,6 @@ $page = new Page([
     'foo_bar' =&gt; 'baz',
 ]);</code></pre>
 
-
 <h2 id="creating-pages-using-the-page-factory">Creating pages using the page factory</h2>
 <p>All pages (also custom classes), can be created using the page factory,
 <code>Zend\Navigation\Page\AbstractPage::factory()</code>. The factory accepts either an
@@ -698,7 +692,7 @@ created. If any of the MVC options are given, an MVC page will be created.</p>
 class that should be created. If the value is <code>mvc</code> or <code>uri</code>, an MVC or URI page
 will be created, respectively.</p>
 <h3 id="creating-an-mvc-page-using-the-page-factory">Creating an MVC page using the page factory</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page\AbstractPage;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Page\AbstractPage;
 
 // MVC page, as &quot;action&quot; is defined
 $page = AbstractPage::factory([
@@ -725,9 +719,8 @@ $page = AbstractPage::factory([
     'label'  =&gt; 'My MVC page',
 ]);</code></pre>
 
-
 <h3 id="creating-a-uri-page-using-the-page-factory">Creating a URI page using the page factory</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page\AbstractPage;
+<pre class="codehilite"><code class="language-php linenums">use Zend\Navigation\Page\AbstractPage;
 
 // URI page, as &quot;uri&quot; is present, with now MVC options
 $page = AbstractPage::factory([
@@ -754,11 +747,10 @@ $page = AbstractPage::factory([
     'label' =&gt; 'My URI page',
 ]);</code></pre>
 
-
 <h3 id="creating-a-custom-page-type-using-the-page-factory">Creating a custom page type using the page factory</h3>
 <p>To create a custom page type using the factory, use the option <code>type</code> to specify
 a class name to instantiate.</p>
-<pre class="codehilite"><code class="language-php">namespace My\Navigation;
+<pre class="codehilite"><code class="language-php linenums">namespace My\Navigation;
 
 use Zend\Navigation\Page\AbstractPage;
 

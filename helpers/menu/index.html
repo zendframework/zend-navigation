@@ -343,15 +343,13 @@ also allows using a partial view script.</p>
 <p>This example shows how to render a menu from a container registered/found in the
 view helper. Notice how pages are filtered out based on visibility and ACL.</p>
 <p>In a view script or layout:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;render() ?&gt;</code></pre>
-
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;render() ?&gt;</code></pre>
 
 <p>Or:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre>
-
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li&gt;
         &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;/li&gt;
@@ -417,11 +415,10 @@ view helper. Notice how pages are filtered out based on visibility and ACL.</p>
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="calling-rendermenu-directly">Calling renderMenu() directly</h2>
 <p>This example shows how to render a menu that is not registered in the view
 helper by calling <code>renderMenu()</code> directly and specifying options.</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<pre class="codehilite"><code class="language-php linenums">&lt;?php
 // render only the 'Community' menu
 $community = $this-&gt;navigation()-&gt;findOneByLabel('Community');
 $options = [
@@ -433,9 +430,8 @@ echo $this-&gt;navigation()
           -&gt;renderMenu($community, $options);
 ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;community&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;community&quot;&gt;
     &lt;li&gt;
         &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
     &lt;/li&gt;
@@ -444,13 +440,12 @@ echo $this-&gt;navigation()
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="rendering-the-deepest-active-menu">Rendering the deepest active menu</h2>
 <p>This example shows how <code>renderSubMenu()</code> will render the deepest sub menu of
 the active branch.</p>
 <p>Calling <code>renderSubMenu($container, $ulClass, $indent)</code> is equivalent to calling
 <code>renderMenu($container, $options)</code> with the following options:</p>
-<pre class="codehilite"><code class="language-php">[
+<pre class="codehilite"><code class="language-php linenums">[
     'ulClass'          =&gt; $ulClass,
     'indent'           =&gt; $indent,
     'minDepth'         =&gt; null,
@@ -459,14 +454,12 @@ the active branch.</p>
     'renderParents'    =&gt; false,
 ]</code></pre>
 
-
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;renderSubMenu(null, 'sidebar', 4) ?&gt;</code></pre>
 
-
 <p>The output will be the same if 'FAQ' or 'Foo Server' is active:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;sidebar&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;sidebar&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
     &lt;/li&gt;
@@ -478,15 +471,13 @@ the active branch.</p>
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="rendering-with-maximum-depth">Rendering with maximum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li&gt;
         &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;/li&gt;
@@ -525,15 +516,13 @@ the active branch.</p>
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="rendering-with-minimum-depth">Rendering with minimum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setMinDepth(1) ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
@@ -581,15 +570,13 @@ the active branch.</p>
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="rendering-only-the-active-branch">Rendering only the active branch</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true) ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
@@ -611,16 +598,14 @@ the active branch.</p>
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="rendering-only-the-active-branch-with-minimum-depth">Rendering only the active branch with minimum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
     -&gt;setMinDepth(1) ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
@@ -637,16 +622,14 @@ the active branch.</p>
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="rendering-only-the-active-branch-with-maximum-depth">Rendering only the active branch with maximum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
@@ -660,17 +643,15 @@ the active branch.</p>
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-
 <h2 id="rendering-only-the-active-branch-with-maximum-depth-and-no-parents">Rendering only the active branch with maximum depth and no parents</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
     -&gt;setRenderParents(false)
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
     &lt;/li&gt;
@@ -678,7 +659,6 @@ the active branch.</p>
         &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-
 
 <h2 id="rendering-a-custom-menu-using-a-partial-view-script">Rendering a custom menu using a partial view script</h2>
 <p>This example shows how to render a custom menu using a partial view script. By
@@ -688,28 +668,25 @@ the <code>renderPartial()</code> method.</p>
 <p>The <code>renderPartial()</code>  method will assign the container to the view with the key
 <code>container</code>.</p>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php">$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
+<pre class="codehilite"><code class="language-php linenums">$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
 echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 
-
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
+<pre class="codehilite"><code class="language-php linenums">foreach ($this-&gt;container as $page) {
     echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
 }</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
 &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
 &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
 &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
-
 
 <h3 id="using-additional-parameters-in-partial-view-scripts">Using additional parameters in partial view scripts</h3>
 <p>Starting with version 2.6.0, you can assign custom variables to a
 partial script.</p>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php">// Set partial
+<pre class="codehilite"><code class="language-php linenums">// Set partial
 $this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
 
 // Output menu
@@ -719,9 +696,8 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;renderPartialWithParams(
     ]
 );</code></pre>
 
-
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;h1&gt;&lt;?= $headline ?&gt;&lt;/h1&gt;
+<pre class="codehilite"><code class="language-php linenums">&lt;h1&gt;&lt;?= $headline ?&gt;&lt;/h1&gt;
 
 &lt;?php
 foreach ($this-&gt;container as $page) {
@@ -729,18 +705,16 @@ foreach ($this-&gt;container as $page) {
 }
 ?&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;h1&gt;Links&lt;/h1&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;h1&gt;Links&lt;/h1&gt;
 &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
 &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
 &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
 &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
 
-
 <h3 id="using-menu-options-in-partial-view-scripts">Using menu options in partial view scripts</h3>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php">// Set options
+<pre class="codehilite"><code class="language-php linenums">// Set options
 $this-&gt;navigation()-&gt;menu()
     -&gt;setUlClass('my-nav')
     -&gt;setPartial('my-module/partials/menu');
@@ -748,9 +722,8 @@ $this-&gt;navigation()-&gt;menu()
 // Output menu
 echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 
-
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;div class&quot;&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;&quot;&gt;
+<pre class="codehilite"><code class="language-php linenums">&lt;div class&quot;&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;&quot;&gt;
     &lt;?php
     foreach ($this-&gt;container as $page) {
         echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
@@ -758,21 +731,19 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
     ?&gt;
 &lt;/div&gt;</code></pre>
 
-
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;div class=&quot;my-nav&quot;&gt;
+<pre class="codehilite"><code class="language-html linenums">&lt;div class=&quot;my-nav&quot;&gt;
     &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
     &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
     &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
 &lt;/div&gt;</code></pre>
 
-
 <h3 id="using-acls-with-partial-view-scripts">Using ACLs with partial view scripts</h3>
 <p>If you want to use an ACL within your partial view script, then you will have to
 check the access to a page manually.</p>
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
+<pre class="codehilite"><code class="language-php linenums">foreach ($this-&gt;container as $page) {
     if ($this-&gt;navigation()-&gt;accept($page)) {
         echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
     }

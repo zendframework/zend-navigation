@@ -223,7 +223,7 @@
   in your application configuration.</li>
 <li>Render your container using a navigation view helper within your view scripts.</li>
 </ul>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<pre class="codehilite"><code class="language-php linenums">&lt;?php
 // your configuration file, e.g. config/autoload/global.php
 return [
     // ...
@@ -237,7 +237,7 @@ return [
             [
                 'label' =&gt; 'Page #1',
                 'route' =&gt; 'page-1',
-                'pages' =&gt; array(
+                'pages' =&gt; [
                     [
                         'label' =&gt; 'Child #1',
                         'route' =&gt; 'page-1-child',
@@ -258,15 +258,13 @@ return [
     // ...
 ];</code></pre>
 
-
-<pre class="codehilite"><code class="language-php">&lt;!-- in your layout --&gt;
+<pre class="codehilite"><code class="language-php linenums">&lt;!-- in your layout --&gt;
 &lt;!-- ... --&gt;
 
 &lt;body&gt;
     &lt;?= $this-&gt;navigation('default')-&gt;menu() ?&gt;
 &lt;/body&gt;
 &lt;!-- ... --&gt;</code></pre>
-
 
 <h2 id="using-multiple-navigations">Using multiple navigations</h2>
 <p>If you want to use more than one navigation, you can register the abstract factory
@@ -275,7 +273,7 @@ return [
 <p>Once the service factory is registered, you can create as many navigation
 definitions as you wish, and the factory will create navigation containers
 automatically. This factory can also be used for the <code>default</code> container.</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<pre class="codehilite"><code class="language-php linenums">&lt;?php
 // your configuration file, e.g. config/autoload/global.php
 return [
     // ...
@@ -337,7 +335,6 @@ return [
     // ...
 ];</code></pre>
 
-
 <blockquote>
 <h3 id="container-names-have-a-prefix">Container names have a prefix</h3>
 <p>There is one important point to know when using
@@ -347,7 +344,7 @@ This helps ensure that no naming collisions occur with other services.</p>
 </blockquote>
 <p>The following example demonstrates rendering the navigation menus for the named
 <code>default</code>, <code>special</code> and <code>sitemap</code> containers.</p>
-<pre class="codehilite"><code class="language-php">&lt;!-- in your layout --&gt;
+<pre class="codehilite"><code class="language-php linenums">&lt;!-- in your layout --&gt;
 &lt;!-- ... --&gt;
 
 &lt;body&gt;

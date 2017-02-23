@@ -215,8 +215,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             'Page 3'
         ];
 
-        $iterator = new \RecursiveIteratorIterator($nav,
-            \RecursiveIteratorIterator::SELF_FIRST);
+        $iterator = new \RecursiveIteratorIterator(
+            $nav,
+            \RecursiveIteratorIterator::SELF_FIRST
+        );
         foreach ($iterator as $page) {
             $actual[] = $page->getLabel();
         }
@@ -459,8 +461,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             ]
         ]);
 
-        $this->assertEquals(2, count($nav),
-                            'Expected 2 pages, found ' . count($nav));
+        $this->assertEquals(
+            2,
+            count($nav),
+            'Expected 2 pages, found ' . count($nav)
+        );
     }
 
     public function testAddPagesShouldWorkWithConfig()
@@ -478,8 +483,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             ]
         ]));
 
-        $this->assertEquals(2, count($nav),
-                            'Expected 2 pages, found ' . count($nav));
+        $this->assertEquals(
+            2,
+            count($nav),
+            'Expected 2 pages, found ' . count($nav)
+        );
     }
 
     public function testAddPagesShouldWorkWithMixedArray()
@@ -501,8 +509,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             ])
         ]));
 
-        $this->assertEquals(3, count($nav),
-                            'Expected 3 pages, found ' . count($nav));
+        $this->assertEquals(
+            3,
+            count($nav),
+            'Expected 3 pages, found ' . count($nav)
+        );
     }
 
     /**
@@ -514,7 +525,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $nav->addPages($this->_getFindByNavigation());
 
         $this->assertEquals(
-            3, count($nav), 'Expected 3 pages, found ' . count($nav)
+            3,
+            count($nav),
+            'Expected 3 pages, found ' . count($nav)
         );
 
         $this->assertEquals(
@@ -567,8 +580,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $nav->removePages();
 
-        $this->assertEquals(0, count($nav),
-                            'Expected 0 pages, found ' . count($nav));
+        $this->assertEquals(
+            0,
+            count($nav),
+            'Expected 0 pages, found ' . count($nav)
+        );
     }
 
     public function testSettingPages()
@@ -592,8 +608,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             ]
         ]);
 
-        $this->assertEquals(1, count($nav),
-                            'Expected 1 page, found ' . count($nav));
+        $this->assertEquals(
+            1,
+            count($nav),
+            'Expected 1 page, found ' . count($nav)
+        );
     }
 
     public function testGetPagesShouldReturnAnArrayOfPages()
@@ -1086,8 +1105,10 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    // @codingStandardsIgnoreStart
     protected function _getFindByNavigation()
     {
+        // @codingStandardsIgnoreEnd
         // findAllByFoo('bar')         // Page 1, Page 1.1
         // findById('page_2_and_3')    // Page 2
         // findOneById('page_2_and_3') // Page 2

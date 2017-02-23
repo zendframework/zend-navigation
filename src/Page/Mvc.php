@@ -128,7 +128,7 @@ class Mvc extends AbstractPage
      */
     public function isActive($recursive = false)
     {
-        if (!$this->active) {
+        if (! $this->active) {
             $reqParams = [];
             if ($this->routeMatch instanceof RouteMatch || $this->routeMatch instanceof MvcRouter\RouteMatch) {
                 $reqParams  = $this->routeMatch->getParams();
@@ -279,7 +279,7 @@ class Mvc extends AbstractPage
      */
     public function setAction($action)
     {
-        if (null !== $action && !is_string($action)) {
+        if (null !== $action && ! is_string($action)) {
             throw new Exception\InvalidArgumentException(
                 'Invalid argument: $action must be a string or null'
             );
@@ -313,7 +313,7 @@ class Mvc extends AbstractPage
      */
     public function setController($controller)
     {
-        if (null !== $controller && !is_string($controller)) {
+        if (null !== $controller && ! is_string($controller)) {
             throw new Exception\InvalidArgumentException(
                 'Invalid argument: $controller must be a string or null'
             );
@@ -400,7 +400,7 @@ class Mvc extends AbstractPage
      */
     public function setRoute($route)
     {
-        if (null !== $route && (!is_string($route) || strlen($route) < 1)) {
+        if (null !== $route && (! is_string($route) || strlen($route) < 1)) {
             throw new Exception\InvalidArgumentException(
                 'Invalid argument: $route must be a non-empty string or null'
             );

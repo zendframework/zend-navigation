@@ -23,7 +23,9 @@ class NavigationTest extends \PHPUnit_Framework_TestCase
     /**
      * @var     Zend_Navigation
      */
+    // @codingStandardsIgnoreStart
     private $_navigation;
+    // @codingStandardsIgnoreEnd
 
     protected function setUp()
     {

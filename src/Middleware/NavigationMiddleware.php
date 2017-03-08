@@ -2,57 +2,68 @@
 
 namespace Zend\Navigation\Middleware;
 
+use Interop\Http\ServerMiddleware\DelegateInterface;
+use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use RecursiveIteratorIterator;
-use Zend\Navigation\Page\ExpressivePage;
-use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Zend\Navigation\AbstractContainer;
+use Zend\Navigation\Exception;
+use Zend\Navigation\Page\ExpressivePage;
 use Zend\Expressive\Router\RouteResult;
-use Zend\Navigation\Navigation;
 
 /**
- * Pipeline middleware for injecting a Navigation with a RouteResult.
+ * Pipeline middleware for injecting Navigations with a RouteResult.
  */
-class NavigationMiddleware
+class NavigationMiddleware implements MiddlewareInterface
 {
     /**
-     * @var Navigation
+     * @var AbstractContainer[]
      */
-    private $navigation;
+    private $containers;
 
     /**
-     * @param Navigation $navigation
+     * @param AbstractContainer[] $containers
      */
-    public function __construct(Navigation $navigation)
+    public function __construct(array $containers)
     {
-        $this->navigation = $navigation;
+        foreach ($containers as $container) {
+            if (! $container instanceof AbstractContainer) {
+                throw new Exception\InvalidArgumentException(
+                    'Invalid argument: container must be an instance of '
+                    . 'Zend\Navigation\AbstractContainer'
+                );
+            }
+
+            $this->containers[] = $container;
+        }
     }
 
     /**
      * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
-     * @param callable               $next
-     * @return ResponseInterface
+     * @param DelegateInterface      $delegate
+     * @return \Psr\Http\Message\ResponseInterface
      */
-    public function __invoke(
+    public function process(
         ServerRequestInterface $request,
-        ResponseInterface $response,
-        callable $next
+        DelegateInterface $delegate
     ) {
         $routeResult = $request->getAttribute(RouteResult::class, false);
 
         if ($routeResult instanceof RouteResult) {
-            $iterator = new RecursiveIteratorIterator(
-                $this->navigation,
-                RecursiveIteratorIterator::SELF_FIRST
-            );
+            foreach ($this->containers as $container) {
+                $iterator = new RecursiveIteratorIterator(
+                    $container,
+                    RecursiveIteratorIterator::SELF_FIRST
+                );
 
-            foreach ($iterator as $page) {
-                if ($page instanceof ExpressivePage) {
-                    $page->setRouteResult($routeResult);
+                foreach ($iterator as $page) {
+                    if ($page instanceof ExpressivePage) {
+                        $page->setRouteResult($routeResult);
+                    }
                 }
             }
         }
 
-        return $next($request, $response);
+        return $delegate->process($request);
     }
 }

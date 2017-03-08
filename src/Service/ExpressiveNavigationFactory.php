@@ -2,83 +2,61 @@
 
 namespace Zend\Navigation\Service;
 
-use Zend\Navigation\Page\ExpressivePage;
-use Interop\Container\ContainerInterface;
-use Zend\Expressive\Router\RouterInterface;
+use Psr\Container\ContainerInterface;
 use Zend\Navigation\Exception;
-use Zend\Navigation\Service\DefaultNavigationFactory as BaseDefaultNavigationFactory;
+use Zend\Navigation\Navigation;
 
 /**
  * Class ExpressiveNavigationFactory
  */
-class ExpressiveNavigationFactory extends BaseDefaultNavigationFactory
+class ExpressiveNavigationFactory extends AbstractExpressiveNavigationFactory
 {
     /**
-     * @inheritdoc
+     * @var array
      */
-    protected function preparePages(ContainerInterface $container, $pages)
-    {
-        // Get router
-        /** @var RouterInterface $router */
-        $router = $container->get(RouterInterface::class);
-
-        return $this->injectComponents($pages, null, $router, null);
-    }
+    private $pages;
 
     /**
-     * @inheritdoc
-     */
-    protected function injectComponents(
-        array $pages,
-        $routeMatch = null,
-        $router = null,
-        $request = null
-    ) {
-        $this->validateRouter($router);
-
-        foreach ($pages as &$page) {
-            if (isset($page['route'])) {
-                // Set Expressive page as page type
-                $page['type'] = ExpressivePage::class;
-
-                // Set router if exists
-                if ($router !== null && ! isset($page['router'])) {
-                    $page['router'] = $router;
-                }
-            }
-
-            if (isset($page['pages'])) {
-                $page['pages'] = $this->injectComponents(
-                    $page['pages'], $routeMatch, $router, $request
-                );
-            }
-        }
-
-        return $pages;
-    }
-
-    /**
-     * Validate that a router argument provided to injectComponents is valid.
+     * Create and return a new Navigation instance
      *
-     * @param null|RouterInterface
-     * @return void
-     * @throws Exception\InvalidArgumentException
+     * @param ContainerInterface $container
+     * @return Navigation
      */
-    private function validateRouter($router)
+    public function __invoke(ContainerInterface $container)
     {
-        if (null === $router) {
-            return;
+        return new Navigation($this->getPages($container));
+    }
+
+    /**
+     * @param ContainerInterface $container
+     * @return array
+     * @throws \Zend\Navigation\Exception\InvalidArgumentException
+     */
+    private function getPages(ContainerInterface $container)
+    {
+        // Is already created?
+        if (null !== $this->pages) {
+            return $this->pages;
         }
 
-        if (! $router instanceof RouterInterface) {
+        $configuration = $container->get('config');
+
+        if (! isset($configuration['navigation'])) {
             throw new Exception\InvalidArgumentException(
-                sprintf(
-                    '%s expected by %s::injectComponents; received %s',
-                    RouterInterface::class,
-                    __CLASS__,
-                    (is_object($router) ? get_class($router) : gettype($router))
-                )
+                'Could not find navigation configuration key'
             );
         }
+        if (! isset($configuration['navigation']['default'])) {
+            throw new Exception\InvalidArgumentException(
+                'Failed to find a navigation container by the name "default"'
+            );
+        }
+
+        $pages       = $this->getPagesFromConfig(
+            $configuration['navigation']['default']
+        );
+        $this->pages = $this->preparePages($container, $pages);
+
+        return $this->pages;
     }
 }

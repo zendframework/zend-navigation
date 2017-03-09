@@ -587,7 +587,7 @@ class MvcTest extends TestCase
 
         // If the default router is not used an exception will be thrown.
         // This method intentionally has no assertion.
-        $page->getHref();
+        $this->assertNotEmpty($page->getHref());
         $page->setDefaultRouter(null);
     }
 

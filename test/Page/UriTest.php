@@ -43,25 +43,23 @@ class UriTest extends TestCase
 
     public function testUriOptionAsInteger()
     {
-        try {
-            $page = new Page\Uri(['uri' => 1337]);
-            $this->fail('An invalid \'uri\' was given, but ' .
-                        'a Zend\Navigation\Exception\InvalidArgumentException was not thrown');
-        } catch (Navigation\Exception\InvalidArgumentException $e) {
-        }
+        $this->expectException(
+            Navigation\Exception\InvalidArgumentException::class
+        );
+
+        new Page\Uri(['uri' => 1337]);
     }
 
     public function testUriOptionAsObject()
     {
-        try {
-            $uri = new \stdClass();
-            $uri->foo = 'bar';
+        $this->expectException(
+            Navigation\Exception\InvalidArgumentException::class
+        );
 
-            $page = new Page\Uri(['uri' => $uri]);
-            $this->fail('An invalid \'uri\' was given, but ' .
-                        'a Zend\Navigation\Exception\InvalidArgumentException was not thrown');
-        } catch (Navigation\Exception\InvalidArgumentException $e) {
-        }
+        $uri = new \stdClass();
+        $uri->foo = 'bar';
+
+        new Page\Uri(['uri' => $uri]);
     }
 
     public function testSetAndGetUri()

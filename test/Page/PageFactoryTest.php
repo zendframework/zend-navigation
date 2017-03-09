@@ -118,45 +118,38 @@ class PageFactoryTest extends TestCase
 
     public function testShouldFailForInvalidType()
     {
-        try {
-            $page = AbstractPage::factory([
-                'type' => 'ZendTest\Navigation\TestAsset\InvalidPage',
-                'label' => 'My Invalid Page'
-            ]);
-        } catch (Navigation\Exception\InvalidArgumentException $e) {
-            return;
-        }
+        $this->expectException(
+            Navigation\Exception\InvalidArgumentException::class
+        );
 
-        $this->fail('An exception has not been thrown for invalid page type');
+        AbstractPage::factory([
+            'type' => 'ZendTest\Navigation\TestAsset\InvalidPage',
+            'label' => 'My Invalid Page'
+        ]);
     }
 
     public function testShouldFailForNonExistantType()
     {
+        $this->expectException(
+            Navigation\Exception\InvalidArgumentException::class
+        );
+
         $pageConfig = [
             'type' => 'My_NonExistent_Page',
             'label' => 'My non-existent Page'
         ];
 
-        try {
-            $page = AbstractPage::factory($pageConfig);
-        } catch (Navigation\Exception\InvalidArgumentException $e) {
-            return;
-        }
-
-        $msg = 'An exception has not been thrown for non-existent class';
-        $this->fail($msg);
+        AbstractPage::factory($pageConfig);
     }
 
     public function testShouldFailIfUnableToDetermineType()
     {
-        try {
-            $page = AbstractPage::factory([
-                'label' => 'My Invalid Page'
-            ]);
-        } catch (Navigation\Exception\InvalidArgumentException $e) {
-            return;
-        }
+        $this->expectException(
+            Navigation\Exception\InvalidArgumentException::class
+        );
 
-        $this->fail('An exception has not been thrown for invalid page type');
+        AbstractPage::factory([
+            'label' => 'My Invalid Page'
+        ]);
     }
 }

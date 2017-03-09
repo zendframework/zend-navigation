@@ -97,6 +97,8 @@ class ServiceFactoryTest extends TestCase
     {
         $this->serviceManager->setFactory('Navigation', TestAsset\FileNavigationFactory::class);
         $container = $this->serviceManager->get('Navigation');
+
+        $this->assertInstanceOf(\Zend\Navigation\Navigation::class, $container);
     }
 
     /**

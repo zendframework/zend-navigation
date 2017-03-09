@@ -9,6 +9,7 @@
 
 namespace ZendTest\Navigation\Page;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Navigation\Page\AbstractPage;
 use Zend\Navigation;
 
@@ -17,7 +18,7 @@ use Zend\Navigation;
  *
  * @group      Zend_Navigation
  */
-class PageFactoryTest extends \PHPUnit_Framework_TestCase
+class PageFactoryTest extends TestCase
 {
     public function testDetectFactoryPage()
     {

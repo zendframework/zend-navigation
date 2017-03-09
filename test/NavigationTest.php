@@ -9,6 +9,7 @@
 
 namespace ZendTest\Navigation;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Navigation\Page;
 
 /**
@@ -18,7 +19,7 @@ use Zend\Navigation\Page;
 /**
  * @group      Zend_Navigation
  */
-class NavigationTest extends \PHPUnit_Framework_TestCase
+class NavigationTest extends TestCase
 {
     /**
      * @var     Zend_Navigation

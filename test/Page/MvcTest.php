@@ -9,7 +9,7 @@
 
 namespace ZendTest\Navigation\Page;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router as MvcRouter;

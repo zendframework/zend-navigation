@@ -9,6 +9,7 @@
 
 namespace ZendTest\Navigation\Page;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Navigation\Page;
 use Zend\Navigation;
 use Zend\Http\Request;
@@ -18,7 +19,7 @@ use Zend\Http\Request;
  *
  * @group      Zend_Navigation
  */
-class UriTest extends \PHPUnit_Framework_TestCase
+class UriTest extends TestCase
 {
     public function testUriOptionAsString()
     {

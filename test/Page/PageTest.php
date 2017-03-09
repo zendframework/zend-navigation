@@ -9,6 +9,7 @@
 
 namespace ZendTest\Navigation\Page;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Navigation\Page\AbstractPage;
 use Zend\Navigation\Page\Mvc;
 use Zend\Navigation\Page\Uri;
@@ -21,7 +22,7 @@ use Zend\Config;
  * @author    Robin Skoglund
  * @group      Zend_Navigation
  */
-class PageTest extends \PHPUnit_Framework_TestCase
+class PageTest extends TestCase
 {
     /**
      * Prepares the environment before running a test.

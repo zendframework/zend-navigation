@@ -7,12 +7,13 @@
 
 namespace ZendTest\Navigation;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Navigation\ConfigProvider;
 use Zend\Navigation\Navigation;
 use Zend\Navigation\Service;
 use Zend\Navigation\View;
 
-class ConfigProviderTest extends \PHPUnit_Framework_TestCase
+class ConfigProviderTest extends TestCase
 {
     private $config = [
         'abstract_factories' => [

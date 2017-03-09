@@ -9,6 +9,7 @@
 
 namespace ZendTest\Navigation;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Config\Config;
 use Zend\Http\Request as HttpRequest;
 use Zend\Mvc\Application;

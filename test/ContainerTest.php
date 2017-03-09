@@ -9,6 +9,7 @@
 
 namespace ZendTest\Navigation;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Navigation;
 use Zend\Navigation\Page;
 use Zend\Config;
@@ -18,7 +19,7 @@ use Zend\Config;
  *
  * @group      Zend_Navigation
  */
-class ContainerTest extends \PHPUnit_Framework_TestCase
+class ContainerTest extends TestCase
 {
     /**
      * Prepares the environment before running a test.

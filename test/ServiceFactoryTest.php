@@ -28,7 +28,7 @@ use Zend\ServiceManager\ServiceManager;
  *
  * @group      Zend_Navigation
  */
-class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
+class ServiceFactoryTest extends TestCase
 {
     /**
      * @var \Zend\ServiceManager\ServiceManager

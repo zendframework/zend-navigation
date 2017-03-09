@@ -13,7 +13,7 @@
         }
     },
     "require": {
-        "php": "^5.5 || ^7.0",
+        "php": "^5.6 || ^7.0",
         "zendframework/zend-stdlib": "^2.7 || ^3.0"
     },
     "require-dev": {
@@ -28,7 +28,7 @@
         "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
         "zendframework/zend-uri": "^2.5",
         "zendframework/zend-view": "^2.6.5",
-        "phpunit/phpunit": "^4.6",
+        "phpunit/phpunit": "^6.0.8 || ^5.7.15",
         "zendframework/zend-coding-standard": "~1.0.0"
     },
     "suggest": {

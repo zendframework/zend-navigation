@@ -17,7 +17,7 @@ class ExpressivePage extends AbstractPage
     /**
      * Route name
      *
-     * @var string
+     * @var string|null
      */
     private $routeName;
 
@@ -34,17 +34,17 @@ class ExpressivePage extends AbstractPage
     private $queryParams = [];
 
     /**
-     * @var RouteResult
+     * @var RouteResult|null
      */
     private $routeResult;
 
     /**
-     * @var RouterInterface
+     * @var RouterInterface|null
      */
     private $router;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $hrefCache;
 

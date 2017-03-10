@@ -32,7 +32,7 @@ final class ExpressiveNavigationAbstractServiceFactory
     /**
      * Navigation configuration
      *
-     * @var array
+     * @var array|null
      */
     private $config;
 

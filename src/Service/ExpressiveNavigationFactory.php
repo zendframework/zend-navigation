@@ -14,7 +14,7 @@ use Zend\Navigation\Navigation;
 class ExpressiveNavigationFactory extends AbstractExpressiveNavigationFactory
 {
     /**
-     * @var array
+     * @var array|null
      */
     private $pages;
 
@@ -32,7 +32,7 @@ class ExpressiveNavigationFactory extends AbstractExpressiveNavigationFactory
     /**
      * @param ContainerInterface $container
      * @return array
-     * @throws \Zend\Navigation\Exception\InvalidArgumentException
+     * @throws Exception\InvalidArgumentException
      */
     private function getPages(ContainerInterface $container)
     {

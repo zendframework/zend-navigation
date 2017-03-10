@@ -87,9 +87,9 @@ abstract class AbstractExpressiveNavigationFactory
     }
 
     /**
-     * @param string|\Zend\Config\Config|array $config
-     * @return array|null|\Zend\Config\Config
-     * @throws \Zend\Navigation\Exception\InvalidArgumentException
+     * @param string|Config\Config|array $config
+     * @return array|null|Config\Config
+     * @throws Exception\InvalidArgumentException
      */
     protected function getPagesFromConfig($config = null)
     {

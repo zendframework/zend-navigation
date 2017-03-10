@@ -11,9 +11,6 @@ use Psr\Container\ContainerInterface;
 use Zend\Navigation\Exception;
 use Zend\Navigation\Navigation;
 
-/**
- * Class ExpressiveNavigationFactory
- */
 class ExpressiveNavigationFactory extends AbstractExpressiveNavigationFactory
 {
     /**

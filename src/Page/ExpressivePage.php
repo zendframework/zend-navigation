@@ -12,9 +12,6 @@ use Zend\Expressive\Router\RouteResult;
 use Zend\Expressive\Router\RouterInterface;
 use Zend\Navigation\Exception;
 
-/**
- * Class ExpressivePage
- */
 class ExpressivePage extends AbstractPage
 {
     /**

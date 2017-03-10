@@ -15,9 +15,6 @@ use Zend\Navigation\Exception;
 use Zend\Navigation\Page\ExpressivePage;
 use Zend\Stdlib\ArrayUtils;
 
-/**
- * Abstract expressive navigation factory
- */
 abstract class AbstractExpressiveNavigationFactory
 {
     /**

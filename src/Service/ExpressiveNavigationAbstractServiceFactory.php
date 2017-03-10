@@ -11,9 +11,6 @@ use Interop\Container\ContainerInterface;
 use Zend\Navigation\Navigation;
 use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
-/**
- * Class ExpressiveNavigationAbstractServiceFactory
- */
 final class ExpressiveNavigationAbstractServiceFactory
     extends AbstractExpressiveNavigationFactory
     implements AbstractFactoryInterface

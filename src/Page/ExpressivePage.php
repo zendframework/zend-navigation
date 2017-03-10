@@ -49,7 +49,7 @@ class ExpressivePage extends AbstractPage
     private $hrefCache;
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public function isActive($recursive = false)
     {
@@ -77,7 +77,7 @@ class ExpressivePage extends AbstractPage
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public function getHref()
     {

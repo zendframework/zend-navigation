@@ -11,10 +11,10 @@ use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
 use RecursiveIteratorIterator;
 use Psr\Http\Message\ServerRequestInterface;
+use Zend\Expressive\Router\RouteResult;
 use Zend\Navigation\AbstractContainer;
 use Zend\Navigation\Exception;
 use Zend\Navigation\Page\ExpressivePage;
-use Zend\Expressive\Router\RouteResult;
 
 /**
  * Pipeline middleware for injecting Navigations with a RouteResult.

@@ -10,9 +10,9 @@ namespace Zend\Navigation\Service;
 use Psr\Container\ContainerInterface;
 use Traversable;
 use Zend\Config;
+use Zend\Expressive\Router\RouterInterface;
 use Zend\Navigation\Exception;
 use Zend\Navigation\Page\ExpressivePage;
-use Zend\Expressive\Router\RouterInterface;
 use Zend\Stdlib\ArrayUtils;
 
 /**

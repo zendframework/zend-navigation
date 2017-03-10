@@ -18,6 +18,7 @@ class NavigationMiddlewareFactory
      * @var string
      */
     const CONFIG_KEY = 'navigation';
+
     /**
      * Service manager factory prefix
      *

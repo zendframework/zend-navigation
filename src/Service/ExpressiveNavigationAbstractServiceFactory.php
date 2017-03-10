@@ -24,6 +24,7 @@ final class ExpressiveNavigationAbstractServiceFactory
      * @var string
      */
     const CONFIG_KEY = 'navigation';
+
     /**
      * Service manager factory prefix
      *

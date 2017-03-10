@@ -34,8 +34,10 @@ class NavigationMiddleware implements MiddlewareInterface
         foreach ($containers as $container) {
             if (! $container instanceof AbstractContainer) {
                 throw new Exception\InvalidArgumentException(
-                    'Invalid argument: container must be an instance of '
-                    . 'Zend\Navigation\AbstractContainer'
+                    sprintf(
+                        'Invalid argument: container must be an instance of %s',
+                        AbstractContainer::class
+                    )
                 );
             }
 

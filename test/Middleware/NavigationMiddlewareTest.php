@@ -3,7 +3,7 @@
 namespace ZendTest\Navigation\Middleware;
 
 use Interop\Http\ServerMiddleware\DelegateInterface;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Expressive\Router\RouteResult;
 use Zend\Navigation\Exception\InvalidArgumentException;

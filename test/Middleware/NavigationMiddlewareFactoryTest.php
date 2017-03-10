@@ -2,7 +2,7 @@
 
 namespace ZendTest\Navigation\Middleware;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Interop\Container\ContainerInterface;
 use Zend\Navigation\Middleware\NavigationMiddleware;
 use Zend\Navigation\Middleware\NavigationMiddlewareFactory;

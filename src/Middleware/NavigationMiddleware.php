@@ -33,12 +33,10 @@ class NavigationMiddleware implements MiddlewareInterface
     {
         foreach ($containers as $container) {
             if (! $container instanceof AbstractContainer) {
-                throw new Exception\InvalidArgumentException(
-                    sprintf(
-                        'Invalid argument: container must be an instance of %s',
-                        AbstractContainer::class
-                    )
-                );
+                throw new Exception\InvalidArgumentException(sprintf(
+                    'Invalid argument: container must be an instance of %s',
+                    AbstractContainer::class
+                ));
             }
 
             $this->containers[] = $container;

@@ -52,56 +52,48 @@ class ExpressivePageTest extends TestCase
 
     public function testGetHref()
     {
-        $page = new ExpressivePage(
-            [
-                'route'       => 'foo',
-                'router'      => $this->router,
-                'routeResult' => $this->routeResult,
-            ]
-        );
+        $page = new ExpressivePage([
+            'route'       => 'foo',
+            'router'      => $this->router,
+            'routeResult' => $this->routeResult,
+        ]);
 
         $this->assertSame('/foo', $page->getHref());
     }
 
     public function testGetHrefWithoutRouteName()
     {
-        $page = new ExpressivePage(
-            [
-                'router'      => $this->router,
-                'routeResult' => $this->routeResult,
-            ]
-        );
+        $page = new ExpressivePage([
+            'router'      => $this->router,
+            'routeResult' => $this->routeResult,
+        ]);
 
         $this->assertSame('/foo', $page->getHref());
     }
 
     public function testGetHrefWithFragment()
     {
-        $page = new ExpressivePage(
-            [
-                'route'       => 'foo',
-                'router'      => $this->router,
-                'routeResult' => $this->routeResult,
-                'fragment'    => 'bar',
-            ]
-        );
+        $page = new ExpressivePage([
+            'route'       => 'foo',
+            'router'      => $this->router,
+            'routeResult' => $this->routeResult,
+            'fragment'    => 'bar',
+        ]);
 
         $this->assertSame('/foo#bar', $page->getHref());
     }
 
     public function testGetHrefWithQueryParams()
     {
-        $page = new ExpressivePage(
-            [
-                'route'       => 'foo',
-                'router'      => $this->router,
-                'routeResult' => $this->routeResult,
-                'query'       => [
-                    'bar' => 1,
-                    'baz' => 2,
-                ],
-            ]
-        );
+        $page = new ExpressivePage([
+            'route'       => 'foo',
+            'router'      => $this->router,
+            'routeResult' => $this->routeResult,
+            'query'       => [
+                'bar' => 1,
+                'baz' => 2,
+            ],
+        ]);
 
         $this->assertSame('/foo?bar=1&baz=2', $page->getHref());
     }
@@ -111,12 +103,10 @@ class ExpressivePageTest extends TestCase
         $this->expectException(RouterException::class);
 
         $failedResultSet = RouteResult::fromRouteFailure();
-        $page            = new ExpressivePage(
-            [
-                'router'      => $this->router,
-                'routeResult' => $failedResultSet,
-            ]
-        );
+        $page            = new ExpressivePage([
+            'router'      => $this->router,
+            'routeResult' => $failedResultSet,
+        ]);
 
         $page->getHref();
     }
@@ -124,13 +114,11 @@ class ExpressivePageTest extends TestCase
     public function testGetHrefSetsHrefCache()
     {
 
-        $page = new ExpressivePage(
-            [
-                'route'       => 'foo',
-                'router'      => $this->router,
-                'routeResult' => $this->routeResult,
-            ]
-        );
+        $page = new ExpressivePage([
+            'route'       => 'foo',
+            'router'      => $this->router,
+            'routeResult' => $this->routeResult,
+        ]);
 
         $reflection = new \ReflectionClass($page);
         $property   = $reflection->getProperty('hrefCache');
@@ -145,25 +133,21 @@ class ExpressivePageTest extends TestCase
 
     public function testIsActive()
     {
-        $page = new ExpressivePage(
-            [
-                'route'       => 'foo',
-                'router'      => $this->router,
-                'routeResult' => $this->routeResult,
-            ]
-        );
+        $page = new ExpressivePage([
+            'route'       => 'foo',
+            'router'      => $this->router,
+            'routeResult' => $this->routeResult,
+        ]);
 
         $this->assertTrue($page->isActive());
     }
 
     public function testIsActiveWithoutRoute()
     {
-        $page = new ExpressivePage(
-            [
-                'router'      => $this->router,
-                'routeResult' => $this->routeResult,
-            ]
-        );
+        $page = new ExpressivePage([
+            'router'      => $this->router,
+            'routeResult' => $this->routeResult,
+        ]);
 
         $this->assertFalse($page->isActive());
     }
@@ -171,11 +155,9 @@ class ExpressivePageTest extends TestCase
     public function testSetRoutePerConstructor()
     {
         $name = 'foo';
-        $page = new ExpressivePage(
-            [
-                'route' => $name,
-            ]
-        );
+        $page = new ExpressivePage([
+            'route' => $name,
+        ]);
 
         $this->assertSame($name, $page->getRoute());
     }
@@ -228,11 +210,9 @@ class ExpressivePageTest extends TestCase
 
     public function testSetRouterPerConstructor()
     {
-        $page = new ExpressivePage(
-            [
-                'router' => $this->router,
-            ]
-        );
+        $page = new ExpressivePage([
+            'router' => $this->router,
+        ]);
 
         $this->assertSame($this->router, $page->getRouter());
     }
@@ -247,11 +227,9 @@ class ExpressivePageTest extends TestCase
 
     public function testSetRouteResultPerConstructor()
     {
-        $page = new ExpressivePage(
-            [
-                'routeResult' => $this->routeResult,
-            ]
-        );
+        $page = new ExpressivePage([
+            'routeResult' => $this->routeResult,
+        ]);
 
         $this->assertSame($this->routeResult, $page->getRouteResult());
     }
@@ -269,11 +247,9 @@ class ExpressivePageTest extends TestCase
         $params = [
             'foo' => 'bar',
         ];
-        $page   = new ExpressivePage(
-            [
-                'params' => $params,
-            ]
-        );
+        $page   = new ExpressivePage([
+            'params' => $params,
+        ]);
 
         $this->assertSame($params, $page->getParams());
     }
@@ -294,11 +270,9 @@ class ExpressivePageTest extends TestCase
         $query = [
             'foo' => 'bar',
         ];
-        $page  = new ExpressivePage(
-            [
-                'query' => $query,
-            ]
-        );
+        $page  = new ExpressivePage([
+            'query' => $query,
+        ]);
 
         $this->assertSame($query, $page->getQuery());
     }

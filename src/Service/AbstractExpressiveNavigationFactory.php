@@ -77,14 +77,12 @@ abstract class AbstractExpressiveNavigationFactory
         }
 
         if (! $router instanceof RouterInterface) {
-            throw new Exception\InvalidArgumentException(
-                sprintf(
-                    '%s expected by %s::injectComponents; received %s',
-                    RouterInterface::class,
-                    __CLASS__,
-                    is_object($router) ? get_class($router) : gettype($router)
-                )
-            );
+            throw new Exception\InvalidArgumentException(sprintf(
+                '%s expected by %s::injectComponents; received %s',
+                RouterInterface::class,
+                __CLASS__,
+                is_object($router) ? get_class($router) : gettype($router)
+            ));
         }
     }
 
@@ -97,12 +95,10 @@ abstract class AbstractExpressiveNavigationFactory
     {
         if (is_string($config)) {
             if (! file_exists($config)) {
-                throw new Exception\InvalidArgumentException(
-                    sprintf(
-                        'Config was a string but file "%s" does not exist',
-                        $config
-                    )
-                );
+                throw new Exception\InvalidArgumentException(sprintf(
+                    'Config was a string but file "%s" does not exist',
+                    $config
+                ));
             }
             $config = Config\Factory::fromFile($config);
         } elseif ($config instanceof Traversable) {

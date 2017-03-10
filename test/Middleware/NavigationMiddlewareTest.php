@@ -25,11 +25,9 @@ class NavigationMiddlewareTest extends TestCase
 
     protected function setUp()
     {
-        $this->navigation = new Navigation(
-            [
-                new ExpressivePage(['route' => 'home']),
-            ]
-        );
+        $this->navigation = new Navigation([
+            new ExpressivePage(['route' => 'home']),
+        ]);
 
         $this->middleware = new NavigationMiddleware([$this->navigation]);
     }

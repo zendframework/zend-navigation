@@ -42,7 +42,10 @@ class ExpressivePageTest extends TestCase
 
         $this->routeResult = $this->router->match(
             $request = new ServerRequest(
-                ['REQUEST_METHOD' => 'GET'], [], '/foo', 'GET'
+                ['REQUEST_METHOD' => 'GET'],
+                [],
+                '/foo',
+                'GET'
             )
         );
     }

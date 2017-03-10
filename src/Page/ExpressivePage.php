@@ -140,7 +140,7 @@ class ExpressivePage extends AbstractPage
      */
     public function setParams(array $params = null)
     {
-        $this->routeParams = empty($params) ? [] : $params;
+        $this->routeParams = $params ?: [];
         $this->hrefCache   = null;
     }
 
@@ -157,7 +157,7 @@ class ExpressivePage extends AbstractPage
      */
     public function setQuery(array $query = null)
     {
-        $this->queryParams = empty($query) ? [] : $query;
+        $this->queryParams = $query ?: [];
         $this->hrefCache   = null;
     }
 

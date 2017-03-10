@@ -36,8 +36,10 @@ abstract class AbstractExpressiveNavigationFactory
      * @param RouterInterface|null $router
      * @return array
      */
-    protected function injectComponents(array $pages, $router = null)
-    {
+    protected function injectComponents(
+        array $pages,
+        RouterInterface $router = null
+    ) {
         $this->validateRouter($router);
 
         foreach ($pages as &$page) {
@@ -80,7 +82,7 @@ abstract class AbstractExpressiveNavigationFactory
                     '%s expected by %s::injectComponents; received %s',
                     RouterInterface::class,
                     __CLASS__,
-                    (is_object($router) ? get_class($router) : gettype($router))
+                    is_object($router) ? get_class($router) : gettype($router)
                 )
             );
         }

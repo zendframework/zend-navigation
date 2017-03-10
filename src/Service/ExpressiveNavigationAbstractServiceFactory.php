@@ -73,7 +73,9 @@ final class ExpressiveNavigationAbstractServiceFactory
      * @return Navigation
      */
     public function __invoke(
-        ContainerInterface $container, $requestedName, array $options = null
+        ContainerInterface $container,
+        $requestedName,
+        array $options = null
     ) {
         $requestedName = $this->normalizeRequestedName($requestedName);
 

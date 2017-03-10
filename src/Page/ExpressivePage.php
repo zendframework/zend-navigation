@@ -53,7 +53,8 @@ class ExpressivePage extends AbstractPage
      */
     public function isActive($recursive = false)
     {
-        if (! $this->active && $this->routeName !== null
+        if (! $this->active
+            && $this->routeName !== null
             && $this->routeResult instanceof RouteResult
         ) {
             $intersectionOfParams = array_intersect_assoc(

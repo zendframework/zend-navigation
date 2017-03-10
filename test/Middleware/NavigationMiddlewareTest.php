@@ -41,7 +41,7 @@ class NavigationMiddlewareTest extends TestCase
 
         // Request test double
         /** @var ServerRequestInterface|\Prophecy\Prophecy\ObjectProphecy $prophecy */
-        $prophecy     = $this->prophesize(ServerRequestInterface::class);
+        $prophecy = $this->prophesize(ServerRequestInterface::class);
         $prophecy->getAttribute(RouteResult::class, false)->willReturn(
             $routeResult
         );

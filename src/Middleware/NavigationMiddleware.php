@@ -24,7 +24,7 @@ class NavigationMiddleware implements MiddlewareInterface
     /**
      * @var AbstractContainer[]
      */
-    private $containers;
+    private $containers = [];
 
     /**
      * @param AbstractContainer[] $containers

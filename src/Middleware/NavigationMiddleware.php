@@ -9,8 +9,8 @@ namespace Zend\Navigation\Middleware;
 
 use Interop\Http\ServerMiddleware\DelegateInterface;
 use Interop\Http\ServerMiddleware\MiddlewareInterface;
-use RecursiveIteratorIterator;
 use Psr\Http\Message\ServerRequestInterface;
+use RecursiveIteratorIterator;
 use Zend\Expressive\Router\RouteResult;
 use Zend\Navigation\AbstractContainer;
 use Zend\Navigation\Exception;

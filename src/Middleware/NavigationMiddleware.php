@@ -44,9 +44,7 @@ class NavigationMiddleware implements MiddlewareInterface
     }
 
     /**
-     * @param ServerRequestInterface $request
-     * @param DelegateInterface      $delegate
-     * @return \Psr\Http\Message\ResponseInterface
+     * @inheritdoc
      */
     public function process(
         ServerRequestInterface $request,

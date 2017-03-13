@@ -44,7 +44,7 @@ class NavigationMiddleware implements MiddlewareInterface
     }
 
     /**
-     * @inheritdoc
+     * @inheritDoc
      */
     public function process(
         ServerRequestInterface $request,

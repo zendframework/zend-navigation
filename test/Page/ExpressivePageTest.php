@@ -113,7 +113,6 @@ class ExpressivePageTest extends TestCase
 
     public function testGetHrefSetsHrefCache()
     {
-
         $page = new ExpressivePage([
             'route'       => 'foo',
             'router'      => $this->router,

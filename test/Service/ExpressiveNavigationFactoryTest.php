@@ -35,17 +35,15 @@ class ExpressiveNavigationFactoryTest extends TestCase
         // Create test double for container
         /** @var ContainerInterface|\Prophecy\Prophecy\ObjectProphecy $prophecy */
         $prophecy = $this->prophesize(ContainerInterface::class);
-        $prophecy->get('config')->willReturn(
-            [
-                'navigation' => [
-                    'default' => [
-                        [
-                            'route' => 'home',
-                        ],
+        $prophecy->get('config')->willReturn([
+            'navigation' => [
+                'default' => [
+                    [
+                        'route' => 'home',
                     ],
                 ],
-            ]
-        );
+            ],
+        ]);
         $prophecy->get(RouterInterface::class)->willReturn(
             new ZendRouter()
         );

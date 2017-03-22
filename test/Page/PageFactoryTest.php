@@ -158,4 +158,12 @@ class PageFactoryTest extends \PHPUnit_Framework_TestCase
 
         $this->fail('An exception has not been thrown for invalid page type');
     }
+
+    /**
+     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
+     */
+    public function testShouldThrowExceptionOnInvalidMethodArgument()
+    {
+        AbstractPage::factory('');
+    }
 }

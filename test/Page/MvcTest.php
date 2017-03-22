@@ -14,6 +14,7 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router as MvcRouter;
 use Zend\Navigation\Page;
+use Zend\Navigation\Exception;
 use Zend\Navigation;
 use Zend\Router\Http\Literal as LiteralRoute;
 use Zend\Router\Http\Regex as RegexRoute;
@@ -781,5 +782,14 @@ class MvcTest extends TestCase
 
         $this->assertTrue($childPage->isActive(true));
         $this->assertTrue($parentPage->isActive(true));
+    }
+
+    public function testSetRouteMatchThrowsExceptionOnInvalidParameter()
+    {
+        $this->setExpectedException(Exception\InvalidArgumentException::class);
+
+        $page = new Page\Mvc();
+        $page->setRouter($this->getRouterClass());
+        $page->setRouteMatch(null);
     }
 }

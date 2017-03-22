@@ -9,11 +9,12 @@
 
 namespace ZendTest\Navigation\Page;
 
+use Zend\Config;
+use Zend\Navigation;
+use Zend\Navigation\Exception;
 use Zend\Navigation\Page\AbstractPage;
 use Zend\Navigation\Page\Mvc;
 use Zend\Navigation\Page\Uri;
-use Zend\Navigation;
-use Zend\Config;
 
 /**
  * Tests the class Zend_Navigation_Page
@@ -104,51 +105,43 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($options, $page->get('config'));
     }
 
-    /**
-     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
-     */
     public function testSetShouldThrowExceptionIfPropertyIsNotString()
     {
         $page = AbstractPage::factory([
             'type' => 'uri',
         ]);
 
+        $this->setExpectedException(Exception\InvalidArgumentException::class);
         $page->set([], true);
     }
 
-    /**
-     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
-     */
     public function testSetShouldThrowExceptionIfPropertyIsEmpty()
     {
         $page = AbstractPage::factory([
             'type' => 'uri',
         ]);
 
+        $this->setExpectedException(Exception\InvalidArgumentException::class);
         $page->set('', true);
     }
 
-    /**
-     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
-     */
     public function testGetShouldThrowExceptionIfPropertyIsNotString()
     {
         $page = AbstractPage::factory([
             'type' => 'uri',
         ]);
 
+        $this->setExpectedException(Exception\InvalidArgumentException::class);
         $page->get([]);
     }
 
-    /**
-     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
-     */
     public function testGetShouldThrowExceptionIfPropertyIsEmpty()
     {
         $page = AbstractPage::factory([
             'type' => 'uri',
         ]);
 
+        $this->setExpectedException(Exception\InvalidArgumentException::class);
         $page->get('');
     }
 
@@ -1234,9 +1227,6 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('my_permission', $page->getPermission()->name);
     }
 
-    /**
-     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
-     */
     public function testSetParentShouldThrowExceptionIfPageItselfIsParent()
     {
         $page = AbstractPage::factory(
@@ -1245,6 +1235,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
             ]
         );
 
+        $this->setExpectedException(Exception\InvalidArgumentException::class);
         $page->setParent($page);
     }
 }

@@ -52,17 +52,19 @@ class NavigationMiddleware implements MiddlewareInterface
     ) {
         $routeResult = $request->getAttribute(RouteResult::class, false);
 
-        if ($routeResult instanceof RouteResult) {
-            foreach ($this->containers as $container) {
-                $iterator = new RecursiveIteratorIterator(
-                    $container,
-                    RecursiveIteratorIterator::SELF_FIRST
-                );
+        if (! $routeResult instanceof RouteResult) {
+            return $delegate->process($request);
+        }
 
-                foreach ($iterator as $page) {
-                    if ($page instanceof ExpressivePage) {
-                        $page->setRouteResult($routeResult);
-                    }
+        foreach ($this->containers as $container) {
+            $iterator = new RecursiveIteratorIterator(
+                $container,
+                RecursiveIteratorIterator::SELF_FIRST
+            );
+
+            foreach ($iterator as $page) {
+                if ($page instanceof ExpressivePage) {
+                    $page->setRouteResult($routeResult);
                 }
             }
         }

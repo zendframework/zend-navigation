@@ -74,9 +74,51 @@ Calling the view helper for menus in your layout script:
 <!-- ... -->
 ```
 
+## Usage in a zend-expressive application
+
+- Adding the navigation config provider class.
+- Adding the navigation middleware.
+- Define navigation container configuration under the top-level `navigation` key
+  in a configuration file.
+- Render your container using a navigation view helper within your view scripts.
+
+### Adding navigation config provider
+
+Add the navigation provider to your config aggregator, e.g.
+`config/config.php`
+
+```php
+$aggregator = new ConfigAggregator([
+    Zend\Validator\ConfigProvider::class,
+    Zend\Navigation\ConfigProvider::class, // <-- Add this line
+    // ...
+], 'data/config-cache.php');
+```
+
+### Adding navigation middleware
+
+Add the navigation middleware to your pipline configuration, e.g.
+`config/pipeline.php`:
+
+```php
+use Zend\Expressive\Helper\UrlHelperMiddleware;
+use Zend\Navigation\Middleware\NavigationMiddleware;
+
+$app->pipeRoutingMiddleware();
+$app->pipe(UrlHelperMiddleware::class);
+$app->pipe(NavigationMiddleware::class); // <-- Add this line
+// ...
+$app->pipeDispatchMiddleware();
+```
+
+### Container configuration and rendering
+
+The navigation container configuration and the rendering is the same like in a
+zend-mvc-based application. (see above)
+
 ## Using multiple navigations
 
-Once the zend-navigation module is registered, you can create as many navigation
+Once the zend-navigation component is registered, you can create as many navigation
 definitions as you wish, and the underlying factories will create navigation
 containers automatically.
 

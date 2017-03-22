@@ -3,13 +3,13 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2017 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace ZendTest\Navigation\Page;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router as MvcRouter;
@@ -112,7 +112,7 @@ class MvcTest extends TestCase
             'route' => 'test/route',
             'use_route_match' => true
         ]);
-        $router = $this->getMock(TreeRouteStack::class);
+        $router = $this->createMock(TreeRouteStack::class);
         $router->expects($this->once())->method('assemble')->will($this->returnValue('/test/route'));
         $page->setRouter($router);
         $this->assertEquals('/test/route', $page->getHref());
@@ -588,7 +588,7 @@ class MvcTest extends TestCase
 
         // If the default router is not used an exception will be thrown.
         // This method intentionally has no assertion.
-        $page->getHref();
+        $this->assertNotEmpty($page->getHref());
         $page->setDefaultRouter(null);
     }
 

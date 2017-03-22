@@ -130,7 +130,6 @@ final class ExpressiveNavigationAbstractServiceFactory extends AbstractExpressiv
 
         if (! $container->has('config')) {
             $this->config = [];
-
             return $this->config;
         }
 
@@ -139,12 +138,10 @@ final class ExpressiveNavigationAbstractServiceFactory extends AbstractExpressiv
             || ! is_array($config[self::CONFIG_KEY])
         ) {
             $this->config = [];
-
             return $this->config;
         }
 
         $this->config = $config[self::CONFIG_KEY];
-
         return $this->config;
     }
 

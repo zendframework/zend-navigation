@@ -61,7 +61,6 @@ class NavigationMiddlewareFactory
 
         if (! $container->has('config')) {
             $this->containerNames = [];
-
             return $this->containerNames;
         }
 
@@ -70,7 +69,6 @@ class NavigationMiddlewareFactory
             || ! is_array($config[self::CONFIG_KEY])
         ) {
             $this->containerNames = [];
-
             return $this->containerNames;
         }
 
@@ -78,10 +76,11 @@ class NavigationMiddlewareFactory
 
         if (count($names) === 1) {
             $this->containerNames[] = Navigation::class;
-        } else {
-            foreach ($names as $name) {
-                $this->containerNames[] = self::SERVICE_PREFIX . ucfirst($name);
-            }
+            return $this->containerNames;
+        }
+
+        foreach ($names as $name) {
+            $this->containerNames[] = self::SERVICE_PREFIX . ucfirst($name);
         }
 
         return $this->containerNames;

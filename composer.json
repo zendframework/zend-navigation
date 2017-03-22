@@ -27,7 +27,7 @@
         "zendframework/zend-permissions-acl": "^2.6",
         "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
         "zendframework/zend-uri": "^2.5.2",
-        "zendframework/zend-view": "^2.8.1",
+        "zendframework/zend-view": "^2.9",
         "phpunit/phpunit": "^6.0.8 || ^5.7.15",
         "zendframework/zend-coding-standard": "~1.0.0"
     },

@@ -1,15 +1,37 @@
 # Quick Start
 
+## Usage in a zend-mvc-based application
+
 The fastest way to get up and running with zend-navigation is:
 
-- Enable the zend-navigation `DefaultNavigationFactory`.
+- Register zend-navigation as module.
 - Define navigation container configuration under the top-level `navigation` key
   in your application configuration.
 - Render your container using a navigation view helper within your view scripts.
 
+### Register zend-navigation as module
+
+Edit the application configuration file `config/application.config.php`:
+
 ```php
 <?php
-// your configuration file, e.g. config/autoload/global.php
+return [
+    'modules' => [
+        'Zend\Router',
+        'Zend\Log',
+        'Zend\Navigation', // <-- Add this line
+        // ...
+    ],
+];
+```
+
+### Navigation container configuration
+
+Add the container definition to your configuration file, e.g.
+`config/autoload/global.php`:
+
+```php
+<?php
 return [
     // ...
 
@@ -35,17 +57,15 @@ return [
             ],
         ],
     ],
-    'service_manager' => [
-        'factories' => [
-            'navigation' => Zend\Navigation\Service\DefaultNavigationFactory::class,
-        ],
-    ],
     // ...
 ];
 ```
 
+### Render the navigation
+
+Calling the view helper for menus in your layout script:
+
 ```php
-<!-- in your layout -->
 <!-- ... -->
 
 <body>
@@ -56,23 +76,21 @@ return [
 
 ## Using multiple navigations
 
-If you want to use more than one navigation, you can register the abstract factory
-`Zend\Navigation\Service\NavigationAbstractServiceFactory` with the
-[service manager](https://github.com/zendframework/zend-servicemanager).
+Once the zend-navigation module is registered, you can create as many navigation
+definitions as you wish, and the underlying factories will create navigation
+containers automatically.
 
-Once the service factory is registered, you can create as many navigation
-definitions as you wish, and the factory will create navigation containers
-automatically. This factory can also be used for the `default` container.
+Add the container definitions to your configuration file, e.g.
+`config/autoload/global.php`:
 
 ```php
 <?php
-// your configuration file, e.g. config/autoload/global.php
 return [
     // ...
 
     'navigation' => [
 
-        // navigation with name default
+        // Navigation with name default
         'default' => [
             [
                 'label' => 'Home',
@@ -94,7 +112,7 @@ return [
             ],
         ],
 
-        // navigation with name special
+        // Navigation with name special
         'special' => [
             [
                 'label' => 'Special',
@@ -106,7 +124,7 @@ return [
             ],
         ],
 
-        // navigation with name sitemap
+        // Navigation with name sitemap
         'sitemap' => [
             [
                 'label' => 'Sitemap',
@@ -118,28 +136,21 @@ return [
             ],
         ],
     ],
-    'service_manager' => [
-        'abstract_factories' => [
-            Zend\Navigation\Service\NavigationAbstractServiceFactory::class,
-        ],
-    ],
-
     // ...
 ];
 ```
 
 > ### Container names have a prefix
 >
-> There is one important point to know when using
-> `NavigationAbstractServiceFactory`: The name of the service in your view must
-> start with `Zend\Navigation\` followed by the name of the configuration key.
+> There is one important point to know when using zend-navigation as a module:
+> The name of the container in your view script **must** be prefixed with
+> `Zend\Navigation\`, followed by the name of the configuration key.
 > This helps ensure that no naming collisions occur with other services.
 
 The following example demonstrates rendering the navigation menus for the named
-`default`, `special` and `sitemap` containers.
+`default`, `special`, and `sitemap` containers.
 
 ```php
-<!-- in your layout -->
 <!-- ... -->
 
 <body>

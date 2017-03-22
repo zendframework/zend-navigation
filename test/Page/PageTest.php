@@ -104,6 +104,54 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($options, $page->get('config'));
     }
 
+    /**
+     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
+     */
+    public function testSetShouldThrowExceptionIfPropertyIsNotString()
+    {
+        $page = AbstractPage::factory([
+            'type' => 'uri',
+        ]);
+
+        $page->set([], true);
+    }
+
+    /**
+     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
+     */
+    public function testSetShouldThrowExceptionIfPropertyIsEmpty()
+    {
+        $page = AbstractPage::factory([
+            'type' => 'uri',
+        ]);
+
+        $page->set('', true);
+    }
+
+    /**
+     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
+     */
+    public function testGetShouldThrowExceptionIfPropertyIsNotString()
+    {
+        $page = AbstractPage::factory([
+            'type' => 'uri',
+        ]);
+
+        $page->get([]);
+    }
+
+    /**
+     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
+     */
+    public function testGetShouldThrowExceptionIfPropertyIsEmpty()
+    {
+        $page = AbstractPage::factory([
+            'type' => 'uri',
+        ]);
+
+        $page->get('');
+    }
+
     public function testSetAndGetLabel()
     {
         $page = AbstractPage::factory([
@@ -325,6 +373,17 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testConstructingWithTraversableOptions()
+    {
+        $options = ['label' => 'bar'];
+
+        $page = new Uri(new Config\Config($options));
+
+        $actual = ['label' => $page->getLabel()];
+
+        $this->assertEquals($options, $actual);
+    }
+
     public function testGettingSpecificRelations()
     {
         $page = AbstractPage::factory([
@@ -507,6 +566,12 @@ class PageTest extends \PHPUnit_Framework_TestCase
     {
         $page = new Uri();
         $this->assertFalse($page->isActive());
+    }
+
+    public function testIsActiveRecursiveOnNewlyConstructedPageShouldReturnFalse()
+    {
+        $page = new Uri();
+        $this->assertFalse($page->isActive(true));
     }
 
     public function testGetActiveShouldReturnTrueIfPageIsActive()
@@ -1167,5 +1232,19 @@ class PageTest extends \PHPUnit_Framework_TestCase
         $page->setPermission($permission);
         $this->assertInstanceOf('stdClass', $page->getPermission());
         $this->assertEquals('my_permission', $page->getPermission()->name);
+    }
+
+    /**
+     * @expectedException \Zend\Navigation\Exception\InvalidArgumentException
+     */
+    public function testSetParentShouldThrowExceptionIfPageItselfIsParent()
+    {
+        $page = AbstractPage::factory(
+            [
+                'type' => 'uri',
+            ]
+        );
+
+        $page->setParent($page);
     }
 }

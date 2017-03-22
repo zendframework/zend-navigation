@@ -53,24 +53,25 @@ class ExpressivePage extends AbstractPage
      */
     public function isActive($recursive = false)
     {
-        if (! $this->active
-            && $this->routeName !== null
-            && $this->routeResult instanceof RouteResult
+        if ($this->active
+            || $this->routeName === null
+            || ! $this->routeResult instanceof RouteResult
         ) {
-            $intersectionOfParams = array_intersect_assoc(
-                $this->routeResult->getMatchedParams(),
-                $this->routeParams
-            );
+            return parent::isActive($recursive);
+        }
 
-            $matchedRouteName = $this->routeResult->getMatchedRouteName();
+        $intersectionOfParams = array_intersect_assoc(
+            $this->routeResult->getMatchedParams(),
+            $this->routeParams
+        );
 
-            if ($matchedRouteName === $this->routeName
-                && count($intersectionOfParams) === count($this->routeParams)
-            ) {
-                $this->active = true;
+        $matchedRouteName = $this->routeResult->getMatchedRouteName();
 
-                return $this->active;
-            }
+        if ($matchedRouteName === $this->routeName
+            && count($intersectionOfParams) === count($this->routeParams)
+        ) {
+            $this->active = true;
+            return $this->active;
         }
 
         return parent::isActive($recursive);

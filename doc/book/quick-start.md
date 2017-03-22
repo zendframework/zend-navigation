@@ -142,13 +142,13 @@ return [
 
 > ### Container names have a prefix
 >
-> There is one important point to know when using zend-navigation as module:
-> The name of the container in your view script must start with
-> `Zend\Navigation\` followed by the name of the configuration key.
+> There is one important point to know when using zend-navigation as a module:
+> The name of the container in your view script **must** be prefixed with
+> `Zend\Navigation\`, followed by the name of the configuration key.
 > This helps ensure that no naming collisions occur with other services.
 
 The following example demonstrates rendering the navigation menus for the named
-`default`, `special` and `sitemap` containers.
+`default`, `special`, and `sitemap` containers.
 
 ```php
 <!-- ... -->

@@ -35,6 +35,7 @@
     },
     "suggest": {
         "zendframework/zend-config": "^2.6 || ^3.1, to provide page configuration (optional, as arrays and Traversables are also allowed)",
+        "zendframework/zend-expressive-router": "^2.1.0, to use router-based URI generation with Expressive pages",
         "zendframework/zend-permissions-acl": "^2.6, to provide ACL-based access restrictions to pages",
         "zendframework/zend-router": "^3.0, to use router-based URI generation with Mvc pages",
         "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to use the navigation factories",

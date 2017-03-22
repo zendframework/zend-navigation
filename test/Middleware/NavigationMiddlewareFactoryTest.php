@@ -40,22 +40,20 @@ class NavigationMiddlewareFactoryTest extends TestCase
         /** @var ContainerInterface|\Prophecy\Prophecy\ObjectProphecy $prophecy */
         $prophecy = $this->prophesize(ContainerInterface::class);
         $prophecy->has('config')->willReturn(true);
-        $prophecy->get('config')->willReturn(
-            [
-                'navigation' => [
-                    'default' => [
-                        [
-                            'route' => 'home',
-                        ],
-                    ],
-                    'special' => [
-                        [
-                            'route' => 'home',
-                        ],
+        $prophecy->get('config')->willReturn([
+            'navigation' => [
+                'default' => [
+                    [
+                        'route' => 'home',
                     ],
                 ],
-            ]
-        );
+                'special' => [
+                    [
+                        'route' => 'home',
+                    ],
+                ],
+            ],
+        ]);
         $prophecy->get('Zend\Navigation\Default')->willReturn(
             $this->navigation
         );
@@ -77,17 +75,15 @@ class NavigationMiddlewareFactoryTest extends TestCase
         /** @var ContainerInterface|\Prophecy\Prophecy\ObjectProphecy $prophecy */
         $prophecy = $this->prophesize(ContainerInterface::class);
         $prophecy->has('config')->willReturn(true);
-        $prophecy->get('config')->willReturn(
-            [
-                'navigation' => [
-                    'default' => [
-                        [
-                            'route' => 'home',
-                        ],
+        $prophecy->get('config')->willReturn([
+            'navigation' => [
+                'default' => [
+                    [
+                        'route' => 'home',
                     ],
                 ],
-            ]
-        );
+            ],
+        ]);
         $prophecy->get(Navigation::class)->willReturn(
             $this->navigation
         );

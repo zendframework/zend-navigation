@@ -112,7 +112,7 @@ class PageTest extends TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->set([], true);
     }
 
@@ -122,7 +122,7 @@ class PageTest extends TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->set('', true);
     }
 
@@ -132,7 +132,7 @@ class PageTest extends TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->get([]);
     }
 
@@ -142,7 +142,7 @@ class PageTest extends TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->get('');
     }
 
@@ -1236,7 +1236,7 @@ class PageTest extends TestCase
             ]
         );
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->setParent($page);
     }
 }

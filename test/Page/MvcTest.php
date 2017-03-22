@@ -786,7 +786,7 @@ class MvcTest extends TestCase
 
     public function testSetRouteMatchThrowsExceptionOnInvalidParameter()
     {
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
 
         $page = new Page\Mvc();
         $page->setRouter($this->getRouterClass());

@@ -18,7 +18,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#40](https://github.com/zendframework/zend-navigation/pull/40) fixes an
+  incorrect exception thrown from `Zend\Navigation\Page\Mvc`.
 
 ## 2.8.1 - 2016-06-12
 

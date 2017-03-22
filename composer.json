@@ -40,6 +40,9 @@
         "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to use the navigation factories",
         "zendframework/zend-view": "^2.8.1, to use the navigation view helpers"
     },
+    "conflict": {
+        "container-interop/container-interop": "<1.2.0"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "extra": {

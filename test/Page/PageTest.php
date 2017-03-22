@@ -3,12 +3,13 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2017 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace ZendTest\Navigation\Page;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Config;
 use Zend\Navigation;
 use Zend\Navigation\Exception;
@@ -22,7 +23,7 @@ use Zend\Navigation\Page\Uri;
  * @author    Robin Skoglund
  * @group      Zend_Navigation
  */
-class PageTest extends \PHPUnit_Framework_TestCase
+class PageTest extends TestCase
 {
     /**
      * Prepares the environment before running a test.
@@ -111,7 +112,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->set([], true);
     }
 
@@ -121,7 +122,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->set('', true);
     }
 
@@ -131,7 +132,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->get([]);
     }
 
@@ -141,7 +142,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
             'type' => 'uri',
         ]);
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->get('');
     }
 
@@ -1235,7 +1236,7 @@ class PageTest extends \PHPUnit_Framework_TestCase
             ]
         );
 
-        $this->setExpectedException(Exception\InvalidArgumentException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $page->setParent($page);
     }
 }

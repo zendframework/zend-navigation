@@ -14,7 +14,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#59](https://github.com/zendframework/zend-navigation/pull/59) removes
+  support for PHP 5.5.
 
 ### Fixed
 

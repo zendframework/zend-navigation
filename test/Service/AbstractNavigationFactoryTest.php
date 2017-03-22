@@ -7,7 +7,7 @@
 
 namespace ZendTest\Navigation\Service;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 use Zend\Mvc\Router as MvcRouter;
 use Zend\Navigation\Exception;

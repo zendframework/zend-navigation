@@ -54,9 +54,10 @@ class ExpressiveNavigationFactory extends AbstractExpressiveNavigationFactory
             );
         }
 
-        $pages       = $this->getPagesFromConfig(
+        $pages = $this->getPagesFromConfig(
             $configuration['navigation']['default']
         );
+
         $this->pages = $this->preparePages($container, $pages);
 
         return $this->pages;

@@ -49,7 +49,7 @@ return [
 <!-- ... -->
 
 <body>
-    <?= $this->navigation('default')->menu() ?>
+    <?= $this->navigation('navigation')->menu() ?>
 </body>
 <!-- ... -->
 ```

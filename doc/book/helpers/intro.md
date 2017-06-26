@@ -22,26 +22,26 @@ adds integration with
 implements the interface `Zend\View\Helper\Navigation\HelperInterface`, which
 defines the following methods:
 
-Method signature                                                      | Description
---------------------------------------------------------------------- | -----------
-`getContainer() : null|AbstractContainer`                             | Retrieve the current navigation container, if any.
-`hasContainer() : bool`                                               | Is any navigation container currently registered?
-`setContainer(AbstractContainer $container) : self`                   | Set a navigation container.
-`getTranslator() : null|Zend\I18n\Translator\TranslatorInterface`     | Retrieve the current translator instance, if any.
-`setTranslator(Zend\I18n\Translator\TranslatorInterface`) : self`     | Set a translator instance to use with labels.
-`hasTranslator() | bool`                                              | Is a translator instance present?
-`isTranslatorEnabled() : bool`                                        | Should translation occur? To be `true`, both the flag enabling translation must be set, and a translator instance present.
-`setTranslatorEnabled(bool $flag) : self`                             | Set the flag indicating whether or not translation should occur.
-`getAcl() : null|Zend\Permissions\Acl\AclInterface`                   | Retrieve the current ACL instance, if any.
-`setAcl(Zend\Permissions\Acl\AclInterface $acl) : self`               | Set an ACL instance.
-`hasAcl() : bool`                                                     | Whether or not an ACL instance is present.
-`getRole() : null|string|Zend\Permissions\Acl\Role\RoleInterface`     | Retrieve the current ACL role instance, if any.
-`setRole(string|Zend\Permissions\Acl\Role\RoleInterface $acl) : self` | Set an ACL role instance.
-`hasRole() : bool`                                                    | Whether or not an ACL role instance is present.
-`getUseAcl() : bool`                                                  | Whether or not to use ACLs; both the flag must be enabled and an ACL instance present.
-`setUseAcl(bool $flag) : self`                                        | Set the flag indicating whether or not to use ACLs.
-`__toString()`                                                        | Cast the helper to a string value; relies on `render()`.
-`render()`                                                            | Render the helper to a string.
+Method signature                                                       | Description
+---------------------------------------------------------------------- | -----------
+`getContainer() : null\|AbstractContainer`                             | Retrieve the current navigation container, if any.
+`hasContainer() : bool`                                                | Is any navigation container currently registered?
+`setContainer(AbstractContainer $container) : self`                    | Set a navigation container.
+`getTranslator() : null\|Zend\I18n\Translator\TranslatorInterface`     | Retrieve the current translator instance, if any.
+`setTranslator(Zend\I18n\Translator\TranslatorInterface`) : self`      | Set a translator instance to use with labels.
+`hasTranslator() : bool`                                               | Is a translator instance present?
+`isTranslatorEnabled() : bool`                                         | Should translation occur? To be `true`, both the flag enabling translation must be set, and a translator instance present.
+`setTranslatorEnabled(bool $flag) : self`                              | Set the flag indicating whether or not translation should occur.
+`getAcl() : null\|Zend\Permissions\Acl\AclInterface`                   | Retrieve the current ACL instance, if any.
+`setAcl(Zend\Permissions\Acl\AclInterface $acl) : self`                | Set an ACL instance.
+`hasAcl() : bool`                                                      | Whether or not an ACL instance is present.
+`getRole() : null\|string|\Zend\Permissions\Acl\Role\RoleInterface`    | Retrieve the current ACL role instance, if any.
+`setRole(string\|Zend\Permissions\Acl\Role\RoleInterface $acl) : self` | Set an ACL role instance.
+`hasRole() : bool`                                                     | Whether or not an ACL role instance is present.
+`getUseAcl() : bool`                                                   | Whether or not to use ACLs; both the flag must be enabled and an ACL instance present.
+`setUseAcl(bool $flag) : self`                                         | Set the flag indicating whether or not to use ACLs.
+`__toString()`                                                         | Cast the helper to a string value; relies on `render()`.
+`render()`                                                             | Render the helper to a string.
 
 In addition to the method stubs from the interface, the abstract class also
 implements the following methods:
@@ -49,11 +49,11 @@ implements the following methods:
 Method signature                                                             | Description
 ---------------------------------------------------------------------------- | -----------
 `getIndent() : string`                                                       | Retrieve the indentation string to use; default is 4 spaces.
-`setIndent(string|int $indent) : self`                                       | Set the indentation to use. In the case of an integer, this indicates the number of spaces. Indentation can be specified for all but the `Sitemap` helper.
+`setIndent(string\|int $indent) : self`                                      | Set the indentation to use. In the case of an integer, this indicates the number of spaces. Indentation can be specified for all but the `Sitemap` helper.
 `getMinDepth() : int`                                                        | Retrieve the minimum depth a page must have to be included in output
-`setMinDepth(null|int $depth) : self`                                        | Set the minimum depth a page must have to be included in output; `null` means no minimum.
+`setMinDepth(null\|int $depth) : self`                                       | Set the minimum depth a page must have to be included in output; `null` means no minimum.
 `getMaxDepth() : int`                                                        | Retrieve the maximum depth a page must have to be included in output
-`setMaxDepth(null|int $depth) : self`                                        | Set the maximum depth a page must have to be included in output; `null` means no maximum.
+`setMaxDepth(null\|int $depth) : self`                                       | Set the maximum depth a page must have to be included in output; `null` means no maximum.
 `getRenderInvisible() : bool`                                                | Retrieve the flag indicating whether or not to render items marked as invisible; defaults to `false`.
 `setRenderInvisible(bool $flag) : self`                                      | Set the flag indicating whether or not to render items marked as invisible.
 `__call() : mixed`                                                           | Proxy method calls to the registered container; this allows you to use the helper as if it were a navigation container. See [the example below](#proxying-calls-to-the-navigation-container).

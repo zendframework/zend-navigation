@@ -10,20 +10,12 @@ branches:
 cache:
   directories:
     - $HOME/.composer/cache
-    - vendor
-    - $HOME/.local
-    - zf-mkdoc-theme
 
 env:
   global:
     - COMPOSER_ARGS="--no-interaction"
     - COVERAGE_DEPS="satooshi/php-coveralls"
     - LEGACY_DEPS="phpunit/phpunit"
-    - SITE_URL: https://zendframework.github.io/zend-navigation
-    - GH_USER_NAME: "Matthew Weier O'Phinney"
-    - GH_USER_EMAIL: matthew@weierophinney.net
-    - GH_REF: github.com/zendframework/zend-navigation.git
-    - secure: "tgcIcU0H/502W94XsyOA/aBb26CfaFJklEm4TZC/foM0qcoSB+U5PLmn+UtBFbuXBDApC2H/G6F+hpR1nTIp9aO9cizfpRB7GYPHJ4gq3crSgBMv5sMB0TJekypbEChoPAhxM+UT3imlA6kbw2ttcqvSqU3EcvyeIT5Ef8B4FDBPBDH6ozewUcYNoxHx1pcJnIkKdkZu9RedIt46GJ4TiJiImCS7txxPZOeNVHZpCMps/1gQEPdD6P/etvxjYrFLtnFyIdpTHB6DBnxbBlM9eYrUlUE47xW25m3gbCERNk0gBTaSXImEkk9mjnSwC1ek0SmEhaeLKxcl7o06C4sU5Evua9uUSFHBa17lGTMCJnKZ+YxIT31n/cX5vi+pcMxO2YBSXB/QiXJvhlxNtn6TqsEMYzJqOedX+t+7mexFsKLEOOut3HrjQV2ZxnTv+xnYWq+MrPlIcQhLMUTXHlAMf91el6bu1yF62I9dGTF0j252pZqGbNIst0i9Dfvd0I28f4AUDU2+YiuCuoAC9W1ISXPWd/b43gFsMSIuAFg0e3UT64CTQlUHIMHZWPVQ37TMcPmmg10RBM7jtrZPD74cJjlEilXbCNBZaDJUAQXTw51SetrqB/GfyZ9LKeHqsnd2zxXck1RiBVskwsZrveULnFS6pp9Z4j7etxrB8wSK48k="
 
 matrix:
   include:
@@ -33,8 +25,6 @@ matrix:
     - php: 5.6
       env:
         - DEPS=locked
-        - DEPLOY_DOCS="$(if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then echo -n 'true' ; else echo -n 'false' ; fi)"
-        - PATH="$HOME/.local/bin:$PATH"
     - php: 5.6
       env:
         - DEPS=latest
@@ -88,10 +78,6 @@ install:
 script:
   - if [[ $TEST_COVERAGE == 'true' ]]; then composer test-coverage ; else composer test ; fi
   - if [[ $CS_CHECK == 'true' ]]; then composer cs-check ; fi
-  - if [[ $DEPLOY_DOCS == "true" && "$TRAVIS_TEST_RESULT" == "0" ]]; then wget -O theme-installer.sh "https://raw.githubusercontent.com/zendframework/zf-mkdoc-theme/master/theme-installer.sh" ; chmod 755 theme-installer.sh ; ./theme-installer.sh ; fi
-
-after_success:
-  - if [[ $DEPLOY_DOCS == "true" ]]; then echo "Preparing to build and deploy documentation" ; ./zf-mkdoc-theme/deploy.sh ; echo "Completed deploying documentation" ; fi
 
 after_script:
   - if [[ $TEST_COVERAGE == 'true' ]]; then composer upload-coverage ; fi

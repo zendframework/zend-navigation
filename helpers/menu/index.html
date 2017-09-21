@@ -4,36 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="zend-navigation">  
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
     <title>Menu - zend-navigation</title>
 
-    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/font-hack/2.018/css/hack.min.css">
-    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin" rel="stylesheet" type="text/css">
-    <link href="//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-    <link href="../../css/base.css" rel="stylesheet">
-    <link href="../../css/zf-web.css" rel="stylesheet">
-    <link href="../../css/zf.css" rel="stylesheet">
-    <link href="../../css/prism-zf.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
-    <script>
-    WebFont.load({
-        google: {
-            families: ['Open Sans', 'PT Sans']
-        }
-    });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/styles-482aa2add1.css">
 
     
 </head>
@@ -57,8 +36,8 @@
 
             <!-- Main title -->
             <span class="navbar-brand">
-              <a class="logo-link" href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Zend Framework"><img src="../../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
-              <a href="../..">zend-navigation</a>
+                <a class="logo-link" href="https://framework.zend.com/" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../../img/zf-logo-mark.svg" height="28" alt="Zend Framework" /></a>
+                <a href="../..">zend-navigation</a>
             </span>
         </div>
 
@@ -227,15 +206,15 @@
         <div class="col-md-9" role="main">
 
 <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="../..">zend-navigation</a> &raquo;</li>
+  <li><a href="../..">zend-navigation</a></li>
   
     
       
-        <li>Reference &raquo;</li>
+        <li>Reference</li>
       
     
       
-        <li>View Helpers &raquo;</li>
+        <li>View Helpers</li>
       
     
   
@@ -344,13 +323,13 @@ also allows using a partial view script.</p>
 <p>This example shows how to render a menu from a container registered/found in the
 view helper. Notice how pages are filtered out based on visibility and ACL.</p>
 <p>In a view script or layout:</p>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;render() ?&gt;</code></pre>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;render() ?&gt;</code></pre>
 
 <p>Or:</p>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre>
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li&gt;
         &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;/li&gt;
@@ -419,7 +398,7 @@ view helper. Notice how pages are filtered out based on visibility and ACL.</p>
 <h2 id="calling-rendermenu-directly">Calling renderMenu() directly</h2>
 <p>This example shows how to render a menu that is not registered in the view
 helper by calling <code>renderMenu()</code> directly and specifying options.</p>
-<pre class="codehilite"><code class="language-php linenums">&lt;?php
+<pre class="codehilite"><code class="language-php">&lt;?php
 // render only the 'Community' menu
 $community = $this-&gt;navigation()-&gt;findOneByLabel('Community');
 $options = [
@@ -432,7 +411,7 @@ echo $this-&gt;navigation()
 ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;community&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;community&quot;&gt;
     &lt;li&gt;
         &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
     &lt;/li&gt;
@@ -446,7 +425,7 @@ echo $this-&gt;navigation()
 the active branch.</p>
 <p>Calling <code>renderSubMenu($container, $ulClass, $indent)</code> is equivalent to calling
 <code>renderMenu($container, $options)</code> with the following options:</p>
-<pre class="codehilite"><code class="language-php linenums">[
+<pre class="codehilite"><code class="language-php">[
     'ulClass'          =&gt; $ulClass,
     'indent'           =&gt; $indent,
     'minDepth'         =&gt; null,
@@ -455,12 +434,12 @@ the active branch.</p>
     'renderParents'    =&gt; false,
 ]</code></pre>
 
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;renderSubMenu(null, 'sidebar', 4) ?&gt;</code></pre>
 
 <p>The output will be the same if 'FAQ' or 'Foo Server' is active:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;sidebar&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;sidebar&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
     &lt;/li&gt;
@@ -473,12 +452,12 @@ the active branch.</p>
 &lt;/ul&gt;</code></pre>
 
 <h2 id="rendering-with-maximum-depth">Rendering with maximum depth</h2>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li&gt;
         &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;/li&gt;
@@ -518,12 +497,12 @@ the active branch.</p>
 &lt;/ul&gt;</code></pre>
 
 <h2 id="rendering-with-minimum-depth">Rendering with minimum depth</h2>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setMinDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
@@ -572,12 +551,12 @@ the active branch.</p>
 &lt;/ul&gt;</code></pre>
 
 <h2 id="rendering-only-the-active-branch">Rendering only the active branch</h2>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
@@ -600,13 +579,13 @@ the active branch.</p>
 &lt;/ul&gt;</code></pre>
 
 <h2 id="rendering-only-the-active-branch-with-minimum-depth">Rendering only the active branch with minimum depth</h2>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
     -&gt;setMinDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
@@ -624,13 +603,13 @@ the active branch.</p>
 &lt;/ul&gt;</code></pre>
 
 <h2 id="rendering-only-the-active-branch-with-maximum-depth">Rendering only the active branch with maximum depth</h2>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
@@ -645,14 +624,14 @@ the active branch.</p>
 &lt;/ul&gt;</code></pre>
 
 <h2 id="rendering-only-the-active-branch-with-maximum-depth-and-no-parents">Rendering only the active branch with maximum depth and no parents</h2>
-<pre class="codehilite"><code class="language-php linenums">&lt;?= $this-&gt;navigation()
+<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
     -&gt;setRenderParents(false)
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li class=&quot;active&quot;&gt;
         &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
     &lt;/li&gt;
@@ -669,16 +648,16 @@ the <code>renderPartial()</code> method.</p>
 <p>The <code>renderPartial()</code>  method will assign the container to the view with the key
 <code>container</code>.</p>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php linenums">$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
+<pre class="codehilite"><code class="language-php">$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
 echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php linenums">foreach ($this-&gt;container as $page) {
+<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
     echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
 }</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
 &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
 &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
 &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
@@ -687,7 +666,7 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 <p>Starting with version 2.6.0, you can assign custom variables to a
 partial script.</p>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php linenums">// Set partial
+<pre class="codehilite"><code class="language-php">// Set partial
 $this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
 
 // Output menu
@@ -698,7 +677,7 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;renderPartialWithParams(
 );</code></pre>
 
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php linenums">&lt;h1&gt;&lt;?= $headline ?&gt;&lt;/h1&gt;
+<pre class="codehilite"><code class="language-php">&lt;h1&gt;&lt;?= $headline ?&gt;&lt;/h1&gt;
 
 &lt;?php
 foreach ($this-&gt;container as $page) {
@@ -707,7 +686,7 @@ foreach ($this-&gt;container as $page) {
 ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;h1&gt;Links&lt;/h1&gt;
+<pre class="codehilite"><code class="language-html">&lt;h1&gt;Links&lt;/h1&gt;
 &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
 &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
 &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
@@ -715,7 +694,7 @@ foreach ($this-&gt;container as $page) {
 
 <h3 id="using-menu-options-in-partial-view-scripts">Using menu options in partial view scripts</h3>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php linenums">// Set options
+<pre class="codehilite"><code class="language-php">// Set options
 $this-&gt;navigation()-&gt;menu()
     -&gt;setUlClass('my-nav')
     -&gt;setPartial('my-module/partials/menu');
@@ -724,7 +703,7 @@ $this-&gt;navigation()-&gt;menu()
 echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php linenums">&lt;div class&quot;&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;&quot;&gt;
+<pre class="codehilite"><code class="language-php">&lt;div class&quot;&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;&quot;&gt;
     &lt;?php
     foreach ($this-&gt;container as $page) {
         echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
@@ -733,7 +712,7 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 &lt;/div&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html linenums">&lt;div class=&quot;my-nav&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;div class=&quot;my-nav&quot;&gt;
     &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
     &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
@@ -744,7 +723,7 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 <p>If you want to use an ACL within your partial view script, then you will have to
 check the access to a page manually.</p>
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php linenums">foreach ($this-&gt;container as $page) {
+<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
     if ($this-&gt;navigation()-&gt;accept($page)) {
         echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
     }
@@ -774,7 +753,7 @@ check the access to a page manually.</p>
             <div class="col-lg-3">
               <p>
                 <strong>Zend Framework</strong><br />
-                <a href="http://framework.zend.com/">framework.zend.com</a><br />
+                <a href="https://framework.zend.com/">framework.zend.com</a><br />
                 <a href="https://docs.zendframework.com">docs.zendframework.com</a><br />
                 <a href="https://packages.zendframework.com">packages.zendframework.com</a><br />
                 <a href="https://apigility.org">apigility.org</a><br />
@@ -795,14 +774,15 @@ check the access to a page manually.</p>
                 <h4>Copyright</h4>
                 <div class="hline-w"></div>
 
-                <p>&copy; 2006-2016 by <a href="http://www.zend.com">Zend</a>, a <a href="http://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2017 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
             </div>
 
             <div class="col-lg-4">
                 <h4>Contacts</h4>
                 <div class="hline-w"></div>
                 <p>
-                    <a href="irc://irc.freenode.net/zftalk" class="btn-social btn-outline" alt="IRC" title="IRC"><i class="fa fa-comment"></i></a>
+                    <a href="https://discourse.zendframework.com" class="btn-social btn-outline" alt="Forum" title="Forum"><i class="fa fa-comments"></i></a>
+                    <a href="https://zendframework-slack.herokuapp.com" class="btn-social btn-outline" alt="Slack" title="Slack"><i class="fa fa-slack"></i></a>
                     <a href="https://github.com/zendframework" class="btn-social btn-outline" alt="Github" title="Github"><i class="fa fa-github"></i></a>
                     <a href="https://twitter.com/zfdevteam" class="btn-social btn-outline" alt="Twitter" title="Twitter"><i class="fa fa-twitter"></i></a>
                 </p>
@@ -811,14 +791,11 @@ check the access to a page manually.</p>
     </div>
 </div>
 
-
-    <script src="../../js/jquery-1.10.2.min.js"></script>
-    <script src="../../js/bootstrap-3.0.3.min.js"></script>
-    <script src="../../js/prism-zf.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>var base_url = '../..';</script>
+    <script src="../../js/scripts-019f7ac1f7.js"></script>
     <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
-    <script src="../../js/base.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -850,7 +827,7 @@ check the access to a page manually.</p>
     <div class="zf-components">
   <div class="zf-components-grid">
     <div class="zf-logo">
-      <a href="http://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
+      <a href="https://framework.zend.com" data-toggle="tooltip" data-placement="bottom" title="Go to the ZF homepage"><img src="../../img/zf-logo-mark.svg" alt="Zend Framework" width="250" /></a>
     </div>
 
     <div class="component-list"></div>
@@ -859,112 +836,6 @@ check the access to a page manually.</p>
   </div>
 </div>
 
-    <script>
-  // Prepare the component list dropdown for display
-  $(function () {
-    var components = $(".zf-components"),
-        componentList = components.find(".component-list"),
-        sidebar = $(".bs-sidebar.affix"),
-        sidebarInitialPos = sidebar.css("position"),
-        hidden,
-        componentToggle = $(".component-toggle"),
-        navbar = $(".navbar-fixed-top"),
-        rollUpLink = $(".zf-components-rollup a");
-
-    // Initial setup on document load
-    components.insertBefore(navbar);
-    $(".zf-logo a").tooltip();
-    componentToggle.tooltip();
-    rollUpLink.attr({ href: "#", alt: "Hide component list" });
-
-    // Cast initial sidebar position value
-    if (undefined === sidebarInitialPos) {
-      sidebarInitialPos = "fixed";
-    }
-
-    // Setup onclick events to toggle list
-    componentToggle.click(toggleComponentList);
-    rollUpLink.click(toggleComponentList);
-
-    // Toggle the component list display
-    function toggleComponentList(event) {
-      event.preventDefault();
-
-      if (hidden === undefined) {
-        // Not loaded yet; load and display.
-        loadComponentList();
-        return;
-      }
-
-      if (hidden) {
-        // Hidden; display.
-        showComponentList();
-        return;
-      }
-
-      // Currently visible; hide
-      hideComponentList();
-    }
-
-    // Show the component list
-    function showComponentList() {
-      navbar.css({position: "relative"});
-      sidebar.css({position: "relative"});
-      components
-        .css({"margin-top": "-" + components.outerHeight() + "px"})
-        .show()
-        .animate({"margin-top": 0}, {
-          complete: function () {
-            componentToggle
-              .data("placement", "top")
-              .attr("data-original-title", "Hide component list");
-            hidden = false;
-          },
-          queue: false
-        });
-    }
-
-    // Hide the component list
-    function hideComponentList() {
-      components.animate({"margin-top": "-" + components.outerHeight() + "px"}, {
-        complete: function () {
-          navbar.css({position: "fixed"});
-          sidebar.css({position: sidebarInitialPos});
-          componentToggle
-            .data("placement", "bottom")
-            .attr("data-original-title", "Show component list");
-          components.hide();
-          hidden = true;
-        },
-        queue: false
-      });
-      sidebar.animate({ top: sidebarInitialTop + "px" }, { queue: false});
-    }
-
-    // Inject a component into the componet list DOM.
-    function injectComponent(index, component) {
-      componentList.append('<div class="component"><h4><a href="' + component.url + '">' + component.name + '</a></h4><p>' + component.description + '</p></div>');
-    }
-
-    // Parse the component list, build the DOM, and display it.
-    function parseComponentList(components) {
-      $.each(components, injectComponent);
-      showComponentList();
-    }
-
-    // Fetch the component list and display it.
-    function loadComponentList () {
-      $.ajax({
-        url: "//docs.zendframework.com/zf-mkdoc-theme/scripts/zf-component-list.json",
-        dataType: "text json",
-        success: parseComponentList,
-        error: function (e) {
-          console.log("Error occurred with XHR call", e);
-        }
-      });
-    }
-  });
-</script>
-    </body>
+</body>
 
 </html>

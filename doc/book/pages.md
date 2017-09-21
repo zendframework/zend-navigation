@@ -25,22 +25,22 @@ Read more on extending `Zend\Navigation\Page\AbstractPage` in the section
 
 ### Common page options
 
-Key      | Type                                                          | Default | Description
--------- | ------------------------------------------------------------- | ------- | -----------
-label    | `string`                                                      | `NULL`  | A page label, such as 'Home' or 'Blog'.
-fragment | `string|null`                                                 | `NULL`  | A fragment identifier (anchor identifier) pointing to an anchor within a resource that is subordinate to another, primary resource. The fragment identifier introduced by a hash mark "#". Example: ``http://www.example.org/foo.html#bar`` (*bar* is the fragment identifier)
-id       | `string|integer`                                              | `NULL`  | An *id* tag/attribute that may be used when rendering the page, typically in an anchor element.
-class    | `string`                                                      | `NULL`  | A *CSS* class that may be used when rendering the page, typically in an anchor element.
-title    | `string`                                                      | `NULL`  | A short page description, typically for using as the title attribute in an anchor.
-target   | `string`                                                      | `NULL`  | Specifies a target that may be used for the page, typically in an anchor element.
-rel      | `array`                                                       | `[]`    | Specifies forward relations for the page. Each element in the array is a key-value pair, where the key designates the relation/link type, and the value is a pointer to the linked page. An example of a key-value pair is ``'alternate' => 'format/plain.html'``. To allow full flexibility, there are no restrictions on relation values. The value does not have to be a string. Read more about ``rel`` and ``rev`` in the section on the Links helper.
-rev      | `array`                                                       | `[]`    | Specifies reverse relations for the page. Works exactly like rel.
-order    | `string|integer|null`                                         | `NULL`  | Works like order for elements in ``Zend\Form``. If specified, the page will be iterated in a specific order, meaning you can force a page to be iterated before others by setting the order attribute to a low number, e.g. -100. If a String is given, it must parse to a valid int. If ``NULL`` is given, it will be reset, meaning the order in which the page was added to the container will be used.
-resource | `string|Zend\Permissions\Acl\Resource\ResourceInterface|null` | `NULL`  | ACL resource to associate with the page. Read more in the section on ACL integration in view helpers.
-privilege| `string|null`                                                 | `NULL`  | ACL privilege to associate with the page. Read more in the section on ACL integration in view helpers.
-active   | `boolean`                                                     | `FALSE` | Whether the page should be considered active for the current request. If active is FALSE or not given, MVC pages will check its properties against the request object upon calling ``$page->isActive()``.
-visible  | `boolean`                                                     | `TRUE`  | Whether page should be visible for the user, or just be a part of the structure. Invisible pages are skipped by view helpers.
-pages    | `array|Travsersable|null`                                     | `NULL`  | Child pages of the page. This could be an array or `Traversable` object containing either page options that can be passed to the `factory()` method, `AbstractPage` instances, or a mixture of both.
+Key      | Type                                                            | Default | Description
+-------- | --------------------------------------------------------------- | ------- | -----------
+label    | `string`                                                        | `NULL`  | A page label, such as 'Home' or 'Blog'.
+fragment | `string\|null`                                                  | `NULL`  | A fragment identifier (anchor identifier) pointing to an anchor within a resource that is subordinate to another, primary resource. The fragment identifier introduced by a hash mark "#". Example: ``http://www.example.org/foo.html#bar`` (*bar* is the fragment identifier)
+id       | `string\|integer`                                               | `NULL`  | An *id* tag/attribute that may be used when rendering the page, typically in an anchor element.
+class    | `string`                                                        | `NULL`  | A *CSS* class that may be used when rendering the page, typically in an anchor element.
+title    | `string`                                                        | `NULL`  | A short page description, typically for using as the title attribute in an anchor.
+target   | `string`                                                        | `NULL`  | Specifies a target that may be used for the page, typically in an anchor element.
+rel      | `array`                                                         | `[]`    | Specifies forward relations for the page. Each element in the array is a key-value pair, where the key designates the relation/link type, and the value is a pointer to the linked page. An example of a key-value pair is ``'alternate' => 'format/plain.html'``. To allow full flexibility, there are no restrictions on relation values. The value does not have to be a string. Read more about ``rel`` and ``rev`` in the section on the Links helper.
+rev      | `array`                                                         | `[]`    | Specifies reverse relations for the page. Works exactly like rel.
+order    | `string\|integer\|null`                                         | `NULL`  | Works like order for elements in ``Zend\Form``. If specified, the page will be iterated in a specific order, meaning you can force a page to be iterated before others by setting the order attribute to a low number, e.g. -100. If a String is given, it must parse to a valid int. If ``NULL`` is given, it will be reset, meaning the order in which the page was added to the container will be used.
+resource | `string\|Zend\Permissions\Acl\Resource\ResourceInterface\|null` | `NULL`  | ACL resource to associate with the page. Read more in the section on ACL integration in view helpers.
+privilege| `string\|null`                                                  | `NULL`  | ACL privilege to associate with the page. Read more in the section on ACL integration in view helpers.
+active   | `boolean`                                                       | `FALSE` | Whether the page should be considered active for the current request. If active is FALSE or not given, MVC pages will check its properties against the request object upon calling ``$page->isActive()``.
+visible  | `boolean`                                                       | `TRUE`  | Whether page should be visible for the user, or just be a part of the structure. Invisible pages are skipped by view helpers.
+pages    | `array\|Travsersable\|null`                                     | `NULL`  | Child pages of the page. This could be an array or `Traversable` object containing either page options that can be passed to the `factory()` method, `AbstractPage` instances, or a mixture of both.
 
 > #### Custom properties
 >

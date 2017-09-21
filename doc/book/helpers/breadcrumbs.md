@@ -24,16 +24,16 @@ at level 2 even if the deepest active page is on level 3).
 
 Methods in the breadcrumbs helper:
 
-Method signature                           | Description
------------------------------------------- | -----------
-`getSeparator() : string`                  | Retrieves the separator string to use between breadcrumbs; default is ` &gt; `.
-`setSeparator(string $separator) : self`   | Set the separator string to use between breadcrumbs.
-`getLinkLast() : bool`                     | Retrieve the flag indicating whether the last breadcrumb should be rendered as an anchor; defaults to `false`.
-`setLinkLast(bool $flag) : self`           | Set the flag indicating whether the last breadcrumb should be rendered as an anchor.
-`getPartial() : string|array`              | Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's `render()` method will use the `renderPartial()` method. The helper expects the partial to be a `string` or an `array` with two elements. If the partial is a `string`, it denotes the name of the partial script to use. If it is an `array`, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.
-`setPartial(string|array $partial) : self` | Set the partial view script to use when rendering breadcrumbs; see `getPartial()` for acceptable values.
-`renderStraight()`                         | The default render method used when no partial view script is present.
-`renderPartial()`                          | Used for rendering using a partial view script.
+Method signature                            | Description
+------------------------------------------- | -----------
+`getSeparator() : string`                   | Retrieves the separator string to use between breadcrumbs; default is ` &gt; `.
+`setSeparator(string $separator) : self`    | Set the separator string to use between breadcrumbs.
+`getLinkLast() : bool`                      | Retrieve the flag indicating whether the last breadcrumb should be rendered as an anchor; defaults to `false`.
+`setLinkLast(bool $flag) : self`            | Set the flag indicating whether the last breadcrumb should be rendered as an anchor.
+`getPartial() : string\|array`              | Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's `render()` method will use the `renderPartial()` method. The helper expects the partial to be a `string` or an `array` with two elements. If the partial is a `string`, it denotes the name of the partial script to use. If it is an `array`, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.
+`setPartial(string\|array $partial) : self` | Set the partial view script to use when rendering breadcrumbs; see `getPartial()` for acceptable values.
+`renderStraight()`                          | The default render method used when no partial view script is present.
+`renderPartial()`                           | Used for rendering using a partial view script.
 
 ## Basic usage
 

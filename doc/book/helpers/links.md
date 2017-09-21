@@ -98,15 +98,15 @@ link types.  `RENDER_CUSTOM` denotes non-standard relations specified in pages.
 
 Methods in the links helper:
 
-Method signature                                                                        | Description
---------------------------------------------------------------------------------------- | -----------
-`getRenderFlag() : int`                                                                 | Retrieves the render flag; default is `RENDER_ALL`.
-`setRenderFlag(int $flag) : self`                                                       | Set the render flag; see examples below.
-`findAllRelations(AbstractPage $page, int $flag = null) : array`                        | Finds all relations of all types for a given page.
-`findRelation(AbstractPage $page, string $rel, string $type) : AbstractPage|array|null` | Finds all relations of a given type from a given page.
-`searchRel*(AbstractPage $page) : AbstractPage|null`                                    | Traverses a container to find forward relations to the `Start` page, the `Next` page, the `Prev`ious page, `Chapter`s, `Section`s, and `Subsection`s.
-`searchRev*(AbstractPage $page) : AbstractPage:null`                                    | Traverses a container to find reverse relations to `Section`s or `Subsection`s.
-`renderLink(AbstractPage $page, string $attrib, string $relation) : string`             | Renders a single `link` element.
+Method signature                                                                          | Description
+----------------------------------------------------------------------------------------- | -----------
+`getRenderFlag() : int`                                                                   | Retrieves the render flag; default is `RENDER_ALL`.
+`setRenderFlag(int $flag) : self`                                                         | Set the render flag; see examples below.
+`findAllRelations(AbstractPage $page, int $flag = null) : array`                          | Finds all relations of all types for a given page.
+`findRelation(AbstractPage $page, string $rel, string $type) : AbstractPage\|array\|null` | Finds all relations of a given type from a given page.
+`searchRel*(AbstractPage $page) : AbstractPage\|null`                                     | Traverses a container to find forward relations to the `Start` page, the `Next` page, the `Prev`ious page, `Chapter`s, `Section`s, and `Subsection`s.
+`searchRev*(AbstractPage $page) : AbstractPage\|null`                                     | Traverses a container to find reverse relations to `Section`s or `Subsection`s.
+`renderLink(AbstractPage $page, string $attrib, string $relation) : string`               | Renders a single `link` element.
 
 ## Basic usage
 

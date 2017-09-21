@@ -259,7 +259,7 @@ also allows using a partial view script.</p>
 <td>Set the flag specifying whether or not to render parent pages when rendering the active branch of a container. When set to <code>false</code>, only the deepest active menu will be rendered.</td>
 </tr>
 <tr>
-<td><code>getPartial() : string|array</code></td>
+<td><code>getPartial() : string&#124;array</code></td>
 <td>Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's <code>render()</code> method will use the <code>renderPartial()</code> method. The helper expects the partial to be a <code>string</code> or an <code>array</code> with two elements. If the partial is a <code>string</code>, it denotes the name of the partial script to use. If it is an <code>array</code>, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.</td>
 </tr>
 <tr>

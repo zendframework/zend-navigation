@@ -9,9 +9,15 @@ namespace ZendTest\Navigation\Service;
 
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
+use Zend\Mvc\Application;
+use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router as MvcRouter;
 use Zend\Navigation\Exception;
+use Zend\Navigation\Navigation;
+use Zend\Navigation\Service\AbstractNavigationFactory;
 use Zend\Router;
+use Zend\ServiceManager\Config;
+use Zend\ServiceManager\ServiceManager;
 
 /**
  * @todo Write tests covering full functionality. Tests were introduced to
@@ -69,5 +75,59 @@ class AbstractNavigationFactoryTest extends TestCase
         }
 
         $this->assertSame([], $pages);
+    }
+
+    public function testCanCreateNavigationInstanceV2()
+    {
+        $routerMatchClass = $this->getRouteMatchClass();
+        $routerClass = $this->getRouterClass();
+        $routeMatch = new $routerMatchClass([]);
+        $router = new $routerClass();
+
+        $mvcEventStub = new MvcEvent();
+        $mvcEventStub->setRouteMatch($routeMatch);
+        $mvcEventStub->setRouter($router);
+
+        $applicationMock = $this->getMockBuilder(Application::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $applicationMock->expects($this->any())
+            ->method('getMvcEvent')
+            ->willReturn($mvcEventStub);
+
+        $serviceManagerMock = $this->getMockBuilder(ServiceManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $serviceManagerMock->expects($this->any())
+            ->method('get')
+            ->willReturnMap([
+                ['config', ['navigation' => ['testStubNavigation' => []]]],
+                ['Application', $applicationMock]
+            ]);
+
+        $navigationFactory
+            = $this->getMockForAbstractClass(AbstractNavigationFactory::class);
+        $navigationFactory->expects($this->any())
+            ->method('getName')
+            ->willReturn('testStubNavigation');
+        $navigation = $navigationFactory->createService($serviceManagerMock);
+
+        $this->assertInstanceOf(Navigation::class, $navigation);
+    }
+
+    public function getRouterClass()
+    {
+        return class_exists(MvcRouter\Http\TreeRouteStack::class)
+            ? MvcRouter\Http\TreeRouteStack::class
+            : Router\Http\TreeRouteStack::class;
+    }
+
+    public function getRouteMatchClass()
+    {
+        return class_exists(MvcRouter\RouteMatch::class)
+            ? MvcRouter\RouteMatch::class
+            : Router\RouteMatch::class;
     }
 }

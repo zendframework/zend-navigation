@@ -55,14 +55,14 @@ pages    | `array\|Travsersable\|null`                                     | `NU
 > and retrieved using `$page->get($name)`, or by using magic methods.
 
 > The following example demonstrates custom properties:
-> 
+>
 > ```php
 > $page = new Zend\Navigation\Page\Mvc();
 > $page->foo     = 'bar';
 > $page->meaning = 42;
-> 
+>
 > echo $page->foo;
-> 
+>
 > if ($page->meaning != 42) {
 >     // action should be taken
 > }

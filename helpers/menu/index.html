@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../css/styles-482aa2add1.css">
+    <link rel="stylesheet" href="../../css/styles-288837cc22.css">
 
     
 </head>
@@ -48,9 +49,12 @@
                 <ul class="nav navbar-nav">
                 
                 
+                
                     <li >
                         <a href="../..">Home</a>
                     </li>
+                
+                
                 
                 
                 
@@ -60,9 +64,13 @@
                 
                 
                 
+                
+                
                     <li >
                         <a href="../../quick-start/">Quick Start</a>
                     </li>
+                
+                
                 
                 
                 
@@ -71,64 +79,83 @@
                         <ul class="dropdown-menu">
                         
                             
+
 <li >
     <a href="../../pages/">Pages</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../../containers/">Containers</a>
 </li>
 
+
                         
                             
+
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">View Helpers</a>
     <ul class="dropdown-menu">
         
             
+
 <li >
     <a href="../intro/">Intro</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../breadcrumbs/">Breadcrumbs</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../links/">Links</a>
 </li>
 
+
         
             
+
 <li class="active">
     <a href="./">Menu</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../sitemap/">Sitemap</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../navigation/">Navigation Proxy</a>
 </li>
+
 
         
     </ul>
   </li>
 
+
                         
                         </ul>
                     </li>
+                
                 
                 
                 </ul>
@@ -148,7 +175,7 @@
                 </li>
                 
                     <li>
-                        <a href="https://github.com/zendframework/zend-navigation">
+                        <a href="https://github.com/zendframework/zend-navigation/">
                             
                                 <i class="fa fa-github"></i>
                             
@@ -226,64 +253,51 @@
 default, the menu will be rendered using HTML <code>UL</code> and <code>LI</code> tags, but the helper
 also allows using a partial view script.</p>
 <p>Methods in the Menu helper:</p>
-<div class="table-responsive"><table>
-<thead>
-<tr>
-<th>Method signature</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>getUlClass() : string</code></td>
-<td>Retrieve the CSS class used when rendering <code>ul</code> elements in <code>renderMenu()</code>.</td>
-</tr>
-<tr>
-<td><code>setUlClass(string $class) : self</code></td>
-<td>Set the CSS class to use when rendering <code>ul</code> elements in <code>renderMenu()</code>.</td>
-</tr>
-<tr>
-<td><code>getOnlyActiveBranch() : bool</code></td>
-<td>Retrieve the flag specifing whether or not to render only the active branch of a container.</td>
-</tr>
-<tr>
-<td><code>setOnlyActiveBranch(bool $flag) : self</code></td>
-<td>Set the flag specifing whether or not to render only the active branch of a container.</td>
-</tr>
-<tr>
-<td><code>getRenderParents() : bool</code></td>
-<td>Retrieve the flag specifying whether or not to render parent pages when rendering the active branch of a container.</td>
-</tr>
-<tr>
-<td><code>setRenderParents(bool $flag) : self</code></td>
-<td>Set the flag specifying whether or not to render parent pages when rendering the active branch of a container. When set to <code>false</code>, only the deepest active menu will be rendered.</td>
-</tr>
-<tr>
-<td><code>getPartial() : string&#124;array</code></td>
-<td>Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's <code>render()</code> method will use the <code>renderPartial()</code> method. The helper expects the partial to be a <code>string</code> or an <code>array</code> with two elements. If the partial is a <code>string</code>, it denotes the name of the partial script to use. If it is an <code>array</code>, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.</td>
-</tr>
-<tr>
-<td><code>setPartial(string|array $partial) : self</code></td>
-<td>Set the partial view script to use when rendering breadcrumbs; see <code>getPartial()</code> for acceptable values.</td>
-</tr>
-<tr>
-<td><code>htmlify(/* ... */) : string</code></td>
-<td>Overrides the method from the abstract class, with the argument list <code>AbstractPage $page, bool $escapeLabel = true, bool $addClassToListItem = false</code>. Returns <code>span</code> elements if the page has no <code>href</code>.</td>
-</tr>
-<tr>
-<td><code>renderMenu(AbstractContainer $container = null, $options = []) : string</code></td>
-<td>Default rendering method; renders a container as an HTML <code>UL</code> list. If <code>$container</code> is not given, the container registered in the helper will be rendered.  <code>$options</code> is used for overriding options specified temporarily without resetting the values in the helper instance; if none are set, those already provided to the helper will be used. Options are an associative array where each key corresponds to an option in the helper. See the table below for recognized options.</td>
-</tr>
-<tr>
-<td><code>renderPartial(AbstractContainer $container = null, string|array $partial = null) : string</code></td>
-<td>Used for rendering the menu using a partial view script.</td>
-</tr>
-<tr>
-<td><code>renderSubMenu(/* ... */) : string</code></td>
-<td>Renders the deepest menu level of a container's active branch. Accepts the arguments <code>AbstractContainer $container</code>, <code>string $ulClass = null</code>, <code>string|int $indent = null</code> (an integer value indicates number of spaces to use), <code>string $liActiveClass = null</code>.</td>
-</tr>
-</tbody>
-</table></div>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; 4bf25c93e6cb6af3bd0fc7c5b5098c7423a6b9e4
+Method signature                                                                              | Description
+--------------------------------------------------------------------------------------------- | -----------
+<code>getUlClass() : string</code>                                                                       | Retrieve the CSS class used when rendering <code>ul</code> elements in <code>renderMenu()</code>.
+<code>setUlClass(string $class) : self</code>                                                            | Set the CSS class to use when rendering <code>ul</code> elements in <code>renderMenu()</code>.
+<code>getOnlyActiveBranch() : bool</code>                                                                | Retrieve the flag specifying whether or not to render only the active branch of a container.
+<code>setOnlyActiveBranch(bool $flag) : self</code>                                                      | Set the flag specifying whether or not to render only the active branch of a container.
+<code>getRenderParents() : bool</code>                                                                   | Retrieve the flag specifying whether or not to render parent pages when rendering the active branch of a container.
+<code>setRenderParents(bool $flag) : self</code>                                                         | Set the flag specifying whether or not to render parent pages when rendering the active branch of a container. When set to <code>false</code>, only the deepest active menu will be rendered.
+<code>getPartial() : string&#124;array</code>                                                 | Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's <code>render()</code> method will use the <code>renderPartial()</code> method. The helper expects the partial to be a <code>string</code> or an <code>array</code> with two elements. If the partial is a <code>string</code>, it denotes the name of the partial script to use. If it is an <code>array</code>, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.
+<code>setPartial(string\|array $partial) : self</code>                                                   | Set the partial view script to use when rendering breadcrumbs; see <code>getPartial()</code> for acceptable values.
+<code>htmlify(/* ... */) : string</code>                                                                 | Overrides the method from the abstract class, with the argument list <code>AbstractPage $page, bool $escapeLabel = true, bool $addClassToListItem = false</code>. Returns <code>span</code> elements if the page has no <code>href</code>.
+<code>renderMenu(AbstractContainer $container = null, $options = []) : string</code>                     | Default rendering method; renders a container as an HTML <code>UL</code> list. If <code>$container</code> is not given, the container registered in the helper will be rendered.  <code>$options</code> is used for overriding options specified temporarily without resetting the values in the helper instance; if none are set, those already provided to the helper will be used. Options are an associative array where each key corresponds to an option in the helper. See the table below for recognized options.
+<code>renderPartial(AbstractContainer $container = null, string|array $partial = null) : string</code> | Used for rendering the menu using a partial view script.
+<code>renderSubMenu(/* ... */) : string</code>                                                           | Renders the deepest menu level of a container's active branch. Accepts the arguments <code>AbstractContainer $container</code>, <code>string $ulClass = null</code>, <code>string\|int $indent = null</code> (an integer value indicates number of spaces to use), <code>string $liActiveClass = null</code>.
+=======
+Method signature                                                                            | Description
+------------------------------------------------------------------------------------------- | -----------
+<code>getUlClass() : string</code>                                                                     | Retrieve the CSS class used when rendering <code>ul</code> elements in <code>renderMenu()</code>.
+<code>setUlClass(string $class) : self</code>                                                          | Set the CSS class to use when rendering <code>ul</code> elements in <code>renderMenu()</code>.
+<code>getOnlyActiveBranch() : bool</code>                                                              | Retrieve the flag specifying whether or not to render only the active branch of a container.
+<code>setOnlyActiveBranch(bool $flag) : self</code>                                                    | Set the flag specifying whether or not to render only the active branch of a container.
+<code>getRenderParents() : bool</code>                                                                 | Retrieve the flag specifying whether or not to render parent pages when rendering the active branch of a container.
+<code>setRenderParents(bool $flag) : self</code>                                                       | Set the flag specifying whether or not to render parent pages when rendering the active branch of a container. When set to <code>false</code>, only the deepest active menu will be rendered.
+<code>getPartial() : string|array</code>                                                               | Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's <code>render()</code> method will use the <code>renderPartial()</code> method. The helper expects the partial to be a <code>string</code> or an <code>array</code> with two elements. If the partial is a <code>string</code>, it denotes the name of the partial script to use. If it is an <code>array</code>, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.
+<code>setPartial(string|array $partial) : self</code>                                                  | Set the partial view script to use when rendering breadcrumbs; see <code>getPartial()</code> for acceptable values.
+<code>htmlify(/* ... */) : string</code>                                                               | Overrides the method from the abstract class, with the argument list <code>AbstractPage $page, bool $escapeLabel = true, bool $addClassToListItem = false</code>. Returns <code>span</code> elements if the page has no <code>href</code>.
+<code>renderMenu(AbstractContainer $container = null, $options = []) : string</code>                   | Default rendering method; renders a container as an HTML <code>UL</code> list. If <code>$container</code> is not given, the container registered in the helper will be rendered.  <code>$options</code> is used for overriding options specified temporarily without resetting the values in the helper instance; if none are set, those already provided to the helper will be used. Options are an associative array where each key corresponds to an option in the helper. See the table below for recognized options.
+<code>renderPartial(AbstractContainer $container = null, string|array $partial = null) : string</code> | Used for rendering the menu using a partial view script.
+<code>renderSubMenu(/* ... */) : string</code>                                                         | Renders the deepest menu level of a container's active branch. Accepts the arguments <code>AbstractContainer $container</code>, <code>string $ulClass = null</code>, <code>string|int $indent = null</code> (an integer value indicates number of spaces to use), <code>string $liActiveClass = null</code>.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>spelling fixes</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
 <p>The following are options recognized by the <code>renderMenu()</code> method:</p>
 <div class="table-responsive"><table>
 <thead>
@@ -794,8 +808,10 @@ check the access to a page manually.</p>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>var base_url = '../..';</script>
-    <script src="../../js/scripts-019f7ac1f7.js"></script>
+    <script src="../../js/scripts-0b6185f4a5.js"></script>
     <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../search/require.js"></script>
+        <script src="../../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -837,5 +853,6 @@ check the access to a page manually.</p>
 </div>
 
 </body>
+
 
 </html>

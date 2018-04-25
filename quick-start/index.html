@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/styles-482aa2add1.css">
+    <link rel="stylesheet" href="../css/styles-288837cc22.css">
 
     
 </head>
@@ -48,9 +49,12 @@
                 <ul class="nav navbar-nav">
                 
                 
+                
                     <li >
                         <a href="..">Home</a>
                     </li>
+                
+                
                 
                 
                 
@@ -60,9 +64,13 @@
                 
                 
                 
+                
+                
                     <li class="active">
                         <a href="./">Quick Start</a>
                     </li>
+                
+                
                 
                 
                 
@@ -71,64 +79,83 @@
                         <ul class="dropdown-menu">
                         
                             
+
 <li >
     <a href="../pages/">Pages</a>
 </li>
 
+
                         
                             
+
 <li >
     <a href="../containers/">Containers</a>
 </li>
 
+
                         
                             
+
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">View Helpers</a>
     <ul class="dropdown-menu">
         
             
+
 <li >
     <a href="../helpers/intro/">Intro</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../helpers/breadcrumbs/">Breadcrumbs</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../helpers/links/">Links</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../helpers/menu/">Menu</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../helpers/sitemap/">Sitemap</a>
 </li>
 
+
         
             
+
 <li >
     <a href="../helpers/navigation/">Navigation Proxy</a>
 </li>
+
 
         
     </ul>
   </li>
 
+
                         
                         </ul>
                     </li>
+                
                 
                 
                 </ul>
@@ -148,7 +175,7 @@
                 </li>
                 
                     <li>
-                        <a href="https://github.com/zendframework/zend-navigation">
+                        <a href="https://github.com/zendframework/zend-navigation/">
                             
                                 <i class="fa fa-github"></i>
                             
@@ -168,6 +195,8 @@
     <ul class="nav bs-sidenav">
     
         <li class="main active"><a href="#quick-start">Quick Start</a></li>
+        
+            <li><a href="#usage-in-a-zend-mvc-based-application">Usage in a zend-mvc-based application</a></li>
         
             <li><a href="#using-multiple-navigations">Using multiple navigations</a></li>
         
@@ -196,15 +225,30 @@
 </ol>
 
 <h1 id="quick-start">Quick Start</h1>
+<h2 id="usage-in-a-zend-mvc-based-application">Usage in a zend-mvc-based application</h2>
 <p>The fastest way to get up and running with zend-navigation is:</p>
 <ul>
-<li>Enable the zend-navigation <code>DefaultNavigationFactory</code>.</li>
+<li>Register zend-navigation as module.</li>
 <li>Define navigation container configuration under the top-level <code>navigation</code> key
   in your application configuration.</li>
 <li>Render your container using a navigation view helper within your view scripts.</li>
 </ul>
+<h3 id="register-zend-navigation-as-module">Register zend-navigation as module</h3>
+<p>Edit the application configuration file <code>config/application.config.php</code>:</p>
 <pre class="codehilite"><code class="language-php">&lt;?php
-// your configuration file, e.g. config/autoload/global.php
+return [
+    'modules' =&gt; [
+        'Zend\Router',
+        'Zend\Log',
+        'Zend\Navigation', // &lt;-- Add this line
+        // ...
+    ],
+];</code></pre>
+
+<h3 id="navigation-container-configuration">Navigation container configuration</h3>
+<p>Add the container definition to your configuration file, e.g.
+<code>config/autoload/global.php</code>:</p>
+<pre class="codehilite"><code class="language-php">&lt;?php
 return [
     // ...
 
@@ -230,16 +274,12 @@ return [
             ],
         ],
     ],
-    'service_manager' =&gt; [
-        'factories' =&gt; [
-            'navigation' =&gt; Zend\Navigation\Service\DefaultNavigationFactory::class,
-        ],
-    ],
     // ...
 ];</code></pre>
 
-<pre class="codehilite"><code class="language-php">&lt;!-- in your layout --&gt;
-&lt;!-- ... --&gt;
+<h3 id="render-the-navigation">Render the navigation</h3>
+<p>Calling the view helper for menus in your layout script:</p>
+<pre class="codehilite"><code class="language-php">&lt;!-- ... --&gt;
 
 &lt;body&gt;
     &lt;?= $this-&gt;navigation('default')-&gt;menu() ?&gt;
@@ -247,20 +287,18 @@ return [
 &lt;!-- ... --&gt;</code></pre>
 
 <h2 id="using-multiple-navigations">Using multiple navigations</h2>
-<p>If you want to use more than one navigation, you can register the abstract factory
-<code>Zend\Navigation\Service\NavigationAbstractServiceFactory</code> with the
-<a href="https://github.com/zendframework/zend-servicemanager">service manager</a>.</p>
-<p>Once the service factory is registered, you can create as many navigation
-definitions as you wish, and the factory will create navigation containers
-automatically. This factory can also be used for the <code>default</code> container.</p>
+<p>Once the zend-navigation module is registered, you can create as many navigation
+definitions as you wish, and the underlying factories will create navigation
+containers automatically.</p>
+<p>Add the container definitions to your configuration file, e.g.
+<code>config/autoload/global.php</code>:</p>
 <pre class="codehilite"><code class="language-php">&lt;?php
-// your configuration file, e.g. config/autoload/global.php
 return [
     // ...
 
     'navigation' =&gt; [
 
-        // navigation with name default
+        // Navigation with name default
         'default' =&gt; [
             [
                 'label' =&gt; 'Home',
@@ -282,7 +320,7 @@ return [
             ],
         ],
 
-        // navigation with name special
+        // Navigation with name special
         'special' =&gt; [
             [
                 'label' =&gt; 'Special',
@@ -294,7 +332,7 @@ return [
             ],
         ],
 
-        // navigation with name sitemap
+        // Navigation with name sitemap
         'sitemap' =&gt; [
             [
                 'label' =&gt; 'Sitemap',
@@ -306,26 +344,19 @@ return [
             ],
         ],
     ],
-    'service_manager' =&gt; [
-        'abstract_factories' =&gt; [
-            Zend\Navigation\Service\NavigationAbstractServiceFactory::class,
-        ],
-    ],
-
     // ...
 ];</code></pre>
 
 <blockquote>
 <h3 id="container-names-have-a-prefix">Container names have a prefix</h3>
-<p>There is one important point to know when using
-<code>NavigationAbstractServiceFactory</code>: The name of the service in your view must
-start with <code>Zend\Navigation\</code> followed by the name of the configuration key.
+<p>There is one important point to know when using zend-navigation as a module:
+The name of the container in your view script <strong>must</strong> be prefixed with
+<code>Zend\Navigation\</code>, followed by the name of the configuration key.
 This helps ensure that no naming collisions occur with other services.</p>
 </blockquote>
 <p>The following example demonstrates rendering the navigation menus for the named
-<code>default</code>, <code>special</code> and <code>sitemap</code> containers.</p>
-<pre class="codehilite"><code class="language-php">&lt;!-- in your layout --&gt;
-&lt;!-- ... --&gt;
+<code>default</code>, <code>special</code>, and <code>sitemap</code> containers.</p>
+<pre class="codehilite"><code class="language-php">&lt;!-- ... --&gt;
 
 &lt;body&gt;
     &lt;?= $this-&gt;navigation('Zend\Navigation\Default')-&gt;menu() ?&gt;
@@ -401,8 +432,10 @@ This helps ensure that no naming collisions occur with other services.</p>
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script>var base_url = '..';</script>
-    <script src="../js/scripts-019f7ac1f7.js"></script>
+    <script src="../js/scripts-0b6185f4a5.js"></script>
     <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
         <div class="modal-dialog">
@@ -444,5 +477,6 @@ This helps ensure that no naming collisions occur with other services.</p>
 </div>
 
 </body>
+
 
 </html>

@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
+- [#67](https://github.com/zendframework/zend-navigation/pull/67) adds support for PHP 7.2.
+
+### Changed
+
 - Nothing.
 
 ### Deprecated
@@ -14,8 +18,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- [#59](https://github.com/zendframework/zend-navigation/pull/59) removes
-  support for PHP 5.5.
+- [#67](https://github.com/zendframework/zend-navigation/pull/67) removes support for HHVM.
+
+- [#59](https://github.com/zendframework/zend-navigation/pull/59) removes support for PHP 5.5.
 
 ### Fixed
 

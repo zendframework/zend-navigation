@@ -3,12 +3,13 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2017 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace ZendTest\Navigation\Page;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Navigation\Page;
 use Zend\Navigation;
 use Zend\Http\Request;
@@ -18,7 +19,7 @@ use Zend\Http\Request;
  *
  * @group      Zend_Navigation
  */
-class UriTest extends \PHPUnit_Framework_TestCase
+class UriTest extends TestCase
 {
     public function testUriOptionAsString()
     {
@@ -42,25 +43,23 @@ class UriTest extends \PHPUnit_Framework_TestCase
 
     public function testUriOptionAsInteger()
     {
-        try {
-            $page = new Page\Uri(['uri' => 1337]);
-            $this->fail('An invalid \'uri\' was given, but ' .
-                        'a Zend\Navigation\Exception\InvalidArgumentException was not thrown');
-        } catch (Navigation\Exception\InvalidArgumentException $e) {
-        }
+        $this->expectException(
+            Navigation\Exception\InvalidArgumentException::class
+        );
+
+        new Page\Uri(['uri' => 1337]);
     }
 
     public function testUriOptionAsObject()
     {
-        try {
-            $uri = new \stdClass();
-            $uri->foo = 'bar';
+        $this->expectException(
+            Navigation\Exception\InvalidArgumentException::class
+        );
 
-            $page = new Page\Uri(['uri' => $uri]);
-            $this->fail('An invalid \'uri\' was given, but ' .
-                        'a Zend\Navigation\Exception\InvalidArgumentException was not thrown');
-        } catch (Navigation\Exception\InvalidArgumentException $e) {
-        }
+        $uri = new \stdClass();
+        $uri->foo = 'bar';
+
+        new Page\Uri(['uri' => $uri]);
     }
 
     public function testSetAndGetUri()

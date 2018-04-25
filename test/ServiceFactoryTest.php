@@ -3,12 +3,13 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2017 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace ZendTest\Navigation;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Config\Config;
 use Zend\Http\Request as HttpRequest;
 use Zend\Mvc\Application;
@@ -27,7 +28,7 @@ use Zend\ServiceManager\ServiceManager;
  *
  * @group      Zend_Navigation
  */
-class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
+class ServiceFactoryTest extends TestCase
 {
     /**
      * @var \Zend\ServiceManager\ServiceManager
@@ -96,6 +97,8 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase
     {
         $this->serviceManager->setFactory('Navigation', TestAsset\FileNavigationFactory::class);
         $container = $this->serviceManager->get('Navigation');
+
+        $this->assertInstanceOf(\Zend\Navigation\Navigation::class, $container);
     }
 
     /**

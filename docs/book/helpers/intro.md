@@ -17,8 +17,8 @@ There are 5 built-in helpers:
 
 All built-in helpers extend `Zend\View\Helper\Navigation\AbstractHelper`, which
 adds integration with
-[zend-acl](https://zendframework.github.io/zend-permissions-acl/) and
-[zend-i18n](https://zendframework.github.io/zend-i18n/). The abstract class
+[zend-acl](https://docs.zendframework.com/zend-permissions-acl/) and
+[zend-i18n](https://docs.zendframework.com/zend-i18n/). The abstract class
 implements the interface `Zend\View\Helper\Navigation\HelperInterface`, which
 defines the following methods:
 

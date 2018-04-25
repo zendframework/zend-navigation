@@ -282,9 +282,9 @@ $container->removePages();      // removes all pages
 
 ### Remove a page recursively
 
-Removing a page recursively can be done with the second parameter of 
+Removing a page recursively can be done with the second parameter of
 the `removePage()` method, which expects a `boolean` value.
- 
+
 ```php
 use Zend\Navigation\Navigation;
 
@@ -308,7 +308,7 @@ $container = new Navigation(
         ],
     ]
 );
- 
+
 // Removes Page 1.1.1
 $container->removePage(
     $container->findOneBy('route', 'page1/page1-1/page1-1-1'),
@@ -332,7 +332,7 @@ provided.
 The finder methods can also be used magically by appending the property name to
 `findBy`, `findOneBy`, or `findAllBy`. As an example, `findOneByLabel('Home')`
 will return the first matching page with label 'Home'.
-    
+
 Other combinations include `findByLabel(...)`, `findOneByTitle(...)`,
 `findAllByController(...)`, etc. Finder methods also work on custom properties,
 such as `findByFoo('bar')`.

@@ -283,7 +283,7 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
             // no visible pages found
             return false;
         }
-        return count($this->index) > 0;
+        return $this->index ? true : false;
     }
 
     /**

@@ -6,22 +6,6 @@ also allows using a partial view script.
 
 Methods in the Menu helper:
 
-<<<<<<< 4bf25c93e6cb6af3bd0fc7c5b5098c7423a6b9e4
-Method signature                                                                              | Description
---------------------------------------------------------------------------------------------- | -----------
-`getUlClass() : string`                                                                       | Retrieve the CSS class used when rendering `ul` elements in `renderMenu()`.
-`setUlClass(string $class) : self`                                                            | Set the CSS class to use when rendering `ul` elements in `renderMenu()`.
-`getOnlyActiveBranch() : bool`                                                                | Retrieve the flag specifying whether or not to render only the active branch of a container.
-`setOnlyActiveBranch(bool $flag) : self`                                                      | Set the flag specifying whether or not to render only the active branch of a container.
-`getRenderParents() : bool`                                                                   | Retrieve the flag specifying whether or not to render parent pages when rendering the active branch of a container.
-`setRenderParents(bool $flag) : self`                                                         | Set the flag specifying whether or not to render parent pages when rendering the active branch of a container. When set to `false`, only the deepest active menu will be rendered.
-<code>getPartial() : string&#124;array</code>                                                 | Retrieve a partial view script that should be used for rendering breadcrumbs. If a partial view script is set, the helper's `render()` method will use the `renderPartial()` method. The helper expects the partial to be a `string` or an `array` with two elements. If the partial is a `string`, it denotes the name of the partial script to use. If it is an `array`, the first element will be used as the name of the partial view script, and the second element is the module where the script is found.
-`setPartial(string\|array $partial) : self`                                                   | Set the partial view script to use when rendering breadcrumbs; see `getPartial()` for acceptable values.
-`htmlify(/* ... */) : string`                                                                 | Overrides the method from the abstract class, with the argument list `AbstractPage $page, bool $escapeLabel = true, bool $addClassToListItem = false`. Returns `span` elements if the page has no `href`.
-`renderMenu(AbstractContainer $container = null, $options = []) : string`                     | Default rendering method; renders a container as an HTML `UL` list. If `$container` is not given, the container registered in the helper will be rendered.  `$options` is used for overriding options specified temporarily without resetting the values in the helper instance; if none are set, those already provided to the helper will be used. Options are an associative array where each key corresponds to an option in the helper. See the table below for recognized options.
-``renderPartial(AbstractContainer $container = null, string|array $partial = null) : string`` | Used for rendering the menu using a partial view script.
-`renderSubMenu(/* ... */) : string`                                                           | Renders the deepest menu level of a container's active branch. Accepts the arguments `AbstractContainer $container`, `string $ulClass = null`, `string\|int $indent = null` (an integer value indicates number of spaces to use), `string $liActiveClass = null`.
-=======
 Method signature                                                                            | Description
 ------------------------------------------------------------------------------------------- | -----------
 `getUlClass() : string`                                                                     | Retrieve the CSS class used when rendering `ul` elements in `renderMenu()`.
@@ -36,7 +20,6 @@ Method signature                                                                
 `renderMenu(AbstractContainer $container = null, $options = []) : string`                   | Default rendering method; renders a container as an HTML `UL` list. If `$container` is not given, the container registered in the helper will be rendered.  `$options` is used for overriding options specified temporarily without resetting the values in the helper instance; if none are set, those already provided to the helper will be used. Options are an associative array where each key corresponds to an option in the helper. See the table below for recognized options.
 `renderPartial(AbstractContainer $container = null, string|array $partial = null) : string` | Used for rendering the menu using a partial view script.
 `renderSubMenu(/* ... */) : string`                                                         | Renders the deepest menu level of a container's active branch. Accepts the arguments `AbstractContainer $container`, `string $ulClass = null`, `string|int $indent = null` (an integer value indicates number of spaces to use), `string $liActiveClass = null`.
->>>>>>> spelling fixes
 
 The following are options recognized by the `renderMenu()` method:
 

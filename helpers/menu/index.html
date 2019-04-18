@@ -11,7 +11,8 @@
 
     <title>Menu - zend-navigation</title>
 
-    <link rel="stylesheet" href="../../css/styles-f773ae3616.css">
+    <link rel="stylesheet" href="../../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -92,13 +93,13 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -109,37 +110,37 @@
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -204,27 +205,44 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
                     <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="https://framework.zend.com/">Home</a></li>
-  <li><a href="https://docs.zendframework.com/">Docs</a></li>
-  <li><a href="../..">zend-navigation</a></li>
-  
+    <li><a href="https://framework.zend.com/">Home</a></li>
+
     
-      
-        <li>Reference</li>
-      
+        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+
+        
+            <li><a href="">zend-navigation</a></li>
+
+            
+                
+                    <li>View Helpers</li>
+                
+            
+                
+                    <li>Reference</li>
+                
+            
+
+            <li class="active">Menu</li>
+        
     
-      
-        <li>View Helpers</li>
-      
-    
-  
-  <li class="active">Menu</li>
 </ol>
 
 
@@ -390,67 +408,67 @@ view helper. Notice how pages are filtered out based on visibility and ACL.</p>
 <pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
     &lt;li&gt;
-        &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+        &lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products"&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class=&quot;active&quot;&gt;
-                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+            &lt;li class="active"&gt;
+                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
                 &lt;ul&gt;
-                    &lt;li class=&quot;active&quot;&gt;
-                        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+                    &lt;li class="active"&gt;
+                        &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+                        &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+                        &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+                &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
                 &lt;ul&gt;
                     &lt;li&gt;
-                        &lt;a href=&quot;/products/studio/customers&quot;&gt;Customer Stories&lt;/a&gt;
+                        &lt;a href="/products/studio/customers"&gt;Customer Stories&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href=&quot;/products/studio/support&quot;&gt;Support&lt;/a&gt;
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
-        &lt;ul&gt;
-            &lt;li&gt;
-                &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
-                &lt;ul&gt;
-                    &lt;li&gt;
-                        &lt;a href=&quot;/company/news/press&quot;&gt;Press Releases&lt;/a&gt;
-                    &lt;/li&gt;
-                    &lt;li&gt;
-                        &lt;a href=&quot;/archive&quot;&gt;Archive&lt;/a&gt;
+                        &lt;a href="/products/studio/support"&gt;Support&lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+        &lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+                &lt;a href="/company/about/investors"&gt;Investor Relations&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+                &lt;a class="rss" href="/company/news"&gt;News&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;
+                        &lt;a href="/company/news/press"&gt;Press Releases&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href="/archive"&gt;Archive&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href="/community"&gt;Community&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
@@ -472,12 +490,12 @@ echo $this-&gt;navigation()
 ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;community&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="community"&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+        &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+        &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
@@ -500,15 +518,15 @@ the active branch.</p>
     -&gt;renderSubMenu(null, 'sidebar', 4) ?&gt;</code></pre>
 
 <p>The output will be the same if 'FAQ' or 'Foo Server' is active:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;sidebar&quot;&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="sidebar"&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+        &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+        &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
@@ -518,40 +536,40 @@ the active branch.</p>
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
     &lt;li&gt;
-        &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+        &lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products"&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class=&quot;active&quot;&gt;
-                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+            &lt;li class="active"&gt;
+                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+                &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+        &lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
+                &lt;a href="/company/about/investors"&gt;Investor Relations&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
+                &lt;a class="rss" href="/company/news"&gt;News&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+        &lt;a href="/community"&gt;Community&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+                &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+                &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
@@ -563,51 +581,51 @@ the active branch.</p>
     -&gt;setMinDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class=&quot;active&quot;&gt;
-                &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+            &lt;li class="active"&gt;
+                &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+                &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+                &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+        &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/studio/customers&quot;&gt;Customer Stories&lt;/a&gt;
+                &lt;a href="/products/studio/customers"&gt;Customer Stories&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/studio/support&quot;&gt;Support&lt;/a&gt;
+                &lt;a href="/products/studio/support"&gt;Support&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
+        &lt;a href="/company/about/investors"&gt;Investor Relations&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
+        &lt;a class="rss" href="/company/news"&gt;News&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/company/news/press&quot;&gt;Press Releases&lt;/a&gt;
+                &lt;a href="/company/news/press"&gt;Press Releases&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/archive&quot;&gt;Archive&lt;/a&gt;
+                &lt;a href="/archive"&gt;Archive&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+        &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+        &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
@@ -617,21 +635,21 @@ the active branch.</p>
     -&gt;setOnlyActiveBranch(true) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products"&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class=&quot;active&quot;&gt;
-                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+            &lt;li class="active"&gt;
+                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
                 &lt;ul&gt;
-                    &lt;li class=&quot;active&quot;&gt;
-                        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+                    &lt;li class="active"&gt;
+                        &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+                        &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+                        &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/li&gt;
@@ -646,18 +664,18 @@ the active branch.</p>
     -&gt;setMinDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class=&quot;active&quot;&gt;
-                &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
+            &lt;li class="active"&gt;
+                &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
+                &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
+                &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
@@ -670,15 +688,15 @@ the active branch.</p>
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products"&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class=&quot;active&quot;&gt;
-                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+            &lt;li class="active"&gt;
+                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+                &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
@@ -692,12 +710,12 @@ the active branch.</p>
     -&gt;setMaxDepth(1) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class=&quot;navigation&quot;&gt;
-    &lt;li class=&quot;active&quot;&gt;
-        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
+    &lt;li class="active"&gt;
+        &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
+        &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
     &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
@@ -718,10 +736,10 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 }</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
-&lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
-&lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
+<pre class="codehilite"><code class="language-html">&lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
+&lt;a href="/products"&gt;Products&lt;/a&gt;
+&lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
+&lt;a href="/community"&gt;Community&lt;/a&gt;</code></pre>
 
 <h3 id="using-additional-parameters-in-partial-view-scripts">Using additional parameters in partial view scripts</h3>
 <p>Starting with version 2.6.0, you can assign custom variables to a
@@ -748,10 +766,10 @@ foreach ($this-&gt;container as $page) {
 
 <p>Output:</p>
 <pre class="codehilite"><code class="language-html">&lt;h1&gt;Links&lt;/h1&gt;
-&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
-&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
-&lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
-&lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre>
+&lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
+&lt;a href="/products"&gt;Products&lt;/a&gt;
+&lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
+&lt;a href="/community"&gt;Community&lt;/a&gt;</code></pre>
 
 <h3 id="using-menu-options-in-partial-view-scripts">Using menu options in partial view scripts</h3>
 <p>In a layout:</p>
@@ -764,7 +782,7 @@ $this-&gt;navigation()-&gt;menu()
 echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;div class&quot;&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;&quot;&gt;
+<pre class="codehilite"><code class="language-php">&lt;div class"&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;"&gt;
     &lt;?php
     foreach ($this-&gt;container as $page) {
         echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
@@ -773,11 +791,11 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
 &lt;/div&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;div class=&quot;my-nav&quot;&gt;
-    &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
-    &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
-    &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
-    &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+<pre class="codehilite"><code class="language-html">&lt;div class="my-nav"&gt;
+    &lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
+    &lt;a href="/products"&gt;Products&lt;/a&gt;
+    &lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
+    &lt;a href="/community"&gt;Community&lt;/a&gt;
 &lt;/div&gt;</code></pre>
 
 <h3 id="using-acls-with-partial-view-scripts">Using ACLs with partial view scripts</h3>
@@ -798,7 +816,7 @@ check the access to a page manually.</p>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../links/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="helpers/links/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -807,7 +825,7 @@ check the access to a page manually.</p>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../sitemap/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="helpers/sitemap/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -816,14 +834,16 @@ check the access to a page manually.</p>
 </nav>
 
 
-<div class="help-wanted">
-    <p>
-        Found a mistake or want to contribute to the documentation?
-        <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/menu.md" target="_blank" class="help-wanted__link">
-            Edit this page on GitHub!
-        </a>
-    </p>
-</div>
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/menu.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+
                 
             <!-- content:end -->
             </div>
@@ -840,7 +860,7 @@ check the access to a page manually.</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -849,13 +869,13 @@ check the access to a page manually.</p>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -866,13 +886,13 @@ check the access to a page manually.</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -883,37 +903,37 @@ check the access to a page manually.</p>
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -980,6 +1000,15 @@ check the access to a page manually.</p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
+                    <li class="support__list-item">
+                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -990,9 +1019,8 @@ check the access to a page manually.</p>
         var base_url = '../..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../../js/scripts-5141b2abfe.js"></script>
-        <script src="../../search/require.js"></script>
-        <script src="../../search/search.js"></script>
+    <script src="../../js/scripts-edc4cfa790.js"></script>
+        <script src="../../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -1021,6 +1049,14 @@ check the access to a page manually.</p>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

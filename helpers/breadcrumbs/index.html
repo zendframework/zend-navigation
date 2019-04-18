@@ -11,7 +11,8 @@
 
     <title>Breadcrumbs - zend-navigation</title>
 
-    <link rel="stylesheet" href="../../css/styles-f773ae3616.css">
+    <link rel="stylesheet" href="../../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -92,13 +93,13 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -109,37 +110,37 @@
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -204,27 +205,44 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
                     <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="https://framework.zend.com/">Home</a></li>
-  <li><a href="https://docs.zendframework.com/">Docs</a></li>
-  <li><a href="../..">zend-navigation</a></li>
-  
+    <li><a href="https://framework.zend.com/">Home</a></li>
+
     
-      
-        <li>Reference</li>
-      
+        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+
+        
+            <li><a href="">zend-navigation</a></li>
+
+            
+                
+                    <li>View Helpers</li>
+                
+            
+                
+                    <li>Reference</li>
+                
+            
+
+            <li class="active">Breadcrumbs</li>
+        
     
-      
-        <li>View Helpers</li>
-      
-    
-  
-  <li class="active">Breadcrumbs</li>
 </ol>
 
 
@@ -328,7 +346,7 @@ equivalent to:</p>
 <pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;render(); ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; &amp;gt; &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
+<pre class="codehilite"><code class="language-html">&lt;a href="/products"&gt;Products&lt;/a&gt; &amp;gt; &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
 
 <h2 id="specifying-indentation">Specifying indentation</h2>
 <p>This example shows how to render breadcrumbs with initial indentation.</p>
@@ -336,7 +354,7 @@ equivalent to:</p>
 <pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setIndent(8) ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; &amp;gt; &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
+<pre class="codehilite"><code class="language-html">        &lt;a href="/products"&gt;Products&lt;/a&gt; &amp;gt; &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
 
 <h2 id="customize-output">Customize output</h2>
 <p>This example shows how to customize breadcrumbs output by specifying multiple options.</p>
@@ -348,8 +366,8 @@ equivalent to:</p>
 ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; ▶
-&lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;</code></pre>
+<pre class="codehilite"><code class="language-html">&lt;a href="/products"&gt;Products&lt;/a&gt; ▶
+&lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;</code></pre>
 
 <p>Setting minimum depth required to render breadcrumbs:</p>
 <pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setMinDepth(10) ?&gt;</code></pre>
@@ -382,7 +400,7 @@ to the active page to the partial view script.</p>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../intro/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="helpers/intro/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -391,7 +409,7 @@ to the active page to the partial view script.</p>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../links/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="helpers/links/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -400,14 +418,16 @@ to the active page to the partial view script.</p>
 </nav>
 
 
-<div class="help-wanted">
-    <p>
-        Found a mistake or want to contribute to the documentation?
-        <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/breadcrumbs.md" target="_blank" class="help-wanted__link">
-            Edit this page on GitHub!
-        </a>
-    </p>
-</div>
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/breadcrumbs.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+
                 
             <!-- content:end -->
             </div>
@@ -424,7 +444,7 @@ to the active page to the partial view script.</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -433,13 +453,13 @@ to the active page to the partial view script.</p>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -450,13 +470,13 @@ to the active page to the partial view script.</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -467,37 +487,37 @@ to the active page to the partial view script.</p>
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -564,6 +584,15 @@ to the active page to the partial view script.</p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
+                    <li class="support__list-item">
+                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -574,9 +603,8 @@ to the active page to the partial view script.</p>
         var base_url = '../..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../../js/scripts-5141b2abfe.js"></script>
-        <script src="../../search/require.js"></script>
-        <script src="../../search/search.js"></script>
+    <script src="../../js/scripts-edc4cfa790.js"></script>
+        <script src="../../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -605,6 +633,14 @@ to the active page to the partial view script.</p>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

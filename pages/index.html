@@ -11,7 +11,8 @@
 
     <title>Pages - zend-navigation</title>
 
-    <link rel="stylesheet" href="../css/styles-f773ae3616.css">
+    <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -92,13 +93,13 @@
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -109,37 +110,37 @@
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -204,23 +205,40 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
                     <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="https://framework.zend.com/">Home</a></li>
-  <li><a href="https://docs.zendframework.com/">Docs</a></li>
-  <li><a href="..">zend-navigation</a></li>
-  
+    <li><a href="https://framework.zend.com/">Home</a></li>
+
     
-      
-        <li>Reference</li>
-      
+        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+
+        
+            <li><a href="">zend-navigation</a></li>
+
+            
+                
+                    <li>Reference</li>
+                
+            
+
+            <li class="active">Pages</li>
+        
     
-  
-  <li class="active">Pages</li>
 </ol>
 
 
@@ -725,26 +743,26 @@ will be created, respectively.</p>
 <h3 id="creating-an-mvc-page-using-the-page-factory">Creating an MVC page using the page factory</h3>
 <pre class="codehilite"><code class="language-php">use Zend\Navigation\Page\AbstractPage;
 
-// MVC page, as &quot;action&quot; is defined
+// MVC page, as "action" is defined
 $page = AbstractPage::factory([
     'label'  =&gt; 'My MVC page',
     'action' =&gt; 'index',
 ]);
 
-// MVC page, as &quot;action&quot; and &quot;controller&quot; are defined
+// MVC page, as "action" and "controller" are defined
 $page = AbstractPage::factory([
     'label'      =&gt; 'Search blog',
     'action'     =&gt; 'index',
     'controller' =&gt; 'search',
 ]);
 
-// MVC page, as &quot;route&quot; is defined
+// MVC page, as "route" is defined
 $page = AbstractPage::factory([
     'label' =&gt; 'Home',
     'route' =&gt; 'home',
 ]);
 
-// MVC page, as &quot;type&quot; is &quot;mvc&quot;
+// MVC page, as "type" is "mvc"
 $page = AbstractPage::factory([
     'type'   =&gt; 'mvc',
     'label'  =&gt; 'My MVC page',
@@ -753,26 +771,26 @@ $page = AbstractPage::factory([
 <h3 id="creating-a-uri-page-using-the-page-factory">Creating a URI page using the page factory</h3>
 <pre class="codehilite"><code class="language-php">use Zend\Navigation\Page\AbstractPage;
 
-// URI page, as &quot;uri&quot; is present, with now MVC options
+// URI page, as "uri" is present, with now MVC options
 $page = AbstractPage::factory([
     'label' =&gt; 'My URI page',
     'uri'   =&gt; 'http://www.example.com/',
 ]);
 
-// URI page, as &quot;uri&quot; is present, with now MVC options
+// URI page, as "uri" is present, with now MVC options
 $page = AbstractPage::factory([
     'label'  =&gt; 'Search',
     'uri'    =&gt; 'http://www.example.com/search',
     'active' =&gt; true,
 ]);
 
-// URI page, as &quot;uri&quot; is present, with now MVC options
+// URI page, as "uri" is present, with now MVC options
 $page = AbstractPage::factory([
     'label' =&gt; 'My URI page',
     'uri'   =&gt; '#',
 ]);
 
-// URI page, as &quot;type&quot; is &quot;uri&quot;
+// URI page, as "type" is "uri"
 $page = AbstractPage::factory([
     'type'  =&gt; 'uri',
     'label' =&gt; 'My URI page',
@@ -795,7 +813,7 @@ class Page extends AbstractPage
     }
 }
 
-// Creates Page instance, as &quot;type&quot; refers to its class.
+// Creates Page instance, as "type" refers to its class.
 $page = AbstractPage::factory([
     'type'    =&gt; Page::class,
     'label'   =&gt; 'My custom page',
@@ -810,7 +828,7 @@ $page = AbstractPage::factory([
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../quick-start/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="quick-start/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -819,7 +837,7 @@ $page = AbstractPage::factory([
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../containers/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="containers/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -828,14 +846,16 @@ $page = AbstractPage::factory([
 </nav>
 
 
-<div class="help-wanted">
-    <p>
-        Found a mistake or want to contribute to the documentation?
-        <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/pages.md" target="_blank" class="help-wanted__link">
-            Edit this page on GitHub!
-        </a>
-    </p>
-</div>
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/pages.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+
                 
             <!-- content:end -->
             </div>
@@ -852,7 +872,7 @@ $page = AbstractPage::factory([
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -861,13 +881,13 @@ $page = AbstractPage::factory([
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -878,13 +898,13 @@ $page = AbstractPage::factory([
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -895,37 +915,37 @@ $page = AbstractPage::factory([
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -992,6 +1012,15 @@ $page = AbstractPage::factory([
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
+                    <li class="support__list-item">
+                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1002,9 +1031,8 @@ $page = AbstractPage::factory([
         var base_url = '..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../js/scripts-5141b2abfe.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -1033,6 +1061,14 @@ $page = AbstractPage::factory([
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

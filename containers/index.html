@@ -11,7 +11,8 @@
 
     <title>Containers - zend-navigation</title>
 
-    <link rel="stylesheet" href="../css/styles-f773ae3616.css">
+    <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -92,13 +93,13 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -109,37 +110,37 @@
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -204,23 +205,40 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
                     <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="https://framework.zend.com/">Home</a></li>
-  <li><a href="https://docs.zendframework.com/">Docs</a></li>
-  <li><a href="..">zend-navigation</a></li>
-  
+    <li><a href="https://framework.zend.com/">Home</a></li>
+
     
-      
-        <li>Reference</li>
-      
+        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+
+        
+            <li><a href="">zend-navigation</a></li>
+
+            
+                
+                    <li>Reference</li>
+                
+            
+
+            <li class="active">Containers</li>
+        
     
-  
-  <li class="active">Containers</li>
 </ol>
 
 
@@ -624,43 +642,43 @@ $container = new Navigation([
 // having two pages with the same id will render the same id attribute
 // in menus and breadcrumbs.
 
-// Returns &quot;Page 2&quot;:
+// Returns "Page 2":
 $found = $container-&gt;findBy('id', 'page_2_and_3');
 
-// Returns &quot;Page 2&quot;:
+// Returns "Page 2":
 $found = $container-&gt;findOneBy('id', 'page_2_and_3');
 
-// Returns &quot;Page 2&quot; AND &quot;Page 3&quot;:
+// Returns "Page 2" AND "Page 3":
 $found = $container-&gt;findBy('id', 'page_2_and_3', true);
 
-// Returns &quot;Page 2&quot;:
+// Returns "Page 2":
 $found = $container-&gt;findById('page_2_and_3');
 
-// Returns &quot;Page 2&quot;:
+// Returns "Page 2":
 $found = $container-&gt;findOneById('page_2_and_3');
 
-// Returns &quot;Page 2&quot; AND &quot;Page 3&quot;:
+// Returns "Page 2" AND "Page 3":
 $found = $container-&gt;findAllById('page_2_and_3');
 
-// Find all pages matching the CSS class &quot;my-class&quot;:
-// Returns &quot;Page 1.2&quot; and &quot;Page 2&quot;:
+// Find all pages matching the CSS class "my-class":
+// Returns "Page 1.2" and "Page 2":
 $found = $container-&gt;findAllBy('class', 'my-class');
 $found = $container-&gt;findAllByClass('my-class');
 
-// Find first page matching CSS class &quot;my-class&quot;:
-// Returns &quot;Page 1.2&quot;:
+// Find first page matching CSS class "my-class":
+// Returns "Page 1.2":
 $found = $container-&gt;findOneByClass('my-class');
 
-// Find all pages matching the CSS class &quot;non-existent&quot;:
+// Find all pages matching the CSS class "non-existent":
 // Returns an empty array.
 $found = $container-&gt;findAllByClass('non-existent');
 
-// Find first page matching the CSS class &quot;non-existent&quot;:
+// Find first page matching the CSS class "non-existent":
 // Returns null.
 $found = $container-&gt;findOneByClass('non-existent');
 
 // Find all pages with custom property 'foo' = 'bar':
-// Returns &quot;Page 1&quot; and &quot;Page 1.1&quot;:
+// Returns "Page 1" and "Page 1.1":
 $found = $container-&gt;findAllBy('foo', 'bar');
 
 // To achieve the same magically, 'foo' must be in lowercase.
@@ -669,7 +687,7 @@ $found = $container-&gt;findAllBy('foo', 'bar');
 $found = $container-&gt;findAllByfoo('bar');
 
 // Find all with controller = 'index':
-// Returns &quot;Page 2&quot; and &quot;Page 3&quot;:
+// Returns "Page 2" and "Page 3":
 $found = $container-&gt;findAllByController('index');</code></pre>
 
 <h2 id="iterating-containers">Iterating containers</h2>
@@ -766,85 +784,85 @@ var_dump($container-&gt;toArray());
 /* Output:
 array(2) {
   [0]=&gt; array(15) {
-    [&quot;label&quot;]=&gt; string(6) &quot;Page 1&quot;
-    [&quot;id&quot;]=&gt; NULL
-    [&quot;class&quot;]=&gt; NULL
-    [&quot;title&quot;]=&gt; NULL
-    [&quot;target&quot;]=&gt; NULL
-    [&quot;rel&quot;]=&gt; array(0) {
+    ["label"]=&gt; string(6) "Page 1"
+    ["id"]=&gt; NULL
+    ["class"]=&gt; NULL
+    ["title"]=&gt; NULL
+    ["target"]=&gt; NULL
+    ["rel"]=&gt; array(0) {
     }
-    [&quot;rev&quot;]=&gt; array(0) {
+    ["rev"]=&gt; array(0) {
     }
-    [&quot;order&quot;]=&gt; NULL
-    [&quot;resource&quot;]=&gt; NULL
-    [&quot;privilege&quot;]=&gt; NULL
-    [&quot;active&quot;]=&gt; bool(false)
-    [&quot;visible&quot;]=&gt; bool(true)
-    [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
-    [&quot;pages&quot;]=&gt; array(0) {
+    ["order"]=&gt; NULL
+    ["resource"]=&gt; NULL
+    ["privilege"]=&gt; NULL
+    ["active"]=&gt; bool(false)
+    ["visible"]=&gt; bool(true)
+    ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
+    ["pages"]=&gt; array(0) {
     }
-    [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+    ["uri"]=&gt; string(1) "#"
   }
   [1]=&gt; array(15) {
-    [&quot;label&quot;]=&gt; string(6) &quot;Page 2&quot;
-    [&quot;id&quot;]=&gt; NULL
-    [&quot;class&quot;]=&gt; NULL
-    [&quot;title&quot;]=&gt; NULL
-    [&quot;target&quot;]=&gt; NULL
-    [&quot;rel&quot;]=&gt; array(0) {
+    ["label"]=&gt; string(6) "Page 2"
+    ["id"]=&gt; NULL
+    ["class"]=&gt; NULL
+    ["title"]=&gt; NULL
+    ["target"]=&gt; NULL
+    ["rel"]=&gt; array(0) {
     }
-    [&quot;rev&quot;]=&gt; array(0) {
+    ["rev"]=&gt; array(0) {
     }
-    [&quot;order&quot;]=&gt; NULL
-    [&quot;resource&quot;]=&gt; NULL
-    [&quot;privilege&quot;]=&gt; NULL
-    [&quot;active&quot;]=&gt; bool(false)
-    [&quot;visible&quot;]=&gt; bool(true)
-    [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
-    [&quot;pages&quot;]=&gt; array(2) {
+    ["order"]=&gt; NULL
+    ["resource"]=&gt; NULL
+    ["privilege"]=&gt; NULL
+    ["active"]=&gt; bool(false)
+    ["visible"]=&gt; bool(true)
+    ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
+    ["pages"]=&gt; array(2) {
       [0]=&gt; array(15) {
-        [&quot;label&quot;]=&gt; string(8) &quot;Page 2.1&quot;
-        [&quot;id&quot;]=&gt; NULL
-        [&quot;class&quot;]=&gt; NULL
-        [&quot;title&quot;]=&gt; NULL
-        [&quot;target&quot;]=&gt; NULL
-        [&quot;rel&quot;]=&gt; array(0) {
+        ["label"]=&gt; string(8) "Page 2.1"
+        ["id"]=&gt; NULL
+        ["class"]=&gt; NULL
+        ["title"]=&gt; NULL
+        ["target"]=&gt; NULL
+        ["rel"]=&gt; array(0) {
         }
-        [&quot;rev&quot;]=&gt; array(0) {
+        ["rev"]=&gt; array(0) {
         }
-        [&quot;order&quot;]=&gt; NULL
-        [&quot;resource&quot;]=&gt; NULL
-        [&quot;privilege&quot;]=&gt; NULL
-        [&quot;active&quot;]=&gt; bool(false)
-        [&quot;visible&quot;]=&gt; bool(true)
-        [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
-        [&quot;pages&quot;]=&gt; array(0) {
+        ["order"]=&gt; NULL
+        ["resource"]=&gt; NULL
+        ["privilege"]=&gt; NULL
+        ["active"]=&gt; bool(false)
+        ["visible"]=&gt; bool(true)
+        ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
+        ["pages"]=&gt; array(0) {
         }
-        [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+        ["uri"]=&gt; string(1) "#"
       }
       [1]=&gt;
       array(15) {
-        [&quot;label&quot;]=&gt; string(8) &quot;Page 2.2&quot;
-        [&quot;id&quot;]=&gt; NULL
-        [&quot;class&quot;]=&gt; NULL
-        [&quot;title&quot;]=&gt; NULL
-        [&quot;target&quot;]=&gt; NULL
-        [&quot;rel&quot;]=&gt; array(0) {
+        ["label"]=&gt; string(8) "Page 2.2"
+        ["id"]=&gt; NULL
+        ["class"]=&gt; NULL
+        ["title"]=&gt; NULL
+        ["target"]=&gt; NULL
+        ["rel"]=&gt; array(0) {
         }
-        [&quot;rev&quot;]=&gt; array(0) {
+        ["rev"]=&gt; array(0) {
         }
-        [&quot;order&quot;]=&gt; NULL
-        [&quot;resource&quot;]=&gt; NULL
-        [&quot;privilege&quot;]=&gt; NULL
-        [&quot;active&quot;]=&gt; bool(false)
-        [&quot;visible&quot;]=&gt; bool(true)
-        [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
-        [&quot;pages&quot;]=&gt; array(0) {
+        ["order"]=&gt; NULL
+        ["resource"]=&gt; NULL
+        ["privilege"]=&gt; NULL
+        ["active"]=&gt; bool(false)
+        ["visible"]=&gt; bool(true)
+        ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
+        ["pages"]=&gt; array(0) {
         }
-        [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+        ["uri"]=&gt; string(1) "#"
       }
     }
-    [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
+    ["uri"]=&gt; string(1) "#"
   }
 }
 */</code></pre>
@@ -857,7 +875,7 @@ array(2) {
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../pages/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="pages/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -866,7 +884,7 @@ array(2) {
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../helpers/intro/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="helpers/intro/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -875,14 +893,16 @@ array(2) {
 </nav>
 
 
-<div class="help-wanted">
-    <p>
-        Found a mistake or want to contribute to the documentation?
-        <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/containers.md" target="_blank" class="help-wanted__link">
-            Edit this page on GitHub!
-        </a>
-    </p>
-</div>
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/containers.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+
                 
             <!-- content:end -->
             </div>
@@ -899,7 +919,7 @@ array(2) {
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -908,13 +928,13 @@ array(2) {
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -925,13 +945,13 @@ array(2) {
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -942,37 +962,37 @@ array(2) {
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/links/" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -1039,6 +1059,15 @@ array(2) {
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
+                    <li class="support__list-item">
+                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -1049,9 +1078,8 @@ array(2) {
         var base_url = '..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../js/scripts-5141b2abfe.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -1080,6 +1108,14 @@ array(2) {
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

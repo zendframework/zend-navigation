@@ -11,7 +11,8 @@
 
     <title>Links - zend-navigation</title>
 
-    <link rel="stylesheet" href="../../css/styles-f773ae3616.css">
+    <link rel="stylesheet" href="../../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -92,13 +93,13 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -109,37 +110,37 @@
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -204,27 +205,44 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
                     <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-  <li><a href="https://framework.zend.com/">Home</a></li>
-  <li><a href="https://docs.zendframework.com/">Docs</a></li>
-  <li><a href="../..">zend-navigation</a></li>
-  
+    <li><a href="https://framework.zend.com/">Home</a></li>
+
     
-      
-        <li>Reference</li>
-      
+        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
+
+        
+            <li><a href="">zend-navigation</a></li>
+
+            
+                
+                    <li>View Helpers</li>
+                
+            
+                
+                    <li>Reference</li>
+                
+            
+
+            <li class="active">Links</li>
+        
     
-      
-        <li>View Helpers</li>
-      
-    
-  
-  <li class="active">Links</li>
 </ol>
 
 
@@ -434,15 +452,15 @@ view helper.</p>
 <pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;links() ?&gt;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
-&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
-&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
-&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
-&lt;link rel=&quot;chapter&quot; href=&quot;/products&quot; title=&quot;Products&quot;&gt;
-&lt;link rel=&quot;chapter&quot; href=&quot;/company/about&quot; title=&quot;Company&quot;&gt;
-&lt;link rel=&quot;chapter&quot; href=&quot;/community&quot; title=&quot;Community&quot;&gt;
-&lt;link rel=&quot;canonical&quot; href=&quot;http://www.example.com/?page=server-faq&quot;&gt;
-&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+<pre class="codehilite"><code class="language-html">&lt;link rel="alternate" href="/products/server/faq/format/xml"&gt;
+&lt;link rel="start" href="/" title="Home"&gt;
+&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
+&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;
+&lt;link rel="chapter" href="/products" title="Products"&gt;
+&lt;link rel="chapter" href="/company/about" title="Company"&gt;
+&lt;link rel="chapter" href="/community" title="Community"&gt;
+&lt;link rel="canonical" href="http://www.example.com/?page=server-faq"&gt;
+&lt;link rev="subsection" href="/products/server" title="Foo Server"&gt;</code></pre>
 
 <h3 id="specify-which-relations-to-render">Specify which relations to render</h3>
 <p>This example shows how to specify which relations to find and render.</p>
@@ -454,35 +472,35 @@ $links-&gt;setRenderFlag(Links::RENDER_START | Links::RENDER_NEXT | Links::RENDE
 echo $links;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
-&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
-&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+<pre class="codehilite"><code class="language-html">&lt;link rel="start" href="/" title="Home"&gt;
+&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
+&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;</code></pre>
 
 <p>Render only native link types:</p>
 <pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CUSTOM);
 echo $links;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
-&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
-&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
-&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
-&lt;link rel=&quot;chapter&quot; href=&quot;/products&quot; title=&quot;Products&quot;&gt;
-&lt;link rel=&quot;chapter&quot; href=&quot;/company/about&quot; title=&quot;Company&quot;&gt;
-&lt;link rel=&quot;chapter&quot; href=&quot;/community&quot; title=&quot;Community&quot;&gt;
-&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+<pre class="codehilite"><code class="language-html">&lt;link rel="alternate" href="/products/server/faq/format/xml"&gt;
+&lt;link rel="start" href="/" title="Home"&gt;
+&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
+&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;
+&lt;link rel="chapter" href="/products" title="Products"&gt;
+&lt;link rel="chapter" href="/company/about" title="Company"&gt;
+&lt;link rel="chapter" href="/community" title="Community"&gt;
+&lt;link rev="subsection" href="/products/server" title="Foo Server"&gt;</code></pre>
 
 <p>Render all but chapters:</p>
 <pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CHAPTER);
 echo $links;</code></pre>
 
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
-&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
-&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
-&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
-&lt;link rel=&quot;canonical&quot; href=&quot;http://www.example.com/?page=server-faq&quot;&gt;
-&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre>
+<pre class="codehilite"><code class="language-html">&lt;link rel="alternate" href="/products/server/faq/format/xml"&gt;
+&lt;link rel="start" href="/" title="Home"&gt;
+&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
+&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;
+&lt;link rel="canonical" href="http://www.example.com/?page=server-faq"&gt;
+&lt;link rev="subsection" href="/products/server" title="Foo Server"&gt;</code></pre>
 
 
 
@@ -492,7 +510,7 @@ echo $links;</code></pre>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../breadcrumbs/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="helpers/breadcrumbs/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -501,7 +519,7 @@ echo $links;</code></pre>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../menu/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="helpers/menu/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -510,14 +528,16 @@ echo $links;</code></pre>
 </nav>
 
 
-<div class="help-wanted">
-    <p>
-        Found a mistake or want to contribute to the documentation?
-        <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/links.md" target="_blank" class="help-wanted__link">
-            Edit this page on GitHub!
-        </a>
-    </p>
-</div>
+
+    <div class="help-wanted">
+        <p>
+            Found a mistake or want to contribute to the documentation?
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/links.md" target="_blank" class="help-wanted__link">
+                Edit this page on GitHub!
+            </a>
+        </p>
+    </div>
+
                 
             <!-- content:end -->
             </div>
@@ -534,7 +554,7 @@ echo $links;</code></pre>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="../..">zend-navigation</a>
+            <a href="">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -543,13 +563,13 @@ echo $links;</code></pre>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -560,13 +580,13 @@ echo $links;</code></pre>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../pages/" class="subnavigation__link">Pages</a>
+        <a href="pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../../containers/" class="subnavigation__link">Containers</a>
+        <a href="containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -577,37 +597,37 @@ echo $links;</code></pre>
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../intro/" class="subnavigation__link">Intro</a>
+        <a href="helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Links</a>
+        <a href="helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../menu/" class="subnavigation__link">Menu</a>
+        <a href="helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -674,6 +694,15 @@ echo $links;</code></pre>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
+                    <li class="support__list-item">
+                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
+                    </li>
+                    <li class="support__list-item">
+                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -684,9 +713,8 @@ echo $links;</code></pre>
         var base_url = '../..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../../js/scripts-5141b2abfe.js"></script>
-        <script src="../../search/require.js"></script>
-        <script src="../../search/search.js"></script>
+    <script src="../../js/scripts-edc4cfa790.js"></script>
+        <script src="../../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -715,6 +743,14 @@ echo $links;</code></pre>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

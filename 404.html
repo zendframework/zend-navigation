@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="zend-navigation">  
-    <link rel="shortcut icon" href="../img/favicon.ico">
+    <link rel="shortcut icon" href="//img/favicon.ico">
 
-    <title>Intro - zend-navigation - Zend Framework Docs</title>
+    <title>zend-navigation - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-f3b53f5ceb.css">
+    <link rel="stylesheet" href="//css/styles-f3b53f5ceb.css">
 </head>
 <body id="page-top">
 
@@ -31,7 +31,7 @@
             
             <span class="navbar-brand">
                 <a class="logo-link" href="https://framework.zend.com/" data-tooltip data-placement="bottom" title="Go to the ZF homepage">
-                    <img src="../img/zend-framework-logo.svg" height="28" alt="Zend Framework">
+                    <img src="//img/zend-framework-logo.svg" height="28" alt="Zend Framework">
                 </a>
             </span>
         </div>
@@ -66,7 +66,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-navigation</a>
+            <a href="/.">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -74,14 +74,14 @@
         <ul class="subnavigation__list">
             
                 
-                    <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Intro</a>
+                    <li class="subnavigation__list-item ">
+                        <a href="/intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="/quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -92,13 +92,13 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../pages/" class="subnavigation__link">Pages</a>
+        <a href="/pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../containers/" class="subnavigation__link">Containers</a>
+        <a href="/containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -109,37 +109,37 @@
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/intro/" class="subnavigation__link">Intro</a>
+        <a href="/helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="/helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/links/" class="subnavigation__link">Links</a>
+        <a href="/helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/menu/" class="subnavigation__link">Menu</a>
+        <a href="/helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="/helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="/helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -220,117 +220,18 @@
             <div class="col-md-9 col-xs-12 content" role="main">
             <!-- content:begin -->
                 
-                    <ol class="breadcrumb" role="navigation" aria-label="breadcrumbs navigation">
-    <li><a href="https://framework.zend.com/">Home</a></li>
 
-    
-        <li><a href="https://docs.zendframework.com/">Documentation</a></li>
-
-        
-            <li><a href="..">zend-navigation</a></li>
-
-            
-
-            <li class="active">Intro</li>
-        
-    
-</ol>
-
-
-    
-
-    
-    
-
-    
-    
-        <div class="toc">
-            <h6 class="toc__headline">In This Article</h6>
-            <ul class="toc__list">
-                
-                    <li class="toc__entry">
-                        <a href="#pages-and-containers" class="toc__link">Pages and Containers</a>
-                    </li>
-                
-                    <li class="toc__entry">
-                        <a href="#view-helpers" class="toc__link">View Helpers</a>
-                    </li>
-                
-            </ul>
-        </div>
-    
-
-
-    <h1 id="introduction">Introduction</h1>
-<p>zend-navigation manages trees of pointers to web pages. Simply put: It can be
-used for creating menus, breadcrumbs, links, and sitemaps, or serve as a model
-for other navigation related purposes.</p>
-<h2 id="pages-and-containers">Pages and Containers</h2>
-<p>There are two main concepts in zend-navigation: pages and containers.</p>
-<h3 id="pages">Pages</h3>
-<p>A page (<code>Zend\Navigation\AbstractPage</code>) in zend-navigation, in its most basic
-form, is an object that holds a pointer to a web page. In addition to the
-pointer itself, the page object contains a number of other properties that are
-typically relevant for navigation, such as <code>label</code>, <code>title</code>, etc.</p>
-<p>Read more about pages in the <a href="../pages/">pages</a> section.</p>
-<h3 id="containers">Containers</h3>
-<p>A navigation container (<code>Zend\Navigation\AbstractContainer</code>) holds pages. It has
-methods for adding, retrieving, deleting and iterating pages. It implements the
-<a href="http://php.net/spl">SPL</a> interfaces <code>RecursiveIterator</code> and <code>Countable</code>, and
-can thus be iterated with SPL iterators such as <code>RecursiveIteratorIterator</code>.</p>
-<p>Read more about containers in the <a href="../containers/">containers</a> section.</p>
+<h1 class="content__title">404</h1>
 <blockquote>
-<h3 id="pages-are-containers">Pages are containers</h3>
-<p><code>Zend\Navigation\AbstractPage</code> extends <code>Zend\Navigation\AbstractContainer</code>,
-which means that a page can have sub pages.</p>
+    <h3>Something went wrong!</h3>
+    <p>
+        We're sorry, but the page you are looking for does not exist.
+    </p>
 </blockquote>
-<h2 id="view-helpers">View Helpers</h2>
-<h3 id="separation-of-data-model-and-rendering-view">Separation of data (model) and rendering (view)</h3>
-<p>Classes in the zend-navigation namespace do not deal with rendering of
-navigational elements.  Rendering is done with navigational view helpers.
-However, pages contain information that is used by view helpers when rendering,
-such as <code>label</code>, <code>class</code> (CSS), <code>title</code>, <code>lastmod</code>, and <code>priority</code> properties
-for sitemaps, etc.</p>
-<p>Read more about rendering navigational elements in the
-<a href="../helpers/intro/">view helpers</a> section.</p>
+
+<a href="/" class="btn btn-default" role="button">Go to homepage</a>
 
 
-
-    <nav>
-    <ul class="page-nav hidden-print">
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="..">
-                    <i class="fa fa-chevron-left"></i> Previous
-                </a>
-            
-        </li>
-
-        
-        <li class="page-nav__item">
-            
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../quick-start/">
-                    Next <i class="fa fa-chevron-right"></i>
-                </a>
-            
-        </li>
-    </ul>
-</nav>
-
-
-
-    <div class="help-wanted">
-        <p>
-            Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/intro.md" target="_blank" class="help-wanted__link">
-                Edit this page on GitHub!
-            </a>
-        </p>
-    </div>
-
-                
             <!-- content:end -->
             </div>
             <div class="col-md-3 col-xs-12 sidebar">
@@ -346,7 +247,7 @@ for sitemaps, etc.</p>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-navigation</a>
+            <a href="/.">zend-navigation</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -354,14 +255,14 @@ for sitemaps, etc.</p>
         <ul class="subnavigation__list">
             
                 
-                    <li class="subnavigation__list-item subnavigation__list-item--active">
-                        <a href="./" class="subnavigation__link">Intro</a>
+                    <li class="subnavigation__list-item ">
+                        <a href="/intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../quick-start/" class="subnavigation__link">Quick Start</a>
+                        <a href="/quick-start/" class="subnavigation__link">Quick Start</a>
                     </li>
                 
             
@@ -372,13 +273,13 @@ for sitemaps, etc.</p>
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../pages/" class="subnavigation__link">Pages</a>
+        <a href="/pages/" class="subnavigation__link">Pages</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../containers/" class="subnavigation__link">Containers</a>
+        <a href="/containers/" class="subnavigation__link">Containers</a>
     </li>
 
                             
@@ -389,37 +290,37 @@ for sitemaps, etc.</p>
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/intro/" class="subnavigation__link">Intro</a>
+        <a href="/helpers/intro/" class="subnavigation__link">Intro</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
+        <a href="/helpers/breadcrumbs/" class="subnavigation__link">Breadcrumbs</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/links/" class="subnavigation__link">Links</a>
+        <a href="/helpers/links/" class="subnavigation__link">Links</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/menu/" class="subnavigation__link">Menu</a>
+        <a href="/helpers/menu/" class="subnavigation__link">Menu</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/sitemap/" class="subnavigation__link">Sitemap</a>
+        <a href="/helpers/sitemap/" class="subnavigation__link">Sitemap</a>
     </li>
 
             
                 
     <li class="subnavigation__list-item ">
-        <a href="../helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
+        <a href="/helpers/navigation/" class="subnavigation__link">Navigation Proxy</a>
     </li>
 
             
@@ -502,11 +403,11 @@ for sitemaps, etc.</p>
 </footer>
 
     <script>
-        var base_url = '..',
+        var base_url = '/',
             siteName = 'zend-navigation';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="//js/scripts-8d7ae56abf.js"></script>
+        <script src="/search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

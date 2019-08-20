@@ -1,14 +1,14 @@
 docs_dir: docs/book
 site_dir: docs/html
 pages:
-    - index.md
-    - Intro: intro.md
+    - Home: index.md
+    - Introduction: intro.md
     - "Quick Start": quick-start.md
     - Reference:
         - Pages: pages.md
         - Containers: containers.md
         - View Helpers:
-            - Intro: helpers/intro.md
+            - Introduction: helpers/intro.md
             - Breadcrumbs: helpers/breadcrumbs.md
             - Links: helpers/links.md
             - Menu: helpers/menu.md

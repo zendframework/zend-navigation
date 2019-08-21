@@ -1,20 +1,19 @@
 docs_dir: docs/book
 site_dir: docs/html
 pages:
-    - index.md
-    - Intro: intro.md
+    - Home: index.md
+    - Introduction: intro.md
     - "Quick Start": quick-start.md
     - Reference:
         - Pages: pages.md
         - Containers: containers.md
-        - View Helpers:
-            - Intro: helpers/intro.md
-            - Breadcrumbs: helpers/breadcrumbs.md
-            - Links: helpers/links.md
-            - Menu: helpers/menu.md
-            - Sitemap: helpers/sitemap.md
-            - "Navigation Proxy": helpers/navigation.md
+    - View Helpers:
+        - Introduction: helpers/intro.md
+        - Breadcrumbs: helpers/breadcrumbs.md
+        - Links: helpers/links.md
+        - Menu: helpers/menu.md
+        - Sitemap: helpers/sitemap.md
+        - "Navigation Proxy": helpers/navigation.md
 site_name: zend-navigation
-site_description: zend-navigation
+site_description: "Manage trees of pointers to web pages in order to build navigation systems."
 repo_url: 'https://github.com/zendframework/zend-navigation'
-copyright: 'Copyright (c) 2005-2018 <a href="https://www.zend.com/">Zend Technologies USA Inc.</a>'

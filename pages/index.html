@@ -343,7 +343,7 @@ options in the table below and the same initialization process.</p>
 method for the option, it will be set as a custom property of the page.</p>
 <p>Read more on extending <code>Zend\Navigation\Page\AbstractPage</code> in the section
 <a href="#creating-custom-page-types">"Creating custom page types"</a>.</p>
-<h3 id="common-page-options">Common page options</h3>
+<h3>Common page options</h3>
 <div class="table-responsive"><table>
 <thead>
 <tr>
@@ -441,7 +441,7 @@ method for the option, it will be set as a custom property of the page.</p>
 </tbody>
 </table></div>
 <blockquote>
-<h4 id="custom-properties">Custom properties</h4>
+<h4>Custom properties</h4>
 <p>All pages support setting and retrieval of custom properties by use of the
 magic methods <code>__set($name, $value)</code>, <code>__get($name)</code>, <code>__isset($name)</code> and
 <code>__unset($name)</code>. Custom properties may have any value, and will be included
@@ -451,16 +451,15 @@ properties that are not native in the page class.</p>
 <p>Both native and custom properties can be set using <code>$page-&gt;set($name, $value)</code>
 and retrieved using <code>$page-&gt;get($name)</code>, or by using magic methods.</p>
 <p>The following example demonstrates custom properties:</p>
-<pre class="codehilite"><code class="language-php">$page = new Zend\Navigation\Page\Mvc();
+<p>```php
+$page = new Zend\Navigation\Page\Mvc();
 $page-&gt;foo     = 'bar';
-$page-&gt;meaning = 42;
-
-echo $page-&gt;foo;
-
-if ($page-&gt;meaning != 42) {
+$page-&gt;meaning = 42;</p>
+<p>echo $page-&gt;foo;</p>
+<p>if ($page-&gt;meaning != 42) {
     // action should be taken
-}</code></pre>
-
+}
+```</p>
 </blockquote>
 <h2 id="mvc-pages">MVC pages</h2>
 <p>MVC pages are defined using MVC parameters known from the
@@ -470,14 +469,14 @@ to generate <code>href</code> attributes, and the <code>isActive()</code> method
 <code>Zend\Router\RouteMatch</code> params with the page's params to determine if the page
 is active.</p>
 <blockquote>
-<h3 id="useroutematch-flag">useRouteMatch flag</h3>
+<h3>useRouteMatch flag</h3>
 <p>Starting in version 2.2.0, if you want to re-use any matched route parameters
 when generating a link, you can do so via the <code>useRouteMatch</code> flag. This is
 particularly useful when creating segment routes that include the currently
 selected language or locale as an initial segment, as it ensures the links
 generated all include the matched value.</p>
 </blockquote>
-<h3 id="mvc-page-options">MVC page options</h3>
+<h3>MVC page options</h3>
 <div class="table-responsive"><table>
 <thead>
 <tr>
@@ -539,14 +538,14 @@ generated all include the matched value.</p>
 </tbody>
 </table></div>
 <blockquote>
-<h3 id="uris-are-relative-to-base-url">URIs are relative to base URL</h3>
+<h3>URIs are relative to base URL</h3>
 <p>The URI returned is relative to the <code>baseUrl</code> in <code>Zend\Router\Http\TreeRouteStack</code>.
 In the examples, the <code>baseUrl</code> is '/' for simplicity.</p>
 </blockquote>
-<h3 id="gethref-generates-the-page-uri">getHref() generates the page URI</h3>
+<h3>getHref() generates the page URI</h3>
 <p>This example demonstrates that MVC pages use <code>Zend\Router\RouteStackInterface</code>
 internally to generate URIs when calling <code>$page-&gt;getHref()</code>.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page;
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\TreeRouteStack;
 
@@ -585,12 +584,11 @@ $page = new Page\Mvc([
     'controller' =&gt; 'album',
     'params'     =&gt; ['id' =&gt; 1337],
     'query'      =&gt; ['format' =&gt; 'json'],
-]);</code></pre>
-
-<h3 id="isactive-determines-if-page-is-active">isActive() determines if page is active</h3>
+]);</code></pre></p>
+<h3>isActive() determines if page is active</h3>
 <p>This example demonstrates that MVC pages determine whether they are active by
 using the params found in the route match object.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page;
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page;
 
 /**
  * Dispatched request:
@@ -637,17 +635,16 @@ $page = new Page\Mvc([
 ]);
 
 // returns false, because page requires the id param to be set in the request
-$page-&gt;isActive(); // returns false</code></pre>
-
-<h3 id="using-routes">Using routes</h3>
+$page-&gt;isActive(); // returns false</code></pre></p>
+<h3>Using routes</h3>
 <p>Routes can be used with MVC pages. If a page has a route, this route will be
 used in <code>getHref()</code> to generate the URL for the page.</p>
 <blockquote>
-<h4 id="default-parameters-are-not-necessary">Default parameters are not necessary</h4>
+<h4>Default parameters are not necessary</h4>
 <p>Note that when using the <code>route</code> property in a page, you do not need to
 specify the default params that the route defines (controller, action, etc.).</p>
 </blockquote>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page;
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\TreeRouteStack;
 
@@ -673,8 +670,7 @@ $page = new Page\Mvc([
 ]);
 
 // returns: /a/42
-$page-&gt;getHref();</code></pre>
-
+$page-&gt;getHref();</code></pre></p>
 <h2 id="uri-pages">URI Pages</h2>
 <p>Pages of type <code>Zend\Navigation\Page\Uri</code> can be used to link to pages on other
 domains or sites, or to implement custom logic for the page. In addition to the
@@ -682,14 +678,14 @@ common page options, a URI page takes only one additional option, a <code>uri</c
 <code>uri</code> will be returned when calling <code>$page-&gt;getHref()</code>, and may be a <code>string</code> or
 <code>null</code>.</p>
 <blockquote>
-<h3 id="no-auto-determination-of-active-status">No auto-determination of active status</h3>
+<h3>No auto-determination of active status</h3>
 <p><code>Zend\Navigation\Page\Uri</code> will not try to determine whether it should be
 active when calling <code>$page-&gt;isActive()</code>; it merely returns what currently is
 set. In order to make a URI page active, you must manually call
 <code>$page-&gt;setActive()</code> or specify the <code>active</code> as a page option during
 instantiation.</p>
 </blockquote>
-<h3 id="uri-page-options">URI page options</h3>
+<h3>URI page options</h3>
 <div class="table-responsive"><table>
 <thead>
 <tr>
@@ -719,9 +715,9 @@ first look for a method named <code>setInternalId()</code>, and pass the option 
 method if it exists. If the method does not exist, the option will be set as a
 custom property of the page, and be accessible via <code>$internalId =
 $page-&gt;internal_id;</code> or <code>$internalId = $page-&gt;get('internal_id');</code>.</p>
-<h3 id="basic-custom-page-example">Basic custom page example</h3>
+<h3>Basic custom page example</h3>
 <p>The only thing a custom page class needs to implement is the <code>getHref()</code> method.</p>
-<pre class="codehilite"><code class="language-php">namespace My;
+<p> <pre class=codehilite><code class=language-php>namespace My;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -731,12 +727,11 @@ class Page extends AbstractPage
     {
         return 'something-completely-different';
     }
-}</code></pre>
-
-<h3 id="a-custom-page-with-properties">A custom page with properties</h3>
+}</code></pre></p>
+<h3>A custom page with properties</h3>
 <p>When adding properties to an extended page, there is no need to override/modify
 <code>setOptions()</code>.</p>
-<pre class="codehilite"><code class="language-php">namespace My\Navigation;
+<p> <pre class=codehilite><code class=language-php>namespace My\Navigation;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -776,8 +771,7 @@ $page = new Page([
     'label'   =&gt; 'Property names are mapped to setters',
     'foo'     =&gt; 'bar',
     'foo_bar' =&gt; 'baz',
-]);</code></pre>
-
+]);</code></pre></p>
 <h2 id="creating-pages-using-the-page-factory">Creating pages using the page factory</h2>
 <p>All pages (also custom classes), can be created using the page factory,
 <code>Zend\Navigation\Page\AbstractPage::factory()</code>. The factory accepts either an
@@ -788,66 +782,64 @@ created. If any of the MVC options are given, an MVC page will be created.</p>
 <p>If <code>type</code> is given, the factory will assume the value to be the name of the
 class that should be created. If the value is <code>mvc</code> or <code>uri</code>, an MVC or URI page
 will be created, respectively.</p>
-<h3 id="creating-an-mvc-page-using-the-page-factory">Creating an MVC page using the page factory</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page\AbstractPage;
+<h3>Creating an MVC page using the page factory</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page\AbstractPage;
 
-// MVC page, as "action" is defined
+// MVC page, as &quot;action&quot; is defined
 $page = AbstractPage::factory([
     'label'  =&gt; 'My MVC page',
     'action' =&gt; 'index',
 ]);
 
-// MVC page, as "action" and "controller" are defined
+// MVC page, as &quot;action&quot; and &quot;controller&quot; are defined
 $page = AbstractPage::factory([
     'label'      =&gt; 'Search blog',
     'action'     =&gt; 'index',
     'controller' =&gt; 'search',
 ]);
 
-// MVC page, as "route" is defined
+// MVC page, as &quot;route&quot; is defined
 $page = AbstractPage::factory([
     'label' =&gt; 'Home',
     'route' =&gt; 'home',
 ]);
 
-// MVC page, as "type" is "mvc"
+// MVC page, as &quot;type&quot; is &quot;mvc&quot;
 $page = AbstractPage::factory([
     'type'   =&gt; 'mvc',
     'label'  =&gt; 'My MVC page',
-]);</code></pre>
+]);</code></pre></p>
+<h3>Creating a URI page using the page factory</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page\AbstractPage;
 
-<h3 id="creating-a-uri-page-using-the-page-factory">Creating a URI page using the page factory</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Page\AbstractPage;
-
-// URI page, as "uri" is present, with now MVC options
+// URI page, as &quot;uri&quot; is present, with now MVC options
 $page = AbstractPage::factory([
     'label' =&gt; 'My URI page',
     'uri'   =&gt; 'http://www.example.com/',
 ]);
 
-// URI page, as "uri" is present, with now MVC options
+// URI page, as &quot;uri&quot; is present, with now MVC options
 $page = AbstractPage::factory([
     'label'  =&gt; 'Search',
     'uri'    =&gt; 'http://www.example.com/search',
     'active' =&gt; true,
 ]);
 
-// URI page, as "uri" is present, with now MVC options
+// URI page, as &quot;uri&quot; is present, with now MVC options
 $page = AbstractPage::factory([
     'label' =&gt; 'My URI page',
     'uri'   =&gt; '#',
 ]);
 
-// URI page, as "type" is "uri"
+// URI page, as &quot;type&quot; is &quot;uri&quot;
 $page = AbstractPage::factory([
     'type'  =&gt; 'uri',
     'label' =&gt; 'My URI page',
-]);</code></pre>
-
-<h3 id="creating-a-custom-page-type-using-the-page-factory">Creating a custom page type using the page factory</h3>
+]);</code></pre></p>
+<h3>Creating a custom page type using the page factory</h3>
 <p>To create a custom page type using the factory, use the option <code>type</code> to specify
 a class name to instantiate.</p>
-<pre class="codehilite"><code class="language-php">namespace My\Navigation;
+<p> <pre class=codehilite><code class=language-php>namespace My\Navigation;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -861,12 +853,12 @@ class Page extends AbstractPage
     }
 }
 
-// Creates Page instance, as "type" refers to its class.
+// Creates Page instance, as &quot;type&quot; refers to its class.
 $page = AbstractPage::factory([
     'type'    =&gt; Page::class,
     'label'   =&gt; 'My custom page',
     'foo_bar' =&gt; 'foo bar',
-]);</code></pre>
+]);</code></pre></p>
 
 
 
@@ -900,7 +892,7 @@ $page = AbstractPage::factory([
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/pages.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/pages.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

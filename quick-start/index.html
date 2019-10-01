@@ -312,9 +312,9 @@
   in your application configuration.</li>
 <li>Render your container using a navigation view helper within your view scripts.</li>
 </ul>
-<h3 id="register-zend-navigation-as-module">Register zend-navigation as module</h3>
+<h3>Register zend-navigation as module</h3>
 <p>Edit the application configuration file <code>config/application.config.php</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<p> <pre class=codehilite><code class=language-php>&lt;?php
 return [
     'modules' =&gt; [
         'Zend\Router',
@@ -322,12 +322,11 @@ return [
         'Zend\Navigation', // &lt;-- Add this line
         // ...
     ],
-];</code></pre>
-
-<h3 id="navigation-container-configuration">Navigation container configuration</h3>
+];</code></pre></p>
+<h3>Navigation container configuration</h3>
 <p>Add the container definition to your configuration file, e.g.
 <code>config/autoload/global.php</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<p> <pre class=codehilite><code class=language-php>&lt;?php
 return [
     // ...
 
@@ -354,24 +353,22 @@ return [
         ],
     ],
     // ...
-];</code></pre>
-
-<h3 id="render-the-navigation">Render the navigation</h3>
+];</code></pre></p>
+<h3>Render the navigation</h3>
 <p>Calling the view helper for menus in your layout script:</p>
-<pre class="codehilite"><code class="language-php">&lt;!-- ... --&gt;
+<p> <pre class=codehilite><code class=language-php>&lt;!-- ... --&gt;
 
 &lt;body&gt;
     &lt;?= $this-&gt;navigation('default')-&gt;menu() ?&gt;
 &lt;/body&gt;
-&lt;!-- ... --&gt;</code></pre>
-
+&lt;!-- ... --&gt;</code></pre></p>
 <h2 id="using-multiple-navigations">Using multiple navigations</h2>
 <p>Once the zend-navigation module is registered, you can create as many navigation
 definitions as you wish, and the underlying factories will create navigation
 containers automatically.</p>
 <p>Add the container definitions to your configuration file, e.g.
 <code>config/autoload/global.php</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<p> <pre class=codehilite><code class=language-php>&lt;?php
 return [
     // ...
 
@@ -424,10 +421,9 @@ return [
         ],
     ],
     // ...
-];</code></pre>
-
+];</code></pre></p>
 <blockquote>
-<h3 id="container-names-have-a-prefix">Container names have a prefix</h3>
+<h3>Container names have a prefix</h3>
 <p>There is one important point to know when using zend-navigation as a module:
 The name of the container in your view script <strong>must</strong> be prefixed with
 <code>Zend\Navigation\</code>, followed by the name of the configuration key.
@@ -435,7 +431,7 @@ This helps ensure that no naming collisions occur with other services.</p>
 </blockquote>
 <p>The following example demonstrates rendering the navigation menus for the named
 <code>default</code>, <code>special</code>, and <code>sitemap</code> containers.</p>
-<pre class="codehilite"><code class="language-php">&lt;!-- ... --&gt;
+<p> <pre class=codehilite><code class=language-php>&lt;!-- ... --&gt;
 
 &lt;body&gt;
     &lt;?= $this-&gt;navigation('Zend\Navigation\Default')-&gt;menu() ?&gt;
@@ -444,7 +440,7 @@ This helps ensure that no naming collisions occur with other services.</p>
 
     &lt;?= $this-&gt;navigation('Zend\Navigation\Sitemap')-&gt;menu() ?&gt;
 &lt;/body&gt;
-&lt;!-- ... --&gt;</code></pre>
+&lt;!-- ... --&gt;</code></pre></p>
 
 
 
@@ -478,7 +474,7 @@ This helps ensure that no naming collisions occur with other services.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/quick-start.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/quick-start.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

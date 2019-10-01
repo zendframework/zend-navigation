@@ -309,25 +309,25 @@ used for creating menus, breadcrumbs, links, and sitemaps, or serve as a model
 for other navigation related purposes.</p>
 <h2 id="pages-and-containers">Pages and Containers</h2>
 <p>There are two main concepts in zend-navigation: pages and containers.</p>
-<h3 id="pages">Pages</h3>
+<h3>Pages</h3>
 <p>A page (<code>Zend\Navigation\AbstractPage</code>) in zend-navigation, in its most basic
 form, is an object that holds a pointer to a web page. In addition to the
 pointer itself, the page object contains a number of other properties that are
 typically relevant for navigation, such as <code>label</code>, <code>title</code>, etc.</p>
 <p>Read more about pages in the <a href="../pages/">pages</a> section.</p>
-<h3 id="containers">Containers</h3>
+<h3>Containers</h3>
 <p>A navigation container (<code>Zend\Navigation\AbstractContainer</code>) holds pages. It has
 methods for adding, retrieving, deleting and iterating pages. It implements the
 <a href="http://php.net/spl">SPL</a> interfaces <code>RecursiveIterator</code> and <code>Countable</code>, and
 can thus be iterated with SPL iterators such as <code>RecursiveIteratorIterator</code>.</p>
 <p>Read more about containers in the <a href="../containers/">containers</a> section.</p>
 <blockquote>
-<h3 id="pages-are-containers">Pages are containers</h3>
+<h3>Pages are containers</h3>
 <p><code>Zend\Navigation\AbstractPage</code> extends <code>Zend\Navigation\AbstractContainer</code>,
 which means that a page can have sub pages.</p>
 </blockquote>
 <h2 id="view-helpers">View Helpers</h2>
-<h3 id="separation-of-data-model-and-rendering-view">Separation of data (model) and rendering (view)</h3>
+<h3>Separation of data (model) and rendering (view)</h3>
 <p>Classes in the zend-navigation namespace do not deal with rendering of
 navigational elements.  Rendering is done with navigational view helpers.
 However, pages contain information that is used by view helpers when rendering,
@@ -368,7 +368,7 @@ for sitemaps, etc.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/intro.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/intro.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

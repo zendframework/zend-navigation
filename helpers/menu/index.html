@@ -446,82 +446,79 @@ also allows using a partial view script.</p>
 <p>This example shows how to render a menu from a container registered/found in the
 view helper. Notice how pages are filtered out based on visibility and ACL.</p>
 <p>In a view script or layout:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;render() ?&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;render() ?&gt;</code></pre></p>
 <p>Or:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;menu() ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li&gt;
-        &lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
+        &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products"&gt;Products&lt;/a&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;
-                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
                 &lt;ul&gt;
-                    &lt;li class="active"&gt;
-                        &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
+                    &lt;li class=&quot;active&quot;&gt;
+                        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
+                        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
+                        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
+                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
                 &lt;ul&gt;
                     &lt;li&gt;
-                        &lt;a href="/products/studio/customers"&gt;Customer Stories&lt;/a&gt;
+                        &lt;a href=&quot;/products/studio/customers&quot;&gt;Customer Stories&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href="/products/studio/support"&gt;Support&lt;/a&gt;
-                    &lt;/li&gt;
-                &lt;/ul&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
-        &lt;ul&gt;
-            &lt;li&gt;
-                &lt;a href="/company/about/investors"&gt;Investor Relations&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li&gt;
-                &lt;a class="rss" href="/company/news"&gt;News&lt;/a&gt;
-                &lt;ul&gt;
-                    &lt;li&gt;
-                        &lt;a href="/company/news/press"&gt;Press Releases&lt;/a&gt;
-                    &lt;/li&gt;
-                    &lt;li&gt;
-                        &lt;a href="/archive"&gt;Archive&lt;/a&gt;
+                        &lt;a href=&quot;/products/studio/support&quot;&gt;Support&lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/community"&gt;Community&lt;/a&gt;
+        &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
+                &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
+                &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/company/news/press&quot;&gt;Press Releases&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href=&quot;/archive&quot;&gt;Archive&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+    &lt;li&gt;
+        &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre></p>
 <h2 id="calling-rendermenu-directly">Calling renderMenu() directly</h2>
 <p>This example shows how to render a menu that is not registered in the view
 helper by calling <code>renderMenu()</code> directly and specifying options.</p>
-<pre class="codehilite"><code class="language-php">&lt;?php
+<p> <pre class=codehilite><code class=language-php>&lt;?php
 // render only the 'Community' menu
 $community = $this-&gt;navigation()-&gt;findOneByLabel('Community');
 $options = [
@@ -531,238 +528,221 @@ $options = [
 echo $this-&gt;navigation()
           -&gt;menu()
           -&gt;renderMenu($community, $options);
-?&gt;</code></pre>
-
+?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="community"&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;community&quot;&gt;
     &lt;li&gt;
-        &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
+        &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
+        &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-the-deepest-active-menu">Rendering the deepest active menu</h2>
 <p>This example shows how <code>renderSubMenu()</code> will render the deepest sub menu of
 the active branch.</p>
 <p>Calling <code>renderSubMenu($container, $ulClass, $indent)</code> is equivalent to calling
 <code>renderMenu($container, $options)</code> with the following options:</p>
-<pre class="codehilite"><code class="language-php">[
+<div class=md-fenced-code-tabs id=tab-tab-group-5><ul class="nav nav-tabs"><li class="nav-item active"><a href=#tab-group-5-0_php role=tab data-toggle=tab data-lang=php>Php</a></li><li class="nav-item "><a href=#tab-group-5-1_php role=tab data-toggle=tab data-lang=php>Php</a></li></ul><div class=tab-content><div id=tab-group-5-0_php class="tab-pane active" role=tabpanel><pre class=codehilite><code class=language-php>[
     'ulClass'          =&gt; $ulClass,
     'indent'           =&gt; $indent,
     'minDepth'         =&gt; null,
     'maxDepth'         =&gt; null,
     'onlyActiveBranch' =&gt; true,
     'renderParents'    =&gt; false,
-]</code></pre>
-
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+]</code></pre></div><div id=tab-group-5-1_php class="tab-pane " role=tabpanel><pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()
     -&gt;menu()
-    -&gt;renderSubMenu(null, 'sidebar', 4) ?&gt;</code></pre>
+    -&gt;renderSubMenu(null, 'sidebar', 4) ?&gt;</code></pre></div></div></div>
 
 <p>The output will be the same if 'FAQ' or 'Foo Server' is active:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="sidebar"&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;sidebar&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
+        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
+        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-with-maximum-depth">Rendering with maximum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()
     -&gt;menu()
-    -&gt;setMaxDepth(1) ?&gt;</code></pre>
-
+    -&gt;setMaxDepth(1) ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;navigation&quot;&gt;
     &lt;li&gt;
-        &lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
+        &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products"&gt;Products&lt;/a&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;
-                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
+                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
+        &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href="/company/about/investors"&gt;Investor Relations&lt;/a&gt;
+                &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a class="rss" href="/company/news"&gt;News&lt;/a&gt;
+                &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/community"&gt;Community&lt;/a&gt;
+        &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
+                &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
+                &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-with-minimum-depth">Rendering with minimum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()
     -&gt;menu()
-    -&gt;setMinDepth(1) ?&gt;</code></pre>
-
+    -&gt;setMinDepth(1) ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;
-                &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
+                &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
+                &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
+        &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href="/products/studio/customers"&gt;Customer Stories&lt;/a&gt;
+                &lt;a href=&quot;/products/studio/customers&quot;&gt;Customer Stories&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/studio/support"&gt;Support&lt;/a&gt;
+                &lt;a href=&quot;/products/studio/support&quot;&gt;Support&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/company/about/investors"&gt;Investor Relations&lt;/a&gt;
+        &lt;a href=&quot;/company/about/investors&quot;&gt;Investor Relations&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a class="rss" href="/company/news"&gt;News&lt;/a&gt;
+        &lt;a class=&quot;rss&quot; href=&quot;/company/news&quot;&gt;News&lt;/a&gt;
         &lt;ul&gt;
             &lt;li&gt;
-                &lt;a href="/company/news/press"&gt;Press Releases&lt;/a&gt;
+                &lt;a href=&quot;/company/news/press&quot;&gt;Press Releases&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/archive"&gt;Archive&lt;/a&gt;
+                &lt;a href=&quot;/archive&quot;&gt;Archive&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/community/account"&gt;My Account&lt;/a&gt;
+        &lt;a href=&quot;/community/account&quot;&gt;My Account&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a class="external" href="http://forums.example.com/"&gt;Forums&lt;/a&gt;
+        &lt;a class=&quot;external&quot; href=&quot;http://forums.example.com/&quot;&gt;Forums&lt;/a&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-only-the-active-branch">Rendering only the active branch</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()
     -&gt;menu()
-    -&gt;setOnlyActiveBranch(true) ?&gt;</code></pre>
-
+    -&gt;setOnlyActiveBranch(true) ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products"&gt;Products&lt;/a&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;
-                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
                 &lt;ul&gt;
-                    &lt;li class="active"&gt;
-                        &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
+                    &lt;li class=&quot;active&quot;&gt;
+                        &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
+                        &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
                     &lt;/li&gt;
                     &lt;li&gt;
-                        &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
+                        &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
                     &lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-only-the-active-branch-with-minimum-depth">Rendering only the active branch with minimum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
-    -&gt;setMinDepth(1) ?&gt;</code></pre>
-
+    -&gt;setMinDepth(1) ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;
-                &lt;a href="/products/server/faq"&gt;FAQ&lt;/a&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server/faq&quot;&gt;FAQ&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/server/editions"&gt;Editions&lt;/a&gt;
+                &lt;a href=&quot;/products/server/editions&quot;&gt;Editions&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/server/requirements"&gt;System Requirements&lt;/a&gt;
+                &lt;a href=&quot;/products/server/requirements&quot;&gt;System Requirements&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-only-the-active-branch-with-maximum-depth">Rendering only the active branch with maximum depth</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
-    -&gt;setMaxDepth(1) ?&gt;</code></pre>
-
+    -&gt;setMaxDepth(1) ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products"&gt;Products&lt;/a&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
         &lt;ul&gt;
-            &lt;li class="active"&gt;
-                &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
+            &lt;li class=&quot;active&quot;&gt;
+                &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
             &lt;/li&gt;
             &lt;li&gt;
-                &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
+                &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-only-the-active-branch-with-maximum-depth-and-no-parents">Rendering only the active branch with maximum depth and no parents</h2>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()
     -&gt;menu()
     -&gt;setOnlyActiveBranch(true)
     -&gt;setRenderParents(false)
-    -&gt;setMaxDepth(1) ?&gt;</code></pre>
-
+    -&gt;setMaxDepth(1) ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;ul class="navigation"&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;
+<p> <pre class=codehilite><code class=language-html>&lt;ul class=&quot;navigation&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;
     &lt;/li&gt;
     &lt;li&gt;
-        &lt;a href="/products/studio"&gt;Foo Studio&lt;/a&gt;
+        &lt;a href=&quot;/products/studio&quot;&gt;Foo Studio&lt;/a&gt;
     &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-
+&lt;/ul&gt;</code></pre></p>
 <h2 id="rendering-a-custom-menu-using-a-partial-view-script">Rendering a custom menu using a partial view script</h2>
 <p>This example shows how to render a custom menu using a partial view script. By
 calling <code>setPartial()</code>, you can specify a partial view script that will be used
@@ -771,25 +751,22 @@ the <code>renderPartial()</code> method.</p>
 <p>The <code>renderPartial()</code>  method will assign the container to the view with the key
 <code>container</code>.</p>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php">$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
-echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
+echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre></p>
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
+<p> <pre class=codehilite><code class=language-php>foreach ($this-&gt;container as $page) {
     echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
-}</code></pre>
-
+}</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
-&lt;a href="/products"&gt;Products&lt;/a&gt;
-&lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
-&lt;a href="/community"&gt;Community&lt;/a&gt;</code></pre>
-
-<h3 id="using-additional-parameters-in-partial-view-scripts">Using additional parameters in partial view scripts</h3>
+<p> <pre class=codehilite><code class=language-html>&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+&lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+&lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre></p>
+<h3>Using additional parameters in partial view scripts</h3>
 <p>Starting with version 2.6.0, you can assign custom variables to a
 partial script.</p>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php">// Set partial
+<p> <pre class=codehilite><code class=language-php>// Set partial
 $this-&gt;navigation()-&gt;menu()-&gt;setPartial('my-module/partials/menu');
 
 // Output menu
@@ -797,60 +774,54 @@ echo $this-&gt;navigation()-&gt;menu()-&gt;renderPartialWithParams(
     [
         'headline' =&gt; 'Links',
     ]
-);</code></pre>
-
+);</code></pre></p>
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;h1&gt;&lt;?= $headline ?&gt;&lt;/h1&gt;
+<p> <pre class=codehilite><code class=language-php>&lt;h1&gt;&lt;?= $headline ?&gt;&lt;/h1&gt;
 
 &lt;?php
 foreach ($this-&gt;container as $page) {
     echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
 }
-?&gt;</code></pre>
-
+?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;h1&gt;Links&lt;/h1&gt;
-&lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
-&lt;a href="/products"&gt;Products&lt;/a&gt;
-&lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
-&lt;a href="/community"&gt;Community&lt;/a&gt;</code></pre>
-
-<h3 id="using-menu-options-in-partial-view-scripts">Using menu options in partial view scripts</h3>
+<p> <pre class=codehilite><code class=language-html>&lt;h1&gt;Links&lt;/h1&gt;
+&lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+&lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+&lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;</code></pre></p>
+<h3>Using menu options in partial view scripts</h3>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php">// Set options
+<p> <pre class=codehilite><code class=language-php>// Set options
 $this-&gt;navigation()-&gt;menu()
     -&gt;setUlClass('my-nav')
     -&gt;setPartial('my-module/partials/menu');
 
 // Output menu
-echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre>
-
+echo $this-&gt;navigation()-&gt;menu()-&gt;render();</code></pre></p>
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;div class"&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;"&gt;
+<p> <pre class=codehilite><code class=language-php>&lt;div class&quot;&lt;?= $this-&gt;navigation()-&gt;menu()-&gt;getUlClass() ?&gt;&quot;&gt;
     &lt;?php
     foreach ($this-&gt;container as $page) {
         echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
     }
     ?&gt;
-&lt;/div&gt;</code></pre>
-
+&lt;/div&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;div class="my-nav"&gt;
-    &lt;a title="Go Home" href="/"&gt;Home&lt;/a&gt;
-    &lt;a href="/products"&gt;Products&lt;/a&gt;
-    &lt;a title="About us" href="/company/about"&gt;Company&lt;/a&gt;
-    &lt;a href="/community"&gt;Community&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-
-<h3 id="using-acls-with-partial-view-scripts">Using ACLs with partial view scripts</h3>
+<p> <pre class=codehilite><code class=language-html>&lt;div class=&quot;my-nav&quot;&gt;
+    &lt;a title=&quot;Go Home&quot; href=&quot;/&quot;&gt;Home&lt;/a&gt;
+    &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt;
+    &lt;a title=&quot;About us&quot; href=&quot;/company/about&quot;&gt;Company&lt;/a&gt;
+    &lt;a href=&quot;/community&quot;&gt;Community&lt;/a&gt;
+&lt;/div&gt;</code></pre></p>
+<h3>Using ACLs with partial view scripts</h3>
 <p>If you want to use an ACL within your partial view script, then you will have to
 check the access to a page manually.</p>
 <p>In <code>module/MyModule/view/my-module/partials/menu.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">foreach ($this-&gt;container as $page) {
+<p> <pre class=codehilite><code class=language-php>foreach ($this-&gt;container as $page) {
     if ($this-&gt;navigation()-&gt;accept($page)) {
         echo $this-&gt;navigation()-&gt;menu()-&gt;htmlify($page) . PHP_EOL;
     }
-}</code></pre>
+}</code></pre></p>
 
 
 
@@ -884,7 +855,7 @@ check the access to a page manually.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/helpers/menu.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/menu.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

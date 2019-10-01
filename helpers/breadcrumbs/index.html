@@ -323,8 +323,7 @@
     <h1 id="breadcrumbs">Breadcrumbs</h1>
 <p>Breadcrumbs are used for indicating where in a sitemap a user is currently browsing, and are
 typically rendered like the following:</p>
-<pre class="codehilite"><code class="language-text">You are here: Home &gt; Products &gt; FantasticProduct 1.0</code></pre>
-
+<p> <pre class=codehilite><code class=language-text>You are here: Home &gt; Products &gt; FantasticProduct 1.0</code></pre></p>
 <p>The <code>breadcrumbs()</code> helper follows the <a href="http://developer.yahoo.com/ypatterns/pattern.php?pattern=breadcrumbs">Breadcrumbs Pattern</a>
 as outlined in the Yahoo! Design Pattern Library, and allows simple
 customization (minimum/maximum depth, indentation, separator, and whether the
@@ -383,39 +382,31 @@ at level 2 even if the deepest active page is on level 3).</p>
 <h2 id="basic-usage">Basic usage</h2>
 <p>This example shows how to render breadcrumbs with default settings.</p>
 <p>In a view script or layout:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs(); ?&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;breadcrumbs(); ?&gt;</code></pre></p>
 <p>The call above takes advantage of the magic <code>__toString()</code> method, and is
 equivalent to:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;render(); ?&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;render(); ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;a href="/products"&gt;Products&lt;/a&gt; &amp;gt; &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
-
+<p> <pre class=codehilite><code class=language-html>&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; &amp;gt; &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre></p>
 <h2 id="specifying-indentation">Specifying indentation</h2>
 <p>This example shows how to render breadcrumbs with initial indentation.</p>
 <p>Rendering with 8 spaces indentation:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setIndent(8) ?&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setIndent(8) ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">        &lt;a href="/products"&gt;Products&lt;/a&gt; &amp;gt; &lt;a href="/products/server"&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre>
-
+<p> <pre class=codehilite><code class=language-html>        &lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; &amp;gt; &lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt; &amp;gt; FAQ</code></pre></p>
 <h2 id="customize-output">Customize output</h2>
 <p>This example shows how to customize breadcrumbs output by specifying multiple options.</p>
 <p>In a view script or layout:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()
     -&gt;setLinkLast(true)                   // link last page
     -&gt;setMaxDepth(1)                      // stop at level 1
     -&gt;setSeparator(' ▶' . PHP_EOL);       // cool separator with newline
-?&gt;</code></pre>
-
+?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;a href="/products"&gt;Products&lt;/a&gt; ▶
-&lt;a href="/products/server"&gt;Foo Server&lt;/a&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-html>&lt;a href=&quot;/products&quot;&gt;Products&lt;/a&gt; ▶
+&lt;a href=&quot;/products/server&quot;&gt;Foo Server&lt;/a&gt;</code></pre></p>
 <p>Setting minimum depth required to render breadcrumbs:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setMinDepth(10) ?&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;breadcrumbs()-&gt;setMinDepth(10) ?&gt;</code></pre></p>
 <p>Output: Nothing, because the deepest active page is not at level 10 or deeper.</p>
 <h2 id="rendering-using-a-partial-view-script">Rendering using a partial view script</h2>
 <p>This example shows how to render customized breadcrumbs using a partial vew
@@ -425,16 +416,14 @@ will be used when calling <code>render()</code>.  When a partial is specified, t
 method will find the deepest active page and pass an array of pages that leads
 to the active page to the partial view script.</p>
 <p>In a layout:</p>
-<pre class="codehilite"><code class="language-php">echo $this-&gt;navigation()-&gt;breadcrumbs()
-    -&gt;setPartial('my-module/partials/breadcrumbs');</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>echo $this-&gt;navigation()-&gt;breadcrumbs()
+    -&gt;setPartial('my-module/partials/breadcrumbs');</code></pre></p>
 <p>Contents of <code>module/MyModule/view/my-module/partials/breadcrumbs.phtml</code>:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= implode(', ', array_map(function ($a) {
+<p> <pre class=codehilite><code class=language-php>&lt;?= implode(', ', array_map(function ($a) {
   return $a-&gt;getLabel();
-}, $this-&gt;pages)); ?&gt;</code></pre>
-
+}, $this-&gt;pages)); ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">Products, Foo Server, FAQ</code></pre>
+<p> <pre class=codehilite><code class=language-html>Products, Foo Server, FAQ</code></pre></p>
 
 
 
@@ -468,7 +457,7 @@ to the active page to the partial view script.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/helpers/breadcrumbs.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/breadcrumbs.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

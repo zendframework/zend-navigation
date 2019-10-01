@@ -299,14 +299,6 @@
             <ul class="toc__list">
                 
                     <li class="toc__entry">
-                        <a href="#sitemap-xml-elements" class="toc__link">Sitemap XML elements</a>
-                    </li>
-                
-                    <li class="toc__entry">
-                        <a href="#validation-only-when-enabled" class="toc__link">Validation only when enabled</a>
-                    </li>
-                
-                    <li class="toc__entry">
                         <a href="#basic-usage" class="toc__link">Basic usage</a>
                     </li>
                 
@@ -331,7 +323,7 @@
 <p>By default, the sitemap helper uses <a href="https://github.com/zendframework/zend-validator">sitemap validators</a>
 to validate each element that is rendered. This can be disabled by calling
 <code>$helper-&gt;setUseSitemapValidators(false)</code>.</p>
-<h3 id="sitemap-xml-elements">Sitemap XML elements</h3>
+<h3>Sitemap XML elements</h3>
 <div class="table-responsive"><table>
 <thead>
 <tr>
@@ -364,7 +356,7 @@ to validate each element that is rendered. This can be disabled by calling
 </tbody>
 </table></div>
 <blockquote>
-<h3 id="validation-only-when-enabled">Validation only when enabled</h3>
+<h3>Validation only when enabled</h3>
 <p>If you disable sitemap validators, the custom properties (see table) are not
 validated at all.</p>
 </blockquote>
@@ -433,7 +425,7 @@ require a request to the schema file. It can be enabled with
 </table></div>
 <h2 id="basic-usage">Basic usage</h2>
 <p>This example shows how to render an <em>XML</em> sitemap based on the setup we did further up.</p>
-<pre class="codehilite"><code class="language-php">// In a view script or layout:
+<p> <pre class=codehilite><code class=language-php>// In a view script or layout:
 
 // format output
 $this-&gt;navigation()
@@ -445,12 +437,11 @@ $this-&gt;navigation()
 // -&gt;setServerUrl('http://my.otherhost.com'); // default is to detect automatically
 
 // print sitemap
-echo $this-&gt;navigation()-&gt;sitemap();</code></pre>
-
+echo $this-&gt;navigation()-&gt;sitemap();</code></pre></p>
 <p>Notice how pages that are invisible or pages with ACL roles incompatible with
 the view helper are filtered out:</p>
-<pre class="codehilite"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+<p> <pre class=codehilite><code class=language-xml>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
   &lt;url&gt;
     &lt;loc&gt;http://www.example.com/&lt;/loc&gt;
   &lt;/url&gt;
@@ -502,16 +493,13 @@ the view helper are filtered out:</p>
   &lt;url&gt;
     &lt;loc&gt;http://forums.example.com/&lt;/loc&gt;
   &lt;/url&gt;
-&lt;/urlset&gt;</code></pre>
-
+&lt;/urlset&gt;</code></pre></p>
 <h2 id="rendering-using-no-acl-role">Rendering using no ACL role</h2>
 <p>Render the sitemap using no ACL role (should filter out <code>/community/account</code>):</p>
-<pre class="codehilite"><code class="language-php">echo $this-&gt;navigation()-&gt;sitemap()
+<div class=md-fenced-code-tabs id=tab-tab-group-2><ul class="nav nav-tabs"><li class="nav-item active"><a href=#tab-group-2-0_php role=tab data-toggle=tab data-lang=php>Php</a></li><li class="nav-item "><a href=#tab-group-2-1_xml role=tab data-toggle=tab data-lang=xml>Xml</a></li></ul><div class=tab-content><div id=tab-group-2-0_php class="tab-pane active" role=tabpanel><pre class=codehilite><code class=language-php>echo $this-&gt;navigation()-&gt;sitemap()
     -&gt;setFormatOutput(true)
-    -&gt;setRole();</code></pre>
-
-<pre class="codehilite"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+    -&gt;setRole();</code></pre></div><div id=tab-group-2-1_xml class="tab-pane " role=tabpanel><pre class=codehilite><code class=language-xml>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
   &lt;url&gt;
     &lt;loc&gt;http://www.example.com/&lt;/loc&gt;
   &lt;/url&gt;
@@ -560,16 +548,14 @@ the view helper are filtered out:</p>
   &lt;url&gt;
     &lt;loc&gt;http://forums.example.com/&lt;/loc&gt;
   &lt;/url&gt;
-&lt;/urlset&gt;</code></pre>
+&lt;/urlset&gt;</code></pre></div></div></div>
 
 <h2 id="rendering-using-a-maximum-depth">Rendering using a maximum depth</h2>
 <p>Render the sitemap using a maximum depth of 1.</p>
-<pre class="codehilite"><code class="language-php">echo $this-&gt;navigation()-&gt;sitemap()
+<div class=md-fenced-code-tabs id=tab-tab-group-3><ul class="nav nav-tabs"><li class="nav-item active"><a href=#tab-group-3-0_php role=tab data-toggle=tab data-lang=php>Php</a></li><li class="nav-item "><a href=#tab-group-3-1_xml role=tab data-toggle=tab data-lang=xml>Xml</a></li></ul><div class=tab-content><div id=tab-group-3-0_php class="tab-pane active" role=tabpanel><pre class=codehilite><code class=language-php>echo $this-&gt;navigation()-&gt;sitemap()
     -&gt;setFormatOutput(true)
-    -&gt;setMaxDepth(1);</code></pre>
-
-<pre class="codehilite"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+    -&gt;setMaxDepth(1);</code></pre></div><div id=tab-group-3-1_xml class="tab-pane " role=tabpanel><pre class=codehilite><code class=language-xml>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
   &lt;url&gt;
     &lt;loc&gt;http://www.example.com/&lt;/loc&gt;
   &lt;/url&gt;
@@ -600,10 +586,10 @@ the view helper are filtered out:</p>
   &lt;url&gt;
     &lt;loc&gt;http://forums.example.com/&lt;/loc&gt;
   &lt;/url&gt;
-&lt;/urlset&gt;</code></pre>
+&lt;/urlset&gt;</code></pre></div></div></div>
 
 <blockquote>
-<h3 id="utf-8-encoding-used-by-default">UTF-8 encoding used by default</h3>
+<h3>UTF-8 encoding used by default</h3>
 <p>By default, zend-view uses UTF-8 as its default encoding.  If you want to use
 another encoding with <code>Sitemap</code>, you will have do three things:</p>
 <ol>
@@ -647,7 +633,7 @@ to see how you can achieve this.</p>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/helpers/sitemap.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/sitemap.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

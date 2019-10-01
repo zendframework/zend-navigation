@@ -299,10 +299,6 @@
             <ul class="toc__list">
                 
                     <li class="toc__entry">
-                        <a href="#allowed-relation-types" class="toc__link">Allowed relation types</a>
-                    </li>
-                
-                    <li class="toc__entry">
                         <a href="#basic-usage" class="toc__link">Basic usage</a>
                     </li>
                 
@@ -354,7 +350,7 @@ relations that will be found by searching:</p>
   the active page if the active page is on level 2 (a <code>subsection</code>).</li>
 </ul>
 <blockquote>
-<h3 id="allowed-relation-types">Allowed relation types</h3>
+<h3>Allowed relation types</h3>
 <p>When looking for relations in the page instance (<code>$page-&gt;getRel($type)</code> or
 <code>$page-&gt;getRev($type)</code>), the helper accepts the values of type <code>string</code>,
 <code>array</code>, <code>Traversable</code>,
@@ -444,9 +440,9 @@ link types.  <code>RENDER_CUSTOM</code> denotes non-standard relations specified
 </tbody>
 </table></div>
 <h2 id="basic-usage">Basic usage</h2>
-<h3 id="specify-relations-in-pages">Specify relations in pages</h3>
+<h3>Specify relations in pages</h3>
 <p>This example shows how to specify relations in pages.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Config\Config;
+<p> <pre class=codehilite><code class=language-php>use Zend\Config\Config;
 use Zend\Navigation\Navigation;
 use Zend\Navigation\Page\AbstractPage;
 
@@ -487,64 +483,56 @@ $container = new Navigation([
             ]),
         ],
     ],
-]);</code></pre>
-
-<h3 id="default-rendering-of-links">Default rendering of links</h3>
+]);</code></pre></p>
+<h3>Default rendering of links</h3>
 <p>This example shows how to render a menu from a container registered in the
 view helper.</p>
 <p>In a view script or layout:</p>
-<pre class="codehilite"><code class="language-php">&lt;?= $this-&gt;navigation()-&gt;links() ?&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>&lt;?= $this-&gt;navigation()-&gt;links() ?&gt;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel="alternate" href="/products/server/faq/format/xml"&gt;
-&lt;link rel="start" href="/" title="Home"&gt;
-&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
-&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;
-&lt;link rel="chapter" href="/products" title="Products"&gt;
-&lt;link rel="chapter" href="/company/about" title="Company"&gt;
-&lt;link rel="chapter" href="/community" title="Community"&gt;
-&lt;link rel="canonical" href="http://www.example.com/?page=server-faq"&gt;
-&lt;link rev="subsection" href="/products/server" title="Foo Server"&gt;</code></pre>
-
-<h3 id="specify-which-relations-to-render">Specify which relations to render</h3>
+<p> <pre class=codehilite><code class=language-html>&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/products&quot; title=&quot;Products&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/company/about&quot; title=&quot;Company&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/community&quot; title=&quot;Community&quot;&gt;
+&lt;link rel=&quot;canonical&quot; href=&quot;http://www.example.com/?page=server-faq&quot;&gt;
+&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre></p>
+<h3>Specify which relations to render</h3>
 <p>This example shows how to specify which relations to find and render.</p>
 <p>Render only start, next, and prev:</p>
-<pre class="codehilite"><code class="language-php">use Zend\View\Helper\Navigation\Links;
+<p> <pre class=codehilite><code class=language-php>use Zend\View\Helper\Navigation\Links;
 
 $links = $this-&gt;navigation()-&gt;links();
 $links-&gt;setRenderFlag(Links::RENDER_START | Links::RENDER_NEXT | Links::RENDER_PREV);
-echo $links;</code></pre>
-
+echo $links;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel="start" href="/" title="Home"&gt;
-&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
-&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-html>&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre></p>
 <p>Render only native link types:</p>
-<pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CUSTOM);
-echo $links;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CUSTOM);
+echo $links;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel="alternate" href="/products/server/faq/format/xml"&gt;
-&lt;link rel="start" href="/" title="Home"&gt;
-&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
-&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;
-&lt;link rel="chapter" href="/products" title="Products"&gt;
-&lt;link rel="chapter" href="/company/about" title="Company"&gt;
-&lt;link rel="chapter" href="/community" title="Community"&gt;
-&lt;link rev="subsection" href="/products/server" title="Foo Server"&gt;</code></pre>
-
+<p> <pre class=codehilite><code class=language-html>&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/products&quot; title=&quot;Products&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/company/about&quot; title=&quot;Company&quot;&gt;
+&lt;link rel=&quot;chapter&quot; href=&quot;/community&quot; title=&quot;Community&quot;&gt;
+&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre></p>
 <p>Render all but chapters:</p>
-<pre class="codehilite"><code class="language-php">$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CHAPTER);
-echo $links;</code></pre>
-
+<p> <pre class=codehilite><code class=language-php>$links-&gt;setRenderFlag(Links::RENDER_ALL ^ Links::RENDER_CHAPTER);
+echo $links;</code></pre></p>
 <p>Output:</p>
-<pre class="codehilite"><code class="language-html">&lt;link rel="alternate" href="/products/server/faq/format/xml"&gt;
-&lt;link rel="start" href="/" title="Home"&gt;
-&lt;link rel="next" href="/products/server/editions" title="Editions"&gt;
-&lt;link rel="prev" href="/products/server" title="Foo Server"&gt;
-&lt;link rel="canonical" href="http://www.example.com/?page=server-faq"&gt;
-&lt;link rev="subsection" href="/products/server" title="Foo Server"&gt;</code></pre>
+<p> <pre class=codehilite><code class=language-html>&lt;link rel=&quot;alternate&quot; href=&quot;/products/server/faq/format/xml&quot;&gt;
+&lt;link rel=&quot;start&quot; href=&quot;/&quot; title=&quot;Home&quot;&gt;
+&lt;link rel=&quot;next&quot; href=&quot;/products/server/editions&quot; title=&quot;Editions&quot;&gt;
+&lt;link rel=&quot;prev&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;
+&lt;link rel=&quot;canonical&quot; href=&quot;http://www.example.com/?page=server-faq&quot;&gt;
+&lt;link rev=&quot;subsection&quot; href=&quot;/products/server&quot; title=&quot;Foo Server&quot;&gt;</code></pre></p>
 
 
 
@@ -578,7 +566,7 @@ echo $links;</code></pre>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/helpers/links.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/helpers/links.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

@@ -341,8 +341,8 @@ or a <code>Traversable</code> object with pages to put in the container. Each pa
 via options will eventually be passed to the <code>addPage()</code> method of the container
 class, which means that each element in the options can be also be an array,
 Traversable object, or a <code>Zend\Navigation\Page\AbstractPage</code> instance.</p>
-<h3 id="creating-a-container-using-an-array">Creating a container using an array</h3>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<h3>Creating a container using an array</h3>
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
 
 /*
  * Create a container from an array
@@ -513,12 +513,11 @@ $container = new Navigation([
         'label' =&gt; 'Zend Framework',
         'route' =&gt; 'zf-route',
     ],
-]);</code></pre>
-
+]);</code></pre></p>
 <h2 id="adding-pages">Adding pages</h2>
 <p>Adding pages to a container can be done with the methods <code>addPage()</code>,
 <code>addPages()</code>, or <code>setPages()</code>.  See examples below for explanation.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Config\Config;
+<p> <pre class=codehilite><code class=language-php>use Zend\Config\Config;
 use Zend\Navigation\Navigation;
 use Zend\Navigation\Page\AbstractPage;
 
@@ -556,14 +555,13 @@ $pages = [
 $container-&gt;addPages($pages);
 
 // remove existing pages and add the given pages
-$container-&gt;setPages($pages);</code></pre>
-
+$container-&gt;setPages($pages);</code></pre></p>
 <h2 id="removing-pages">Removing pages</h2>
 <p>Removing pages can be done with <code>removePage()</code> or <code>removePages()</code>.
 <code>removePage()</code> accepts an instance of a page or an integer. Integer arguments
 correspond to the <code>order</code> a page has. <code>removePages()</code> will remove all pages in
 the container.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -592,12 +590,11 @@ $container-&gt;removePage($page3); // removes Page 3
 $container-&gt;removePage(200);    // removes Page 2
 
 // remove all pages
-$container-&gt;removePages();      // removes all pages</code></pre>
-
-<h3 id="remove-a-page-recursively">Remove a page recursively</h3>
+$container-&gt;removePages();      // removes all pages</code></pre></p>
+<h3>Remove a page recursively</h3>
 <p>Removing a page recursively can be done with the second parameter of
 the <code>removePage()</code> method, which expects a <code>boolean</code> value.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
 
 $container = new Navigation(
     [
@@ -624,8 +621,7 @@ $container = new Navigation(
 $container-&gt;removePage(
     $container-&gt;findOneBy('route', 'page1/page1-1/page1-1-1'),
     true
-);</code></pre>
-
+);</code></pre></p>
 <h2 id="finding-pages">Finding pages</h2>
 <p>Containers have three finder methods for retrieving pages. Each recursively
 searches the container testing for properties with values that match the one
@@ -644,7 +640,7 @@ will return the first matching page with label 'Home'.</p>
 <p>Other combinations include <code>findByLabel(...)</code>, <code>findOneByTitle(...)</code>,
 <code>findAllByController(...)</code>, etc. Finder methods also work on custom properties,
 such as <code>findByFoo('bar')</code>.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -690,43 +686,43 @@ $container = new Navigation([
 // having two pages with the same id will render the same id attribute
 // in menus and breadcrumbs.
 
-// Returns "Page 2":
+// Returns &quot;Page 2&quot;:
 $found = $container-&gt;findBy('id', 'page_2_and_3');
 
-// Returns "Page 2":
+// Returns &quot;Page 2&quot;:
 $found = $container-&gt;findOneBy('id', 'page_2_and_3');
 
-// Returns "Page 2" AND "Page 3":
+// Returns &quot;Page 2&quot; AND &quot;Page 3&quot;:
 $found = $container-&gt;findBy('id', 'page_2_and_3', true);
 
-// Returns "Page 2":
+// Returns &quot;Page 2&quot;:
 $found = $container-&gt;findById('page_2_and_3');
 
-// Returns "Page 2":
+// Returns &quot;Page 2&quot;:
 $found = $container-&gt;findOneById('page_2_and_3');
 
-// Returns "Page 2" AND "Page 3":
+// Returns &quot;Page 2&quot; AND &quot;Page 3&quot;:
 $found = $container-&gt;findAllById('page_2_and_3');
 
-// Find all pages matching the CSS class "my-class":
-// Returns "Page 1.2" and "Page 2":
+// Find all pages matching the CSS class &quot;my-class&quot;:
+// Returns &quot;Page 1.2&quot; and &quot;Page 2&quot;:
 $found = $container-&gt;findAllBy('class', 'my-class');
 $found = $container-&gt;findAllByClass('my-class');
 
-// Find first page matching CSS class "my-class":
-// Returns "Page 1.2":
+// Find first page matching CSS class &quot;my-class&quot;:
+// Returns &quot;Page 1.2&quot;:
 $found = $container-&gt;findOneByClass('my-class');
 
-// Find all pages matching the CSS class "non-existent":
+// Find all pages matching the CSS class &quot;non-existent&quot;:
 // Returns an empty array.
 $found = $container-&gt;findAllByClass('non-existent');
 
-// Find first page matching the CSS class "non-existent":
+// Find first page matching the CSS class &quot;non-existent&quot;:
 // Returns null.
 $found = $container-&gt;findOneByClass('non-existent');
 
 // Find all pages with custom property 'foo' = 'bar':
-// Returns "Page 1" and "Page 1.1":
+// Returns &quot;Page 1&quot; and &quot;Page 1.1&quot;:
 $found = $container-&gt;findAllBy('foo', 'bar');
 
 // To achieve the same magically, 'foo' must be in lowercase.
@@ -735,13 +731,12 @@ $found = $container-&gt;findAllBy('foo', 'bar');
 $found = $container-&gt;findAllByfoo('bar');
 
 // Find all with controller = 'index':
-// Returns "Page 2" and "Page 3":
-$found = $container-&gt;findAllByController('index');</code></pre>
-
+// Returns &quot;Page 2&quot; and &quot;Page 3&quot;:
+$found = $container-&gt;findAllByController('index');</code></pre></p>
 <h2 id="iterating-containers">Iterating containers</h2>
 <p><code>Zend\Navigation\AbstractContainer</code> implements <code>RecursiveIterator</code>.  iterate a
 container recursively, use the <code>RecursiveIteratorIterator</code> class.</p>
-<pre class="codehilite"><code class="language-php">use RecursiveIteratorIterator;
+<p> <pre class=codehilite><code class=language-php>use RecursiveIteratorIterator;
 use Zend\Navigation\Navigation;
 
 /*
@@ -787,24 +782,20 @@ $it = new RecursiveIteratorIterator(
 // Output: Page 1, Page 2, Page 2.1, Page 2.2, Page 3
 foreach ($it as $page) {
     echo $page-&gt;label;
-}</code></pre>
-
+}</code></pre></p>
 <h2 id="other-operations">Other operations</h2>
-<h3 id="haspage">hasPage</h3>
-<pre class="codehilite"><code class="language-php">hasPage(AbstractPage $page) : bool</code></pre>
-
+<h3>hasPage</h3>
+<p> <pre class=codehilite><code class=language-php>hasPage(AbstractPage $page) : bool</code></pre></p>
 <p>Check if the container has the given page.</p>
-<h3 id="haspages">hasPages</h3>
-<pre class="codehilite"><code class="language-php">hasPages() : bool</code></pre>
-
+<h3>hasPages</h3>
+<p> <pre class=codehilite><code class=language-php>hasPages() : bool</code></pre></p>
 <p>Checks if there are any pages in the container, and is equivalent to
 <code>count($container) &gt; 0</code>.</p>
-<h3 id="toarray">toArray</h3>
-<pre class="codehilite"><code class="language-php">toArray() : array</code></pre>
-
+<h3>toArray</h3>
+<p> <pre class=codehilite><code class=language-php>toArray() : array</code></pre></p>
 <p>Converts the container and the pages in it to a (nested) array. This can be useful
 for serializing and debugging.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Navigation\Navigation;
+<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -832,88 +823,88 @@ var_dump($container-&gt;toArray());
 /* Output:
 array(2) {
   [0]=&gt; array(15) {
-    ["label"]=&gt; string(6) "Page 1"
-    ["id"]=&gt; NULL
-    ["class"]=&gt; NULL
-    ["title"]=&gt; NULL
-    ["target"]=&gt; NULL
-    ["rel"]=&gt; array(0) {
+    [&quot;label&quot;]=&gt; string(6) &quot;Page 1&quot;
+    [&quot;id&quot;]=&gt; NULL
+    [&quot;class&quot;]=&gt; NULL
+    [&quot;title&quot;]=&gt; NULL
+    [&quot;target&quot;]=&gt; NULL
+    [&quot;rel&quot;]=&gt; array(0) {
     }
-    ["rev"]=&gt; array(0) {
+    [&quot;rev&quot;]=&gt; array(0) {
     }
-    ["order"]=&gt; NULL
-    ["resource"]=&gt; NULL
-    ["privilege"]=&gt; NULL
-    ["active"]=&gt; bool(false)
-    ["visible"]=&gt; bool(true)
-    ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
-    ["pages"]=&gt; array(0) {
+    [&quot;order&quot;]=&gt; NULL
+    [&quot;resource&quot;]=&gt; NULL
+    [&quot;privilege&quot;]=&gt; NULL
+    [&quot;active&quot;]=&gt; bool(false)
+    [&quot;visible&quot;]=&gt; bool(true)
+    [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+    [&quot;pages&quot;]=&gt; array(0) {
     }
-    ["uri"]=&gt; string(1) "#"
+    [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
   }
   [1]=&gt; array(15) {
-    ["label"]=&gt; string(6) "Page 2"
-    ["id"]=&gt; NULL
-    ["class"]=&gt; NULL
-    ["title"]=&gt; NULL
-    ["target"]=&gt; NULL
-    ["rel"]=&gt; array(0) {
+    [&quot;label&quot;]=&gt; string(6) &quot;Page 2&quot;
+    [&quot;id&quot;]=&gt; NULL
+    [&quot;class&quot;]=&gt; NULL
+    [&quot;title&quot;]=&gt; NULL
+    [&quot;target&quot;]=&gt; NULL
+    [&quot;rel&quot;]=&gt; array(0) {
     }
-    ["rev"]=&gt; array(0) {
+    [&quot;rev&quot;]=&gt; array(0) {
     }
-    ["order"]=&gt; NULL
-    ["resource"]=&gt; NULL
-    ["privilege"]=&gt; NULL
-    ["active"]=&gt; bool(false)
-    ["visible"]=&gt; bool(true)
-    ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
-    ["pages"]=&gt; array(2) {
+    [&quot;order&quot;]=&gt; NULL
+    [&quot;resource&quot;]=&gt; NULL
+    [&quot;privilege&quot;]=&gt; NULL
+    [&quot;active&quot;]=&gt; bool(false)
+    [&quot;visible&quot;]=&gt; bool(true)
+    [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+    [&quot;pages&quot;]=&gt; array(2) {
       [0]=&gt; array(15) {
-        ["label"]=&gt; string(8) "Page 2.1"
-        ["id"]=&gt; NULL
-        ["class"]=&gt; NULL
-        ["title"]=&gt; NULL
-        ["target"]=&gt; NULL
-        ["rel"]=&gt; array(0) {
+        [&quot;label&quot;]=&gt; string(8) &quot;Page 2.1&quot;
+        [&quot;id&quot;]=&gt; NULL
+        [&quot;class&quot;]=&gt; NULL
+        [&quot;title&quot;]=&gt; NULL
+        [&quot;target&quot;]=&gt; NULL
+        [&quot;rel&quot;]=&gt; array(0) {
         }
-        ["rev"]=&gt; array(0) {
+        [&quot;rev&quot;]=&gt; array(0) {
         }
-        ["order"]=&gt; NULL
-        ["resource"]=&gt; NULL
-        ["privilege"]=&gt; NULL
-        ["active"]=&gt; bool(false)
-        ["visible"]=&gt; bool(true)
-        ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
-        ["pages"]=&gt; array(0) {
+        [&quot;order&quot;]=&gt; NULL
+        [&quot;resource&quot;]=&gt; NULL
+        [&quot;privilege&quot;]=&gt; NULL
+        [&quot;active&quot;]=&gt; bool(false)
+        [&quot;visible&quot;]=&gt; bool(true)
+        [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+        [&quot;pages&quot;]=&gt; array(0) {
         }
-        ["uri"]=&gt; string(1) "#"
+        [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
       }
       [1]=&gt;
       array(15) {
-        ["label"]=&gt; string(8) "Page 2.2"
-        ["id"]=&gt; NULL
-        ["class"]=&gt; NULL
-        ["title"]=&gt; NULL
-        ["target"]=&gt; NULL
-        ["rel"]=&gt; array(0) {
+        [&quot;label&quot;]=&gt; string(8) &quot;Page 2.2&quot;
+        [&quot;id&quot;]=&gt; NULL
+        [&quot;class&quot;]=&gt; NULL
+        [&quot;title&quot;]=&gt; NULL
+        [&quot;target&quot;]=&gt; NULL
+        [&quot;rel&quot;]=&gt; array(0) {
         }
-        ["rev"]=&gt; array(0) {
+        [&quot;rev&quot;]=&gt; array(0) {
         }
-        ["order"]=&gt; NULL
-        ["resource"]=&gt; NULL
-        ["privilege"]=&gt; NULL
-        ["active"]=&gt; bool(false)
-        ["visible"]=&gt; bool(true)
-        ["type"]=&gt; string(23) "Zend\Navigation\Page\Uri"
-        ["pages"]=&gt; array(0) {
+        [&quot;order&quot;]=&gt; NULL
+        [&quot;resource&quot;]=&gt; NULL
+        [&quot;privilege&quot;]=&gt; NULL
+        [&quot;active&quot;]=&gt; bool(false)
+        [&quot;visible&quot;]=&gt; bool(true)
+        [&quot;type&quot;]=&gt; string(23) &quot;Zend\Navigation\Page\Uri&quot;
+        [&quot;pages&quot;]=&gt; array(0) {
         }
-        ["uri"]=&gt; string(1) "#"
+        [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
       }
     }
-    ["uri"]=&gt; string(1) "#"
+    [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
   }
 }
-*/</code></pre>
+*/</code></pre></p>
 
 
 
@@ -947,7 +938,7 @@ array(2) {
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/containers.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-navigation/edit/master/docs/book/containers.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

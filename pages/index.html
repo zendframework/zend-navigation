@@ -451,15 +451,17 @@ properties that are not native in the page class.</p>
 <p>Both native and custom properties can be set using <code>$page-&gt;set($name, $value)</code>
 and retrieved using <code>$page-&gt;get($name)</code>, or by using magic methods.</p>
 <p>The following example demonstrates custom properties:</p>
-<p>```php
+<p><pre class=codehilite><code class=language-php>
 $page = new Zend\Navigation\Page\Mvc();
 $page-&gt;foo     = 'bar';
-$page-&gt;meaning = 42;</p>
-<p>echo $page-&gt;foo;</p>
-<p>if ($page-&gt;meaning != 42) {
+$page-&gt;meaning = 42;
+
+echo $page-&gt;foo;
+
+if ($page-&gt;meaning != 42) {
     // action should be taken
 }
-```</p>
+</code></pre></p>
 </blockquote>
 <h2 id="mvc-pages">MVC pages</h2>
 <p>MVC pages are defined using MVC parameters known from the

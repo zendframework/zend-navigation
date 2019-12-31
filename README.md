@@ -1,5 +1,9 @@
 # zend-navigation
 
+> ## Repository abandoned 2019-12-31
+>
+> This repository has moved to laminas/laminas-navigation.
+
 [![Build Status](https://secure.travis-ci.org/zendframework/zend-navigation.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-navigation)
 [![Coverage Status](https://coveralls.io/repos/github/zendframework/zend-navigation/badge.svg?branch=master)](https://coveralls.io/github/zendframework/zend-navigation?branch=master)
 

@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Manage trees of pointers to web pages in order to build navigation systems.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-navigation/containers/">
+    <link rel="canonical" href="https://docs.zendframework.com/containers/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Containers - zend-navigation - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -242,9 +242,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-navigation/">laminas/laminas-navigation.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -342,7 +342,7 @@ via options will eventually be passed to the <code>addPage()</code> method of th
 class, which means that each element in the options can be also be an array,
 Traversable object, or a <code>Zend\Navigation\Page\AbstractPage</code> instance.</p>
 <h3>Creating a container using an array</h3>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
+<pre><code class="language-php">use Zend\Navigation\Navigation;
 
 /*
  * Create a container from an array
@@ -513,11 +513,13 @@ $container = new Navigation([
         'label' =&gt; 'Zend Framework',
         'route' =&gt; 'zf-route',
     ],
-]);</code></pre></p>
+]);
+</code></pre>
+
 <h2 id="adding-pages">Adding pages</h2>
 <p>Adding pages to a container can be done with the methods <code>addPage()</code>,
 <code>addPages()</code>, or <code>setPages()</code>.  See examples below for explanation.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Config\Config;
+<pre><code class="language-php">use Zend\Config\Config;
 use Zend\Navigation\Navigation;
 use Zend\Navigation\Page\AbstractPage;
 
@@ -555,13 +557,15 @@ $pages = [
 $container-&gt;addPages($pages);
 
 // remove existing pages and add the given pages
-$container-&gt;setPages($pages);</code></pre></p>
+$container-&gt;setPages($pages);
+</code></pre>
+
 <h2 id="removing-pages">Removing pages</h2>
 <p>Removing pages can be done with <code>removePage()</code> or <code>removePages()</code>.
 <code>removePage()</code> accepts an instance of a page or an integer. Integer arguments
 correspond to the <code>order</code> a page has. <code>removePages()</code> will remove all pages in
 the container.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
+<pre><code class="language-php">use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -590,11 +594,13 @@ $container-&gt;removePage($page3); // removes Page 3
 $container-&gt;removePage(200);    // removes Page 2
 
 // remove all pages
-$container-&gt;removePages();      // removes all pages</code></pre></p>
+$container-&gt;removePages();      // removes all pages
+</code></pre>
+
 <h3>Remove a page recursively</h3>
 <p>Removing a page recursively can be done with the second parameter of
 the <code>removePage()</code> method, which expects a <code>boolean</code> value.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
+<pre><code class="language-php">use Zend\Navigation\Navigation;
 
 $container = new Navigation(
     [
@@ -621,7 +627,9 @@ $container = new Navigation(
 $container-&gt;removePage(
     $container-&gt;findOneBy('route', 'page1/page1-1/page1-1-1'),
     true
-);</code></pre></p>
+);
+</code></pre>
+
 <h2 id="finding-pages">Finding pages</h2>
 <p>Containers have three finder methods for retrieving pages. Each recursively
 searches the container testing for properties with values that match the one
@@ -640,7 +648,7 @@ will return the first matching page with label 'Home'.</p>
 <p>Other combinations include <code>findByLabel(...)</code>, <code>findOneByTitle(...)</code>,
 <code>findAllByController(...)</code>, etc. Finder methods also work on custom properties,
 such as <code>findByFoo('bar')</code>.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
+<pre><code class="language-php">use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -732,11 +740,13 @@ $found = $container-&gt;findAllByfoo('bar');
 
 // Find all with controller = 'index':
 // Returns &quot;Page 2&quot; and &quot;Page 3&quot;:
-$found = $container-&gt;findAllByController('index');</code></pre></p>
+$found = $container-&gt;findAllByController('index');
+</code></pre>
+
 <h2 id="iterating-containers">Iterating containers</h2>
 <p><code>Zend\Navigation\AbstractContainer</code> implements <code>RecursiveIterator</code>.  iterate a
 container recursively, use the <code>RecursiveIteratorIterator</code> class.</p>
-<p> <pre class=codehilite><code class=language-php>use RecursiveIteratorIterator;
+<pre><code class="language-php">use RecursiveIteratorIterator;
 use Zend\Navigation\Navigation;
 
 /*
@@ -782,20 +792,28 @@ $it = new RecursiveIteratorIterator(
 // Output: Page 1, Page 2, Page 2.1, Page 2.2, Page 3
 foreach ($it as $page) {
     echo $page-&gt;label;
-}</code></pre></p>
+}
+</code></pre>
+
 <h2 id="other-operations">Other operations</h2>
 <h3>hasPage</h3>
-<p> <pre class=codehilite><code class=language-php>hasPage(AbstractPage $page) : bool</code></pre></p>
+<pre><code class="language-php">hasPage(AbstractPage $page) : bool
+</code></pre>
+
 <p>Check if the container has the given page.</p>
 <h3>hasPages</h3>
-<p> <pre class=codehilite><code class=language-php>hasPages() : bool</code></pre></p>
+<pre><code class="language-php">hasPages() : bool
+</code></pre>
+
 <p>Checks if there are any pages in the container, and is equivalent to
 <code>count($container) &gt; 0</code>.</p>
 <h3>toArray</h3>
-<p> <pre class=codehilite><code class=language-php>toArray() : array</code></pre></p>
+<pre><code class="language-php">toArray() : array
+</code></pre>
+
 <p>Converts the container and the pages in it to a (nested) array. This can be useful
 for serializing and debugging.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Navigation;
+<pre><code class="language-php">use Zend\Navigation\Navigation;
 
 $container = new Navigation([
     [
@@ -904,7 +922,8 @@ array(2) {
     [&quot;uri&quot;]=&gt; string(1) &quot;#&quot;
   }
 }
-*/</code></pre></p>
+*/
+</code></pre>
 
 
 
@@ -1113,7 +1132,7 @@ array(2) {
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -1121,10 +1140,10 @@ array(2) {
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -1132,27 +1151,28 @@ array(2) {
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

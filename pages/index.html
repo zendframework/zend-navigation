@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Manage trees of pointers to web pages in order to build navigation systems.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-navigation/pages/">
+    <link rel="canonical" href="https://docs.zendframework.com/pages/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Pages - zend-navigation - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -242,9 +242,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-navigation/">laminas/laminas-navigation.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -451,7 +451,7 @@ properties that are not native in the page class.</p>
 <p>Both native and custom properties can be set using <code>$page-&gt;set($name, $value)</code>
 and retrieved using <code>$page-&gt;get($name)</code>, or by using magic methods.</p>
 <p>The following example demonstrates custom properties:</p>
-<p><pre class=codehilite><code class=language-php>
+<pre class=codehilite><code class=language-php>
 $page = new Zend\Navigation\Page\Mvc();
 $page-&gt;foo     = 'bar';
 $page-&gt;meaning = 42;
@@ -461,7 +461,7 @@ echo $page-&gt;foo;
 if ($page-&gt;meaning != 42) {
     // action should be taken
 }
-</code></pre></p>
+</code></pre>
 </blockquote>
 <h2 id="mvc-pages">MVC pages</h2>
 <p>MVC pages are defined using MVC parameters known from the
@@ -547,7 +547,7 @@ In the examples, the <code>baseUrl</code> is '/' for simplicity.</p>
 <h3>getHref() generates the page URI</h3>
 <p>This example demonstrates that MVC pages use <code>Zend\Router\RouteStackInterface</code>
 internally to generate URIs when calling <code>$page-&gt;getHref()</code>.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page;
+<pre><code class="language-php">use Zend\Navigation\Page;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\TreeRouteStack;
 
@@ -586,11 +586,13 @@ $page = new Page\Mvc([
     'controller' =&gt; 'album',
     'params'     =&gt; ['id' =&gt; 1337],
     'query'      =&gt; ['format' =&gt; 'json'],
-]);</code></pre></p>
+]);
+</code></pre>
+
 <h3>isActive() determines if page is active</h3>
 <p>This example demonstrates that MVC pages determine whether they are active by
 using the params found in the route match object.</p>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page;
+<pre><code class="language-php">use Zend\Navigation\Page;
 
 /**
  * Dispatched request:
@@ -637,7 +639,9 @@ $page = new Page\Mvc([
 ]);
 
 // returns false, because page requires the id param to be set in the request
-$page-&gt;isActive(); // returns false</code></pre></p>
+$page-&gt;isActive(); // returns false
+</code></pre>
+
 <h3>Using routes</h3>
 <p>Routes can be used with MVC pages. If a page has a route, this route will be
 used in <code>getHref()</code> to generate the URL for the page.</p>
@@ -646,7 +650,7 @@ used in <code>getHref()</code> to generate the URL for the page.</p>
 <p>Note that when using the <code>route</code> property in a page, you do not need to
 specify the default params that the route defines (controller, action, etc.).</p>
 </blockquote>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page;
+<pre><code class="language-php">use Zend\Navigation\Page;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\TreeRouteStack;
 
@@ -672,7 +676,9 @@ $page = new Page\Mvc([
 ]);
 
 // returns: /a/42
-$page-&gt;getHref();</code></pre></p>
+$page-&gt;getHref();
+</code></pre>
+
 <h2 id="uri-pages">URI Pages</h2>
 <p>Pages of type <code>Zend\Navigation\Page\Uri</code> can be used to link to pages on other
 domains or sites, or to implement custom logic for the page. In addition to the
@@ -719,7 +725,7 @@ custom property of the page, and be accessible via <code>$internalId =
 $page-&gt;internal_id;</code> or <code>$internalId = $page-&gt;get('internal_id');</code>.</p>
 <h3>Basic custom page example</h3>
 <p>The only thing a custom page class needs to implement is the <code>getHref()</code> method.</p>
-<p> <pre class=codehilite><code class=language-php>namespace My;
+<pre><code class="language-php">namespace My;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -729,11 +735,13 @@ class Page extends AbstractPage
     {
         return 'something-completely-different';
     }
-}</code></pre></p>
+}
+</code></pre>
+
 <h3>A custom page with properties</h3>
 <p>When adding properties to an extended page, there is no need to override/modify
 <code>setOptions()</code>.</p>
-<p> <pre class=codehilite><code class=language-php>namespace My\Navigation;
+<pre><code class="language-php">namespace My\Navigation;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -773,7 +781,9 @@ $page = new Page([
     'label'   =&gt; 'Property names are mapped to setters',
     'foo'     =&gt; 'bar',
     'foo_bar' =&gt; 'baz',
-]);</code></pre></p>
+]);
+</code></pre>
+
 <h2 id="creating-pages-using-the-page-factory">Creating pages using the page factory</h2>
 <p>All pages (also custom classes), can be created using the page factory,
 <code>Zend\Navigation\Page\AbstractPage::factory()</code>. The factory accepts either an
@@ -785,7 +795,7 @@ created. If any of the MVC options are given, an MVC page will be created.</p>
 class that should be created. If the value is <code>mvc</code> or <code>uri</code>, an MVC or URI page
 will be created, respectively.</p>
 <h3>Creating an MVC page using the page factory</h3>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page\AbstractPage;
+<pre><code class="language-php">use Zend\Navigation\Page\AbstractPage;
 
 // MVC page, as &quot;action&quot; is defined
 $page = AbstractPage::factory([
@@ -810,9 +820,11 @@ $page = AbstractPage::factory([
 $page = AbstractPage::factory([
     'type'   =&gt; 'mvc',
     'label'  =&gt; 'My MVC page',
-]);</code></pre></p>
+]);
+</code></pre>
+
 <h3>Creating a URI page using the page factory</h3>
-<p> <pre class=codehilite><code class=language-php>use Zend\Navigation\Page\AbstractPage;
+<pre><code class="language-php">use Zend\Navigation\Page\AbstractPage;
 
 // URI page, as &quot;uri&quot; is present, with now MVC options
 $page = AbstractPage::factory([
@@ -837,11 +849,13 @@ $page = AbstractPage::factory([
 $page = AbstractPage::factory([
     'type'  =&gt; 'uri',
     'label' =&gt; 'My URI page',
-]);</code></pre></p>
+]);
+</code></pre>
+
 <h3>Creating a custom page type using the page factory</h3>
 <p>To create a custom page type using the factory, use the option <code>type</code> to specify
 a class name to instantiate.</p>
-<p> <pre class=codehilite><code class=language-php>namespace My\Navigation;
+<pre><code class="language-php">namespace My\Navigation;
 
 use Zend\Navigation\Page\AbstractPage;
 
@@ -860,7 +874,8 @@ $page = AbstractPage::factory([
     'type'    =&gt; Page::class,
     'label'   =&gt; 'My custom page',
     'foo_bar' =&gt; 'foo bar',
-]);</code></pre></p>
+]);
+</code></pre>
 
 
 
@@ -1069,7 +1084,7 @@ $page = AbstractPage::factory([
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -1077,10 +1092,10 @@ $page = AbstractPage::factory([
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -1088,27 +1103,28 @@ $page = AbstractPage::factory([
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">

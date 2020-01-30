@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Manage trees of pointers to web pages in order to build navigation systems.">  
-    <link rel="canonical" href="https://docs.zendframework.com/zend-navigation/quick-start/">
+    <link rel="canonical" href="https://docs.zendframework.com/quick-start/">
     <link rel="shortcut icon" href="../img/favicon.ico">
 
     <title>Quick Start - zend-navigation - Zend Framework Docs</title>
 
-    <link rel="stylesheet" href="../css/styles-5cfabd53ee.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body id="page-top">
 
@@ -242,9 +242,9 @@
     <div class="laminas-announcement">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
-            </div>
+            <div class="col-xs-12"><strong>
+                This package has moved. Visit its replacement, <a href="https://docs.laminas.dev/laminas-navigation/">laminas/laminas-navigation.</a>
+            </strong></div>
         </div>
     </div>
 </div>
@@ -314,7 +314,7 @@
 </ul>
 <h3>Register zend-navigation as module</h3>
 <p>Edit the application configuration file <code>config/application.config.php</code>:</p>
-<p> <pre class=codehilite><code class=language-php>&lt;?php
+<pre><code class="language-php">&lt;?php
 return [
     'modules' =&gt; [
         'Zend\Router',
@@ -322,11 +322,13 @@ return [
         'Zend\Navigation', // &lt;-- Add this line
         // ...
     ],
-];</code></pre></p>
+];
+</code></pre>
+
 <h3>Navigation container configuration</h3>
 <p>Add the container definition to your configuration file, e.g.
 <code>config/autoload/global.php</code>:</p>
-<p> <pre class=codehilite><code class=language-php>&lt;?php
+<pre><code class="language-php">&lt;?php
 return [
     // ...
 
@@ -353,22 +355,26 @@ return [
         ],
     ],
     // ...
-];</code></pre></p>
+];
+</code></pre>
+
 <h3>Render the navigation</h3>
 <p>Calling the view helper for menus in your layout script:</p>
-<p> <pre class=codehilite><code class=language-php>&lt;!-- ... --&gt;
+<pre><code class="language-php">&lt;!-- ... --&gt;
 
 &lt;body&gt;
     &lt;?= $this-&gt;navigation('default')-&gt;menu() ?&gt;
 &lt;/body&gt;
-&lt;!-- ... --&gt;</code></pre></p>
+&lt;!-- ... --&gt;
+</code></pre>
+
 <h2 id="using-multiple-navigations">Using multiple navigations</h2>
 <p>Once the zend-navigation module is registered, you can create as many navigation
 definitions as you wish, and the underlying factories will create navigation
 containers automatically.</p>
 <p>Add the container definitions to your configuration file, e.g.
 <code>config/autoload/global.php</code>:</p>
-<p> <pre class=codehilite><code class=language-php>&lt;?php
+<pre><code class="language-php">&lt;?php
 return [
     // ...
 
@@ -421,7 +427,9 @@ return [
         ],
     ],
     // ...
-];</code></pre></p>
+];
+</code></pre>
+
 <blockquote>
 <h3>Container names have a prefix</h3>
 <p>There is one important point to know when using zend-navigation as a module:
@@ -431,7 +439,7 @@ This helps ensure that no naming collisions occur with other services.</p>
 </blockquote>
 <p>The following example demonstrates rendering the navigation menus for the named
 <code>default</code>, <code>special</code>, and <code>sitemap</code> containers.</p>
-<p> <pre class=codehilite><code class=language-php>&lt;!-- ... --&gt;
+<pre><code class="language-php">&lt;!-- ... --&gt;
 
 &lt;body&gt;
     &lt;?= $this-&gt;navigation('Zend\Navigation\Default')-&gt;menu() ?&gt;
@@ -440,7 +448,8 @@ This helps ensure that no naming collisions occur with other services.</p>
 
     &lt;?= $this-&gt;navigation('Zend\Navigation\Sitemap')-&gt;menu() ?&gt;
 &lt;/body&gt;
-&lt;!-- ... --&gt;</code></pre></p>
+&lt;!-- ... --&gt;
+</code></pre>
 
 
 
@@ -649,7 +658,7 @@ This helps ensure that no naming collisions occur with other services.</p>
             
             <div class="col-md-9">
                 <h4 class="footer__headline">Copyright</h4>
-                <p>&copy; 2006-2019 by <a href="https://www.zend.com/">Zend</a>, a <a href="https://www.roguewave.com/">Rogue Wave Company</a>.</p>
+                <p>&copy; 2006-2020 by <a href="https://www.zend.com/">Zend</a> by <a href="https://www.perforce.com/">Perforce</a>.</p>
             </div>
 
             
@@ -657,10 +666,10 @@ This helps ensure that no naming collisions occur with other services.</p>
                 <h4 class="footer__headline">Support</h4>
                 <ul class="support__list">
                     <li class="support__list-item">
-                        <a href="https://discourse.zendframework.com" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
+                        <a href="https://discourse.laminas.dev" class="support__link" title="Forum"><i class="fa fa-comments"></i></a>
                     </li>
                     <li class="support__list-item">
-                        <a href="https://zendframework-slack.herokuapp.com" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
+                        <a href="https://laminas.dev/chat/" class="support__link" title="Chat"><i class="fa fa-slack"></i></a>
                     </li>
                     <li class="support__list-item">
                         <a href="https://github.com/zendframework" class="support__link" title="Github"><i class="fa fa-github"></i></a>
@@ -668,27 +677,28 @@ This helps ensure that no naming collisions occur with other services.</p>
                     <li class="support__list-item">
                         <a href="https://twitter.com/zfdevteam" class="support__link" title="Twitter"><i class="fa fa-twitter"></i></a>
                     </li>
-                    <li class="support__list-item">
-                        <a href="https://tinyletter.com/mwopzend" class="support__link" title="Newsletter"><i class="fa fa-envelope"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/blog/feed-rss.xml" class="support__link" title="Blog feed"><i class="fa fa-rss"></i></a>
-                    </li>
-                    <li class="support__list-item">
-                        <a href="https://framework.zend.com/security/feed" class="support__link" title="Security feed"><i class="fa fa-rss-square"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </footer>
 
+<nav class="cookie-bar navbar navbar-fixed-bottom navbar-default hidden">
+    <div class="container">
+        <p class="navbar-text">
+            We use cookies to allow you to dismiss dialogs such as the Laminas
+            Project notification.
+        </p>
+        <button type="button" class="cookie-button btn btn-default navbar-btn">Allow Cookies</button>
+    </div>
+</nav>
+
     <script>
         var base_url = '..',
             siteName = 'zend-navigation';
     </script>
-    <script src="../js/scripts-8d7ae56abf.js"></script>
-        <script src="../search/main.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
